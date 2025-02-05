@@ -1,4 +1,4 @@
-<div class="relative bg-white p-6 bg-cover bg-center rounded-lg shadow-lg hover:shadow-xl w-60 h-[40vh] group"
+{{-- <div class="relative bg-white p-6 bg-cover bg-center rounded-lg shadow-lg hover:shadow-xl w-60 h-[40vh] group"
     style="background-image: url('assets/Image/anak.jpg');">
     <!-- Overlay -->
     <div
@@ -25,4 +25,4 @@
         </div>
     </div>
 
-</div>
+</div> --}}
