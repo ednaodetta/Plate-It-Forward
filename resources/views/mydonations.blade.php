@@ -28,7 +28,7 @@
 </head>
 
 <body class="font-brandon-regular">
-    @include('components.navbarbefore')
+    @include('components.navbar')
     {{-- <main class="bg-DefaultWhite mt-20 md:px-32 pt-10 sm:px-20 min-h-screen px-6">
         <!-- Title -->
         <div class="flex flex-col md:flex-row w-full mb-6">

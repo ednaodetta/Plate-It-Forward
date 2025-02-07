@@ -24,7 +24,7 @@
 <!-- Menggunakan flex-col untuk menata konten dan footer -->
 
 <body class="bg-[#F9F3F0] flex flex-col min-h-screen">
-    @include('components.navbarbefore')
+    @include('components.navbar')
     <!-- Kontainer Utama -->
     <main class="flex-grow flex justify-center items-center p-4 mt-28 mb-12"> <!-- Tambahkan mt-12 di sini -->
         <div class="bg-[#ECE6E6] w-full max-w-3xl rounded-lg shadow-md p-8">

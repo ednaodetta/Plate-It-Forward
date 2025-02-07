@@ -32,7 +32,7 @@
 </head>
 
 <body>
-    @include('components.navbarbefore')
+    @include('components.navbar')
     <div class="cont mt-200">
         <div class="forms-container">
             <div class="signin-signup">
