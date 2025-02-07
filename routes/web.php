@@ -19,6 +19,14 @@ Route::get('/my-donations', function () {
     return view('mydonations');
 });
 
+Route::get('/menupage', function () {
+    return view('menupage');
+});
+
+Route::get('/payment', function () {
+    return view('payment');
+});
+
 
 Route::get('/signin', function () {
     return view('signin');
