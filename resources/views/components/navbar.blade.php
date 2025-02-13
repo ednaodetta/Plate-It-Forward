@@ -2,7 +2,7 @@
     <div class="container mx-auto flex items-center justify-between py-4 px-6">
         <!-- Logo -->
         <div class="flex items-center">
-            <img src="{{ asset('assets/Image/Logo.png') }}" alt="Logo" class="h-14 w-14">
+            <img src="{{ asset('assets/Image/Logo copy.png') }}" alt="Logo" class="h-14 w-14">
             <span class="ml-2 text-xl font-bold text-gray-800">PlateItForward</span>
         </div>
 
