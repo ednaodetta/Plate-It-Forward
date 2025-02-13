@@ -25,6 +25,10 @@ export default {
             maxWidth: {
                 '6.7xl': '74rem',
             },
+            backgroundImage:{
+                'bgbang' : "url('/public/assets/Image/judul.png')",
+                'bglocation' : "url('/public/assets/Image/keram_telor.png')",
+            },
         },
     },
     plugins: [],
