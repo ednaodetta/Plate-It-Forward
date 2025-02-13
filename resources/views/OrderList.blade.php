@@ -28,11 +28,11 @@
         </div>
 
         <!-- Tabel -->
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto rounded-lg">
             <table class="w-full bg-white shadow-md rounded overflow-hidden">
                 <!-- Header Tabel -->
-                <thead>
-                    <tr class="bg-whitecream text-gray-700">
+                <thead class="bg-gray-200">
+                    <tr class="bg-whitecream text-gray-700 border-b">
                         <th class="px-4 py-2 text-left font-semibold font-brandon">OrderID</th>
                         <th class="px-4 py-2 text-left font-semibold font-brandon">Transaction Detail</th>
                         <th class="px-4 py-2 text-left font-semibold font-brandon">Total Price</th>
@@ -40,56 +40,56 @@
                     </tr>
                 </thead>
                 <!-- Isi Tabel -->
-                <tbody>
+                <tbody class="font-brandon">
                     <!-- Order 1 -->
-                    <tr>
+                    <tr class="border-b">
                         <td class="px-4 py-3 font-brandon">ID001</td>
                         <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es</td>
                         <td class="px-4 py-3 font-bold font-brandon">IDR 65,000.00</td>
                         <td class="px-4 py-3 font-brandon">
                             <select class="p-2 border rounded status-select" onchange="updateColor(this)">
-                                <option value="Completed"class = "text-green-500 font-brandon">Completed</option>
-                                <option value="On Process"class="text-orange-500 font-brandon">On Process</option>
-                                <option value="Canceled"class="text-red-500 font-brandon">Canceled</option>
+                                <option value="Completed"class = "text-green-500">Completed</option>
+                                <option value="On Process"class="text-orange-500">On Process</option>
+                                <option value="Canceled"class="text-red-500">Canceled</option>
                             </select>
                         </td>
                     </tr>
                     <!-- Order 2 -->
-                    <tr>
+                    <tr class="border-b">
                         <td class="px-4 py-3 font-brandon">ID002</td>
                         <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es, 1 Pizza, 10 Nasi padang</td>
                         <td class="px-4 py-3 font-bold font-brandon">IDR 125,000.00</td>
                         <td class="px-4 py-3">
                             <select class="p-2 border rounded status-select" onchange="updateColor(this)">
-                                <option value="Completed" class = "text-green-500 font-brandon">Completed</option>
-                                <option value="On Process" class="text-orange-500 font-brandon">On Process</option>
-                                <option value="Canceled" class="text-red-500 font-brandon">Canceled</option>
+                                <option value="Completed" class = "text-green-500">Completed</option>
+                                <option value="On Process" class="text-orange-500">On Process</option>
+                                <option value="Canceled" class="text-red-500">Canceled</option>
                             </select>
                         </td>
                     </tr>
                     <!-- Order 3 -->
-                    <tr>
+                    <tr class="border-b">
                         <td class="px-4 py-3 font-brandon">ID003</td>
                         <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es</td>
                         <td class="px-4 py-3 font-bold font-brandon">IDR 75,000.00</td>
                         <td class="px-4 py-3">
                             <select class="p-2 border rounded status-select" onchange="updateColor(this)">
-                                <option value="Completed" class = "text-green-500 font-brandon">Completed</option>
-                                <option value="On Process"class="text-orange-500 font-brandon">On Process</option>
-                                <option value="Canceled"class="text-red-500 font-brandon" selected >Canceled</option>
+                                <option value="Completed" class = "text-green-500">Completed</option>
+                                <option value="On Process"class="text-orange-500">On Process</option>
+                                <option value="Canceled"class="text-red-500" selected >Canceled</option>
                             </select>
                         </td>
                     </tr>
                     <!-- Order 4 -->
-                    <tr>
+                    <tr class="border-b">
                         <td class="px-4 py-3 font-brandon">ID004</td>
                         <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es</td>
                         <td class="px-4 py-3 font-bold font-brandon">IDR 25,000.00</td>
                         <td class="px-4 py-3">
                             <select class="p-2 border rounded status-select" onchange="updateColor(this)">
-                                <option value="Completed"class = "text-green-500 font-brandon">Completed</option>
-                                <option value="On Process"class="text-orange-500 font-brandon" selected >On Process</option>
-                                <option value="Canceled"class="text-red-500 font-brandon">Canceled</option>
+                                <option value="Completed"class = "text-green-500">Completed</option>
+                                <option value="On Process"class="text-orange-500" selected >On Process</option>
+                                <option value="Canceled"class="text-red-500">Canceled</option>
                             </select>
                         </td>
                     </tr>
