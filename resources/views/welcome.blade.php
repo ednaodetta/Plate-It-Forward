@@ -19,7 +19,7 @@
                 <h2 class="text-DefaultWhite text-opacity-50 text-4xl lg:text-8xl font-brandon mt-2 lg:mt-6">
                     Nourish Communities, <br> Reduce Waste
                 </h2>
-                <p class="text-DefaultWhite text-l lg:text-2xl mt-3 lg:mt-6 max-w-3xl">
+                <p class="text-DefaultWhite text-l lg:text-2xl mt-3 lg:mt-6 max-w-3xl font-brandon">
                     Plate It Forward is a food waste management initiative dedicated to rescuing surplus food and
                     redistributing
                     it to those in need, creating a sustainable cycle of nourishment and hope.

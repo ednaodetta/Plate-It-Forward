@@ -52,7 +52,7 @@
                         <p class="error-message" id="passError"></p>
                     </div>
                     <button type="submit"
-                        class="font-gotham-bold bg-[#00615F] text-[#F9F3F0] py-2 rounded-full font-bold text-lg transition-all duration-300 ease-in-out text-center mt-4 hover:bg-[#F9F3F0] hover:text-[#00615F] cursor-pointer w-8/12">
+                        class="font-gotham-bold bg-DefaultGreen text-DefaultWhite py-2 rounded-full font-bold text-lg transition-all duration-300 ease-in-out text-center mt-4 hover:bg-[#F9F3F0] hover:text-[#00615F] cursor-pointer w-8/12">
                         Sign In
                     </button>
 
