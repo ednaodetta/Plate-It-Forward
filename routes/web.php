@@ -27,6 +27,21 @@ Route::get('/payment', function () {
     return view('payment');
 });
 
+Route::get('/OrderList', function () {
+    return view('OrderList');
+});
+
+Route::get('/restoranpage', function () {
+    return view('restoranpage');
+});
+
+Route::get('/OrderListRestaurant', function () {
+    return view('OrderListRestaurant');
+});
+
+Route::get('/location', function () {
+    return view('location');
+});
 
 Route::get('/signin', function () {
     return view('signin');
