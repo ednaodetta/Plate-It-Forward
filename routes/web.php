@@ -56,3 +56,11 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/contact-us', function () {
     return view('contactus');
 })->name('contactus');
+
+Route::get('/updateuserinfo', function () {
+    return view('updateuserpage');
+});
+
+Route::get('/userinfo', function () {
+    return view('userinfopage');
+});
