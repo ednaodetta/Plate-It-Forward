@@ -13,13 +13,13 @@
 
             <!-- Text Content -->
             <div class="absolute inset-0 container mx-auto flex flex-col items-start justify-center px-6 lg:px-12">
-                <h1 class="text-DefaultWhite text-4xl lg:text-8xl font-brandon leading-tight">
+                <h1 class="text-DefaultWhite text-4xl lg:text-7xl font-gotham leading-tight">
                     Plate It Forward.
                 </h1>
-                <h2 class="text-DefaultWhite text-opacity-50 text-4xl lg:text-8xl font-brandon mt-2 lg:mt-6">
+                <h2 class="text-DefaultWhite text-opacity-50 text-4xl lg:text-7xl font-gotham mt-2 lg:mt-6">
                     Nourish Communities, <br> Reduce Waste
                 </h2>
-                <p class="text-DefaultWhite text-l lg:text-2xl mt-3 lg:mt-6 max-w-3xl">
+                <p class="text-DefaultWhite text-l lg:text-2xl mt-3 lg:mt-6 max-w-3xl font-brandon">
                     Plate It Forward is a food waste management initiative dedicated to rescuing surplus food and
                     redistributing
                     it to those in need, creating a sustainable cycle of nourishment and hope.
@@ -258,7 +258,7 @@
                 <div
                     class="bg-[#2e645f] text-white p-8 md:p-10 flex flex-col justify-center w-full md:w-2/5 font-gotham">
                     <h2 class="text-6xl font-bold mb-16">Our impact to date</h2>
-                    <p class="text-lg leading-relaxed opacity-80 font-brandonLight">
+                    <p class="text-lg leading-relaxed opacity-80 font-brandon">
                         Plate It Forward has made a meaningful difference by distributing meals to foundations and
                         orphanages in
                         need. Through partnerships with generous restaurants, we’ve created a sustainable system that

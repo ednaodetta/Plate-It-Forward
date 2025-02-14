@@ -31,7 +31,7 @@
             <div class="overflow-x-auto">
             <table class="w-full shadow-md rounded overflow-hidden">
                 <!-- Header Tabel -->
-                <thead>
+                <thead class="bg-gray-100">
                 <tr class="bg-whitecream text-gray-700">
                     <th class="px-4 py-2 text-left font-semibold font-brandon">OrderID</th>
                     <th class="px-4 py-2 text-left font-semibold font-brandon">Transaction Detail</th>
