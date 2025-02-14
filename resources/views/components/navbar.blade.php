@@ -16,13 +16,18 @@
 
         <!-- Navigation Links -->
         <nav id="menu"
-            class="hidden lg:flex flex-col lg:flex-row lg:space-x-6 text-gray-600 lg:items-center z-10 rounded-b-lg bg-DefaultWhite lg:bg-transparent absolute lg:relative top-20 lg:top-auto left-0 w-full lg:w-auto px-6 lg:px-0 shadow lg:shadow-none">
-            <ul class="flex flex-col gap-y-5 items-end lg:flex-row lg:space-x-10">
-                <li><a href="#" class="block py-2 pt-4 lg:py-0 hover:text-Teal">Home</a></li>
-                <li><a href="#" class="block py-2 lg:py-0 hover:text-Teal">Restaurants</a></li>
-                <li><a href="#" class="block py-2 lg:py-0 hover:text-Teal">My Donations</a></li>
-                <li><a href="#" class="block py-2 pb-6 lg:py-0 hover:text-Teal">Contact Us</a></li>
-                <li><a href="#" class="block py-2 pb-6 lg:py-0 hover:text-Teal">Sign Up</a></li>
+            class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
+            <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
+                <li><a href="/" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Home</a></li>
+                <li><a href="restoranpage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurants</a>
+                </li>
+                <li><a href="my-donations" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">My Donations</a>
+                </li>
+                <li><a href="contactus" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Contact Us</a></li>
+                <li>
+                    <a href="signin" class="block px-6 py-3 text-white bg-Teal hover:bg-opacity-80 text-left">Sign
+                        Up</a>
+                </li>
             </ul>
         </nav>
     </div>
