@@ -64,3 +64,7 @@ Route::get('/updateuserinfo', function () {
 Route::get('/userinfo', function () {
     return view('userinfopage');
 });
+
+Route::get('/updateorphanageinfo', function () {
+    return view('updateOrphanage');
+});
