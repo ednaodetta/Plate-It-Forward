@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title>Orphanage Information</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -62,7 +62,9 @@
 
             <div class="mb-6">
                 <label class="block text-lg font-semibold text-gray-700">Total Donation</label>
-                <input id="user-email" type="email" class="w-full border border-gray-300 p-3 rounded-md">
+                <input id="user-donation" type="text" class="w-full border border-gray-300 p-3 rounded-md"
+                    pattern="Rp\.\s?\d{1,3}(\.\d{3})*(,\d{2})?" placeholder="Rp. 1.000.000,00" required>
+                <small class="text-gray-500">Format: Rp. 1.000.000,00</small>
             </div>
 
             <div class="flex justify-end">
@@ -126,21 +128,21 @@
             const users = {
                 "Panti Asuhan Adzkiyah Alkhair": {
                     name: "Jakarta",
-                    email: "Rp. 2.986.000,00"
+                    donation: "Rp. 2.986.000,00"
                 },
-                "The Jodie O\'Shea Orphanage": {
+                "The Jodie O'Shea Orphanage": {
                     name: "Bekasi",
-                    email: "Rp. 1.726.000,00"
+                    donation: "Rp. 1.726.000,00"
                 },
                 "Panti Asuhan Miftahul Falah": {
                     name: "Cengkareng",
-                    email: "Rp. 4.500.000,00"
+                    donation: "Rp. 4.500.000,00"
                 }
             };
 
             return users[userId] || {
                 name: "Unknown",
-                email: "Unknown"
+                donation: "Rp. 0,00"
             };
         }
 
@@ -158,7 +160,7 @@
             // Update form fields
             document.getElementById("user-id").value = userId;
             document.getElementById("user-name").value = user.name;
-            document.getElementById("user-email").value = user.email;
+            document.getElementById("user-donation").value = user.donation;
         }
 
         // Call function on page load

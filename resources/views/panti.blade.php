@@ -96,6 +96,81 @@
         </div>
     </div>
 
+    <!-- Add Orphanage Button -->
+    <div class="flex justify-center mt-8">
+        <button id="addOrphanageBtn"
+            class="bg-green-600 text-white py-2 px-6 rounded-md hover:bg-green-700 focus:outline-none">
+            Add Orphanage
+        </button>
+    </div>
+
+    <!-- Add Orphanage Modal -->
+    <div id="addOrphanageModal"
+        class="modal hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white p-6 rounded-md w-96 shadow-lg">
+            <h3 class="text-xl font-semibold text-green-800 mb-4">Add New Orphanage</h3>
+            <form id="addOrphanageForm">
+                <div class="mb-4">
+                    <label for="orphanageName" class="block text-lg font-semibold text-gray-700">Orphanage Name</label>
+                    <input type="text" id="orphanageName"
+                        class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="location" class="block text-lg font-semibold text-gray-700">Location</label>
+                    <input type="text" id="location"
+                        class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="donation" class="block text-lg font-semibold text-gray-700">Total Donation</label>
+                    <input type="text" id="donation"
+                        class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
+                </div>
+
+                <div class="flex justify-end">
+                    <button type="submit"
+                        class="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700">Save</button>
+                    <button type="button" onclick="closeModal()"
+                        class="ml-2 text-gray-600 px-6 py-3 rounded-md hover:bg-gray-100">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Buka modal
+        document.getElementById('addOrphanageBtn').addEventListener('click', function() {
+            document.getElementById('addOrphanageModal').classList.remove('hidden');
+        });
+
+        // Tutup modal
+        function closeModal() {
+            document.getElementById('addOrphanageModal').classList.add('hidden');
+        }
+
+        // Menangani pengiriman form
+        document.getElementById('addOrphanageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const orphanageName = document.getElementById('orphanageName').value;
+            const location = document.getElementById('location').value;
+            const donation = document.getElementById('donation').value;
+
+            // Tambahkan data panti asuhan baru ke dalam array users
+            users.push({
+                id: orphanageName,
+                name: location,
+                email: donation
+            });
+
+            // Tutup modal dan perbarui tabel
+            closeModal();
+            populateTable();
+        });
+    </script>
+
+
     <!-- Footer -->
     <footer class="bg-DefaultGreen text-white text-center py-20">
         <!-- Icons Section -->
@@ -167,14 +242,14 @@
                         ${deleteMode 
                             ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                             : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                                                                   <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                                                       <ul class="text-sm">
-                                                                                           <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                                               <a href="/updateorphanageinfo?id=${user.id}">Update orphanage information</a>
-                                                                                           </li>
-                                                                                           <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete orphanage</li>
-                                                                                       </ul>
-                                                                                   </div>`
+                                                                                                           <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                                                                               <ul class="text-sm">
+                                                                                                                   <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                                                       <a href="/updateorphanageinfo?id=${user.id}">Update orphanage information</a>
+                                                                                                                   </li>
+                                                                                                                   <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete orphanage</li>
+                                                                                                               </ul>
+                                                                                                           </div>`
                         }
                     </td>
                     <td class="p-3">${user.id}</td>
@@ -198,14 +273,14 @@
                             ${deleteMode 
                                 ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                                 : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                                                                    <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                                                        <ul class="text-sm">
-                                                                                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                                               <a href="/updateorphanageinfo?id=${user.id}">Update orphanage information</a>
-                                                                                           </li>
-                                                                                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete orphanage</li>
-                                                                                        </ul>
-                                                                                    </div>`
+                                                                                                            <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                                                                                <ul class="text-sm">
+                                                                                                                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                                                       <a href="/updateorphanageinfo?id=${user.id}">Update orphanage information</a>
+                                                                                                                   </li>
+                                                                                                                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete orphanage</li>
+                                                                                                                </ul>
+                                                                                                            </div>`
                             }
                         </div>
                     </div>
