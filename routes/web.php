@@ -68,3 +68,11 @@ Route::get('/userinfo', function () {
 Route::get('/updateorphanageinfo', function () {
     return view('updateOrphanage');
 });
+
+Route::get('/productinfo', function () {
+    return view('restorantproductinfo');
+});
+
+Route::get('/updaterestorant', function () {
+    return view('updaterestorantproduct');
+});
