@@ -42,10 +42,45 @@
             </style>
         @endif
     </head>
-    <body class="w-full font-brandon ">
+    <body class="w-full font-brandon flex">
+        <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
+            <div class="container mx-auto flex items-center justify-between py-4 px-6">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="{{ asset('assets/Image/Logo copy.png') }}" alt="Logo" class="h-14 w-14">
+                    <span class="ml-2 text-xl font-bold text-gray-800">PlateItForward</span>
+                </div>
+        
+                <!-- Hamburger Button -->
+                <button id="hamburger-btn" class="block lg:hidden text-gray-600 focus:outline-none">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+        
+                <!-- Navigation Links -->
+                <nav id="menu"
+                    class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
+                    <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
+                        <li><a href="/" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Home</a></li>
+                        <li><a href="/restoranpage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurants</a>
+                        </li>
+                        <li><a href="/my-donations" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">My Donations</a>
+                        </li>
+                        <li><a href="/contact-us" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Contact Us</a></li>
+                        <li>
+                            <a href="/signin" class="block px-6 py-3 text-white bg-Teal hover:bg-opacity-80 text-left">Sign
+                                Up</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
     <section class="menu w-full flex">
      
-     <div class="cardlist  bg-[#f9f3f0] w-full items-center justif-center flex flex-col gap-[50px] ">
+     <div class="cardlist bg-[#f9f3f0] w-full items-center justif-center flex flex-col gap-[50px] ">
          <div class="resto w-full h-[250px] bg-[#f9f3f0] flex flex-col items-center">
              <div class="resto_header w-full h-[180px] bg-[#f9f3f0] flex justify-center items-center gap-[1%]">
                  <div class="resto_pic w-[135px] bg-[#f9f3f0] h-[125-x] justify-center rounded-[10px] shadow-[1px_1px_1px_#666]">
@@ -73,43 +108,63 @@
              </div>
          </div>
         
-         <div class="w-full flex flex-col items-center gap-3 ">
-        <h1 class="w-[85%] font-bold text-[25px]" >Today's menu</h1>
-         <div class="cardlistnye bg-[#f9f3f0] w-[85%] flex gap-[40px] flex-wrap justify-between items-center" > 
+        <div class="w-full flex flex-col items-center gap-3 ">
+            <h1 class="w-[85%] font-bold text-[25px]" >Today's menu</h1>
+            <div class="cardlistnye bg-[#f9f3f0] w-[85%] flex gap-[40px] flex-wrap justify-between items-center" > 
+                <div class="card border-2 bg-DefaultWhite w-[350px] h-[420px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 ">
+                    <img class="h-[80%] w-full" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" onclick="buttonmenudesc()" >
+                    <h1 class="font-bold text-[20px]">Panas 1 Ayam MCD Gulai Spicy</h1>
+                    <div class="flex justify-between">
+                        <h1>42.500</h1>
+                        <button class="w-[100px] rounded-md bg-DefaultGreen font-bold text-white">ADD</button>
+                    </div>
+                </div>
 
-         <div class="card border-2 bg-DefaultWhite w-[390px] h-[350px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 ">
-            <img class="h-[80%] w-full" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" onclick="buttonmenudesc()" >
-            <h1 class="font-bold text-[20px]">Panas 1 Ayam MCD Gulai Spicy</h1>
-            <div class="flex justify-between">
-                <h1>42.500</h1>
-                <button class="w-[100px] rounded-md bg-DefaultGreen font-bold text-white">ADD</button>
+                <div class="card border-2 bg-DefaultWhite w-[350px] h-[420px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 ">
+                    <img class="h-[80%] w-full" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" onclick="buttonmenudesc()" >
+                    <h1 class="font-bold text-[20px]">Panas 1 Ayam MCD Gulai Spicy</h1>
+                    <div class="flex justify-between">
+                        <h1>42.500</h1>
+                        <button class="w-[100px] rounded-md bg-DefaultGreen font-bold text-white">ADD</button>
+                    </div>
+                </div>
+                
+                <div class="card border-2 bg-DefaultWhite w-[350px] h-[420px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 ">
+                    <img class="h-[80%] w-full" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" onclick="buttonmenudesc()" >
+                    <h1 class="font-bold text-[20px]">Panas 1 Ayam MCD Gulai Spicy</h1>
+                    <div class="flex justify-between">
+                        <h1>42.500</h1>
+                        <button class="w-[100px] rounded-md bg-DefaultGreen font-bold text-white">ADD</button>
+                    </div>
+                </div>
+
+                <div class="card border-2 bg-DefaultWhite w-[350px] h-[420px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 ">
+                    <img class="h-[80%] w-full" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" onclick="buttonmenudesc()" >
+                    <h1 class="font-bold text-[20px]">Panas 1 Ayam MCD Gulai Spicy</h1>
+                    <div class="flex justify-between">
+                        <h1>42.500</h1>
+                        <button class="w-[100px] rounded-md bg-DefaultGreen font-bold text-white">ADD</button>
+                    </div>
+                </div>
+
+                <div class="card border-2 bg-DefaultWhite w-[350px] h-[420px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 ">
+                    <img class="h-[80%] w-full" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" onclick="buttonmenudesc()" >
+                    <h1 class="font-bold text-[20px]">Panas 1 Ayam MCD Gulai Spicy</h1>
+                    <div class="flex justify-between">
+                        <h1>42.500</h1>
+                        <button class="w-[100px] rounded-md bg-DefaultGreen font-bold text-white">ADD</button>
+                    </div>
+                </div>
+
+                <div class="card border-2 bg-DefaultWhite w-[350px] h-[420px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 ">
+                    <img class="h-[80%] w-full" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" onclick="buttonmenudesc()" >
+                    <h1 class="font-bold text-[20px]">Panas 1 Ayam MCD Gulai Spicy</h1>
+                    <div class="flex justify-between">
+                        <h1>42.500</h1>
+                        <button class="w-[100px] rounded-md bg-DefaultGreen font-bold text-white">ADD</button>
+                    </div>
+                </div>
             </div>
-         </div>
-
-         <div class="card bg-DefaultWhite w-[390px] h-[350px] rounded-[10px] shadow-[1px_1px_1px_#666]">
-         
-         </div>
-         <div class="card bg-DefaultWhite w-[390px] h-[350px] rounded-[10px] shadow-[1px_1px_1px_#666]">
-         
-         </div>
-
-         <div class="card bg-DefaultWhite w-[390px] h-[350px] rounded-[10px] shadow-[1px_1px_1px_#666]">
-         
-         </div>
-         <div class="card bg-DefaultWhite w-[390px] h-[350px] rounded-[10px] shadow-[1px_1px_1px_#666]">
-         </div>
-         <div class="card bg-DefaultWhite w-[390px] h-[350px] rounded-[10px] shadow-[1px_1px_1px_#666]">
-         
-         </div>
-         </div>
-    
-
-         
-        
-       
-
-
-      
      </div>
        
          <button class="fixed right-0 top-[50vh] w-[50px] h-[80px] rounded-[100px_0_0_100px] bg-DefaultGreen text-white font-bold text-[20px] shadow-lg" onclick="buttonmenu()">cart</button>
@@ -167,7 +222,7 @@
                  <h1 class="font-bold ">TOTAL</h1>
                  <h1>Rp. 50,000</h1>
              </div>
-             <button class="bg-DefaultGreen h-[3vh] w-[200px] text-white rounded-md">PAYMENT</button>
+             <button class="bg-DefaultGreen h-[3vh] w-[200px] text-white rounded-md">ADD TO CART</button>
          </div>
         </div>
 
@@ -193,7 +248,8 @@
                      <input class="w-[100%] text-white text-center border-none pointer-events-none h-[30px] bg-transparent" type="text" id="number" value="1" readonly>
                      <button class="h-[35px] bg-transparent text-white" onclick="decrement()">−</button>
                  </div>
-                 <div class="picturemenu w-[100px] h-[100px] bg-black border-DefaultGreen border-[3px] rounded-[10px]">
+                 <div class="picturemenu w-[100px] h-[100px] bg-black border-DefaultGreen border-[1px] rounded-[10px]">
+                    <img class="h-full w-full rounded-[10px]" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" >
                  </div>
                  <div class="descmenu flex flex-col justify-between   h-full">
                      <h1>Double Cheeseburger</h1>
@@ -208,7 +264,8 @@
                      <input class="w-[100%] text-white text-center border-none pointer-events-none h-[30px] bg-transparent" type="text" id="number" value="1" readonly>
                      <button class="h-[35px] bg-transparent text-white" onclick="decrement()">−</button>
                  </div>
-                 <div class="picturemenu w-[100px] h-[100px] bg-black border-DefaultGreen border-[3px] rounded-[10px]">
+                 <div class="picturemenu w-[100px] h-[100px] bg-black border-DefaultGreen border-[1px] rounded-[10px]">
+                    <img class="h-full w-full rounded-[10px]" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" >
                  </div>
                  <div class="descmenu flex flex-col justify-between   h-full">
                      <h1>Double Cheeseburger</h1>
@@ -224,7 +281,8 @@
                      <input class="w-[100%] text-white text-center border-none pointer-events-none h-[30px] bg-transparent" type="text" id="number" value="1" readonly>
                      <button class="h-[35px] bg-transparent text-white" onclick="decrement()">−</button>
                  </div>
-                 <div class="picturemenu w-[100px] h-[100px] bg-black border-DefaultGreen border-[3px] rounded-[10px]">
+                 <div class="picturemenu w-[100px] h-[100px] bg-black border-DefaultGreen border-[1px] rounded-[10px]">
+                    <img class="h-full w-full rounded-[10px]" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" >
                  </div>
                  <div class="descmenu flex flex-col justify-between   h-full">
                      <h1>Double Cheeseburger</h1>
@@ -242,7 +300,7 @@
                  <h1 class="font-bold">TOTAL</h1>
                  <h1>Rp. 50,000</h1>
              </div>
-             <button class="bg-DefaultGreen h-[3vh] w-[200px] text-white">PAYMENT</button>
+             <a href="/payment"><button class="bg-DefaultGreen h-[3vh] w-[200px] text-white">PAYMENT</button></a>
          </div>
         
      
@@ -253,10 +311,20 @@
 
  </section>
     </body>
+
+    
 </html>
 
 
 <script>
+
+    // Hamburger menu toggle functionality
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const menu = document.getElementById('menu');
+
+    hamburgerBtn.addEventListener('click', () => {
+        menu.classList.toggle('hidden'); // Show or hide the menu
+    });
     
   function increment() {
     const input = document.getElementById('number');
