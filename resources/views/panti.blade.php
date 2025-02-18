@@ -28,8 +28,10 @@
 
         /* Style for the checkbox */
         .delete-checkbox {
-            width: 18px; /* Set the width */
-            height: 18px; /* Set the height */
+            width: 18px;
+            /* Set the width */
+            height: 18px;
+            /* Set the height */
         }
     </style>
     </style>
@@ -248,14 +250,14 @@
                         ${deleteMode 
                             ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                             : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                                                                                                   <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                                                                                       <ul class="text-sm">
-                                                                                                                           <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                                                                               <a href="/updateorphanageinfo?id=${user.id}">Update orphanage information</a>
-                                                                                                                           </li>
-                                                                                                                           <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete orphanage</li>
-                                                                                                                       </ul>
-                                                                                                                   </div>`
+                                                                                                                           <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                                                                                               <ul class="text-sm">
+                                                                                                                                   <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                                                                       <a href="/updateorphanageinfo?id=${user.id}">Update orphanage information</a>
+                                                                                                                                   </li>
+                                                                                                                                   <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete orphanage</li>
+                                                                                                                               </ul>
+                                                                                                                           </div>`
                         }
                     </td>
                     <td class="p-3">${user.id}</td>
@@ -278,14 +280,14 @@
                             ${deleteMode 
                                 ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                                 : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                                                                                                    <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                                                                                        <ul class="text-sm">
-                                                                                                                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                                                                               <a href="/updateorphanageinfo?id=${user.id}">Update orphanage information</a>
-                                                                                                                           </li>
-                                                                                                                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete orphanage</li>
-                                                                                                                        </ul>
-                                                                                                                    </div>`
+                                                                                                                            <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                                                                                                <ul class="text-sm">
+                                                                                                                                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                                                                       <a href="/updateorphanageinfo?id=${user.id}">Update orphanage information</a>
+                                                                                                                                   </li>
+                                                                                                                                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete orphanage</li>
+                                                                                                                                </ul>
+                                                                                                                            </div>`
                             }
                         </div>
                     </div>
