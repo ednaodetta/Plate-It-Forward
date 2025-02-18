@@ -20,14 +20,15 @@ export default {
             colors: {
                 'DefaultGreen': '#00615F',
                 'DefaultWhite': '#F9F3F0',
-                'Teal': '#38b2ac'
+                'Teal': '#38b2ac',
+                'LightGreen': 'rgba(0, 97, 95, 0.5)'
             },
             maxWidth: {
                 '6.7xl': '74rem',
             },
-            backgroundImage:{
-                'bgbang' : "url('/public/assets/Image/judul.png')",
-                'bglocation' : "url('/public/assets/Image/keram_telor.png')",
+            backgroundImage: {
+                'bgbang': "url('/public/assets/Image/judul.png')",
+                'bglocation': "url('/public/assets/Image/keram_telor.png')",
             },
         },
     },

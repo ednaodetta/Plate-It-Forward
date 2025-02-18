@@ -67,7 +67,11 @@ Route::get('/userinfo', function () {
 
 
 Route::get('/restaurantinfo', function () {
-    return view('restaurantCRUD');
+    return view('restaurantinfopage');
+});
+
+Route::get('/updaterestaurantinfo', function () {
+    return view('updaterestaurantpage');
 });
 
 Route::get('/updateorphanageinfo', function () {
@@ -80,4 +84,8 @@ Route::get('/productinfo', function () {
 
 Route::get('/updaterestorant', function () {
     return view('updaterestorantproduct');
+});
+
+Route::get('/support', function () {
+    return view('support');
 });

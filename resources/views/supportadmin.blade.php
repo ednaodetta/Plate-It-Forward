@@ -4,45 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Information</title>
+    <title>Restaurant Information</title>
     <link href="/css/tailwind.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        <style>.dropdown {
-            display: none;
-            position: absolute;
-            background-color: white;
-            border: 1px solid #ddd;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-            width: 150px;
-        }
-
-        .dropdown.active {
-            display: block;
-        }
-
-        .hidden-checkbox {
-            display: none;
-        }
-
-        /* Style for the checkbox */
-        .delete-checkbox {
-            width: 18px;
-            /* Set the width */
-            height: 18px;
-            /* Set the height */
-        }
-
-        #menu {
-            background-color: #F9F3F0 !important;
-            opacity: 1 !important;
-        }
-    </style>
-    </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-[#fdf9f4] text-gray-900 flex flex-col min-h-screen">
+<body class="bg-DefaultWhite flex flex-col min-h-screen">
 
     <!-- Navbar -->
     <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
@@ -65,35 +33,25 @@
             <nav id="menu"
                 class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
                 <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
-                    <li><a href="/dashboardAdmin"
-                            class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a>
+                    <li><a href="/" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Home</a></li>
+                    <li><a href="restoranpage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurants</a>
                     </li>
-
                     <li><a href="my-donations" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">My
                             Donations</a>
                     </li>
                     <li><a href="contactus" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Contact Us</a>
                     </li>
                     <li><a href="profile" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Profile</a></li>
-                    <li><a href="/OrderList" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Order</a>
-                    </li>
-                    <li><a href="/userinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">User</a>
-                    </li>
-                    <li><a href="/restaurantinfo"
-                            class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurant</a>
-                    </li>
-                    <li><a href="/panti" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Orphanage</a></li>
-                    <li><a href="/supportAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Support</a>
-                    </li>
                 </ul>
             </nav>
         </div>
     </header>
+    {{-- <x-navbar></x-navbar> --}}
 
     <!-- Main Content -->
     <div class="w-full pt-40 mx-auto py-8 flex-grow items-center">
         <div class="w-11/12 mx-auto flex justify-between items-center">
-            <h2 class="text-2xl font-bold text-green-800">User’s Information</h2>
+            <h2 class="text-2xl font-bold text-DefaultGreen">Support</h2>
             <button id="delete-btn" onclick="handleTrashButton()" class="text-red-600 hover:text-red-800 text-xl">
                 🗑️
             </button>
@@ -106,9 +64,10 @@
                     <thead class="bg-gray-100">
                         <tr class="text-left text-gray-600">
                             <th class="p-3"></th>
-                            <th class="p-3">User ID</th>
-                            <th class="p-3">Name</th>
+                            <th class="p-3">Support ID</th>
                             <th class="p-3">E-mail</th>
+                            <th class="p-3">Information</th>
+                            <th class="p-3 text-center">Handled</th>
                         </tr>
                     </thead>
                     <tbody id="userTable"></tbody>
@@ -122,23 +81,33 @@
 
     <script>
         let users = [{
-                id: 'US001',
-                name: 'Ashahra Aprilia Puspaanggraini',
-                email: 'ashahraaprilia@gmail.com'
+                id: 'S0001',
+                email: '1@gmail.com',
+                info: 'mantab'
             },
             {
-                id: 'US002',
-                name: 'John Doe',
-                email: 'johndoe@gmail.com'
+                id: 'S0002',
+                email: '2@gmail.com',
+                info: 'mantabb'
             },
             {
-                id: 'US003',
-                name: 'Jane Smith',
-                email: 'janesmith@gmail.com'
+                id: 'S0003',
+                email: '3@gmail.com',
+                info: 'mantabbb'
             }
         ];
 
         let deleteMode = false;
+
+        function toggleHandled(checkbox) {
+            const row = checkbox.closest('tr');
+            if (checkbox.checked) {
+                row.classList.add('line-through', 'text-gray-500');
+            } else {
+                row.classList.remove('line-through', 'text-gray-500');
+            }
+        }
+
 
         function populateTable() {
             const tableBody = document.getElementById('userTable');
@@ -155,20 +124,17 @@
                     <td class="p-3 relative action-cell">
                         ${deleteMode 
                             ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
-                            : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                               <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                   <ul class="text-sm">
-                                                       <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                           <a href="/updateuserinfo?id=${user.id}">Update user information</a>
-                                                       </li>
-                                                       <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
-                                                   </ul>
-                                               </div>`
+                            : `<button class="hidden"></button>`
+                                                                                                   
                         }
                     </td>
-                    <td class="p-3">${user.id}</td>
-                    <td class="p-3">${user.name}</td>
+                     <td class="p-3">${user.id}</td>
                     <td class="p-3">${user.email}</td>
+                    <td class="p-3">${user.info}</td>
+                    <td class="p-3 text-center"> 
+                        <input type="checkbox" class="handled-checkbox w-5 h-5" onchange="toggleHandled(this)">
+                    </td>
+                   
                 `;
                 tableBody.appendChild(row);
 
@@ -178,22 +144,22 @@
                 card.innerHTML = `
                     <div class="flex justify-between items-center p-3 rounded-lg bg-white">
                         <div>
-                            <h3 class="text-lg font-bold text-green-800">${user.name}</h3>
-                            <p class="text-gray-600"><strong>ID:</strong> ${user.id}</p>
+                            <h3 class="text-lg font-bold text-green-800">${user.id}</h3>
                             <p class="text-gray-600"><strong>Email:</strong> ${user.email}</p>
+                            <p class="text-gray-600"><strong>Address:</strong> ${user.info}</p>
                         </div>
                         <div class="relative">
                             ${deleteMode 
                                 ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                                 : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                                <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                    <ul class="text-sm">
-                                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                           <a href="/updateuserinfo?id=${user.id}">Update user information</a>
-                                                       </li>
-                                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
-                                                    </ul>
-                                                </div>`
+                                                                                                                                                                                                                                        <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                                                                                                                                                                                                            <ul class="text-sm">
+                                                                                                                                                                                                                                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                                                                                                                                                                                   <a href="/updaterestaurantinfo?id=${user.id}">Update restaurant information</a>
+                                                                                                                                                                                                                                               </li>
+                                                                                                                                                                                                                                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete restaurant</li>
+                                                                                                                                                                                                                                            </ul>
+                                                                                                                                                                                                                                        </div>`
                             }
                         </div>
                     </div>
@@ -231,7 +197,7 @@
 
                 users = users.filter(user => !idsToDelete.includes(user.id));
 
-                alert("Selected users have been deleted successfully!");
+                alert("Selected supports have been deleted successfully!");
             }
 
             exitDeleteMode();
@@ -250,10 +216,10 @@
         }
 
         function confirmDeleteUser(userId) {
-            if (confirm("Are you sure you want to delete this user?")) {
+            if (confirm("Are you sure you want to delete this support?")) {
                 users = users.filter(user => user.id !== userId);
                 populateTable();
-                alert("User deleted successfully!");
+                alert("Support deleted successfully!");
             }
         }
 
