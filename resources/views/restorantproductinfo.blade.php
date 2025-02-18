@@ -66,7 +66,7 @@
         <div class="w-11/12 mx-auto flex justify-between items-center">
             <h2 class="text-2xl font-bold text-green-800">User’s Information</h2>
             <button id="delete-btn" onclick="handleTrashButton()" class="text-red-600 hover:text-red-800 text-xl">
-                🗑
+                🗑️
             </button>            
         </div>
 
@@ -77,9 +77,9 @@
                     <thead class="bg-gray-100">
                         <tr class="text-left text-gray-600">
                             <th class="p-3"></th>
-                            <th class="p-3">Product ID</th>
+                            <th class="p-3">User ID</th>
                             <th class="p-3">Name</th>
-                            <th class="p-3">Deskripsi</th>
+                            <th class="p-3">Desc</th>
                             <th class="p-3">Price</th>
                         </tr>
                     </thead>
@@ -129,9 +129,9 @@
 
     <script>
         let users = [
-            { id: 'P001', name: 'Ayam bakar', desc: 'mantap gurih nyoi', price: 'Rp 20.000' },
-            { id: 'P002', name: 'Ayam goreng', desc: 'goreng nikmat', price: 'Rp 25.000' },
-            { id: 'P003', name: 'Ayam serundeng', desc: 'bumbu berempah', price: 'Rp 27.000'}
+            { id: 'P001', name: 'Ayam Bakar', desc: 'Mantap gurih nyoi', price: 'Rp 20.000' },
+            { id: 'P002', name: 'Ayam Goreng', desc: 'Goreng nikmat', price: 'Rp 25.000' },
+            { id: 'P003', name: 'Ayam Serundeng', desc: 'Bumbu berempah', price: 'Rp 27.000' }
         ];
 
         let deleteMode = false;
@@ -150,12 +150,12 @@
                 row.innerHTML = `
                     <td class="p-3 relative action-cell">
                         ${deleteMode 
-                            ? <input type='checkbox' class='delete-checkbox' data-id='${user.id}'> 
+                            ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                             : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
                                <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
                                    <ul class="text-sm">
                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                           <a href="/updateproduct?id=${user.id}">Update user information</a>
+                                           <a href="/updateuserinfo?id=${user.id}">Update user information</a>
                                        </li>
                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
                                    </ul>
@@ -177,18 +177,18 @@
                         <div>
                             <h3 class="text-lg font-bold text-green-800">${user.name}</h3>
                             <p class="text-gray-600"><strong>ID:</strong> ${user.id}</p>
-                            <p class="text-gray-600"><strong>Description:</strong> ${user.desc}</p>
+                            <p class="text-gray-600"><strong>Desc:</strong> ${user.desc}</p>
                             <p class="text-gray-600"><strong>Price:</strong> ${user.price}</p>
-                            ${deleteMode ? <input type='checkbox' class='delete-checkbox mt-2' data-id='${user.id}'> : ''}
+                            ${deleteMode ? `<input type='checkbox' class='delete-checkbox mt-2' data-id='${user.id}'>` : ''}
                         </div>
                         <div class="relative">
                             ${deleteMode 
-                                ? <input type='checkbox' class='delete-checkbox' data-id='${user.id}'> 
+                                ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                                 : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
                                 <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
                                     <ul class="text-sm">
                                         <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                           <a href="/updateproduct?id=${user.id}">Update user information</a>
+                                           <a href="/updateuserinfo?id=${user.id}">Update user information</a>
                                        </li>
                                         <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
                                     </ul>
