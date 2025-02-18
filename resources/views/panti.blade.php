@@ -25,6 +25,12 @@
         .hidden-checkbox {
             display: none;
         }
+
+        /* Style for the checkbox */
+        .delete-checkbox {
+            width: 18px; /* Set the width */
+            height: 18px; /* Set the height */
+        }
     </style>
     </style>
 </head>
@@ -265,9 +271,14 @@
                     <div class="flex justify-between items-center p-3 rounded-lg bg-white">
                         <div>
                             <h3 class="text-lg font-bold text-green-800">${user.name}</h3>
+<<<<<<< HEAD
                             <p class="text-gray-600"><strong>Orphanage Name:</strong> ${user.id}</p>
                             <p class="text-gray-600"><strong>Total Donation:</strong> ${user.email}</p>
                             ${deleteMode ? `<input type='checkbox' class='delete-checkbox mt-2' data-id='${user.id}'>` : ''}
+=======
+                            <p class="text-gray-600"><strong>ID:</strong> ${user.id}</p>
+                            <p class="text-gray-600"><strong>Email:</strong> ${user.email}</p>
+>>>>>>> 7701d2e7a91f302a631a811605f059b5be1beeb5
                         </div>
                         <div class="relative">
                             ${deleteMode 

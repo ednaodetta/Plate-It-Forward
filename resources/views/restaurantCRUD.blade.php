@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Information</title>
+    <title>Restaurant Information</title>
     <link href="/css/tailwind.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        <style>
         .dropdown {
             display: none;
             position: absolute;
@@ -17,21 +17,17 @@
             z-index: 10;
             width: 150px;
         }
+
         .dropdown.active {
             display: block;
         }
+
         .hidden-checkbox {
             display: none;
         }
-
-        /* Style for the checkbox */
-        .delete-checkbox {
-            width: 18px; /* Set the width */
-            height: 18px; /* Set the height */
-        }
-    </style>
     </style>
 </head>
+
 <body class="bg-[#fdf9f4] text-gray-900 flex flex-col min-h-screen">
 
     <!-- Navbar -->
@@ -42,7 +38,7 @@
                 <img src="{{ asset('assets/Image/Logo copy.png') }}" alt="Logo" class="h-14 w-14">
                 <span class="ml-2 text-xl font-bold text-gray-800">PlateItForward</span>
             </div>
-    
+
             <!-- Hamburger Button -->
             <button id="hamburger-btn" class="block lg:hidden text-gray-600 focus:outline-none">
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -50,7 +46,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
             </button>
-    
+
             <!-- Navigation Links -->
             <nav id="menu"
                 class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
@@ -58,9 +54,11 @@
                     <li><a href="/" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Home</a></li>
                     <li><a href="restoranpage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurants</a>
                     </li>
-                    <li><a href="my-donations" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">My Donations</a>
+                    <li><a href="my-donations" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">My
+                            Donations</a>
                     </li>
-                    <li><a href="contactus" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Contact Us</a></li>
+                    <li><a href="contactus" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Contact Us</a>
+                    </li>
                     <li><a href="profile" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Profile</a></li>
                 </ul>
             </nav>
@@ -70,10 +68,10 @@
     <!-- Main Content -->
     <div class="w-full pt-40 mx-auto py-8 flex-grow items-center">
         <div class="w-11/12 mx-auto flex justify-between items-center">
-            <h2 class="text-2xl font-bold text-green-800">User’s Information</h2>
+            <h2 class="text-2xl font-bold text-green-800">Restaurant’s Information</h2>
             <button id="delete-btn" onclick="handleTrashButton()" class="text-red-600 hover:text-red-800 text-xl">
                 🗑️
-            </button>            
+            </button>
         </div>
 
         <div class="bg-white rounded-lg w-11/12 mx-auto shadow-md mt-4">
@@ -83,9 +81,12 @@
                     <thead class="bg-gray-100">
                         <tr class="text-left text-gray-600">
                             <th class="p-3"></th>
-                            <th class="p-3">User ID</th>
+                            <th class="p-3">Restaurant ID</th>
                             <th class="p-3">Name</th>
                             <th class="p-3">E-mail</th>
+                            <th class="p-3">Address</th>
+                            <th class="p-3">City</th>
+                            <th class="p-3">Contact</th>
                         </tr>
                     </thead>
                     <tbody id="userTable"></tbody>
@@ -94,14 +95,34 @@
 
             <!-- Mobile Cards -->
             <div class="md:hidden space-y-4 p-4" id="userCards"></div>
-        </div>        
+        </div>
     </div>
 
     <script>
-        let users = [
-            { id: 'US001', name: 'Ashahra Aprilia Puspaanggraini', email: 'ashahraaprilia@gmail.com' },
-            { id: 'US002', name: 'John Doe', email: 'johndoe@gmail.com' },
-            { id: 'US003', name: 'Jane Smith', email: 'janesmith@gmail.com' }
+        let users = [{
+                id: 'R0001',
+                name: 'RESTO 1',
+                email: 'RESTO1@gmail.com',
+                address: 'jl. 1',
+                city: 'a',
+                contact: '01910192'
+            },
+            {
+                id: 'R0002',
+                name: 'RESTO2',
+                email: 'RESTO2@gmail.com',
+                address: 'jl. 2',
+                city: 'b',
+                contact: '01910192'
+            },
+            {
+                id: 'R0003',
+                name: 'RESTO3',
+                email: 'RESTO3@gmail.com',
+                address: 'jl. 3',
+                city: 'c',
+                contact: '01910192'
+            }
         ];
 
         let deleteMode = false;
@@ -122,19 +143,22 @@
                         ${deleteMode 
                             ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                             : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                               <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                   <ul class="text-sm">
-                                       <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                           <a href="/updateuserinfo?id=${user.id}">Update user information</a>
-                                       </li>
-                                       <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
-                                   </ul>
-                               </div>`
+                                                               <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                                   <ul class="text-sm">
+                                                                       <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                           <a href="/updateuserinfo?id=${user.id}">Update user information</a>
+                                                                       </li>
+                                                                       <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
+                                                                   </ul>
+                                                               </div>`
                         }
                     </td>
                     <td class="p-3">${user.id}</td>
                     <td class="p-3">${user.name}</td>
                     <td class="p-3">${user.email}</td>
+                    <td class="p-3">${user.address}</td>
+                    <td class="p-3">${user.city}</td>
+                    <td class="p-3">${user.contact}</td>
                 `;
                 tableBody.appendChild(row);
 
@@ -147,19 +171,20 @@
                             <h3 class="text-lg font-bold text-green-800">${user.name}</h3>
                             <p class="text-gray-600"><strong>ID:</strong> ${user.id}</p>
                             <p class="text-gray-600"><strong>Email:</strong> ${user.email}</p>
+                            ${deleteMode ? `<input type='checkbox' class='delete-checkbox mt-2' data-id='${user.id}'>` : ''}
                         </div>
                         <div class="relative">
                             ${deleteMode 
                                 ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                                 : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                    <ul class="text-sm">
-                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                           <a href="/updateuserinfo?id=${user.id}">Update user information</a>
-                                       </li>
-                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
-                                    </ul>
-                                </div>`
+                                                                <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                                    <ul class="text-sm">
+                                                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                           <a href="/updateuserinfo?id=${user.id}">Update user information</a>
+                                                                       </li>
+                                                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
+                                                                    </ul>
+                                                                </div>`
                             }
                         </div>
                     </div>
@@ -223,7 +248,7 @@
             }
         }
 
-        document.addEventListener("click", function (e) {
+        document.addEventListener("click", function(e) {
             if (!e.target.closest(".dots-menu") && !e.target.closest(".dropdown")) {
                 document.querySelectorAll(".dropdown").forEach(el => el.classList.add("hidden"));
             }
@@ -240,4 +265,5 @@
         });
     </script>
 </body>
+
 </html>

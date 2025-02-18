@@ -65,6 +65,11 @@ Route::get('/userinfo', function () {
     return view('userinfopage');
 });
 
+
+Route::get('/restaurantinfo', function () {
+    return view('restaurantCRUD');
+});
+
 Route::get('/updateorphanageinfo', function () {
     return view('updateOrphanage');
 });
