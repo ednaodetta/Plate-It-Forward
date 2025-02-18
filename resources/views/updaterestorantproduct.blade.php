@@ -7,9 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         #menu {
-            background-color: #F9F3F0 !important;
-            opacity: 1 !important;
-         }
+        background-color: #F9F3F0 !important;
+        opacity: 1 !important;
+        }
     </style>
 </head>
     <body class="bg-[#F9F3F0] font-sans pt-20 min-h-full">
@@ -49,13 +49,13 @@
             </div>
         </header>
     
-    <main class="w-[90%] mx-auto mt-24 p-7 bg-[#F9F3F0] rounded-lg relative">
-        <a href="/userinfo" class="absolute -top-10 left-0 text-[#00615F] font-semibold hover:underline">← Back</a>
+    <main class="w-[90%] mx-auto mt-24 p-7 bg-whitecream rounded-lg relative">
+        <a href="/productinfo" class="absolute -top-10 left-0 text-[#00615F] font-semibold hover:underline">← Back</a>
         <h1 class="text-3xl font-bold text-[#00615F]">User’s Information</h1>
 
         <form class="mt-4">
             <div class="mb-4">
-                <label class="block text-lg font-semibold text-gray-700">User ID</label>
+                <label class="block text-lg font-semibold text-gray-700">Product ID</label>
                 <input id="user-id" type="text" class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" readonly>
             </div>
 
@@ -65,15 +65,55 @@
             </div>
 
             <div class="mb-6">
-                <label class="block text-lg font-semibold text-gray-700">E-mail</label>
-                <input id="user-email" type="email" class="w-full border border-gray-300 p-3 rounded-md">
+                <label class="block text-lg font-semibold text-gray-700">Description</label>
+                <input id="user-desc" type="email" class="w-full border border-gray-300 p-3 rounded-md">
             </div>
 
+
+            <div class="mb-6">
+                <label class="block text-lg font-semibold text-gray-700">Price</label>
+                <input id="user-price" type="email" class="w-full border border-gray-300 p-3 rounded-md">
+            </div>
             <div class="flex justify-end">
-                <button class="bg-[#00615F] text-white px-6 py-3 rounded-md hover:bg-teal font-semibold"><a href="/userinfo">SAVE</a></button>
+                <button class="bg-[#00615F] text-white px-6 py-3 rounded-md hover:bg-teal font-semibold"><a href="/productinfo">SAVE</a></button>
             </div>
         </form>
     </main>
+    
+    <footer class="bg-[#00615F] text-white text-center py-20">
+        <!-- Icons Section -->
+        <div class="flex justify-center space-x-6 mb-3">
+            <a href="#" class="text-xl hover:text-gray-300">
+                <i class="fab fa-facebook"></i> <!-- Replace with actual icon -->
+            </a>
+            <a href="#" class="text-xl hover:text-gray-300">
+                <i class="fab fa-youtube"></i> <!-- Replace with actual icon -->
+            </a>
+            <a href="#" class="text-xl hover:text-gray-300">
+                <i class="fab fa-x"></i> <!-- Replace with actual icon -->
+            </a>
+            <a href="#" class="text-xl hover:text-gray-300">
+                <i class="fab fa-instagram"></i> <!-- Replace with actual icon -->
+            </a>
+            <a href="#" class="text-xl hover:text-gray-300">
+                <i class="fab fa-whatsapp"></i> <!-- Replace with actual icon -->
+            </a>
+        </div>
+    
+        <!-- Navigation Links -->
+        <div class="flex justify-center space-x-8 mb-3">
+            <a href="/" class="text-base hover:underline">Home</a>
+            <a href="/restaurants" class="text-base hover:underline">Restaurant</a>
+            <a href="/my-donations" class="text-base hover:underline">My Donations</a>
+            <a href="/contact-us" class="text-base hover:underline">Contact Us</a>
+        </div>
+    
+        <!-- Copyright Text -->
+        <div class="text-sm">
+            © Plate it Forward 2025 | All Rights Reserved
+        </div>
+    </footer>
+
     <script>
         // Hamburger menu toggle functionality
         const hamburgerBtn = document.getElementById('hamburger-btn');
@@ -93,12 +133,13 @@
         function fetchUserData(userId) {
             // Simulated database (replace with actual API fetch)
             const users = {
-                "US001": { name: "Ashahra Aprilia Puspaanggraini", email: "ashahraaprilia@gmail.com" },
-                "US002": { name: "John Doe", email: "johndoe@gmail.com" },
-                "US003": { name: "Jane Smith", email: "janesmith@gmail.com" }
+                "P001": { name: "Ayam bakar", desc: "mantap gurih nyoi",price : "RP 20.000" },
+                "P002": { name: "Ayam goreng", desc: "goreng nikmat", price :"RP 25.000" }
+                "P003": { name: "Ayam serundeng", desc: "bumbu berempah", price : "RP 27.000" }
             };
     
-            return users[userId] || { name: "Unknown", email: "Unknown" };
+        
+            return users[userId] || { name: "Unknown", desc: "Unknown", price: "Unknown" };
         }
     
         // Main function to update form fields dynamically
@@ -115,7 +156,8 @@
             // Update form fields
             document.getElementById("user-id").value = userId;
             document.getElementById("user-name").value = user.name;
-            document.getElementById("user-email").value = user.email;
+            document.getElementById("user-desc").value = user.desc;
+            document.getElementById("user-price").value = user.price;
         }
     
         // Call function on page load

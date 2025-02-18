@@ -122,7 +122,7 @@
             <!-- Item Jakarta -->
             <div class="text-center max-[430px]:w-1/3">
                 <div class="max-[1317px]:w-60 max-[1317px]:h-60 max-[430px]:w-20 max-[430px]:h-20 w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-gray">
-                    <img src="{{ asset('assets/Image/keram_telor.png') }}" alt="Jakarta" class="w-full h-full object-cover">
+                    <a href="/location"><img src="{{ asset('assets/Image/keram_telor.png') }}" alt="Jakarta" class="w-full h-full object-cover"></a>
                 </div>
                 <p class="mt-2 text-lg font-semibold italic font-BrandonGrotesque max-[1317px]:text-[30px] max-[430px]:text-[15px]">Jakarta</p>
             </div>
@@ -287,17 +287,17 @@
       <div class="flex flex-wrap gap-10 justify-center m-9">
         <!-- Card -->
         <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-          <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Mie Ayam Kampung">
+          <img class="w-full h-48 object-cover" src="{{ asset('assets/Image/Mcd.jpg') }}" alt="Mie Ayam Kampung">
           <div class="p-4">
-            <h3 class="text-lg font-semibold italic font-BrandonGrotesque">Mie Ayam Kampung, Bogor</h3>
-            <p class="text-sm text-gray-500 mb-2">Bakmie</p>
+            <h3 class="text-lg font-semibold italic font-BrandonGrotesque">McDonald, Sentul City</h3>
+            <p class="text-sm text-gray-500 mb-2">Ayam,Burger</p>
             <div class="flex items-center mb-3">
               <span class="text-yellow-400">★</span>
-              <span class="text-gray-700 font-semibold ml-1">4.5</span>
+              <span class="text-gray-700 font-semibold ml-1">4.9</span>
             </div>
             <div class="flex items-center text-gray-600">
               <span class="text-sm font-medium">$$</span>
-              <span class="ml-2 text-sm">(40K+)</span>
+              <span class="ml-2 text-sm">(30K+)</span>
             </div>
           </div>
         </div>
