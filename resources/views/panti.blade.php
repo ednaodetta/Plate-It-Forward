@@ -25,6 +25,12 @@
         .hidden-checkbox {
             display: none;
         }
+
+        /* Style for the checkbox */
+        .delete-checkbox {
+            width: 18px; /* Set the width */
+            height: 18px; /* Set the height */
+        }
     </style>
     </style>
 </head>
