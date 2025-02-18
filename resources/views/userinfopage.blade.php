@@ -40,6 +40,7 @@
         }
     </style>
     </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-[#F9F3F0] text-gray-900 flex flex-col min-h-screen">
@@ -81,9 +82,9 @@
     </header>
 
     <!-- Main Content -->
-    <div class="w-full pt-40 mx-auto py-8 flex-grow items-center">
+    <div class="w-full pt-40 mx-auto py-8 flex-grow items-center font-brandon">
         <div class="w-11/12 mx-auto flex justify-between items-center">
-            <h2 class="text-2xl font-bold text-green-800">User’s Information</h2>
+            <h2 class="text-2xl font-bold text-DefaultGreen font-gotham">User’s Information</h2>
             <button id="delete-btn" onclick="handleTrashButton()" class="text-red-600 hover:text-red-800 text-xl">
                 🗑️
             </button>

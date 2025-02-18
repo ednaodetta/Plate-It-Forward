@@ -7,6 +7,12 @@
     <title>Restaurant Information</title>
     <link href="/css/tailwind.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #menu {
+            background-color: #F9F3F0 !important;
+            opacity: 1 !important;
+        }
+    </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -33,15 +39,19 @@
             <nav id="menu"
                 class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
                 <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
-                    <li><a href="/" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Home</a></li>
-                    <li><a href="restoranpage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurants</a>
+                    <li><a href="/dashboardAdmin"
+                            class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a>
                     </li>
-                    <li><a href="my-donations" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">My
-                            Donations</a>
+                    <li><a href="/OrderList" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Order</a>
                     </li>
-                    <li><a href="contactus" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Contact Us</a>
+                    <li><a href="/userinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">User</a>
                     </li>
-                    <li><a href="profile" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Profile</a></li>
+                    <li><a href="/restaurantinfo"
+                            class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurant</a>
+                    </li>
+                    <li><a href="/panti" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Orphanage</a></li>
+                    <li><a href="/supportAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Support</a>
+                    </li>
                 </ul>
             </nav>
         </div>

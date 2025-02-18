@@ -12,6 +12,7 @@
             opacity: 1 !important;
          }
     </style>
+     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-[#F9F3F0] font-sans pt-20 min-h-full">

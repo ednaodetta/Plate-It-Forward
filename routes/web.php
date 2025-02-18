@@ -86,6 +86,6 @@ Route::get('/updaterestorant', function () {
     return view('updaterestorantproduct');
 });
 
-Route::get('/support', function () {
+Route::get('/supportAdmin', function () {
     return view('support');
 });
