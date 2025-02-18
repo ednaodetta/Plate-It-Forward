@@ -267,7 +267,6 @@
                             <h3 class="text-lg font-bold text-green-800">${user.name}</h3>
                             <p class="text-gray-600"><strong>ID:</strong> ${user.id}</p>
                             <p class="text-gray-600"><strong>Email:</strong> ${user.email}</p>
-                            ${deleteMode ? `<input type='checkbox' class='delete-checkbox mt-2' data-id='${user.id}'>` : ''}
                         </div>
                         <div class="relative">
                             ${deleteMode 

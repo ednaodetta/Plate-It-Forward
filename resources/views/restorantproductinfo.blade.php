@@ -179,7 +179,6 @@
                             <p class="text-gray-600"><strong>ID:</strong> ${user.id}</p>
                             <p class="text-gray-600"><strong>Desc:</strong> ${user.desc}</p>
                             <p class="text-gray-600"><strong>Price:</strong> ${user.price}</p>
-                            ${deleteMode ? `<input type='checkbox' class='delete-checkbox mt-2' data-id='${user.id}'>` : ''}
                         </div>
                         <div class="relative">
                             ${deleteMode 

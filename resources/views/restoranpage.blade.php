@@ -122,7 +122,7 @@
             <!-- Item Jakarta -->
             <div class="text-center max-[430px]:w-1/3">
                 <div class="max-[1317px]:w-60 max-[1317px]:h-60 max-[430px]:w-20 max-[430px]:h-20 w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-gray">
-                    <img src="{{ asset('assets/Image/keram_telor.png') }}" alt="Jakarta" class="w-full h-full object-cover">
+                    <a href="/location"><img src="{{ asset('assets/Image/keram_telor.png') }}" alt="Jakarta" class="w-full h-full object-cover"></a>
                 </div>
                 <p class="mt-2 text-lg font-semibold italic font-BrandonGrotesque max-[1317px]:text-[30px] max-[430px]:text-[15px]">Jakarta</p>
             </div>

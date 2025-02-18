@@ -91,41 +91,6 @@
         </div>        
     </div>
 
-    <!-- Footer -->
-        <footer class="bg-DefaultGreen text-white text-center py-20">
-            <!-- Icons Section -->
-            <div class="flex justify-center space-x-6 mb-3">
-                <a href="#" class="text-xl hover:text-gray-300">
-                    <i class="fab fa-facebook"></i> <!-- Replace with actual icon -->
-                </a>
-                <a href="#" class="text-xl hover:text-gray-300">
-                    <i class="fab fa-youtube"></i> <!-- Replace with actual icon -->
-                </a>
-                <a href="#" class="text-xl hover:text-gray-300">
-                    <i class="fab fa-x"></i> <!-- Replace with actual icon -->
-                </a>
-                <a href="#" class="text-xl hover:text-gray-300">
-                    <i class="fab fa-instagram"></i> <!-- Replace with actual icon -->
-                </a>
-                <a href="#" class="text-xl hover:text-gray-300">
-                    <i class="fab fa-whatsapp"></i> <!-- Replace with actual icon -->
-                </a>
-            </div>
-        
-            <!-- Navigation Links -->
-            <div class="flex justify-center space-x-8 mb-3">
-                <a href="/" class="text-base hover:underline">Home</a>
-                <a href="/restaurants" class="text-base hover:underline">Restaurant</a>
-                <a href="/my-donations" class="text-base hover:underline">My Donations</a>
-                <a href="/contact-us" class="text-base hover:underline">Contact Us</a>
-            </div>
-        
-            <!-- Copyright Text -->
-            <div class="text-sm">
-                © Plate it Forward 2025 | All Rights Reserved
-            </div>
-        </footer>
-
     <script>
         let users = [
             { id: 'US001', name: 'Ashahra Aprilia Puspaanggraini', email: 'ashahraaprilia@gmail.com' },
@@ -176,7 +141,6 @@
                             <h3 class="text-lg font-bold text-green-800">${user.name}</h3>
                             <p class="text-gray-600"><strong>ID:</strong> ${user.id}</p>
                             <p class="text-gray-600"><strong>Email:</strong> ${user.email}</p>
-                            ${deleteMode ? `<input type='checkbox' class='delete-checkbox mt-2' data-id='${user.id}'>` : ''}
                         </div>
                         <div class="relative">
                             ${deleteMode 
