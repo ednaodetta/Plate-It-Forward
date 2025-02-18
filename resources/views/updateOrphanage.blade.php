@@ -8,9 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-DefaultWhite font-sans pt-20 min-h-full">
+<body class="bg-[#F9F3F0] font-sans pt-20 min-h-full">
 
-    <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
+    <header class="bg-[#F9F3F0] shadow-xl fixed top-0 left-0 w-full z-50">
         <div class="container mx-auto flex items-center justify-between py-4 px-6">
             <!-- Logo -->
             <div class="flex items-center">
@@ -28,7 +28,7 @@
 
             <!-- Navigation Links -->
             <nav id="menu"
-                class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
+                class="hidden absolute top-16 right-6 bg-[#F9F3F0] w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
                 <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
                     <li><a href="/" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Home</a></li>
                     <li><a href="restoranpage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurants</a>
@@ -45,8 +45,8 @@
     </header>
 
     <main class="w-[90%] mx-auto mt-24 p-7 bg-whitecream rounded-lg relative">
-        <a href="/panti" class="absolute -top-10 left-0 text-ijo font-semibold hover:underline">← Back</a>
-        <h1 class="text-3xl font-bold text-ijo">Orphanage's Information</h1>
+        <a href="/panti" class="absolute -top-10 left-0 text-[#00615F] font-semibold hover:underline">← Back</a>
+        <h1 class="text-3xl font-bold text-[#00615F]">Orphanage's Information</h1>
 
         <form class="mt-4">
             <div class="mb-4">
@@ -68,12 +68,12 @@
             </div>
 
             <div class="flex justify-end">
-                <button class="bg-ijo text-white px-6 py-3 rounded-md hover:bg-teal font-semibold">SAVE</button>
+                <button class="bg-[#00615F] text-white px-6 py-3 rounded-md hover:bg-teal font-semibold"><a href="/panti">SAVE</a></button>
             </div>
         </form>
     </main>
 
-    <footer class="bg-DefaultGreen text-white text-center py-20">
+    <footer class="bg-[#00615F] text-white text-center py-20">
         <!-- Icons Section -->
         <div class="flex justify-center space-x-6 mb-3">
             <a href="#" class="text-xl hover:text-gray-300">
