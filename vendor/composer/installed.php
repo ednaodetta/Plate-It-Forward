@@ -4,14 +4,10 @@
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
 <<<<<<< HEAD
-        'reference' => '7b2d05d6472fb655647b67347452365315b87856',
+        'reference' => '6167cf045b91bdcd8a15f642c55e278d54ac7abb',
 =======
-<<<<<<< HEAD
-        'reference' => '558af35c8277d2a3399cbd1d54dd2054c7a4b939',
-=======
-        'reference' => 'c5c31ee9cfb27ba1d3bb606efb5042b160ea20c0',
->>>>>>> 7b2d05d6472fb655647b67347452365315b87856
->>>>>>> fb101cb893ff59dd2ebe5348586560d48d79da81
+        'reference' => '2d5f9a1c9a200cd60a76a75a955f195df3d49e8d',
+>>>>>>> bfbccb3dfe5eb94e87cb2ab69cb74233060564ea
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -397,14 +393,10 @@
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
 <<<<<<< HEAD
-            'reference' => '7b2d05d6472fb655647b67347452365315b87856',
+            'reference' => '6167cf045b91bdcd8a15f642c55e278d54ac7abb',
 =======
-<<<<<<< HEAD
-            'reference' => '558af35c8277d2a3399cbd1d54dd2054c7a4b939',
-=======
-            'reference' => 'c5c31ee9cfb27ba1d3bb606efb5042b160ea20c0',
->>>>>>> 7b2d05d6472fb655647b67347452365315b87856
->>>>>>> fb101cb893ff59dd2ebe5348586560d48d79da81
+            'reference' => '2d5f9a1c9a200cd60a76a75a955f195df3d49e8d',
+>>>>>>> bfbccb3dfe5eb94e87cb2ab69cb74233060564ea
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

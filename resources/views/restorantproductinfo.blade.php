@@ -79,7 +79,8 @@
                             <th class="p-3"></th>
                             <th class="p-3">User ID</th>
                             <th class="p-3">Name</th>
-                            <th class="p-3">E-mail</th>
+                            <th class="p-3">Desc</th>
+                            <th class="p-3">Price</th>
                         </tr>
                     </thead>
                     <tbody id="userTable"></tbody>
@@ -91,11 +92,46 @@
         </div>        
     </div>
 
+    <!-- Footer -->
+        <footer class="bg-DefaultGreen text-white text-center py-20">
+            <!-- Icons Section -->
+            <div class="flex justify-center space-x-6 mb-3">
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-facebook"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-youtube"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-x"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-instagram"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-whatsapp"></i> <!-- Replace with actual icon -->
+                </a>
+            </div>
+        
+            <!-- Navigation Links -->
+            <div class="flex justify-center space-x-8 mb-3">
+                <a href="/" class="text-base hover:underline">Home</a>
+                <a href="/restaurants" class="text-base hover:underline">Restaurant</a>
+                <a href="/my-donations" class="text-base hover:underline">My Donations</a>
+                <a href="/contact-us" class="text-base hover:underline">Contact Us</a>
+            </div>
+        
+            <!-- Copyright Text -->
+            <div class="text-sm">
+                © Plate it Forward 2025 | All Rights Reserved
+            </div>
+        </footer>
+
     <script>
         let users = [
-            { id: 'US001', name: 'Ashahra Aprilia Puspaanggraini', email: 'ashahraaprilia@gmail.com' },
-            { id: 'US002', name: 'John Doe', email: 'johndoe@gmail.com' },
-            { id: 'US003', name: 'Jane Smith', email: 'janesmith@gmail.com' }
+            { id: 'P001', name: 'Ayam Bakar', desc: 'Mantap gurih nyoi', price: 'Rp 20.000' },
+            { id: 'P002', name: 'Ayam Goreng', desc: 'Goreng nikmat', price: 'Rp 25.000' },
+            { id: 'P003', name: 'Ayam Serundeng', desc: 'Bumbu berempah', price: 'Rp 27.000' }
         ];
 
         let deleteMode = false;
@@ -128,7 +164,8 @@
                     </td>
                     <td class="p-3">${user.id}</td>
                     <td class="p-3">${user.name}</td>
-                    <td class="p-3">${user.email}</td>
+                    <td class="p-3">${user.desc}</td>
+                    <td class="p-3">${user.price}</td>
                 `;
                 tableBody.appendChild(row);
 
@@ -140,7 +177,8 @@
                         <div>
                             <h3 class="text-lg font-bold text-green-800">${user.name}</h3>
                             <p class="text-gray-600"><strong>ID:</strong> ${user.id}</p>
-                            <p class="text-gray-600"><strong>Email:</strong> ${user.email}</p>
+                            <p class="text-gray-600"><strong>Desc:</strong> ${user.desc}</p>
+                            <p class="text-gray-600"><strong>Price:</strong> ${user.price}</p>
                         </div>
                         <div class="relative">
                             ${deleteMode 

@@ -33,7 +33,40 @@
         @endif
         
     </head>
-    <body class="bg-DefaultWhite">
+    <body class="bg-DefaultWhite overflow-x-hidden">
+      <!-- navbar -->
+    <header class="bg-DefaultWhite shadow-xl f ixed top-0 left-0 w-full z-50">
+    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <img src="{{ asset('assets/Image/Logo copy.png') }}" alt="Logo" class="h-14 w-14">
+            <span class="ml-2 text-xl font-bold text-gray-800">PlateItForward</span>
+        </div>
+
+        <!-- Hamburger Button -->
+        <button id="hamburger-btn" class="block lg:hidden text-gray-600 focus:outline-none">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+
+        <!-- Navigation Links -->
+        <nav id="menu"
+            class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
+            <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
+                <li><a href="/" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Home</a></li>
+                <li><a href="restoranpage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurants</a>
+                </li>
+                <li><a href="my-donations" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">My Donations</a>
+                </li>
+                <li><a href="contactus" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Contact Us</a></li>
+                <li><a href="profile" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Profile</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
       <!-- Content Container -->
       <div class="relative bg-bgbang bg-no-repeat bg-cover bg-center h-[80vh] flex flex-col justify-center items-center text-center">
           
@@ -89,7 +122,7 @@
             <!-- Item Jakarta -->
             <div class="text-center max-[430px]:w-1/3">
                 <div class="max-[1317px]:w-60 max-[1317px]:h-60 max-[430px]:w-20 max-[430px]:h-20 w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-gray">
-                    <img src="{{ asset('assets/Image/keram_telor.png') }}" alt="Jakarta" class="w-full h-full object-cover">
+                    <a href="/location"><img src="{{ asset('assets/Image/keram_telor.png') }}" alt="Jakarta" class="w-full h-full object-cover"></a>
                 </div>
                 <p class="mt-2 text-lg font-semibold italic font-BrandonGrotesque max-[1317px]:text-[30px] max-[430px]:text-[15px]">Jakarta</p>
             </div>
@@ -357,5 +390,51 @@
           </div>
         </div>
       </div>
+
+                <script>
+                    // Hamburger menu toggle functionality
+                    const hamburgerBtn = document.getElementById('hamburger-btn');
+                    const menu = document.getElementById('menu');
+
+                    hamburgerBtn.addEventListener('click', () => {
+                        menu.classList.toggle('hidden'); // Show or hide the menu
+                    });
+                </script>
+                <footer class="bg-DefaultGreen text-white text-center py-20">
+            <!-- Icons Section -->
+            <div class="flex justify-center space-x-6 mb-3">
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-facebook"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-youtube"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-x"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-instagram"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-whatsapp"></i> <!-- Replace with actual icon -->
+                </a>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="flex justify-center space-x-8 mb-3">
+                <a href="/" class="text-base hover:underline">Home</a>
+                <a href="/restaurants" class="text-base hover:underline">Restaurant</a>
+                <a href="/my-donations" class="text-base hover:underline">My Donations</a>
+                <a href="/contact-us" class="text-base hover:underline">Contact Us</a>
+            </div>
+
+            <!-- Copyright Text -->
+            <div class="text-sm">
+                © Plate it Forward 2025 | All Rights Reserved
+            </div>
+        </footer>
+
+        <!-- Font Awesome for icons -->
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     </body>
 </html>
