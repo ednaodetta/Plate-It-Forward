@@ -33,11 +33,16 @@
             height: 18px;
             /* Set the height */
         }
+
+        #menu {
+        background-color: #F9F3F0 !important;
+        opacity: 1 !important;
+        }
     </style>
     </style>
 </head>
 
-<body class="bg-[#fdf9f4] text-gray-900 flex flex-col min-h-screen">
+<body class="bg-[#F9F3F0] text-gray-900 flex flex-col min-h-screen">
 
     <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
     <div class="container mx-auto flex items-center justify-between py-4 px-6">

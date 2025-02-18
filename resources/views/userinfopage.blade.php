@@ -29,13 +29,18 @@
             width: 18px; /* Set the width */
             height: 18px; /* Set the height */
         }
+
+        #menu {
+        background-color: #F9F3F0 !important;
+        opacity: 1 !important;
+        }
     </style>
     </style>
 </head>
-<body class="bg-[#fdf9f4] text-gray-900 flex flex-col min-h-screen">
+<body class="bg-[#F9F3F0] text-gray-900 flex flex-col min-h-screen">
 
     <!-- Navbar -->
-    <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
+    <header class="bg-[#F9F3F0] shadow-xl fixed top-0 left-0 w-full z-50">
         <div class="container mx-auto flex items-center justify-between py-4 px-6">
             <!-- Logo -->
             <div class="flex items-center">
@@ -55,13 +60,14 @@
             <nav id="menu"
                 class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
                 <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
-                    <li><a href="/" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Home</a></li>
-                    <li><a href="restoranpage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurants</a>
+                    <li><a href="/" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a></li>
+                    <li><a href="restoranpage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Order</a>
                     </li>
-                    <li><a href="my-donations" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">My Donations</a>
+                    <li><a href="my-donations" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">User</a>
                     </li>
-                    <li><a href="contactus" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Contact Us</a></li>
-                    <li><a href="profile" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Profile</a></li>
+                    <li><a href="contact-us" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurant</a></li>
+                    <li><a href="contact-us" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Orphanage</a></li>
+                    <li><a href="contact-us" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Support</a></li>
                 </ul>
             </nav>
         </div>
