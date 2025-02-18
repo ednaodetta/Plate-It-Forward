@@ -287,6 +287,7 @@
       <div class="flex flex-wrap gap-10 justify-center m-9">
         <!-- Card -->
         <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
+          <a href="/menupage">
           <img class="w-full h-48 object-cover" src="{{ asset('assets/Image/Mcd.jpg') }}" alt="Mie Ayam Kampung">
           <div class="p-4">
             <h3 class="text-lg font-semibold italic font-BrandonGrotesque">McDonald, Sentul City</h3>
@@ -300,6 +301,7 @@
               <span class="ml-2 text-sm">(30K+)</span>
             </div>
           </div>
+          </a>
         </div>
 
         <!-- Duplicate Cards -->

@@ -45,15 +45,15 @@
     <body class="w-full font-brandon ">
     <section class="menu w-full flex">
      
-     <div class="cardlist  bg-whitecream w-full items-center justif-center flex flex-col gap-[50px] ">
-         <div class="resto w-full h-[250px] bg-whitecream flex flex-col items-center">
-             <div class="resto_header w-full h-[180px] bg-whitecream flex justify-center items-center gap-[1%]">
-                 <div class="resto_pic w-[135px] bg-whitecream h-[125-x] justify-center rounded-[10px] shadow-[1px_1px_1px_#666]">
+     <div class="cardlist  bg-[#f9f3f0] w-full items-center justif-center flex flex-col gap-[50px] ">
+         <div class="resto w-full h-[250px] bg-[#f9f3f0] flex flex-col items-center">
+             <div class="resto_header w-full h-[180px] bg-[#f9f3f0] flex justify-center items-center gap-[1%]">
+                 <div class="resto_pic w-[135px] bg-[#f9f3f0] h-[125-x] justify-center rounded-[10px] shadow-[1px_1px_1px_#666]">
                      <img class="w-full h-full object-cover rounded-[10px]" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/8ceb09b1-2ff8-4e92-9e84-ae9eb8c70dd2_brand-image_1733091199022.jpg?auto=format" alt="McDonald's, Sentul City">
                  </div>
                  <div class="resto_desc flex flex-col justify-start w-[75%] gap-[3vh]">
-                     <div class="resto_name bg-whitecream w-full h-[50px] text-[30px] bold-text items-center text-black">McDonald's, Sentul City</div>
-                     <div class="resto_category bg-whitecream h-[50px] w-full left-[200px] text-[20px] text-[#888888] items-center">Sweets, Snacks, Fast Food</div>
+                     <div class="resto_name bg-[#f9f3f0] w-full h-[50px] text-[30px] bold-text items-center text-black">McDonald's, Sentul City</div>
+                     <div class="resto_category bg-[#f9f3f0] h-[50px] w-full left-[200px] text-[20px] text-[#888888] items-center">Sweets, Snacks, Fast Food</div>
                  </div>
              </div> 
              <div class="resto_rate bg-DefaultGreen h-[70px] flex w-[85%] rounded-[10px] items-center shadow-[1px_1px_1px_#666]" >
@@ -75,10 +75,9 @@
         
          <div class="w-full flex flex-col items-center gap-3 ">
         <h1 class="w-[85%] font-bold text-[25px]" >Today's menu</h1>
-         <div class="cardlistnye bg-whitecream w-[85%] flex gap-[40px] flex-wrap justify-between items-center" > 
+         <div class="cardlistnye bg-[#f9f3f0] w-[85%] flex gap-[40px] flex-wrap justify-between items-center" > 
 
-
-         <div class="card bg-DefaultWhite w-[390px] h-[350px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 ">
+         <div class="card border-2 bg-DefaultWhite w-[390px] h-[350px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 ">
             <img class="h-[80%] w-full" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" onclick="buttonmenudesc()" >
             <h1 class="font-bold text-[20px]">Panas 1 Ayam MCD Gulai Spicy</h1>
             <div class="flex justify-between">
@@ -98,7 +97,6 @@
          
          </div>
          <div class="card bg-DefaultWhite w-[390px] h-[350px] rounded-[10px] shadow-[1px_1px_1px_#666]">
-         n
          </div>
          <div class="card bg-DefaultWhite w-[390px] h-[350px] rounded-[10px] shadow-[1px_1px_1px_#666]">
          
