@@ -6,7 +6,8 @@
         <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
 
         <title>Restaurant Menu Page</title>
-
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -79,9 +80,12 @@
             </div>
         </header>
 
-    <section class="menu w-full flex">
+    <section class="menu w-full flex flex-col">
      
+  
+
      <div class="cardlist bg-[#f9f3f0] w-full items-center justif-center flex flex-col gap-[50px] ">
+        <div class="h-[5vh]"> </div>
          <div class="resto w-full h-[250px] bg-[#f9f3f0] flex flex-col items-center">
              <div class="resto_header w-full h-[180px] bg-[#f9f3f0] flex justify-center items-center gap-[1%]">
                  <div class="resto_pic w-[135px] bg-[#f9f3f0] h-[125-x] justify-center rounded-[10px] shadow-[1px_1px_1px_#666]">
@@ -171,9 +175,12 @@
          <button class="fixed right-0 top-[50vh] w-[50px] h-[80px] rounded-[100px_0_0_100px] bg-DefaultGreen text-white font-bold text-[20px] shadow-lg" onclick="buttonmenu()">cart</button>
      </div>
 
+    </div?>
+
 
      <!-- desc part -->
      <div class="desc bg-DefaultWhite flex-col h-[100vh] fixed items-center right-0 justify-between  hidden w-[28%]" >
+        <div class="h-[10vh]"></div>
          <div class="  bg-DefaultWhite w-full  flex flex-col h-[20vh] gap-[1vh] border-b-2 border-[#00615F] ">
             
          <div class=" w-full  flex bg-DefaultWhite  border-b-2 border-[#AFAFAF]  pl-5 t h-[30%]" >
@@ -229,6 +236,7 @@
 
 <!-- ini tandain flex ke hidden -->
      <div class="cartye bg-DefaultWhite  flex-col h-[100vh] fixed items-center right-0 justify-between  w-[28%] hidden" >
+        <div class="h-[10vh]"></div>
          <div class="headercart sticky bg-DefaultWhite w-full  flex flex-col h-[15vh] border-b-4 border-[#00615F] ">
              <div class="backtolist w-full  flex  border-b-2 border-[#AFAFAF]  pl-5 t h-[40%]" >
                  <button class="text-[35px]  text-bold bg-transparent " onclick="backbuttonmenu()">X</button>
@@ -303,6 +311,44 @@
              </div>
              <a href="/payment"><button class="bg-DefaultGreen h-[3vh] w-[200px] text-white">PAYMENT</button></a>
          </div>
+
+        </div>
+        <div class="h-[5vh] bg-DefaultWhite"></div>
+
+
+        <footer class="bg-DefaultGreen text-white text-center py-20">
+            <!-- Icons Section -->
+            <div class="flex justify-center space-x-6 mb-3">
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-facebook"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-youtube"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-x"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-instagram"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-whatsapp"></i> <!-- Replace with actual icon -->
+                </a>
+            </div>
+        
+            <!-- Navigation Links -->
+            <div class="flex justify-center space-x-8 mb-3">
+                <a href="/" class="text-base hover:underline">Home</a>
+                <a href="/restoranpage" class="text-base hover:underline">Restaurant</a>
+                <a href="/my-donations" class="text-base hover:underline">My Donations</a>
+                <a href="/contact-us" class="text-base hover:underline">Contact Us</a>
+            </div>
+        
+            <!-- Copyright Text -->
+            <div class="text-sm">
+                © Plate it Forward 2025 | All Rights Reserved
+            </div>
+        </footer>
         
      
 
@@ -310,7 +356,11 @@
      <!-- <div class="optionallist"></div> -->
 
 
+     
+
  </section>
+
+ 
     </body>
 
     
