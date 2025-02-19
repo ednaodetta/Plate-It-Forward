@@ -27,7 +27,7 @@
     }
 
     .custom-box {
-      background-color: #ffffff;
+      background-color: #f9f3f0;
       border: 2px solid var(--border-color);
       border-radius: 8px;
       padding: 16px;
@@ -35,7 +35,7 @@
 
     .donate-button {
       background-color: var(--primary);
-      color: white;
+      color: #f9f3f0;
       font-weight: bold;
       font-size: 1rem;
       padding: 12px;
@@ -56,7 +56,41 @@
         @endif
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="w-full font-brandon ">
+    <body class="w-full font-brandon bg-DefaultWhite">
+      <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto flex items-center justify-between py-4 px-6">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <img src="{{ asset('assets/Image/Logo copy.png') }}" alt="Logo" class="h-14 w-14">
+                <span class="ml-2 text-xl font-bold text-gray-800">PlateItForward</span>
+            </div>
+    
+            <!-- Hamburger Button -->
+            <button id="hamburger-btn" class="block lg:hidden text-gray-600 focus:outline-none">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+    
+            <!-- Navigation Links -->
+            <nav id="menu"
+                class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
+                <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
+                    <li><a href="/" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Home</a></li>
+                    <li><a href="/restoranpage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurants</a>
+                    </li>
+                    <li><a href="/my-donations" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">My Donations</a>
+                    </li>
+                    <li><a href="/contact-us" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Contact Us</a></li>
+                    <li>
+                        <a href="/signin" class="block px-6 py-3 text-white bg-Teal hover:bg-opacity-80 text-left">Sign
+                            Up</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     <div class="w-[90%] mx-auto p-6 h-[100vh]" >
     <!-- Header -->
     <div class="flex justify-between items-center mb-4">
