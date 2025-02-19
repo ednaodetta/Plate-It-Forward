@@ -228,7 +228,7 @@
          <div class="totalmenu bg-DefaultWhite w-full h-[15vh] flex flex-col items-center pt-[2vh] border-t-4 border-DefaultGreen">
              <div class="totallist w-[90%]  flex justify-between">
                  <h1 class="font-bold ">TOTAL</h1>
-                 <h1>Rp. 50,000</h1>
+                 <h1>Rp42.000,00</h1>
              </div>
              <button class="bg-DefaultGreen h-[3vh] w-[200px] text-white rounded-md">ADD TO CART</button>
          </div>
@@ -261,53 +261,34 @@
                     <img class="h-full w-full rounded-[10px]" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" >
                  </div>
                  <div class="descmenu flex flex-col justify-between   h-full">
-                     <h1>Double Cheeseburger</h1>
-                     <h2>Rp. 42,000</h2>
-                     <p>Tidak pakai keju, tidak pake acar</p>
+                     <h1>PaNas 1 Ayam McD Gulai Spicy</h1>
+                     <h2>Rp42,500</h2>
+                     <p>Tidak pakai keju, tidak pakai acar</p>
                  </div>
              </div>
 
-              <div class="cartmenulist flex rounded-[10px]  w-[90%] gap-[20px] items-center  h-[130px] justify-center p-2">
-                 <div class="quantity w-[10%] inline-flex flex-col h-[100px] border-none rounded-[100px] justify-center items-center  bg-DefaultGreen" >
-                     <button class="h-[35px] bg-transparent text-white" onclick="increment()">+</button>
-                     <input class="w-[100%] text-white text-center border-none pointer-events-none h-[30px] bg-transparent" type="text" id="number" value="1" readonly>
-                     <button class="h-[35px] bg-transparent text-white" onclick="decrement()">−</button>
-                 </div>
-                 <div class="picturemenu w-[100px] h-[100px] bg-black border-DefaultGreen border-[1px] rounded-[10px]">
-                    <img class="h-full w-full rounded-[10px]" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" >
-                 </div>
-                 <div class="descmenu flex flex-col justify-between   h-full">
-                     <h1>Double Cheeseburger</h1>
-                     <h2>Rp. 42,000</h2>
-                     <p>Tidak pakai keju, tidak pake acar</p>
-                 </div>
-             </div>
-
-
-              <div class="cartmenulist flex rounded-[10px]  w-[90%] gap-[20px] items-center  h-[130px] justify-center p-2">
-                 <div class="quantity w-[10%] inline-flex flex-col h-[100px] border-none rounded-[100px] justify-center items-center  bg-DefaultGreen" >
-                     <button class="h-[35px] bg-transparent text-white" onclick="increment()">+</button>
-                     <input class="w-[100%] text-white text-center border-none pointer-events-none h-[30px] bg-transparent" type="text" id="number" value="1" readonly>
-                     <button class="h-[35px] bg-transparent text-white" onclick="decrement()">−</button>
-                 </div>
-                 <div class="picturemenu w-[100px] h-[100px] bg-black border-DefaultGreen border-[1px] rounded-[10px]">
-                    <img class="h-full w-full rounded-[10px]" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" >
-                 </div>
-                 <div class="descmenu flex flex-col justify-between   h-full">
-                     <h1>Double Cheeseburger</h1>
-                     <h2>Rp. 42,000</h2>
-                     <p>Tidak pakai keju, tidak pake acar</p>
-                 </div>
-             </div>
-
-       
+             <div class="cartmenulist flex rounded-[10px]  w-[90%] gap-[10px] items-center  h-[130px] justify-center p-2">
+                <div class="quantity w-[10%] inline-flex flex-col h-[100px] border-none rounded-[100px] justify-center items-center  bg-DefaultGreen" >
+                    <button class="h-[35px] bg-transparent text-white" onclick="increment()">+</button>
+                    <input class="w-[100%] text-white text-center border-none pointer-events-none h-[30px] bg-transparent" type="text" id="number" value="1" readonly>
+                    <button class="h-[35px] bg-transparent text-white" onclick="decrement()">−</button>
+                </div>
+                <div class="picturemenu w-[100px] h-[100px] bg-black border-DefaultGreen border-[1px] rounded-[10px]">
+                   <img class="h-full w-full rounded-[10px]" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" >
+                </div>
+                <div class="descmenu flex flex-col justify-between   h-full">
+                    <h1>PaNas 1 Ayam McD Gulai Spicy</h1>
+                    <h2>Rp42,500</h2>
+                    <p>Pakai keju, tidak pakai acar</p>
+                </div>
+            </div>
 
          </div>
 
          <div class="totalmenu bg-DefaultWhite w-full h-[15vh] flex flex-col items-center pt-[2vh] border-t-4 border-DefaultGreen">
              <div class="totallist w-[90%]  flex justify-between">
                  <h1 class="font-bold">TOTAL</h1>
-                 <h1>Rp. 50,000</h1>
+                 <h1>Rp85.000,00</h1>
              </div>
              <a href="/payment"><button class="bg-DefaultGreen h-[3vh] w-[200px] text-white">PAYMENT</button></a>
          </div>
