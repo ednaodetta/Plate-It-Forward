@@ -396,7 +396,7 @@
         </div>
       </div>
 
-                <script>
+            <script>
                     // Hamburger menu toggle functionality
                     const hamburgerBtn = document.getElementById('hamburger-btn');
                     const menu = document.getElementById('menu');
@@ -405,7 +405,7 @@
                         menu.classList.toggle('hidden'); // Show or hide the menu
                     });
                 </script>
-                <footer class="bg-DefaultGreen text-white text-center py-20">
+            <footer class="bg-DefaultGreen text-white text-center py-20">
             <!-- Icons Section -->
             <div class="flex justify-center space-x-6 mb-3">
                 <a href="#" class="text-xl hover:text-gray-300">
