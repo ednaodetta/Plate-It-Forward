@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,7 @@
     <link href="/css/tailwind.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        <style>
-        .dropdown {
+        <style>.dropdown {
             display: none;
             position: absolute;
             background-color: white;
@@ -17,30 +17,36 @@
             z-index: 10;
             width: 150px;
         }
+
         .dropdown.active {
             display: block;
         }
+
         .hidden-checkbox {
             display: none;
         }
 
         /* Style for the checkbox */
         .delete-checkbox {
-            width: 18px; /* Set the width */
-            height: 18px; /* Set the height */
+            width: 18px;
+            /* Set the width */
+            height: 18px;
+            /* Set the height */
         }
 
         #menu {
-        background-color: #F9F3F0 !important;
-        opacity: 1 !important;
+            background-color: #F9F3F0 !important;
+            opacity: 1 !important;
         }
     </style>
     </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="bg-[#F9F3F0] text-gray-900 flex flex-col min-h-screen">
 
     <!-- Navbar -->
-    <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
+    <header class="bg-[#F9F3F0] shadow-xl fixed top-0 left-0 w-full z-50">
         <div class="container mx-auto flex items-center justify-between py-4 px-6">
             <!-- Logo -->
             <div class="flex items-center">
@@ -58,7 +64,7 @@
     
             <!-- Navigation Links -->
             <nav id="menu"
-                class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
+                class="hidden absolute top-16 right-6 bg-[#F9F3F0] w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
                 <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
                     <li><a href="/dashboardAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a>
                     </li>
@@ -76,12 +82,12 @@
     </header>
 
     <!-- Main Content -->
-    <div class="w-full pt-40 mx-auto py-8 flex-grow items-center">
+    <div class="w-full pt-40 mx-auto py-8 flex-grow items-center font-brandon">
         <div class="w-11/12 mx-auto flex justify-between items-center">
-            <h2 class="text-2xl font-bold text-green-800">User’s Information</h2>
+            <h2 class="text-2xl font-bold text-DefaultGreen font-gotham">User’s Information</h2>
             <button id="delete-btn" onclick="handleTrashButton()" class="text-red-600 hover:text-red-800 text-xl">
                 🗑️
-            </button>            
+            </button>
         </div>
 
         <div class="bg-white rounded-lg w-11/12 mx-auto shadow-md mt-4">
@@ -102,14 +108,25 @@
 
             <!-- Mobile Cards -->
             <div class="md:hidden space-y-4 p-4" id="userCards"></div>
-        </div>        
+        </div>
     </div>
 
     <script>
-        let users = [
-            { id: 'US001', name: 'Ashahra Aprilia Puspaanggraini', email: 'ashahraaprilia@gmail.com' },
-            { id: 'US002', name: 'John Doe', email: 'johndoe@gmail.com' },
-            { id: 'US003', name: 'Jane Smith', email: 'janesmith@gmail.com' }
+        let users = [{
+                id: 'US001',
+                name: 'Ashahra Aprilia Puspaanggraini',
+                email: 'ashahraaprilia@gmail.com'
+            },
+            {
+                id: 'US002',
+                name: 'John Doe',
+                email: 'johndoe@gmail.com'
+            },
+            {
+                id: 'US003',
+                name: 'Jane Smith',
+                email: 'janesmith@gmail.com'
+            }
         ];
 
         let deleteMode = false;
@@ -130,14 +147,14 @@
                         ${deleteMode 
                             ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                             : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                               <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                   <ul class="text-sm">
-                                       <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                           <a href="/updateuserinfo?id=${user.id}">Update user information</a>
-                                       </li>
-                                       <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
-                                   </ul>
-                               </div>`
+                                               <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                   <ul class="text-sm">
+                                                       <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                           <a href="/updateuserinfo?id=${user.id}">Update user information</a>
+                                                       </li>
+                                                       <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
+                                                   </ul>
+                                               </div>`
                         }
                     </td>
                     <td class="p-3">${user.id}</td>
@@ -160,14 +177,14 @@
                             ${deleteMode 
                                 ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                                 : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                    <ul class="text-sm">
-                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                           <a href="/updateuserinfo?id=${user.id}">Update user information</a>
-                                       </li>
-                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
-                                    </ul>
-                                </div>`
+                                                <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                    <ul class="text-sm">
+                                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                           <a href="/updateuserinfo?id=${user.id}">Update user information</a>
+                                                       </li>
+                                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
+                                                    </ul>
+                                                </div>`
                             }
                         </div>
                     </div>
@@ -231,7 +248,7 @@
             }
         }
 
-        document.addEventListener("click", function (e) {
+        document.addEventListener("click", function(e) {
             if (!e.target.closest(".dots-menu") && !e.target.closest(".dropdown")) {
                 document.querySelectorAll(".dropdown").forEach(el => el.classList.add("hidden"));
             }
@@ -248,4 +265,5 @@
         });
     </script>
 </body>
+
 </html>
