@@ -27,7 +27,7 @@
     }
 
     .custom-box {
-      background-color: #ffffff;
+      background-color: #f9f3f0;
       border: 2px solid var(--border-color);
       border-radius: 8px;
       padding: 16px;
@@ -35,7 +35,7 @@
 
     .donate-button {
       background-color: var(--primary);
-      color: white;
+      color: #f9f3f0;
       font-weight: bold;
       font-size: 1rem;
       padding: 12px;
@@ -56,7 +56,8 @@
         @endif
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="w-full font-brandon ">
+    <body class="w-full font-brandon bg-DefaultWhite">
+      
     <div class="w-[90%] mx-auto p-6 h-[100vh]" >
     <!-- Header -->
     <div class="flex justify-between items-center mb-4">
@@ -82,7 +83,21 @@
               <img src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="Product" class="w-20 h-20 rounded-md">
               <div class="ml-4">
                 <h4 class="text-[var(--text-dark)] font-bold">PaNas 1 Ayam McD Gulai Spicy</h4>
-                <p class="text-gray-500 text-sm">Paha</p>
+                <p class="text-gray-500 text-sm">Tidak pakai keju, tidak pakai acar</p>
+                <p class="text-gray-500 text-sm">Quantity: 1 items</p>
+              </div>
+            </div>
+            <div>
+              <p class="text-[var(--text-dark)] font-bold">Rp42.500,00</p>
+              <p class="text-gray-500 text-sm">Rp42.500,00 per items</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="flex items-center">
+              <img src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="Product" class="w-20 h-20 rounded-md">
+              <div class="ml-4">
+                <h4 class="text-[var(--text-dark)] font-bold">PaNas 1 Ayam McD Gulai Spicy</h4>
+                <p class="text-gray-500 text-sm">Pakai keju, tidak pakai acar</p>
                 <p class="text-gray-500 text-sm">Quantity: 1 items</p>
               </div>
             </div>
