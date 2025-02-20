@@ -14,6 +14,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-…." crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <meta charset="utf-8">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -396,7 +399,7 @@
         </div>
       </div>
 
-                <script>
+            <script>
                     // Hamburger menu toggle functionality
                     const hamburgerBtn = document.getElementById('hamburger-btn');
                     const menu = document.getElementById('menu');
@@ -405,7 +408,7 @@
                         menu.classList.toggle('hidden'); // Show or hide the menu
                     });
                 </script>
-                <footer class="bg-DefaultGreen text-white text-center py-20">
+            <footer class="bg-DefaultGreen text-white text-center py-20">
             <!-- Icons Section -->
             <div class="flex justify-center space-x-6 mb-3">
                 <a href="#" class="text-xl hover:text-gray-300">
