@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-…." crossorigin="anonymous" referrerpolicy="no-referrer"/>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -20,9 +22,43 @@
         @endif
     </head>
     <body class="bg-DefaultWhite">
-        <!-- Header -->
+            <!-- navbar -->
+          <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
+            <div class="container mx-auto flex items-center justify-between py-4 px-6">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="{{ asset('assets/Image/Logo copy.png') }}" alt="Logo" class="h-14 w-14">
+                    <span class="ml-2 text-xl font-bold text-gray-800">PlateItForward</span>
+                </div>
+        
+                <!-- Hamburger Button -->
+                <button id="hamburger-btn" class="block lg:hidden text-gray-600 focus:outline-none">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+        
+                <!-- Navigation Links -->
+                <nav id="menu"
+                    class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
+                    <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
+                        <li><a href="/" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Home</a></li>
+                        <li><a href="/restoranpage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurants</a>
+                        </li>
+                        <li><a href="/my-donations" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">My Donations</a>
+                        </li>
+                        <li><a href="/contact-us" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Contact Us</a></li>
+                        <li>
+                            <a href="/signin" class="block px-6 py-3 text-white bg-Teal hover:bg-opacity-80 text-left">Sign
+                                Up</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
         <div class=" bg-bglocation relative  bg-no-repeat bg-cover bg-center h-56 sm:h-64 md:h-80 flex flex-col justify-center items-center text-center">
-  
         </div>
 
         <!-- Section Title -->
@@ -33,7 +69,7 @@
 
 
         <!-- Card Container -->
-        <div class="container mx-auto px-4 flex flex-wrap gap-8 justify-center">
+        <div class="container mx-auto px-4 flex flex-wrap gap-8 justify-center pb-10">
           <!-- Card -->
           <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
             <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Martabak">
@@ -133,5 +169,49 @@
             </div>
           </div>
         </div>
+              <script>
+                    // Hamburger menu toggle functionality
+                    const hamburgerBtn = document.getElementById('hamburger-btn');
+                    const menu = document.getElementById('menu');
+
+                    hamburgerBtn.addEventListener('click', () => {
+                        menu.classList.toggle('hidden'); // Show or hide the menu
+                    });
+              </script>
+            <footer class="bg-DefaultGreen text-white text-center py-20">
+            <!-- Icons Section -->
+            <div class="flex justify-center space-x-6 mb-3">
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-facebook"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-youtube"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-x"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-instagram"></i> <!-- Replace with actual icon -->
+                </a>
+                <a href="#" class="text-xl hover:text-gray-300">
+                    <i class="fab fa-whatsapp"></i> <!-- Replace with actual icon -->
+                </a>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="flex justify-center space-x-8 mb-3">
+                <a href="/" class="text-base hover:underline">Home</a>
+                <a href="/restaurants" class="text-base hover:underline">Restaurant</a>
+                <a href="/my-donations" class="text-base hover:underline">My Donations</a>
+                <a href="/contact-us" class="text-base hover:underline">Contact Us</a>
+            </div>
+
+            <!-- Copyright Text -->
+            <div class="text-sm">
+                © Plate it Forward 2025 | All Rights Reserved
+            </div>
+            </footer>
+        <!-- Font Awesome for icons -->
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     </body>
 </html>

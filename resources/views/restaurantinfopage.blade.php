@@ -51,7 +51,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
+<body class="bg-DefaultWhite">
     <!-- Navbar -->
     <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
         <div class="container mx-auto flex items-center justify-between py-4 px-6">

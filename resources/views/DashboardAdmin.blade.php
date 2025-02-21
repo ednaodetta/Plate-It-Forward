@@ -32,134 +32,100 @@
                     <img src="{{ asset('assets/Image/Logo copy.png') }}" alt="Logo" class="h-14 w-14">
                     <span class="ml-2 text-xl font-bold text-gray-800">PlateItForward</span>
                 </div>
-        
+                
                 <!-- Hamburger Button -->
                 <button id="hamburger-btn" class="block lg:hidden text-gray-600 focus:outline-none">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
                 </button>
-        
+                
                 <!-- Navigation Links -->
-                <nav id="menu"
-                    class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
+                <nav id="menu" class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
                     <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
-                        <li><a href="/dashboardAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a>
-                        </li>
-                        <li><a href="/OrderList" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Order</a>
-                        </li>
-                        <li><a href="/userinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">User</a>
-                        </li>
-                        <li><a href="/restaurantinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurant</a>
-                        </li>
+                        <li><a href="/dashboardAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a></li>
+                        <li><a href="/OrderList" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Order</a></li>
+                        <li><a href="/userinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">User</a></li>
+                        <li><a href="/restaurantinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurant</a></li>
                         <li><a href="/panti" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Orphanage</a></li>
                         <li><a href="/supportAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Support</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
-        <!-- Container Utama -->
-        <div class="container mx-auto px-4 my-10">
-            <!-- Judul -->
-            <div class="flex flex-col">
-                <h1 class="text-3xl font-bold text-teal-700 mb-6 font-brandon">Order List</h1>
-            </div>
 
-            <!-- Tabel -->
-            <div class="overflow-x-auto rounded-lg">
-                <table class="w-full bg-white shadow-md rounded overflow-hidden">
-                    <!-- Header Tabel -->
-                    <thead class="bg-gray-200">
-                        <tr class="bg-whitecream text-gray-700 border-b">
-                            <th class="px-4 py-2 text-left font-semibold font-brandon">OrderID</th>
-                            <th class="px-4 py-2 text-left font-semibold font-brandon">Transaction Detail</th>
-                            <th class="px-4 py-2 text-left font-semibold font-brandon">Total Price</th>
-                            <th class="px-4 py-2 text-left font-semibold font-brandon">Status</th>
-                        </tr>
-                    </thead>
-                    <!-- Isi Tabel -->
-                    <tbody class="font-brandon">
-                        <!-- Order 1 -->
-                        <tr class="border-b">
-                            <td class="px-4 py-3 font-brandon">ID001</td>
-                            <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                            <td class="px-4 py-3 font-bold font-brandon">IDR 65,000.00</td>
-                            <td class="px-4 py-3 font-brandon">
-                                <select class="p-2 border rounded status-select" onchange="updateColor(this)">
-                                    <option value="Completed"class = "text-green-500">Completed</option>
-                                    <option value="On Process"class="text-orange-500">On Process</option>
-                                    <option value="Canceled"class="text-red-500">Canceled</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <!-- Order 2 -->
-                        <tr class="border-b">
-                            <td class="px-4 py-3 font-brandon">ID002</td>
-                            <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es, 1 Pizza, 10 Nasi padang</td>
-                            <td class="px-4 py-3 font-bold font-brandon">IDR 125,000.00</td>
-                            <td class="px-4 py-3">
-                                <select class="p-2 border rounded status-select" onchange="updateColor(this)">
-                                    <option value="Completed" class = "text-green-500">Completed</option>
-                                    <option value="On Process" class="text-orange-500">On Process</option>
-                                    <option value="Canceled" class="text-red-500">Canceled</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <!-- Order 3 -->
-                        <tr class="border-b">
-                            <td class="px-4 py-3 font-brandon">ID003</td>
-                            <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                            <td class="px-4 py-3 font-bold font-brandon">IDR 75,000.00</td>
-                            <td class="px-4 py-3">
-                                <select class="p-2 border rounded status-select" onchange="updateColor(this)">
-                                    <option value="Completed" class = "text-green-500">Completed</option>
-                                    <option value="On Process"class="text-orange-500">On Process</option>
-                                    <option value="Canceled"class="text-red-500" selected >Canceled</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <!-- Order 4 -->
-                        <tr class="border-b">
-                            <td class="px-4 py-3 font-brandon">ID004</td>
-                            <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                            <td class="px-4 py-3 font-bold font-brandon">IDR 25,000.00</td>
-                            <td class="px-4 py-3">
-                                <select class="p-2 border rounded status-select" onchange="updateColor(this)">
-                                    <option value="Completed"class = "text-green-500">Completed</option>
-                                    <option value="On Process"class="text-orange-500" selected >On Process</option>
-                                    <option value="Canceled"class="text-red-500">Canceled</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="container mx-auto mt-24 px-6">
+            <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+                <div class="flex justify-between items-center mb-6">
+                    <h1 class="text-2xl font-bold font-brandon">Hello, Ronald!</h1>
+                    <div class="bg-white px-6 py-3 rounded-lg text-lg font-semibold shadow border border-gray-300 font-brandon">
+                        Total Donation: <span class="text-2xl font-bold font-brandon">Rp 2.000.000.000</span>
+                    </div>
+                    <div id="clock" class="text-xl font-bold"></div>
+                </div>
+
+                <div class="flex flex-row gap-6 mb-6">
+                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 h-full flex-1 flex flex-col">
+                        <h2 class="font-semibold text-lg mb-2 font-brandon">Top Donors</h2>
+                        <ul class="space-y-1 font-brandon">
+                            <li>🏆 Asha Ni Bos</li>
+                            <li>2. Bro Ronal</li>
+                            <li>3. Edan</li>
+                            <li>4. Lyly</li>
+                            <li>5. Noris</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 h-full flex-1 flex flex-col">
+                        <h2 class="font-semibold text-lg mb-2 font-brandon">Top Restaurant</h2>
+                        <ul class="space-y-1 font-brandon">
+                            <li>🏆  McDonald's, Sentul City</li>
+                            <li>2. KFC, Salemba</li>
+                            <li>3. Salad Point, Tebet</li>
+                            <li>4. J'CO, Grand Indonesia</li>
+                            <li>5. Gamchi, Senayan City</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 h-full flex-1 flex flex-col">
+                        <h2 class="font-semibold text-lg mb-2 font-brandon"> Most Donated Orphanages</h2>
+                        <ul class="space-y-1 font-brandon">
+                            <li>🏆 Panti Asuhan Bukit Karmel</li>
+                            <li>2. Panti Asuhan 5 Roti dan 2 Ikan</li>
+                            <li>3. Panti Asuhan Pelangi Kasih</li>
+                            <li>4. Panti Asuhan Permata Hati</li>
+                            <li>5. Panti Asuhan Kedung Halang</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex flex-row gap-6">
+                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 flex flex-col items-center h-full flex-1">
+                        <span class="text-lg font-semibold font-brandon">All User</span>
+                        <span class="text-2xl font-bold font-brandon">10</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 flex flex-col items-center h-full flex-1">
+                        <span class="text-lg font-semibold font-brandon">All Restaurant</span>
+                        <span class="text-2xl font-bold font-brandon">5</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 flex flex-col items-center h-full flex-1">
+                        <span class="text-lg font-semibold font-brandon">All Orphanages</span>
+                        <span class="text-2xl font-bold font-brandon">15</span>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <!-- script untuk mengubah warna status -->
+
         <script>
-            function updateColor(selectElement) {
-                const colorMap = {
-                    "Completed": "text-green-500",
-                    "On Process": "text-orange-500",
-                    "Canceled": "text-red-500"
-                };
-
-                selectElement.classList.remove("text-green-500", "text-orange-500", "text-red-500");
-                selectElement.classList.add(colorMap[selectElement.value]);
+            function updateClock() {
+                const now = new Date();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
             }
-
-            document.querySelectorAll(".status-select").forEach(select => {
-                updateColor(select);
-            });
-
-            const hamburgerBtn = document.getElementById('hamburger-btn');
-            const menu = document.getElementById('menu');
-
-            hamburgerBtn.addEventListener('click', () => {
-                menu.classList.toggle('hidden'); // Show or hide the menu
-            });
+            setInterval(updateClock, 1000);
+            updateClock();
         </script>
     </body>
 </html>

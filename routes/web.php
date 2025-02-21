@@ -86,10 +86,9 @@ Route::get('/updaterestorant', function () {
     return view('updaterestorantproduct');
 });
 
-Route::get('/support', function () {
+Route::get('/supportAdmin', function () {
     return view('support');
 });
-
 
 use App\Http\Controllers\ProfileController;
 
@@ -129,3 +128,7 @@ require __DIR__ . '/auth_restaurant.php';
 Route::get('/signin', function () {
     return view('signin');
 })->name('signin');
+
+Route::get('/dashboardAdmin', function () {
+    return view('dashboardAdmin');
+});

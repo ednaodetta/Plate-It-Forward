@@ -40,6 +40,7 @@
         }
     </style>
     </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-[#F9F3F0] text-gray-900 flex flex-col min-h-screen">

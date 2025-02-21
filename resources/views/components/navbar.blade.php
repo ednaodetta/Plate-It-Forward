@@ -25,7 +25,7 @@
                 </li>
                 <li><a href="/contact-us" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Contact Us</a></li>
                 <li>
-                    <a href="/signin" class="block px-6 py-3 text-white bg-Teal hover:bg-opacity-80 text-left">Sign
+                    <a href="/login" class="block px-6 py-3 text-white bg-Teal hover:bg-opacity-80 text-left">Sign
                         Up</a>
                 </li>
             </ul>

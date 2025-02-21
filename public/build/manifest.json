@@ -1,11 +1,28 @@
 {
+<<<<<<< HEAD
   "resources/css/app.css": {
     "file": "assets/app-BwHaPEbd.css",
+=======
+  "public/assets/Image/judul.png": {
+    "file": "assets/judul-BO6vTic_.png",
+    "src": "public/assets/Image/judul.png"
+  },
+  "public/assets/Image/keram_telor.png": {
+    "file": "assets/keram_telor-_8VhcVFA.png",
+    "src": "public/assets/Image/keram_telor.png"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-BNsfrONY.css",
+>>>>>>> f9ba76db5a78450fa86d83c5a3b197ce96134e99
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
+<<<<<<< HEAD
     "file": "assets/app-CAkSn3BF.js",
+=======
+    "file": "assets/app-D-FaURHc.js",
+>>>>>>> f9ba76db5a78450fa86d83c5a3b197ce96134e99
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
