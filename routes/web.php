@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+// use App\Http\Controllers\AuthController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/profile', function () {
     return view('profile');
@@ -47,11 +47,11 @@ Route::get('/signin', function () {
     return view('signin');
 })->name('signin');
 
-Route::post('/signin', [AuthController::class, 'signin'])->name('signin.post');
+// Route::post('/signin', [AuthController::class, 'signin'])->name('signin.post');
 
-Route::post('/signup', [AuthController::class, 'signup'])->name('signup');
+// Route::post('/signup', [AuthController::class, 'signup'])->name('signup');
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/contact-us', function () {
     return view('contactus');
@@ -89,3 +89,43 @@ Route::get('/updaterestorant', function () {
 Route::get('/support', function () {
     return view('support');
 });
+
+
+use App\Http\Controllers\ProfileController;
+
+// Rute utama untuk user biasa
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
+
+Route::get('/home', function () {
+    return view('welcome');
+})->name('home');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+
+Route::get('/admin', function () {
+    return view('welcomeadmin');
+})->name('admin');
+
+Route::get('/restaurant', function () {
+    return view('welcomerestaurant');
+})->name('restaurant');
+
+require __DIR__ . '/auth.php';
+// Include rute authentication admin & restaurant
+require __DIR__ . '/auth_admin.php';
+require __DIR__ . '/auth_restaurant.php';
+
+Route::get('/signin', function () {
+    return view('signin');
+})->name('signin');

@@ -1,4 +1,4 @@
-<footer class="bg-DefaultGreen text-white text-center py-20">
+<footer class="bg-DefaultGreen text-white text-center py-20 font-brandon">
     <!-- Icons Section -->
     <div class="flex justify-center space-x-6 mb-3">
         <a href="#" class="text-xl hover:text-gray-300">
