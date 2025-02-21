@@ -89,3 +89,7 @@ Route::get('/updaterestorant', function () {
 Route::get('/supportAdmin', function () {
     return view('support');
 });
+
+Route::get('/dashboardAdmin', function () {
+    return view('dashboardAdmin');
+});
