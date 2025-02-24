@@ -132,3 +132,8 @@ Route::get('/signin', function () {
 Route::get('/dashboardAdmin', function () {
     return view('dashboardAdmin');
 });
+
+Route::get('/dashboardResto', function () {
+    return view('dashboardResto');
+});
+

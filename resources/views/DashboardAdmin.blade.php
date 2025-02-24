@@ -55,7 +55,7 @@
         </header>
 
         <div class="container mx-auto mt-24 px-6">
-            <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+            <div class="max-w-6xl mx-auto bg-Defaultwhite p-6 rounded-lg">
                 <div class="flex justify-between items-center mb-6">
                     <h1 class="text-2xl font-bold font-brandon">Hello, Ronald!</h1>
                     <div class="bg-white px-6 py-3 rounded-lg text-lg font-semibold shadow border border-gray-300 font-brandon">
