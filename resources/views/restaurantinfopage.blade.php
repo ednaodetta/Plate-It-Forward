@@ -95,7 +95,7 @@
     <!-- Main Content -->
     <div class="w-full pt-40 mx-auto py-8 flex-grow items-center">
         <div class="w-11/12 mx-auto flex justify-between items-center">
-            <h2 class="text-2xl font-bold text-DefaultGreen">Restaurant's Information</h2>
+            <h2 class="text-2xl font-bold text-DefaultGreen font-gotham">Restaurant's Information</h2>
             <button id="delete-btn" onclick="handleTrashButton()" class="text-red-600 hover:text-red-800 text-xl">
                 🗑️
             </button>
@@ -106,7 +106,7 @@
             <div class="hidden md:block">
                 <table class="w-full">
                     <thead class="bg-gray-100">
-                        <tr class="text-left text-gray-600">
+                        <tr class="text-left text-gray-600 font-gotham">
                             <th class="p-3"></th>
                             <th class="p-3">Resto ID</th>
                             <th class="p-3">Name</th>
@@ -116,7 +116,7 @@
                             <th class="p-3">Contact</th>
                         </tr>
                     </thead>
-                    <tbody id="userTable"></tbody>
+                    <tbody id="userTable" class="font-brandon"></tbody>
                 </table>
             </div>
 
@@ -170,14 +170,14 @@
                         ${deleteMode 
                             ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                             : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                                                                                                                                                           <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                                                                                                                                               <ul class="text-sm">
-                                                                                                                                                                                   <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                                                                                                                                       <a href="/updaterestaurantinfo?id=${user.id}">Update restaurant information</a>
-                                                                                                                                                                                   </li>
-                                                                                                                                                                                   <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete restaurant</li>
-                                                                                                                                                                               </ul>
-                                                                                                                                                                           </div>`
+                                                                                                                                                                                       <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                                                                                                                                                           <ul class="text-sm">
+                                                                                                                                                                                               <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                                                                                                                                   <a href="/updaterestaurantinfo?id=${user.id}">Update restaurant information</a>
+                                                                                                                                                                                               </li>
+                                                                                                                                                                                               <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete restaurant</li>
+                                                                                                                                                                                           </ul>
+                                                                                                                                                                                       </div>`
                         }
                     </td>
                      <td class="p-3">${user.id}</td>
@@ -206,14 +206,14 @@
                             ${deleteMode 
                                 ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                                 : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                                                                                                                                                            <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                                                                                                                                                <ul class="text-sm">
-                                                                                                                                                                                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                                                                                                                                       <a href="/updaterestaurantinfo?id=${user.id}">Update restaurant information</a>
-                                                                                                                                                                                   </li>
-                                                                                                                                                                                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete restaurant</li>
-                                                                                                                                                                                </ul>
-                                                                                                                                                                            </div>`
+                                                                                                                                                                                        <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                                                                                                                                                            <ul class="text-sm">
+                                                                                                                                                                                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                                                                                                                                   <a href="/updaterestaurantinfo?id=${user.id}">Update restaurant information</a>
+                                                                                                                                                                                               </li>
+                                                                                                                                                                                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete restaurant</li>
+                                                                                                                                                                                            </ul>
+                                                                                                                                                                                        </div>`
                             }
                         </div>
                     </div>

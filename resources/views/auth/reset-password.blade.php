@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <img src="{{ asset('assets/Image/Logo.png') }}" class="w-40 h-40" alt="logo">
+    <img src="{{ asset('assets/Image/Logo copy.png') }}" class="w-40 h-40" alt="logo">
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
 

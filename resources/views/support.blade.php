@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Information</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Support Detail</title>
     <link href="/css/tailwind.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -61,194 +62,101 @@
     <!-- Main Content -->
     <div class="w-full pt-40 mx-auto py-8 flex-grow items-center">
         <div class="w-11/12 mx-auto flex justify-between items-center">
-            <h2 class="text-2xl font-bold text-DefaultGreen">Support</h2>
-            <button id="delete-btn" onclick="handleTrashButton()" class="text-red-600 hover:text-red-800 text-xl">
+            <h2 class="text-2xl font-bold text-DefaultGreen font-gotham">Support</h2>
+            {{-- <button id="delete-btn" onclick="handleTrashButton()" class="text-red-600 hover:text-red-800 text-xl">
                 🗑️
-            </button>
+            </button> --}}
         </div>
 
         <div class="bg-white rounded-lg w-11/12 mx-auto shadow-md mt-4">
             <!-- Desktop Table -->
-            <div class="hidden md:block">
+            <div class="md:block">
                 <table class="w-full">
                     <thead class="bg-gray-100">
-                        <tr class="text-left text-gray-600">
+                        <tr class="text-left text-gray-600 font-gotham">
                             <th class="p-3"></th>
                             <th class="p-3">Support ID</th>
+                            <th class="p-3">Name</th>
                             <th class="p-3">E-mail</th>
                             <th class="p-3">Information</th>
                             <th class="p-3 text-center">Handled</th>
                         </tr>
                     </thead>
-                    <tbody id="userTable"></tbody>
+                    <tbody id="userTable" class="font-brandon">
+                        @foreach ($supports as $support)
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="p-3"></td>
+                                <td class="p-3">{{ $support->support_id }}</td>
+                                <td class="p-3">{{ $support->name }}</td>
+                                <td class="p-3">{{ $support->email }}</td>
+                                <td class="p-3">{{ $support->information }}</td>
+                                <td class="p-3 text-center">
+                                    <input type="checkbox" class="handled-checkbox w-5 h-5"
+                                        onchange="toggleHandled(this, '{{ $support->support_id }}')"
+                                        {{ $support->handled ? 'checked' : '' }}>
+
+                                </td>
+                            </tr>
+                        @endforeach
+
+                    </tbody>
                 </table>
             </div>
 
             <!-- Mobile Cards -->
-            <div class="md:hidden space-y-4 p-4" id="userCards"></div>
+            {{-- <div class="md:hidden space-y-4 p-4" id="userCards"></div> --}}
         </div>
     </div>
 
     <script>
-        let users = [{
-                id: 'S0001',
-                email: '1@gmail.com',
-                info: 'mantab'
-            },
-            {
-                id: 'S0002',
-                email: '2@gmail.com',
-                info: 'mantabb'
-            },
-            {
-                id: 'S0003',
-                email: '3@gmail.com',
-                info: 'mantabbb'
-            }
-        ];
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll("input[type=checkbox]").forEach(checkbox => {
+                const row = checkbox.closest('tr');
+                if (checkbox.checked) {
+                    row.classList.add('line-through', 'text-gray-500');
+                }
+            });
+        });
 
-        let deleteMode = false;
-
-        function toggleHandled(checkbox) {
+        function toggleHandled(checkbox, id) {
             const row = checkbox.closest('tr');
-            if (checkbox.checked) {
+            const isChecked = checkbox.checked;
+
+            if (isChecked) {
                 row.classList.add('line-through', 'text-gray-500');
             } else {
                 row.classList.remove('line-through', 'text-gray-500');
             }
+
+            fetch(`/update-handled/${id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: JSON.stringify({
+                        handled: isChecked
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.success) {
+                        alert('Gagal memperbarui status handled');
+                        checkbox.checked = !isChecked;
+                        row.classList.toggle('line-through', isChecked);
+                        row.classList.toggle('text-gray-500', isChecked);
+                    }
+                })
+                .catch(() => {
+                    alert('Terjadi kesalahan, coba lagi.');
+                    checkbox.checked = !isChecked;
+                    row.classList.toggle('line-through', isChecked);
+                    row.classList.toggle('text-gray-500', isChecked);
+                });
         }
-
-
-        function populateTable() {
-            const tableBody = document.getElementById('userTable');
-            const cardContainer = document.getElementById('userCards');
-
-            tableBody.innerHTML = '';
-            cardContainer.innerHTML = '';
-
-            users.forEach((user) => {
-                const row = document.createElement('tr');
-                row.className = 'border-b hover:bg-gray-50';
-
-                row.innerHTML = `
-                    <td class="p-3 relative action-cell">
-                        ${deleteMode 
-                            ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
-                            : `<button class="hidden"></button>`
-                                                                                                   
-                        }
-                    </td>
-                     <td class="p-3">${user.id}</td>
-                    <td class="p-3">${user.email}</td>
-                    <td class="p-3">${user.info}</td>
-                    <td class="p-3 text-center"> 
-                        <input type="checkbox" class="handled-checkbox w-5 h-5" onchange="toggleHandled(this)">
-                    </td>
-                   
-                `;
-                tableBody.appendChild(row);
-
-                // Mobile Card
-                const card = document.createElement('div');
-                card.className = "bg-white p-4 rounded-lg shadow-md";
-                card.innerHTML = `
-                    <div class="flex justify-between items-center p-3 rounded-lg bg-white">
-                        <div>
-                            <h3 class="text-lg font-bold text-green-800">${user.id}</h3>
-                            <p class="text-gray-600"><strong>Email:</strong> ${user.email}</p>
-                            <p class="text-gray-600"><strong>Address:</strong> ${user.info}</p>
-                        </div>
-                        <div class="relative">
-                            ${deleteMode 
-                                ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
-                                : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                                                                                                                                                                                                                                    <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                                                                                                                                                                                                                        <ul class="text-sm">
-                                                                                                                                                                                                                                                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                                                                                                                                                                                                               <a href="/updaterestaurantinfo?id=${user.id}">Update restaurant information</a>
-                                                                                                                                                                                                                                                           </li>
-                                                                                                                                                                                                                                                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete restaurant</li>
-                                                                                                                                                                                                                                                        </ul>
-                                                                                                                                                                                                                                                    </div>`
-                            }
-                        </div>
-                    </div>
-                `;
-
-                cardContainer.appendChild(card);
-            });
-        }
-
-        function handleTrashButton() {
-            if (!deleteMode) {
-                toggleDeleteMode();
-            } else {
-                deleteSelectedUsers();
-            }
-        }
-
-        function toggleDeleteMode() {
-            deleteMode = true;
-            populateTable();
-            document.getElementById("delete-btn").classList.add("text-red-800");
-        }
-
-        function deleteSelectedUsers() {
-            let checkboxes = document.querySelectorAll(".delete-checkbox:checked");
-
-            if (checkboxes.length === 0) {
-                alert("No users selected for deletion.");
-                exitDeleteMode();
-                return;
-            }
-
-            if (confirm("Are you sure you want to delete selected support?")) {
-                let idsToDelete = Array.from(checkboxes).map(checkbox => checkbox.dataset.id);
-
-                users = users.filter(user => !idsToDelete.includes(user.id));
-
-                alert("Selected supports have been deleted successfully!");
-            }
-
-            exitDeleteMode();
-        }
-
-        function exitDeleteMode() {
-            deleteMode = false;
-            document.getElementById("delete-btn").classList.remove("text-red-800");
-            populateTable();
-        }
-
-        function toggleDropdown(button) {
-            let dropdown = button.nextElementSibling;
-            document.querySelectorAll(".dropdown").forEach(el => el.classList.add("hidden"));
-            dropdown.classList.toggle("hidden");
-        }
-
-        function confirmDeleteUser(userId) {
-            if (confirm("Are you sure you want to delete this support?")) {
-                users = users.filter(user => user.id !== userId);
-                populateTable();
-                alert("Support deleted successfully!");
-            }
-        }
-
-        document.addEventListener("click", function(e) {
-            if (!e.target.closest(".dots-menu") && !e.target.closest(".dropdown")) {
-                document.querySelectorAll(".dropdown").forEach(el => el.classList.add("hidden"));
-            }
-        });
-
-        populateTable();
-
-        // Hamburger menu toggle functionality
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const menu = document.getElementById('menu');
-
-        hamburgerBtn.addEventListener('click', () => {
-            menu.classList.toggle('hidden'); // Show or hide the menu
-        });
     </script>
+
+
 </body>
 
 </html>

@@ -132,3 +132,12 @@ Route::get('/signin', function () {
 Route::get('/dashboardAdmin', function () {
     return view('dashboardAdmin');
 });
+
+use App\Http\Controllers\SupportController;
+
+Route::post('/contactus', [SupportController::class, 'store'])->name('contactus');
+Route::post('/update-handled/{id}', [SupportController::class, 'updateHandled']);
+
+use App\Models\Support;
+
+Route::get('/support', [SupportController::class, 'index'])->name('support.index');
