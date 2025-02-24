@@ -157,7 +157,7 @@
                     <div
                         class="absolute bottom-[-70px] left-1/2 transform -translate-x-1/2 bg-teal-700 w-32 h-32 rounded-full flex items-center justify-center z-20 transition duration-300 group-hover:bg-black">
                         <div class="text-white text-lg">
-                            <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                            <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                             <svg fill="white" width="80" height="80" viewBox="-1.5 0 19 19"
                                 xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg">
                                 <path
