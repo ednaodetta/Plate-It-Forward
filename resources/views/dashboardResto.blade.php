@@ -55,64 +55,81 @@
         </header>
 
         <div class="container mx-auto mt-24 px-6">
-            <div class="max-w-6xl mx-auto bg-Defaultwhite p-6 rounded-lg">
+            <div class="w-full mx-auto bg-DefaultWhite p-6 rounded-lg">
                 <div class="flex justify-between items-center mb-6">
-                    <h1 class="text-2xl font-bold font-brandon">Hello, Ronald!</h1>
+                    <h1 class="text-2xl font-bold font-brandonLight">Hello, McD Sentul City!</h1>
                     <div class="bg-white px-6 py-3 rounded-lg text-lg font-semibold shadow border border-gray-300 font-brandon">
                         Total Donation: <span class="text-2xl font-bold font-brandon">Rp 2.000.000.000</span>
                     </div>
-                    <div id="clock" class="text-xl font-bold"></div>
-                </div>
+                <div id="clock" class="text-xl font-bold"></div>
+            </div>
 
-                <div class="flex flex-row gap-6 mb-6">
-                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 h-full flex-1 flex flex-col">
-                        <h2 class="font-semibold text-lg mb-2 font-brandon">Top Donors</h2>
-                        <ul class="space-y-1 font-brandon">
-                            <li>🏆 Asha Ni Bos</li>
-                            <li>2. Bro Ronal</li>
-                            <li>3. Edan</li>
-                            <li>4. Lyly</li>
-                            <li>5. Noris</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 h-full flex-1 flex flex-col">
-                        <h2 class="font-semibold text-lg mb-2 font-brandon">Top Restaurant</h2>
-                        <ul class="space-y-1 font-brandon">
-                            <li>🏆  McDonald's, Sentul City</li>
-                            <li>2. KFC, Salemba</li>
-                            <li>3. Salad Point, Tebet</li>
-                            <li>4. J'CO, Grand Indonesia</li>
-                            <li>5. Gamchi, Senayan City</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 h-full flex-1 flex flex-col">
-                        <h2 class="font-semibold text-lg mb-2 font-brandon"> Most Donated Orphanages</h2>
-                        <ul class="space-y-1 font-brandon">
-                            <li>🏆 Panti Asuhan Bukit Karmel</li>
-                            <li>2. Panti Asuhan 5 Roti dan 2 Ikan</li>
-                            <li>3. Panti Asuhan Pelangi Kasih</li>
-                            <li>4. Panti Asuhan Permata Hati</li>
-                            <li>5. Panti Asuhan Kedung Halang</li>
-                        </ul>
-                    </div>
-                </div>
 
                 <div class="flex flex-row gap-6">
                     <div class="bg-white p-4 rounded-lg shadow border border-gray-300 flex flex-col items-center h-full flex-1">
-                        <span class="text-lg font-semibold font-brandon">All User</span>
-                        <span class="text-2xl font-bold font-brandon">10</span>
+                        <span class="text-lg font-semibold font-brandon">All Order</span>
+                        <span class="text-2xl font-bold font-brandon">15</span>
                     </div>
                     <div class="bg-white p-4 rounded-lg shadow border border-gray-300 flex flex-col items-center h-full flex-1">
-                        <span class="text-lg font-semibold font-brandon">All Restaurant</span>
-                        <span class="text-2xl font-bold font-brandon">5</span>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 flex flex-col items-center h-full flex-1">
-                        <span class="text-lg font-semibold font-brandon">All Orphanages</span>
+                        <span class="text-lg font-semibold font-brandon">All Portion Donate</span>
                         <span class="text-2xl font-bold font-brandon">15</span>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Container Utama -->
+        <div class="container mx-auto px-4 my-10">
+            <!-- Judul -->
+             <div class="flex flex-col">
+                <h1 class="text-3xl font-bold text-teal-700 mb-6 font-brandon">List Of Recent Order List</h1>
+             </div>
+
+            <!-- Tabel -->
+            <div class="overflow-x-auto">
+            <table id="OrderTable" class="w-full shadow-md rounded overflow-hidden">
+                <!-- Header Tabel -->
+                <thead class="bg-gray-100">
+                <tr class="bg-whitecream text-gray-700">
+                    <th class="px-4 py-2 text-left font-semibold font-brandon">OrderID</th>
+                    <th class="px-4 py-2 text-left font-semibold font-brandon">Transaction Detail</th>
+                    <th class="px-4 py-2 text-left font-semibold font-brandon">Total Price</th>
+                    <th class="px-4 py-2 text-left font-semibold font-brandon">Status</th>
+                </tr>
+                </thead>
+
+                <!-- Isi Tabel -->
+                <tbody class="bg-white rounded-md">
+                <!-- Order 1 -->
+                <tr class="rounded-md border-b" data-id="1">
+                    <td class="px-4 py-3 font-brandonLight">ID001</td>
+                    <td class="px-4 py-3 font-brandonLight">1 Mie ayam, 1 Bakso, 1 Teh es</td>
+                    <td class="px-4 py-3 font-bold font-brandonLight">IDR 65,000,00</td>
+                    <td class="px-4 py-3 text-red-500 font-medium font-brandonLight">Canceled</td>
+                </tr>
+                <!-- Order 2 -->
+                <tr class="rounded-lg border-b" data-id="2">
+                    <td class="px-4 py-3 font-brandonLight">ID002</td>
+                    <td class="px-4 py-3 font-brandonLight">1 Mie ayam, 1 Bakso, 1 Teh es, 1 Pizza, 10 Nasi padang</td>
+                    <td class="px-4 py-3 font-bold font-brandonLight">IDR 125,000,00</td>
+                    <td class="px-4 py-3 text-red-500 font-medium font-brandonLight">Canceled</td>
+                </tr>
+                <!-- Order 3 -->
+                <tr class="rounded-lg border-b" data-id="3">
+                    <td class="px-4 py-3 font-brandonLight">ID003</td>
+                    <td class="px-4 py-3 font-brandonLight">1 Mie ayam, 1 Bakso, 1 Teh es</td>
+                    <td class="px-4 py-3 font-bold font-brandonLight">IDR 75,000,00</td>
+                    <td class="px-4 py-3 text-green-500 font-medium font-brandonLight">Completed</td>
+                </tr>
+                <!-- Order 4 -->
+                <tr class="rounded-lg border-b" data-id="4">
+                    <td class="px-4 py-3 font-brandonLight">ID004</td>
+                    <td class="px-4 py-3 font-brandonLight">1 Mie ayam, 1 Bakso, 1 Teh es</td>
+                    <td class="px-4 py-3 font-bold font-brandonLight">IDR 25,000,00</td>
+                    <td class="px-4 py-3 text-orange-500 font-medium font-brandonLight">On Process</td>
+                </tr>
+                </tbody>
+            </table>
             </div>
         </div>
 
@@ -126,6 +143,24 @@
             }
             setInterval(updateClock, 1000);
             updateClock();
+        </script>
+
+        <script>
+            function sortTableByID() {
+                let table = document.getElementById("OrderTable").getElementsByTagName("tbody")[0];
+                let rows = Array.from(table.rows);
+
+                // Sorting berdasarkan atribut data-id dari besar ke kecil
+                rows.sort((a, b) => {
+                    return b.dataset.id - a.dataset.id;
+                });
+
+                // Tambahkan kembali row yang sudah diurutkan ke tabel
+                rows.forEach(row => table.appendChild(row));
+            }
+
+            // Jalankan saat halaman dimuat
+            window.onload = sortTableByID;
         </script>
     </body>
 </html>

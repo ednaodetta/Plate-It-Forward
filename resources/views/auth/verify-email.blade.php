@@ -1,10 +1,11 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
+    <img src="{{ asset('assets/Image/Logo copy.png') }}" class="w-40 h-40" alt="logo">
+    <div class="mb-4 text-m text-gray-600 font-brandon">
         {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
     </div>
 
     @if (session('status') == 'verification-link-sent')
-        <div class="mb-4 font-medium text-sm text-[#00615F]">
+        <div class="mb-4 font-medium text-sm text-[#00615F] font-brandon">
             {{ __('A new verification link has been sent to the email address you provided during registration.') }}
         </div>
     @endif
@@ -24,7 +25,7 @@
             @csrf
             <center>
                 <button type="submit"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none mt-5">
+                    class="font-brandon underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none mt-5">
                     {{ __('Log Out') }}
                 </button>
             </center>
