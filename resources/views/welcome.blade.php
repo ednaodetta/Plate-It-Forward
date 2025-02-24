@@ -184,7 +184,6 @@
                             Fostering growth and well-being through care and support.
                         </p>
                     </div>
-                    <!-- Icon Circle -->
                     <div
                         class="absolute bottom-[-70px] left-1/2 transform -translate-x-1/2 bg-teal-700 w-32 h-32 rounded-full flex items-center justify-center z-20 transition duration-300 group-hover:bg-black">
                         <div class="text-white text-lg">
