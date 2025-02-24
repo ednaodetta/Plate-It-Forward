@@ -46,39 +46,42 @@
     </header>
 
     <main class="w-[90%] mx-auto mt-24 p-7 bg-whitecream rounded-lg relative">
-        <a href="/restaurantinfo" class="absolute -top-10 left-0 text-ijo font-semibold hover:underline">← Back</a>
-        <h1 class="text-3xl font-bold text-DefaultGreen">Restaurant’s Information</h1>
+        <a href="/restaurantinfo" class="absolute -top-10 left-0 text-ijo font-semibold hover:underline font-gotham">←
+            Back</a>
+        <h1 class="text-3xl font-bold text-DefaultGreen font-gotham">Restaurant’s Information</h1>
 
         <form class="mt-4">
             <div class="mb-4">
-                <label class="block text-lg font-semibold text-gray-700">Restaurant ID</label>
-                <input id="user-id" type="text" class="w-full border border-gray-300 p-3 rounded-md bg-gray-100"
-                    readonly>
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">Restaurant ID</label>
+                <input id="user-id" type="text"
+                    class="w-full border border-gray-300 p-3 rounded-md bg-gray-100 font-brandon" readonly>
             </div>
 
             <div class="mb-4">
-                <label class="block text-lg font-semibold text-gray-700">Name</label>
-                <input id="user-name" type="text" class="w-full border border-gray-300 p-3 rounded-md">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">Name</label>
+                <input id="user-name" type="text" class="w-full border border-gray-300 p-3 rounded-md font-brandon">
             </div>
 
             <div class="mb-6">
-                <label class="block text-lg font-semibold text-gray-700">E-mail</label>
-                <input id="user-email" type="email" class="w-full border border-gray-300 p-3 rounded-md">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">E-mail</label>
+                <input id="user-email" type="email" class="w-full border border-gray-300 p-3 rounded-md font-brandon">
             </div>
 
             <div class="mb-6">
-                <label class="block text-lg font-semibold text-gray-700">Address</label>
-                <input id="user-address" type="text" class="w-full border border-gray-300 p-3 rounded-md">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">Address</label>
+                <input id="user-address" type="text"
+                    class="w-full border border-gray-300 p-3 rounded-md font-brandon">
             </div>
 
             <div class="mb-6">
-                <label class="block text-lg font-semibold text-gray-700">City</label>
-                <input id="user-city" type="text" class="w-full border border-gray-300 p-3 rounded-md">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">City</label>
+                <input id="user-city" type="text" class="w-full border border-gray-300 p-3 rounded-md font-brandon">
             </div>
 
             <div class="mb-6">
-                <label class="block text-lg font-semibold text-gray-700">Contact</label>
-                <input id="user-contact" type="text" class="w-full border border-gray-300 p-3 rounded-md">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">Contact</label>
+                <input id="user-contact" type="text"
+                    class="w-full border border-gray-300 p-3 rounded-md font-brandon">
             </div>
 
             <div class="flex justify-end">

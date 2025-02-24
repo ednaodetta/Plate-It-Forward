@@ -133,7 +133,18 @@ Route::get('/dashboardAdmin', function () {
     return view('dashboardAdmin');
 });
 
+<<<<<<< HEAD
 Route::get('/dashboardResto', function () {
     return view('dashboardResto');
 });
 
+=======
+use App\Http\Controllers\SupportController;
+
+Route::post('/contactus', [SupportController::class, 'store'])->name('contactus');
+Route::post('/update-handled/{id}', [SupportController::class, 'updateHandled']);
+
+use App\Models\Support;
+
+Route::get('/support', [SupportController::class, 'index'])->name('support.index');
+>>>>>>> 8c9cddde13dd4d6bfd13db0d2dae1edf57d7375c

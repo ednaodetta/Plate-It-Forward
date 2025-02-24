@@ -17,6 +17,21 @@ export default {
                 'brandon': ['BrandonGrotesque'],
                 'brandonLight': ['BrandonGrotesque-Light']
             },
+            // fontFamily: {
+            //     'font-gotham': ['GothamBold'],
+            //     'font-brandon-black-italic': ['BrandonBlackItalic'],
+            //     'font-brandon-black': ['BrandonBlack'],
+            //     'font-brandon-bold-italic': ['BrandonBoldItalic'],
+            //     'font-brandon-bold': ['BrandonBold'],
+            //     'font-brandon-light-italic': ['BrandonLightItalic'],
+            //     'font-brandon-light': ['BrandonLight'],
+            //     'font-brandon-medium-italic': ['BrandonMediumItalic'],
+            //     'font-brandon-medium': ['BrandonMedium'],
+            //     'font-brandon-regular-italic': ['BrandonRegularItalic'],
+            //     'font-brandon': ['BrandonRegular'],
+            //     'font-brandon-thin-italic': ['BrandonThinItalic'],
+            //     'font-brandon-thin': ['BrandonThin'],
+            // },
             colors: {
                 'DefaultGreen': '#00615F',
                 'DefaultWhite': '#F9F3F0',

@@ -42,32 +42,31 @@
             <div class="signin-signup">
                 <form action="{{ route('restaurant.login') }}" class="sign-in-form" method="POST">
                     @csrf
-                    <img src="{{ asset('assets/Image/Logo.png') }}" class="w-40 h-40" alt="logo">
-                    <h2 class="text-DefaultGreen text-5xl mb-10">Sign In</h2>
-                    <div class="input-field input-pass w-8/12  bg-[#00615F] opacity-50">
+                    <img src="{{ asset('assets/Image/Logo copy.png') }}" class="w-40 h-40" alt="logo">
+                    <h2 class="text-DefaultGreen text-5xl mb-10 font-gotham">Sign In</h2>
+                    <div class="input-field input-pass w-8/12  bg-LightGreen font-brandon">
                         {{-- bg-LightGreen --}}
                         <i class="fas fa-envelope"></i>
                         <input class="focus:outline-none focus:ring-0" type="email" placeholder="Email" id="email"
                             name="email" :value="old('email')" autofocus autocomplete="username" required />
                         {{-- class="text-DefaultWhite focus:text-DefaultWhite placeholder:text-DefaultWhite"  --}}
-                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        <x-input-error :messages="$errors->login->get('email')" />
                     </div>
-                    <div class="input-field w-8/12 bg-[#00615F] opacity-50">
+                    <div class="input-field w-8/12 bg-LightGreen font-brandon">
                         <i class="fas fa-lock"></i>
                         <input class="focus:outline-none focus:ring-0" type="password" placeholder="Password"
                             id="pass" name="password" autocomplete="current-password" required />
-                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        <x-input-error :messages="$errors->login->get('password')" />
                     </div>
-                    <div class="flex items-center justify-end mt-4">
+                    <div class="flex items-center justify-end mt-4 md:w-96">
                         @if (Route::has('password.request'))
-                            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none"
+                            <a class="underline text-m text-gray-600 hover:text-gray-900 rounded-md focus:outline-none w-60 font-brandon"
                                 href="{{ route('password.request') }}">
                                 {{ __('Forgot your password?') }}
                             </a>
                         @endif
-
                         <button type="submit"
-                            class="font-gotham-bold bg-[#00615F] text-[#F9F3F0] py-2 rounded-full font-bold text-lg transition-all duration-300 ease-in-out text-center mt-4 hover:bg-[#F9F3F0] hover:text-[#00615F] cursor-pointer w-11/12">
+                            class="font-gotham bg-DefaultGreen text-DefaultWhite py-2 rounded-full font-bold text-lg transition-all duration-300 ease-in-out text-center mt-4 hover:bg-[#F9F3F0] hover:text-[#00615F] cursor-pointer w-11/12">
                             {{ __('Log in') }}
                         </button>
                     </div>
@@ -114,8 +113,8 @@
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content pr-16">
-                    <h2 class="text-4xl font-bold">Hi, Restaurant!</h2>
-                    <h3 class="text-3xl mt-2 mb-16">Serve Smiles, One Meal at a Time!</h3>
+                    <h2 class="text-4xl font-bold font-gotham">Hi, Restaurant!</h2>
+                    <h3 class="text-3xl mt-2 mb-16 font-brandon">Serve Smiles, One Meal at a Time!</h3>
                     {{-- <div class="font-gotham-bold w-6/12 bg-[#F9F3F0] text-[#00615F] py-2 rounded-full font-bold text-lg transition-all duration-300 ease-in-out text-center mt-4 hover:bg-[#00615F] hover:text-[#F9F3F0] cursor-pointer"
                         id="sign-up-btn">
                         Sign Up
