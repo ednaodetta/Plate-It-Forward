@@ -1,8 +1,4 @@
 {
-<<<<<<< HEAD
-  "resources/css/app.css": {
-    "file": "assets/app-BwHaPEbd.css",
-=======
   "public/assets/Image/judul.png": {
     "file": "assets/judul-BO6vTic_.png",
     "src": "public/assets/Image/judul.png"
@@ -11,18 +7,17 @@
     "file": "assets/keram_telor-_8VhcVFA.png",
     "src": "public/assets/Image/keram_telor.png"
   },
+  "public/fonts/gotham-htf-bold.otf": {
+    "file": "assets/gotham-htf-bold-DMoOoeMi.otf",
+    "src": "public/fonts/gotham-htf-bold.otf"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-BNsfrONY.css",
->>>>>>> f9ba76db5a78450fa86d83c5a3b197ce96134e99
+    "file": "assets/app-CrlJXmOd.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-<<<<<<< HEAD
-    "file": "assets/app-CAkSn3BF.js",
-=======
-    "file": "assets/app-D-FaURHc.js",
->>>>>>> f9ba76db5a78450fa86d83c5a3b197ce96134e99
+    "file": "assets/app-5Xb-APZy.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
