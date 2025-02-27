@@ -7,13 +7,17 @@
     "file": "assets/keram_telor-_8VhcVFA.png",
     "src": "public/assets/Image/keram_telor.png"
   },
+  "public/fonts/gotham-htf-bold.otf": {
+    "file": "assets/gotham-htf-bold-DMoOoeMi.otf",
+    "src": "public/fonts/gotham-htf-bold.otf"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-BNsfrONY.css",
+    "file": "assets/app-CrlJXmOd.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-D-FaURHc.js",
+    "file": "assets/app-5Xb-APZy.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
