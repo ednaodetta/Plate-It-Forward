@@ -1,8 +1,13 @@
 <x-app-layout>
+
+    <x-navbarAfterLogin></x-navbarAfterLogin>
+
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
+        <div class="mt-8 bg-gradient-to-r from-green-800 to-blue-500 text-white p-6 rounded-lg shadow-lg">
+            <h2 class="font-bold text-1xl sm:text-2xl lg:text-2xl leading-tight">
+                {{ 'Hello, ' }} {{ auth()->user()->name }} {{ '!' }}
+            </h2>
+        </div>
     </x-slot>
 
     <div class="py-12">

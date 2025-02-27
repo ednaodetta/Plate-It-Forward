@@ -95,10 +95,85 @@
     <!-- Main Content -->
     <div class="w-full pt-40 mx-auto py-8 flex-grow items-center">
         <div class="w-11/12 mx-auto flex justify-between items-center">
-            <h2 class="text-2xl font-bold text-DefaultGreen font-gotham">Restaurant's Information</h2>
-            <button id="delete-btn" onclick="handleTrashButton()" class="text-red-600 hover:text-red-800 text-xl">
-                🗑️
-            </button>
+            {{-- <h2 class="text-2xl font-bold text-DefaultGreen font-gotham">Restaurant's Information</h2> --}}
+            <div class="w-11/12 mx-auto flex justify-between items-center">
+                <!-- Left aligned Restaurant's Information -->
+                <h2 class="text-2xl font-bold text-DefaultGreen font-gotham">Restaurant's Information</h2>
+
+                <!-- Right aligned buttons side by side -->
+                <div class="flex justify-end items-center space-x-4">
+                    <button id="addOrphanageBtn"
+                        class="bg-green-600 text-white py-2 px-6 rounded-md hover:bg-green-700 focus:outline-none">
+                        Add Restaurant
+                    </button>
+
+                    <button id="delete-btn" onclick="handleTrashButton()"
+                        class="text-red-600 hover:text-red-800 text-xl">
+                        🗑️
+                    </button>
+                </div>
+            </div>
+
+            <!-- Add Orphanage Modal -->
+            <div id="addOrphanageModal"
+                class="modal hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+                <div class="bg-white p-6 rounded-md w-96 shadow-lg">
+                    <h3 class="text-xl font-semibold text-green-800 mb-4">Add New Restaurant</h3>
+                    <form id="addOrphanageForm">
+                        <div class="mb-4">
+                            <label for="restaurantName" class="block text-lg font-semibold text-gray-700">Name</label>
+                            <input type="text" id="restaurantName"
+                                class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="restaurantEmail" class="block text-lg font-semibold text-gray-700">Email</label>
+                            <input type="text" id="restaurantEmail"
+                                class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="restaurantAddress"
+                                class="block text-lg font-semibold text-gray-700">Address</label>
+                            <input type="text" id="restaurantAddress"
+                                class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="restaurantCity" class="block text-lg font-semibold text-gray-700">City</label>
+                            <input type="text" id="restaurantCity"
+                                class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="restaurantContact"
+                                class="block text-lg font-semibold text-gray-700">Contact</label>
+                            <input type="text" id="restaurantContact"
+                                class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="restaurantPassword"
+                                class="block text-lg font-semibold text-gray-700">Password</label>
+                            <input type="password" id="restaurantPassword" name="password"
+                                class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
+                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="restaurantConfirmPassword"
+                                class="block text-lg font-semibold text-gray-700">Confirm Password</label>
+                            <input type="password" name="password_confirmation" id="restaurantPassword"
+                                class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
+                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                        </div>
+
+
+
+                        <div class="flex justify-end">
+                            <button type="submit"
+                                class="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700">Save</button>
+                            <button type="button" onclick="closeModal()"
+                                class="ml-2 text-gray-600 px-6 py-3 rounded-md hover:bg-gray-100">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
 
         <div class="bg-white rounded-lg w-11/12 mx-auto shadow-md mt-4">
@@ -124,7 +199,37 @@
             <div class="md:hidden space-y-4 p-4" id="userCards"></div>
         </div>
     </div>
+    <script>
+        // Buka modal
+        document.getElementById('addOrphanageBtn').addEventListener('click', function() {
+            document.getElementById('addOrphanageModal').classList.remove('hidden');
+        });
 
+        // Tutup modal
+        function closeModal() {
+            document.getElementById('addOrphanageModal').classList.add('hidden');
+        }
+
+        // Menangani pengiriman form
+        document.getElementById('addOrphanageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const orphanageName = document.getElementById('orphanageName').value;
+            const location = document.getElementById('location').value;
+            const donation = document.getElementById('donation').value;
+
+            // Tambahkan data panti asuhan baru ke dalam array users
+            users.push({
+                id: orphanageName,
+                name: location,
+                email: donation
+            });
+
+            // Tutup modal dan perbarui tabel
+            closeModal();
+            populateTable();
+        });
+    </script>
     <script>
         let users = [{
                 id: 'R0001',
@@ -170,14 +275,14 @@
                         ${deleteMode 
                             ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                             : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                                                                                                                                                                       <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                                                                                                                                                           <ul class="text-sm">
-                                                                                                                                                                                               <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                                                                                                                                                   <a href="/updaterestaurantinfo?id=${user.id}">Update restaurant information</a>
-                                                                                                                                                                                               </li>
-                                                                                                                                                                                               <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete restaurant</li>
-                                                                                                                                                                                           </ul>
-                                                                                                                                                                                       </div>`
+                                                                                                                                                                                                                                                       <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                                                                                                                                                                                                                           <ul class="text-sm">
+                                                                                                                                                                                                                                                               <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                                                                                                                                                                                                   <a href="/updaterestaurantinfo?id=${user.id}">Update restaurant information</a>
+                                                                                                                                                                                                                                                               </li>
+                                                                                                                                                                                                                                                               <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete restaurant</li>
+                                                                                                                                                                                                                                                           </ul>
+                                                                                                                                                                                                                                                       </div>`
                         }
                     </td>
                      <td class="p-3">${user.id}</td>
@@ -206,14 +311,14 @@
                             ${deleteMode 
                                 ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                                 : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                                                                                                                                                                        <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                                                                                                                                                            <ul class="text-sm">
-                                                                                                                                                                                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                                                                                                                                                   <a href="/updaterestaurantinfo?id=${user.id}">Update restaurant information</a>
-                                                                                                                                                                                               </li>
-                                                                                                                                                                                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete restaurant</li>
-                                                                                                                                                                                            </ul>
-                                                                                                                                                                                        </div>`
+                                                                                                                                                                                                                                                        <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                                                                                                                                                                                                                            <ul class="text-sm">
+                                                                                                                                                                                                                                                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                                                                                                                                                                                                   <a href="/updaterestaurantinfo?id=${user.id}">Update restaurant information</a>
+                                                                                                                                                                                                                                                               </li>
+                                                                                                                                                                                                                                                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete restaurant</li>
+                                                                                                                                                                                                                                                            </ul>
+                                                                                                                                                                                                                                                        </div>`
                             }
                         </div>
                     </div>

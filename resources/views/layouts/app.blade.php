@@ -20,19 +20,18 @@
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 
-        <div>
+        {{-- <div>
             @if (Auth::guard('admin')->check())
                 <p>Guard yang aktif: admin</p>
             @elseif(Auth::guard('restaurant')->check())
                 <p>Guard yang aktif: restaurant</p>
             @elseif(Auth::guard('web')->check())
-                {{-- 'web' biasanya untuk user biasa --}}
                 <p>Guard yang aktif: user</p>
             @else
                 <p>Tidak ada yang login</p>
             @endif
+        </div> --}}
 
-        </div>
         <!-- Page Heading -->
         @isset($header)
             <header class="bg-white shadow">
