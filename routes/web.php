@@ -133,6 +133,10 @@ Route::get('/dashboardAdmin', function () {
     return view('dashboardAdmin');
 });
 
+Route::get('/dashboardResto', function () {
+    return view('dashboardResto');
+});
+
 use App\Http\Controllers\SupportController;
 
 Route::post('/contactus', [SupportController::class, 'store'])->name('contactus');
