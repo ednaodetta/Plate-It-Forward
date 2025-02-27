@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/profile', function () {
+Route::get('/profilee', function () {
     return view('profile');
 });
 
