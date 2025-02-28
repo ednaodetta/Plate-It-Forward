@@ -114,55 +114,52 @@
                 </div>
             </div>
 
-            <!-- Add Orphanage Modal -->
+            <!-- Add Restaurant Modal -->
             <div id="addOrphanageModal"
                 class="modal hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
                 <div class="bg-white p-6 rounded-md w-96 shadow-lg">
                     <h3 class="text-xl font-semibold text-green-800 mb-4">Add New Restaurant</h3>
-                    <form id="addOrphanageForm">
+                    <form method="POST" action="{{ route('restaurant.store') }}">
+                        @csrf
                         <div class="mb-4">
                             <label for="restaurantName" class="block text-lg font-semibold text-gray-700">Name</label>
-                            <input type="text" id="restaurantName"
+                            <input type="text" name="name" id="restaurantName"
                                 class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
                         </div>
                         <div class="mb-4">
                             <label for="restaurantEmail" class="block text-lg font-semibold text-gray-700">Email</label>
-                            <input type="text" id="restaurantEmail"
+                            <input type="email" name="email" id="restaurantEmail"
                                 class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
                         </div>
                         <div class="mb-4">
                             <label for="restaurantAddress"
                                 class="block text-lg font-semibold text-gray-700">Address</label>
-                            <input type="text" id="restaurantAddress"
+                            <input type="text" name="address" id="restaurantAddress"
                                 class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
                         </div>
                         <div class="mb-4">
                             <label for="restaurantCity" class="block text-lg font-semibold text-gray-700">City</label>
-                            <input type="text" id="restaurantCity"
+                            <input type="text" name="city" id="restaurantCity"
                                 class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
                         </div>
                         <div class="mb-4">
                             <label for="restaurantContact"
                                 class="block text-lg font-semibold text-gray-700">Contact</label>
-                            <input type="text" id="restaurantContact"
+                            <input type="text" name="contact" id="restaurantContact"
                                 class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
                         </div>
                         <div class="mb-4">
                             <label for="restaurantPassword"
                                 class="block text-lg font-semibold text-gray-700">Password</label>
-                            <input type="password" id="restaurantPassword" name="password"
+                            <input type="password" name="password" id="restaurantPassword"
                                 class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
                         </div>
                         <div class="mb-4">
                             <label for="restaurantConfirmPassword"
                                 class="block text-lg font-semibold text-gray-700">Confirm Password</label>
-                            <input type="password" name="password_confirmation" id="restaurantPassword"
+                            <input type="password" name="password_confirmation" id="restaurantConfirmPassword"
                                 class="w-full border border-gray-300 p-3 rounded-md bg-gray-100" required>
-                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                         </div>
-
-
 
                         <div class="flex justify-end">
                             <button type="submit"
@@ -173,7 +170,6 @@
                     </form>
                 </div>
             </div>
-
         </div>
 
         <div class="bg-white rounded-lg w-11/12 mx-auto shadow-md mt-4">

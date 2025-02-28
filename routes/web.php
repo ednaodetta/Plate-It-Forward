@@ -145,3 +145,6 @@ Route::post('/update-handled/{id}', [SupportController::class, 'updateHandled'])
 use App\Models\Support;
 
 Route::get('/support', [SupportController::class, 'index'])->name('support.index');
+
+Route::post('/add-restaurant', [RestaurantController::class, 'store'])->name('restaurant.store');
+
