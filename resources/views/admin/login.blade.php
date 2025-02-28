@@ -59,14 +59,14 @@
                         {{-- bg-LightGreen --}}
                         <i class="fas fa-envelope"></i>
                         <input class="focus:outline-none focus:ring-0" type="email" placeholder="Email" id="email"
-                            name="email" :value="old('email')" autofocus autocomplete="username" required />
+                            name="email" :value="old('email')" autofocus autocomplete="off" required />
                         {{-- class="text-DefaultWhite focus:text-DefaultWhite placeholder:text-DefaultWhite"  --}}
                         <x-input-error :messages="$errors->login->get('email')" />
                     </div>
                     <div class="input-field w-8/12 bg-LightGreen font-brandon">
                         <i class="fas fa-lock"></i>
                         <input class="focus:outline-none focus:ring-0" type="password" placeholder="Password"
-                            id="pass" name="password" autocomplete="current-password" required />
+                            id="pass" name="password" autocomplete="off" required />
                         <x-input-error :messages="$errors->login->get('password')" />
                     </div>
                     <div class="flex items-center justify-end mt-4 md:w-96">
@@ -77,8 +77,8 @@
                             </a>
                         @endif
                         <button type="submit"
-                            class="font-gotham bg-DefaultGreen text-DefaultWhite py-2 rounded-full font-bold text-lg transition-all duration-300 ease-in-out text-center mt-4 hover:bg-[#F9F3F0] hover:text-[#00615F] cursor-pointer w-11/12">
-                            {{ __('Log in') }}
+                            class="font-gotham bg-DefaultGreen text-DefaultWhite py-2 rounded-full font-bold text-lg transition-all duration-300 ease-in-out text-center mt-4 hover:bg-[#F9F3F0] hover:text-[#00615F] cursor-pointer w-11/12 hover:outline hover:outline-[#00615F]">
+                            {{ __('Sign In') }}
                         </button>
                     </div>
 
