@@ -104,7 +104,7 @@ class AuthenticatedSessionController extends Controller
         return $guard === 'web'
             ? redirect()->route('home')
             // : redirect()->route("{$guard}.login");
-            : redirect()->route("{$guard}");
+            : redirect()->route("{$guard}.login");
         // : redirect()->route("admin");
     }
 }
