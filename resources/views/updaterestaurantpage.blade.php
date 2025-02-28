@@ -87,6 +87,9 @@
             <div class="flex justify-end">
                 <button class="bg-ijo text-white px-6 py-3 rounded-md hover:bg-teal font-semibold">SAVE</button>
             </div>
+            <x-primary-button class="ms-4 w-32 h-10 center">
+                {{ __('Save') }}
+            </x-primary-button>
         </form>
     </main>
 
