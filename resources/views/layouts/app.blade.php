@@ -46,6 +46,7 @@
             {{ $slot }}
         </main>
     </div>
+    {!! session('console') !!}
 </body>
 
 </html>
