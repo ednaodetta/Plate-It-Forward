@@ -49,6 +49,6 @@ class RegisteredRestaurantController extends Controller
 
         Auth::guard('restaurant')->login($restaurant);
 
-        return redirect(route('restaurant.dashboard', absolute: false));
+        return redirect(route('restaurantinfo', absolute: false));
     }
 }

@@ -7,13 +7,17 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+// use App\Http\Controllers\Auth\RegisteredOrphanageController;
+// Route::post('/panti', [RegisteredOrphanageController::class, 'store'])->name('orphanage.add');
+require __DIR__.'/auth_orphanage.php'; 
+
 Route::get('/profilee', function () {
     return view('profile');
 });
 
 Route::get('/panti', function () {
     return view('panti');
-});
+})->name('panti');
 
 Route::get('/my-donations', function () {
     return view('mydonations');
@@ -68,7 +72,7 @@ Route::get('/userinfo', function () {
 
 Route::get('/restaurantinfo', function () {
     return view('restaurantinfopage');
-});
+})->name('restaurantinfo');
 
 Route::get('/updaterestaurantinfo', function () {
     return view('updaterestaurantpage');
@@ -131,11 +135,11 @@ Route::get('/signin', function () {
 
 Route::get('/dashboardAdmin', function () {
     return view('dashboardAdmin');
-});
+})->name('dashboardAdmin');
 
 Route::get('/dashboardResto', function () {
     return view('dashboardResto');
-});
+})->name('dashboardResto');
 
 use App\Http\Controllers\SupportController;
 
@@ -145,3 +149,6 @@ Route::post('/update-handled/{id}', [SupportController::class, 'updateHandled'])
 use App\Models\Support;
 
 Route::get('/support', [SupportController::class, 'index'])->name('support.index');
+
+Route::post('/add-restaurant', [RestaurantController::class, 'store'])->name('restaurant.store');
+
