@@ -51,7 +51,7 @@
     <div class="cont mt-200">
         <div class="forms-container">
             <div class="signin-signup">
-                <form action="{{ route('admin.login') }}" class="sign-in-form" method="POST">
+                <form action="{{ route('admin.login') }}" class="sign-in-form pb-5" method="POST">
                     @csrf
                     <img src="{{ asset('assets/Image/Logo copy.png') }}" class="w-40 h-40" alt="logo">
                     <h2 class="text-DefaultGreen text-5xl mb-10 font-gotham">Sign In</h2>
@@ -72,7 +72,7 @@
                     <div class="flex items-center justify-end mt-4 md:w-96">
                         @if (Route::has('password.request'))
                             <a class="underline text-m text-gray-600 hover:text-gray-900 rounded-md focus:outline-none w-60 font-brandon"
-                                href="{{ route('password.request') }}">
+                                href="{{ route('admin.forgot') }}">
                                 {{ __('Forgot your password?') }}
                             </a>
                         @endif

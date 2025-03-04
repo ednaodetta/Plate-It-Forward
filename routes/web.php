@@ -1,7 +1,16 @@
 <?php
+<<<<<<< HEAD
 
 use App\Http\Controllers\ProductController;
+=======
+use App\Models\Restaurant;
+use Illuminate\Http\Request;
+use App\Http\Controllers\RestaurantController;
+>>>>>>> 3d1f9287778887435fe27f8f6db7715f201bbf78
 use Illuminate\Support\Facades\Route;
+
+Route::get('/api/restaurants', [RestaurantController::class, 'index']);
+
 // use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
@@ -12,13 +21,17 @@ Route::get('/', function () {
 
 
 
+// use App\Http\Controllers\Auth\RegisteredOrphanageController;
+// Route::post('/panti', [RegisteredOrphanageController::class, 'store'])->name('orphanage.add');
+require __DIR__.'/auth_orphanage.php'; 
+
 Route::get('/profilee', function () {
     return view('profile');
 });
 
 Route::get('/panti', function () {
     return view('panti');
-});
+})->name('panti');
 
 Route::get('/my-donations', function () {
     return view('mydonations');
@@ -43,6 +56,11 @@ Route::get('/restoranpage', function () {
 Route::get('/OrderListRestaurant', function () {
     return view('OrderListRestaurant');
 });
+
+// In routes/web.php
+Route::delete('/restaurant/{id}', [RestaurantController::class, 'destroy'])->name('restaurant.delete');
+
+Route::put('/restaurant/{id}/update', [RestaurantController::class, 'update'])->name('restaurant.update');
 
 Route::get('/location', function () {
     return view('location');
@@ -71,13 +89,19 @@ Route::get('/userinfo', function () {
 });
 
 
-Route::get('/restaurantinfo', function () {
-    return view('restaurantinfopage');
-});
+// Route::get('/restaurantinfo', function () {
+//     return view('restaurantinfopage');
+// })->name('restaurantinfo');
 
-Route::get('/updaterestaurantinfo', function () {
-    return view('updaterestaurantpage');
-});
+
+Route::get('/restaurantinfo', [RestaurantController::class, 'index'])->name('restaurantinfo');
+
+
+// Route::get('/updaterestaurantinfo', function () {
+//     return view('updaterestaurantpage');
+// });
+
+Route::get('/updaterestaurantinfo/{id}', [RestaurantController::class, 'edit'])->name('restaurant.edit');
 
 Route::get('/updateorphanageinfo', function () {
     return view('updateOrphanage');
@@ -136,11 +160,11 @@ Route::get('/signin', function () {
 
 Route::get('/dashboardAdmin', function () {
     return view('dashboardAdmin');
-});
+})->name('dashboardAdmin');
 
 Route::get('/dashboardResto', function () {
     return view('dashboardResto');
-});
+})->name('dashboardResto');
 
 use App\Http\Controllers\SupportController;
 
@@ -151,8 +175,12 @@ use App\Models\Support;
 
 Route::get('/support', [SupportController::class, 'index'])->name('support.index');
 
+<<<<<<< HEAD
 
 
 
 Route::get('/menupage/{id}', [ProductController::class, 'menuPage'])->name('menupage');
+=======
+Route::post('/add-restaurant', [RestaurantController::class, 'store'])->name('restaurant.store');
+>>>>>>> 3d1f9287778887435fe27f8f6db7715f201bbf78
 

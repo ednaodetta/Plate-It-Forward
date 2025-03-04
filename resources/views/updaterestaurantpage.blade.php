@@ -49,8 +49,9 @@
         <a href="/restaurantinfo" class="absolute -top-10 left-0 text-ijo font-semibold hover:underline font-gotham">←
             Back</a>
         <h1 class="text-3xl font-bold text-DefaultGreen font-gotham">Restaurant’s Information</h1>
+        <h1 class="text-1xl font-bold text-black font-gotham">Click 'enter' in your keyboard to save changes<br><br></h1>
 
-        <form class="mt-4">
+        {{-- <form class="mt-4">
             <div class="mb-4">
                 <label class="block text-lg font-semibold text-gray-700 font-gotham">Restaurant ID</label>
                 <input id="user-id" type="text"
@@ -87,7 +88,116 @@
             <div class="flex justify-end">
                 <button class="bg-ijo text-white px-6 py-3 rounded-md hover:bg-teal font-semibold">SAVE</button>
             </div>
+            <x-primary-button class="ms-4 w-32 h-10 center">
+                {{ __('Save') }}
+            </x-primary-button>
+        </form> --}}
+
+        {{-- <form method="POST" action="{{ route('restaurant.update', $restaurant->id) }}">
+            @csrf
+            @method('PUT') <!-- Simulate a PUT request -->
+
+            <div class="mb-4">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">Restaurant ID</label>
+                <input id="user-id" type="text"
+                    class="w-full border border-gray-300 p-3 rounded-md bg-gray-100 font-brandon"
+                    value="{{ $restaurant->id }}" readonly>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">Name</label>
+                <input id="user-name" type="text" name="name"
+                    class="w-full border border-gray-300 p-3 rounded-md font-brandon"
+                    value="{{ old('name', $restaurant->name) }}">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">E-mail</label>
+                <input id="user-email" type="email" name="email"
+                    class="w-full border border-gray-300 p-3 rounded-md font-brandon"
+                    value="{{ old('email', $restaurant->email) }}">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">Address</label>
+                <input id="user-address" type="text" name="address"
+                    class="w-full border border-gray-300 p-3 rounded-md font-brandon"
+                    value="{{ old('address', $restaurant->address) }}">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">City</label>
+                <input id="user-city" type="text" name="city"
+                    class="w-full border border-gray-300 p-3 rounded-md font-brandon"
+                    value="{{ old('city', $restaurant->city) }}">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">Contact</label>
+                <input id="user-contact" type="text" name="contact"
+                    class="w-full border border-gray-300 p-3 rounded-md font-brandon"
+                    value="{{ old('contact', $restaurant->contact) }}">
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit"
+                    class="bg-ijo text-white px-6 py-3 rounded-md hover:bg-teal font-semibold">SAVE</button>
+            </div>
+        </form> --}}
+        <form method="POST" action="{{ route('restaurant.update', $restaurant->id) }}">
+            @csrf
+            @method('PUT') <!-- Simulate a PUT request -->
+
+            <div class="mb-4">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">Restaurant ID</label>
+                <input id="user-id" type="text"
+                    class="w-full border border-gray-300 p-3 rounded-md bg-gray-100 font-brandon"
+                    value="{{ $restaurant->id }}" readonly>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">Name</label>
+                <input id="user-name" type="text" name="name"
+                    class="w-full border border-gray-300 p-3 rounded-md font-brandon"
+                    value="{{ old('name', $restaurant->name) }}">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">E-mail</label>
+                <input id="user-email" type="email" name="email"
+                    class="w-full border border-gray-300 p-3 rounded-md font-brandon"
+                    value="{{ old('email', $restaurant->email) }}">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">Address</label>
+                <input id="user-address" type="text" name="address"
+                    class="w-full border border-gray-300 p-3 rounded-md font-brandon"
+                    value="{{ old('address', $restaurant->address) }}">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">City</label>
+                <input id="user-city" type="text" name="city"
+                    class="w-full border border-gray-300 p-3 rounded-md font-brandon"
+                    value="{{ old('city', $restaurant->city) }}">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-lg font-semibold text-gray-700 font-gotham">Contact</label>
+                <input id="user-contact" type="text" name="contact"
+                    class="w-full border border-gray-300 p-3 rounded-md font-brandon"
+                    value="{{ old('contact', $restaurant->contact) }}">
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit"
+                    class="bg-ijo text-white px-6 py-3 rounded-md hover:bg-teal font-semibold">SAVE</button>
+            </div>
+
         </form>
+
+
     </main>
 
     <footer class="bg-DefaultGreen text-white text-center py-20">
@@ -176,24 +286,23 @@
         }
 
         // Main function to update form fields dynamically
+        // Remove the fetchUserData function if using real data from the database
         function loadUserInfo() {
-            const userId = getQueryParam("id");
+            const userId = "{{ $restaurant->id }}"; // Get the restaurant ID passed from the controller
             if (!userId) {
                 alert("User ID not found!");
                 return;
             }
 
-            // Fetch user data
-            const user = fetchUserData(userId);
-
-            // Update form fields
+            // Populate the form with the actual data
             document.getElementById("user-id").value = userId;
-            document.getElementById("user-name").value = user.name;
-            document.getElementById("user-email").value = user.email;
-            document.getElementById("user-address").value = user.address;
-            document.getElementById("user-city").value = user.city;
-            document.getElementById("user-contact").value = user.contact;
+            document.getElementById("user-name").value = "{{ $restaurant->name }}";
+            document.getElementById("user-email").value = "{{ $restaurant->email }}";
+            document.getElementById("user-address").value = "{{ $restaurant->address }}";
+            document.getElementById("user-city").value = "{{ $restaurant->city }}";
+            document.getElementById("user-contact").value = "{{ $restaurant->contact }}";
         }
+
 
         // Call function on page load
         window.onload = loadUserInfo;
