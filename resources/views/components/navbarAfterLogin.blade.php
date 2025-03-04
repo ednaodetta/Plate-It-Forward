@@ -18,13 +18,16 @@
         <nav id="menu"
             class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
             <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
-                <li><a href="/" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Home</a></li>
-                <li><a href="restoranpage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurants</a>
+                <li><a href="/" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">Home</a></li>
+                <li><a href="/restoranpage"
+                        class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">Restaurants</a>
                 </li>
-                <li><a href="my-donations" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">My Donations</a>
+                <li><a href="/my-donations" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">My
+                        Donations</a></li>
+                <li><a href="/contact-us" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">Contact
+                        Us</a></li>
+                <li><a href="/profile" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">Profile</a>
                 </li>
-                <li><a href="contact-us" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Contact Us</a></li>
-                <li><a href="profile" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Profile</a></li>
             </ul>
         </nav>
     </div>
