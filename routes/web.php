@@ -1,11 +1,16 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\AuthController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+
+
 
 Route::get('/profilee', function () {
     return view('profile');
@@ -145,3 +150,9 @@ Route::post('/update-handled/{id}', [SupportController::class, 'updateHandled'])
 use App\Models\Support;
 
 Route::get('/support', [SupportController::class, 'index'])->name('support.index');
+
+
+
+
+Route::get('/menupage/{id}', [ProductController::class, 'menuPage'])->name('menupage');
+
