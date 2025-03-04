@@ -1,6 +1,11 @@
 <?php
-
+use App\Models\Restaurant;
+use Illuminate\Http\Request;
+use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/api/restaurants', [RestaurantController::class, 'index']);
+
 // use App\Http\Controllers\AuthController;
 
 // Route::get('/', function () {
@@ -43,6 +48,11 @@ Route::get('/OrderListRestaurant', function () {
     return view('OrderListRestaurant');
 });
 
+// In routes/web.php
+Route::delete('/restaurant/{id}', [RestaurantController::class, 'destroy'])->name('restaurant.delete');
+
+Route::put('/restaurant/{id}/update', [RestaurantController::class, 'update'])->name('restaurant.update');
+
 Route::get('/location', function () {
     return view('location');
 });
@@ -70,13 +80,19 @@ Route::get('/userinfo', function () {
 });
 
 
-Route::get('/restaurantinfo', function () {
-    return view('restaurantinfopage');
-})->name('restaurantinfo');
+// Route::get('/restaurantinfo', function () {
+//     return view('restaurantinfopage');
+// })->name('restaurantinfo');
 
-Route::get('/updaterestaurantinfo', function () {
-    return view('updaterestaurantpage');
-});
+
+Route::get('/restaurantinfo', [RestaurantController::class, 'index'])->name('restaurantinfo');
+
+
+// Route::get('/updaterestaurantinfo', function () {
+//     return view('updaterestaurantpage');
+// });
+
+Route::get('/updaterestaurantinfo/{id}', [RestaurantController::class, 'edit'])->name('restaurant.edit');
 
 Route::get('/updateorphanageinfo', function () {
     return view('updateOrphanage');
