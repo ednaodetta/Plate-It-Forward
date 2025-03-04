@@ -1,25 +1,16 @@
 <?php
-<<<<<<< HEAD
-
-use App\Http\Controllers\ProductController;
-=======
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\RestaurantController;
->>>>>>> 3d1f9287778887435fe27f8f6db7715f201bbf78
 use Illuminate\Support\Facades\Route;
 
 Route::get('/api/restaurants', [RestaurantController::class, 'index']);
 
 // use App\Http\Controllers\AuthController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-
-
+// Route::get('/', function () {
+//     return view('w-elcome');
+// });
 
 // use App\Http\Controllers\Auth\RegisteredOrphanageController;
 // Route::post('/panti', [RegisteredOrphanageController::class, 'store'])->name('orphanage.add');
@@ -175,12 +166,5 @@ use App\Models\Support;
 
 Route::get('/support', [SupportController::class, 'index'])->name('support.index');
 
-<<<<<<< HEAD
-
-
-
-Route::get('/menupage/{id}', [ProductController::class, 'menuPage'])->name('menupage');
-=======
 Route::post('/add-restaurant', [RestaurantController::class, 'store'])->name('restaurant.store');
->>>>>>> 3d1f9287778887435fe27f8f6db7715f201bbf78
 
