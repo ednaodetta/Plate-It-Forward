@@ -181,4 +181,3 @@ use App\Models\Support;
 Route::get('/support', [SupportController::class, 'index'])->name('support.index');
 
 Route::post('/add-restaurant', [RestaurantController::class, 'store'])->name('restaurant.store');
-
