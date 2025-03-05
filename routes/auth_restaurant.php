@@ -40,7 +40,7 @@ Route::get('/products', [ProductController::class, 'index'])->name('products')->
 // Route::get('/addproduct', [ProductController::class, 'create'])->name('products.create');
 
 
-Route::get('/addproduct', [ProductController::class, 'create'])->name('products.create');
+Route::get('/addproduct', [ProductController::class, 'createproduct'])->name('products.create');
 
 // Simpan data produk
 Route::post('/addproduct', [ProductController::class, 'store'])->name('products.store');
@@ -50,5 +50,8 @@ Route::post('/addproduct', [ProductController::class, 'store'])->name('products.
 Route::get('/productexp/{id}', [ProductsexpsController::class, 'show'])->name('productexp.show');
 
 
-Route::get('/addproductexp', [ProductsexpsController::class, 'create'])->name('addproductexp');
-Route::post('/addproductexp', [ProductsexpsController::class, 'store'])->name('productexp.store');
+
+
+Route::get('/addproductexp/{product_id}', [ProductsexpsController::class, 'create'])->name('productexp.create');
+Route::post('/productexp/store', [ProductsexpsController::class, 'store'])->name('productexp.store');
+
