@@ -93,7 +93,7 @@
           </div>
           <div class="flex justify-center pt-7 pb-7 gap-20 max-[1317px]:gap-8 overflow-hidden max-[1317px]:flex-wrap max-[430px]:gap-4">
             <!-- Item Jakarta -->
-            @foreach ($resto->unique('city') as $item)
+            @foreach ($city->unique('city') as $item)
             <div class="text-center max-[430px]:w-1/3">
               <div class="max-[1317px]:w-60 max-[1317px]:h-60 max-[430px]:w-20 max-[430px]:h-20 w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-gray">
                   <a href="{{ route('resto.list', ['city' => $item->city]) }}"><img src="{{ asset('assets/Image/keram_telor.png') }}" alt="Jakarta" class="w-full h-full object-cover"></a>
@@ -116,106 +116,33 @@
 
         <!-- Container -->
         <div class="relative overflow-hidden pt-5">
-            <!-- Wrapper -->
-            <div class="flex overflow-x-auto no-scrollbar gap-5 px-5">
-                <!-- Card 1 -->
-                <div class="flex-shrink-0 w-80 bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:scale-105 hover:bg-gray-100 relative">
-                    <!-- Logo Discount -->
-                    <div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-                        45% OFF
-                    </div>
-                    <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg" alt="Mie Ayam Kampung" />
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold italic">Mie Ayam Kampung, Bogor</h3>
-                        <p class="text-sm text-gray-500 mb-2">Bakmie</p>
-                        <div class="flex items-center mb-3">
-                            <span class="text-yellow-400">★</span>
-                            <span class="text-gray-700 font-semibold ml-1">4.5</span>
-                        </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="text-sm font-medium">$$</span>
-                            <span class="ml-2 text-sm">(40K+)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="flex-shrink-0 w-80 bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:scale-105 hover:bg-gray-100 relative">
-                    <!-- Logo Discount -->
-                    <div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">45% OFF</div>
-                    <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg" alt="Mie Ayam Kampung" />
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold italic">Mie Ayam Kampung, Bogor</h3>
-                        <p class="text-sm text-gray-500 mb-2">Bakmie</p>
-                        <div class="flex items-center mb-3">
-                            <span class="text-yellow-400">★</span>
-                            <span class="text-gray-700 font-semibold ml-1">4.5</span>
-                        </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="text-sm font-medium">$$</span>
-                            <span class="ml-2 text-sm">(40K+)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="flex-shrink-0 w-80 bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:scale-105 hover:bg-gray-100 relative">
-                    <!-- Logo Discount -->
-                    <div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">45% OFF</div>
-                    <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg" alt="Mie Ayam Kampung" />
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold italic">Mie Ayam Kampung, Bogor</h3>
-                        <p class="text-sm text-gray-500 mb-2">Bakmie</p>
-                        <div class="flex items-center mb-3">
-                            <span class="text-yellow-400">★</span>
-                            <span class="text-gray-700 font-semibold ml-1">4.5</span>
-                        </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="text-sm font-medium">$$</span>
-                            <span class="ml-2 text-sm">(40K+)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="flex-shrink-0 w-80 bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:scale-105 hover:bg-gray-100 relative">
-                    <!-- Logo Discount -->
-                    <div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">45% OFF</div>
-                    <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg" alt="Mie Ayam Kampung" />
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold italic">Mie Ayam Kampung, Bogor</h3>
-                        <p class="text-sm text-gray-500 mb-2">Bakmie</p>
-                        <div class="flex items-center mb-3">
-                            <span class="text-yellow-400">★</span>
-                            <span class="text-gray-700 font-semibold ml-1">4.5</span>
-                        </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="text-sm font-medium">$$</span>
-                            <span class="ml-2 text-sm">(40K+)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="flex-shrink-0 w-80 bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:scale-105 hover:bg-gray-100 relative">
-                    <!-- Logo Discount -->
-                    <div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">45% OFF</div>
-                    <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg" alt="Mie Ayam Kampung" />
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold italic">Mie Ayam Kampung, Bogor</h3>
-                        <p class="text-sm text-gray-500 mb-2">Bakmie</p>
-                        <div class="flex items-center mb-3">
-                            <span class="text-yellow-400">★</span>
-                            <span class="text-gray-700 font-semibold ml-1">4.5</span>
-                        </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="text-sm font-medium">$$</span>
-                            <span class="ml-2 text-sm">(40K+)</span>
-                        </div>
-                    </div>
-                </div>
-              </div>
-        </div>
+          <!-- Wrapper -->
+          <div class="flex overflow-x-auto no-scrollbar gap-5 px-5">
+              @foreach ($flashSaleProducts as $item)
+                  <!-- Card -->
+                  <div class="flex-shrink-0 w-80 bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:scale-105 hover:bg-gray-100 relative">
+                      <!-- Logo Discount -->
+                      <div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                          {{ number_format(($item->price_discount / 100) * 100, 0) }}% OFF
+                      </div>
+                      <img class="w-full h-48 object-cover" src="https://via.placeholder.com/300" alt="{{ $item->name }}" />
+                      <div class="p-4">
+                          <h3 class="text-lg font-semibold italic">{{ $item->name }}</h3>
+                          <p class="text-sm text-gray-500 mb-2">Kategori</p>
+                          <div class="flex items-center mb-3">
+                              <span class="text-yellow-400">★</span>
+                              <span class="text-gray-700 font-semibold ml-1">4.5</span>
+                          </div>
+                          <div class="flex items-center text-gray-600">
+                              <span class="text-sm font-medium">Rp {{ number_format($item->price_discount, 0, ',', '.') }}</span>
+                              <span class="ml-2 text-sm">({{ $item->quantity }} Stok)</span>
+                          </div>
+                      </div>
+                  </div>
+              @endforeach
+          </div>
+      </div>
+      
         <div>
           <h3 class="flex justify-center pt-10 text-4xl font-brandon max-[500px]:text-xl max-[529px]:text-xl">RECOMMENDED RESTAURANT</h3>
         </div>

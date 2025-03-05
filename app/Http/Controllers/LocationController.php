@@ -9,9 +9,9 @@ class LocationController extends Controller
     // Menampilkan halaman lokasi
     public function index()
     {
-        $resto = Restaurant::all();
+        $city = Restaurant::all();
 
-        return view('restoranpage',compact('resto')); // Pastikan ada file location.blade.php di resources/views
+        return view('restoranpage',compact('city')); // Pastikan ada file location.blade.php di resources/views
     }
 
     public function list(Request $request)

@@ -5,6 +5,7 @@ use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrphanageController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/api/restaurants', [RestaurantController::class, 'index']);
 
@@ -175,3 +176,5 @@ Route::post('/add-restaurant', [RestaurantController::class, 'store'])->name('re
 
 
 Route::get('/menupage', [RestaurantController::class, 'menu'])->name('menupage');
+
+Route::get('/restoranpage', [ProductController::class, 'restoran'])->name('restoranpage.restoran');

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\productsexp;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use App\Models\Restaurant;
 
 
 class ProductController extends Controller
@@ -50,9 +54,40 @@ public function store(Request $request)
 
 }
 
+    public function createproduct()
+    {
+        return view('addproduct');
+    }
 
-public function createproduct()
-{
-    return view('addproduct');
-}
+    public function restoran()
+    {
+        $now = Carbon::today();
+
+        $flashSaleProducts = DB::table('productexps as pe1')
+        ->join('products', 'pe1.product_id', '=', 'products.id')
+        ->select(
+            'products.name',
+            'pe1.price_discount',
+            'pe1.quantity',
+            'pe1.expired_at'
+        )
+        ->whereDate('pe1.expired_at', '>=', Carbon::today())
+        ->whereRaw("
+            pe1.expired_at = (
+                SELECT MIN(pe2.expired_at)
+                FROM productexps AS pe2
+                WHERE pe2.product_id = pe1.product_id
+            )
+        ")
+        ->orderBy('pe1.expired_at', 'asc')
+        ->orderBy('pe1.quantity', 'desc')
+        ->limit(10)
+        ->get();
+
+        $city = Restaurant::all();
+
+        return view('restoranpage', compact('flashSaleProducts', 'city'));
+    }
+
+
 }
