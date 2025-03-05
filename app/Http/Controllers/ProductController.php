@@ -50,17 +50,9 @@ public function store(Request $request)
 
 }
 
-    public function create()
-    {
-        return view('addproduct');
-    }
-
-<<<<<<< HEAD
-=======
 
 public function createproduct()
 {
     return view('addproduct');
 }
->>>>>>> 21f21bef350aa893ed8fde468a9be528c8d408c3
 }
