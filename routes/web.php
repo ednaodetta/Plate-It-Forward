@@ -4,9 +4,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrphanageController;
+use App\Http\Controllers\LocationController;
 
 Route::get('/api/restaurants', [RestaurantController::class, 'index']);
 
+// use App\Http\Controllers\AuthController;
+
+// Route::get('/', function () {
+//     return view('w-elcome');
+// });
+
+// use App\Http\Controllers\Auth\RegisteredOrphanageController;
+// Route::post('/panti', [RegisteredOrphanageController::class, 'store'])->name('orphanage.add');
 require __DIR__.'/auth_orphanage.php'; 
 
 Route::get('/panti', [OrphanageController::class, 'index'])->name('panti.index'); // Orphanage list
@@ -40,22 +49,35 @@ Route::get('/OrderList', function () {
     return view('OrderList');
 });
 
-Route::get('/restoranpage', function () {
-    return view('restoranpage');
-});
+// Route::get('/restoranpage', function () {
+//     return view('restoranpage');
+// });
 
 Route::get('/OrderListRestaurant', function () {
     return view('OrderListRestaurant');
 });
+Route::get('/restoranpage', [LocationController::class, 'index']);
 
 // In routes/web.php
 Route::delete('/restaurant/{id}', [RestaurantController::class, 'destroy'])->name('restaurant.delete');
 
 Route::put('/restaurant/{id}/update', [RestaurantController::class, 'update'])->name('restaurant.update');
 
-Route::get('/location', function () {
-    return view('location');
-});
+Route::get('/location', [LocationController::class, 'list'])->name('resto.list');
+
+
+
+// Route::get('/resto/{city}', function ($city) {
+//     $resto = Resto::where('city', $city)->get();
+//     return view('resto-list', compact('resto', 'city'));
+// })->name('resto.byCity');
+
+
+// Route::get('/location/{city}', [RestaurantController::class, 'showRestaurantsByCity']);
+
+// Route::get('/location', function () {
+//     return view('location');
+// });
 
 // Route::get('/signin', function () {
 //     return view('signin');
@@ -150,4 +172,3 @@ use App\Models\Support;
 Route::get('/support', [SupportController::class, 'index'])->name('support.index');
 
 Route::post('/add-restaurant', [RestaurantController::class, 'store'])->name('restaurant.store');
-

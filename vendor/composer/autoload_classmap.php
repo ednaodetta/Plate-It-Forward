@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Http\\Controllers\\AdminPasswordController' => $baseDir . '/app/Http/Controllers/AdminPasswordController.php',
     'App\\Http\\Controllers\\Auth\\AdminLoginController' => $baseDir . '/app/Http/Controllers/Auth/AdminLoginController.php',
     'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => $baseDir . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmablePasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmablePasswordController.php',
@@ -22,7 +23,11 @@ return array(
     'App\\Http\\Controllers\\Auth\\VerifyEmailController' => $baseDir . '/app/Http/Controllers/Auth/VerifyEmailController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',
+<<<<<<< HEAD
+=======
     'App\\Http\\Controllers\\RestaurantController' => $baseDir . '/app/Http/Controllers/RestaurantController.php',
+>>>>>>> 6e8f3f5667ec82f1c5a9926452c210afb58a39be
+    'App\\Http\\Controllers\\RestaurantPasswordController' => $baseDir . '/app/Http/Controllers/RestaurantPasswordController.php',
     'App\\Http\\Controllers\\SupportController' => $baseDir . '/app/Http/Controllers/SupportController.php',
     'App\\Http\\Middleware\\AdminMiddleware' => $baseDir . '/app/Http/Middleware/AdminMiddleware.php',
     'App\\Http\\Middleware\\RestaurantMiddleware' => $baseDir . '/app/Http/Middleware/RestaurantMiddleware.php',
@@ -2891,6 +2896,14 @@ return array(
     'League\\Uri\\UriTemplate\\TemplateCanNotBeExpanded' => $vendorDir . '/league/uri/UriTemplate/TemplateCanNotBeExpanded.php',
     'League\\Uri\\UriTemplate\\VarSpecifier' => $vendorDir . '/league/uri/UriTemplate/VarSpecifier.php',
     'League\\Uri\\UriTemplate\\VariableBag' => $vendorDir . '/league/uri/UriTemplate/VariableBag.php',
+    'Midtrans\\ApiRequestor' => $vendorDir . '/midtrans/midtrans-php/Midtrans/ApiRequestor.php',
+    'Midtrans\\Config' => $vendorDir . '/midtrans/midtrans-php/Midtrans/Config.php',
+    'Midtrans\\CoreApi' => $vendorDir . '/midtrans/midtrans-php/Midtrans/CoreApi.php',
+    'Midtrans\\Notification' => $vendorDir . '/midtrans/midtrans-php/Midtrans/Notification.php',
+    'Midtrans\\Sanitizer' => $vendorDir . '/midtrans/midtrans-php/Midtrans/Sanitizer.php',
+    'Midtrans\\Snap' => $vendorDir . '/midtrans/midtrans-php/Midtrans/Snap.php',
+    'Midtrans\\SnapApiRequestor' => $vendorDir . '/midtrans/midtrans-php/Midtrans/SnapApiRequestor.php',
+    'Midtrans\\Transaction' => $vendorDir . '/midtrans/midtrans-php/Midtrans/Transaction.php',
     'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
     'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
     'Mockery\\Adapter\\Phpunit\\MockeryTestCase' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCase.php',

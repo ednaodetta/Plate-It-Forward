@@ -95,7 +95,7 @@
         }
 
         table td:nth-child(5) {
-            width: 150px;
+            width: 120px;
             overflow: hidden;
             text-overflow: ellipsis;
         }
@@ -107,7 +107,7 @@
         }
 
         table td:nth-child(7) {
-            width: 150px;
+            width: 120px;
             overflow: hidden;
             text-overflow: ellipsis;
         }
