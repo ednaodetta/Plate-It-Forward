@@ -21,7 +21,7 @@
             </style>
         @endif
     </head>
-    <body class="bg-DefaultWhite">
+    <body class="bg-DefaultWhite h-full">
             <!-- navbar -->
           <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
             <div class="container mx-auto flex items-center justify-between py-4 px-6">
@@ -62,113 +62,39 @@
         </div>
 
         <!-- Section Title -->
-        <div class="mt-8 mb-6 flex justify-center flex-col items-center">
-          <h1 class="text-sm sm:text-sm text-gray-800 font-brandon w-[82%]"><a href='/restoranpage'>Beranda</a> / Jakarta</h1>
-          <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 font-brandon w-[82%]">Jakarta</h2>
-        </div>
-
-
-        <!-- Card Container -->
-        <div class="container mx-auto px-4 flex flex-wrap gap-8 justify-center pb-10">
-          <!-- Card -->
-          <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-            <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Martabak">
-            <div class="p-4">
-              <h3 class="text-lg font-semibold italic font-BrandonGrotesque">Kerak Telot Bu Haji</h3>
-              <p class="text-sm text-gray-500 mb-2">Varian Telur Bebek</p>
-              <div class="flex items-center mb-3">
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-gray-700 font-semibold ml-1">4.8</span>
+        @if($selectedCity)
+        <div class="wrapper h-full">
+            <div class="mt-8 mb-6 flex justify-center flex-col items-center"> 
+                <h1 class="text-sm sm:text-sm text-gray-800 font-brandon w-[82%]"><a href='/restoranpage'>Beranda</a> / {{ $selectedCity }}</h1>
+                <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 font-brandon w-[82%]">{{ $selectedCity }}</h2>
               </div>
-              <div class="flex items-center text-gray-600">
-                <span class="text-sm font-medium">$$$</span>
-                <span class="ml-2 text-sm">(50K+)</span>
-              </div>
+            @if($filteredResto->isNotEmpty())
+            <div class="container mx-auto px-4 flex flex-wrap gap-8 justify-center pb-10">
+                @foreach ($filteredResto as $item)
+                    <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
+                        <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Martabak">
+                        <div class="p-4">
+                        <h3 class="text-lg font-semibold italic font-BrandonGrotesque">{{ $item->name }}</h3>
+                        <p class="text-sm text-gray-500 mb-2">Varian Telur Bebek</p>
+                        <div class="flex items-center mb-3">
+                            <span class="text-yellow-400">&#9733;</span>
+                            <span class="text-gray-700 font-semibold ml-1">4.8</span>
+                        </div>
+                        <div class="flex items-center text-gray-600">
+                            <span class="text-sm font-medium">$$$</span>
+                            <span class="ml-2 text-sm">(50K+)</span>
+                        </div>
+                        </div>
+                    </div>
+                    @endforeach
             </div>
-          </div>
+            @else
+              <p>Tidak ada restoran di kota ini.</p>
+            @endif
+        </div> 
+        @endif
 
-          <!-- Duplicate Cards -->
-          <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-            <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Martabak">
-            <div class="p-4">
-              <h3 class="text-lg font-semibold italic font-BrandonGrotesque">Kerak Telor Legenda</h3>
-              <p class="text-sm text-gray-500 mb-2">Varian Telur Ayam</p>
-              <div class="flex items-center mb-3">
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-gray-700 font-semibold ml-1">4.7</span>
-              </div>
-              <div class="flex items-center text-gray-600">
-                <span class="text-sm font-medium">$$</span>
-                <span class="ml-2 text-sm">(40K+)</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Duplicate Cards -->
-          <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-            <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Martabak">
-            <div class="p-4">
-              <h3 class="text-lg font-semibold italic font-BrandonGrotesque">Kerak Telor Kota Tua</h3>
-              <p class="text-sm text-gray-500 mb-2">Varian Telur Bebek</p>
-              <div class="flex items-center mb-3">
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-gray-700 font-semibold ml-1">4.6</span>
-              </div>
-              <div class="flex items-center text-gray-600">
-                <span class="text-sm font-medium">$$$</span>
-                <span class="ml-2 text-sm">(45K+)</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-            <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Martabak">
-            <div class="p-4">
-              <h3 class="text-lg font-semibold italic font-BrandonGrotesque">Kerak Telor Kota Tua</h3>
-              <p class="text-sm text-gray-500 mb-2">Varian Telur Ayam</p>
-              <div class="flex items-center mb-3">
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-gray-700 font-semibold ml-1">4.6</span>
-              </div>
-              <div class="flex items-center text-gray-600">
-                <span class="text-sm font-medium">$$$</span>
-                <span class="ml-2 text-sm">(45K+)</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-            <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Martabak">
-            <div class="p-4">
-              <h3 class="text-lg font-semibold italic font-BrandonGrotesque">Kerak Telor Kota Tua</h3>
-              <p class="text-sm text-gray-500 mb-2">Varian Telur Pitik</p>
-              <div class="flex items-center mb-3">
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-gray-700 font-semibold ml-1">4.6</span>
-              </div>
-              <div class="flex items-center text-gray-600">
-                <span class="text-sm font-medium">$$$</span>
-                <span class="ml-2 text-sm">(45K+)</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-            <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Martabak">
-            <div class="p-4">
-              <h3 class="text-lg font-semibold italic font-BrandonGrotesque">Kerak Telor Kota Tua</h3>
-              <p class="text-sm text-gray-500 mb-2">Varian Teluk Bebek</p>
-              <div class="flex items-center mb-3">
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-gray-700 font-semibold ml-1">4.6</span>
-              </div>
-              <div class="flex items-center text-gray-600">
-                <span class="text-sm font-medium">$$$</span>
-                <span class="ml-2 text-sm">(45K+)</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <x-footer></x-footer>
               <script>
                     // Hamburger menu toggle functionality
                     const hamburgerBtn = document.getElementById('hamburger-btn');
@@ -178,39 +104,6 @@
                         menu.classList.toggle('hidden'); // Show or hide the menu
                     });
               </script>
-            <footer class="bg-DefaultGreen text-white text-center py-20">
-            <!-- Icons Section -->
-            <div class="flex justify-center space-x-6 mb-3">
-                <a href="#" class="text-xl hover:text-gray-300">
-                    <i class="fab fa-facebook"></i> <!-- Replace with actual icon -->
-                </a>
-                <a href="#" class="text-xl hover:text-gray-300">
-                    <i class="fab fa-youtube"></i> <!-- Replace with actual icon -->
-                </a>
-                <a href="#" class="text-xl hover:text-gray-300">
-                    <i class="fab fa-x"></i> <!-- Replace with actual icon -->
-                </a>
-                <a href="#" class="text-xl hover:text-gray-300">
-                    <i class="fab fa-instagram"></i> <!-- Replace with actual icon -->
-                </a>
-                <a href="#" class="text-xl hover:text-gray-300">
-                    <i class="fab fa-whatsapp"></i> <!-- Replace with actual icon -->
-                </a>
-            </div>
-
-            <!-- Navigation Links -->
-            <div class="flex justify-center space-x-8 mb-3">
-                <a href="/" class="text-base hover:underline">Home</a>
-                <a href="/restaurants" class="text-base hover:underline">Restaurant</a>
-                <a href="/my-donations" class="text-base hover:underline">My Donations</a>
-                <a href="/contact-us" class="text-base hover:underline">Contact Us</a>
-            </div>
-
-            <!-- Copyright Text -->
-            <div class="text-sm">
-                © Plate it Forward 2025 | All Rights Reserved
-            </div>
-            </footer>
         <!-- Font Awesome for icons -->
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     </body>

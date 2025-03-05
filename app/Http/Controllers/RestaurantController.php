@@ -34,6 +34,11 @@ class RestaurantController extends Controller
         return view('updaterestaurantpage', compact('restaurant'));
     }
 
+    public function showRestaurantsByCity($city)
+    {
+        $restaurants = Restaurant::where('city', $city)->get();
+        return view('restaurants.location', compact('restaurants', 'city'));
+    }
 
 
     // public function update(Request $request, $id)
