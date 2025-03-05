@@ -38,40 +38,7 @@
     </head>
     <body class="bg-DefaultWhite overflow-x-hidden">
       <!-- navbar -->
-      <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
-        <div class="container mx-auto flex items-center justify-between py-4 px-6">
-            <!-- Logo -->
-            <div class="flex items-center">
-                <img src="{{ asset('assets/Image/Logo copy.png') }}" alt="Logo" class="h-14 w-14">
-                <span class="ml-2 text-xl font-bold text-gray-800">PlateItForward</span>
-            </div>
-    
-            <!-- Hamburger Button -->
-            <button id="hamburger-btn" class="block lg:hidden text-gray-600 focus:outline-none">
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-    
-            <!-- Navigation Links -->
-            <nav id="menu"
-                class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
-                <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
-                    <li><a href="/" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Home</a></li>
-                    <li><a href="/restoranpage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurants</a>
-                    </li>
-                    <li><a href="/my-donations" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">My Donations</a>
-                    </li>
-                    <li><a href="/contact-us" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Contact Us</a></li>
-                    <li>
-                        <a href="/signin" class="block px-6 py-3 text-white bg-Teal hover:bg-opacity-80 text-left">Sign
-                            Up</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+      <x-navbar></x-navbar>
 
       <!-- Content Container -->
       <div class="relative bg-bgbang bg-no-repeat bg-cover bg-center h-[80vh] flex flex-col justify-center items-center text-center">
@@ -126,52 +93,17 @@
           </div>
           <div class="flex justify-center pt-7 pb-7 gap-20 max-[1317px]:gap-8 overflow-hidden max-[1317px]:flex-wrap max-[430px]:gap-4">
             <!-- Item Jakarta -->
+            @foreach ($resto->unique('city') as $item)
             <div class="text-center max-[430px]:w-1/3">
-                <div class="max-[1317px]:w-60 max-[1317px]:h-60 max-[430px]:w-20 max-[430px]:h-20 w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-gray">
-                    <a href="/location"><img src="{{ asset('assets/Image/keram_telor.png') }}" alt="Jakarta" class="w-full h-full object-cover"></a>
-                </div>
-                <p class="mt-2 text-lg font-semibold italic font-BrandonGrotesque max-[1317px]:text-[30px] max-[430px]:text-[15px]">Jakarta</p>
-            </div>
+              <div class="max-[1317px]:w-60 max-[1317px]:h-60 max-[430px]:w-20 max-[430px]:h-20 w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-gray">
+                  <a href="{{ route('resto.list', ['city' => $item->city]) }}"><img src="{{ asset('assets/Image/keram_telor.png') }}" alt="Jakarta" class="w-full h-full object-cover"></a>
+              </div>
+              <p class="mt-2 text-lg font-semibold italic font-BrandonGrotesque max-[1317px]:text-[30px] max-[430px]:text-[15px]">{{ $item->city  }}</p>
+          </div>
+            @endforeach
+           
 
-            <!-- Item Bali -->
-            <div class="text-center max-[430px]:w-1/3">
-                <div class="max-[1317px]:w-60 max-[1317px]:h-60 max-[430px]:w-20 max-[430px]:h-20 w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-gray">
-                    <img src="{{ asset('assets/Image/sate_lilit.png') }}" alt="Bali" class="w-full h-full object-cover">
-                </div>
-                <p class="mt-2 text-lg font-semibold italic font-BrandonGrotesque max-[1317px]:text-[30px] max-[430px]:text-[15px]">Bali</p>
-            </div>
-
-            <!-- Item Palembang -->
-            <div class="text-center max-[430px]:w-1/3">
-                <div class="max-[1317px]:w-60 max-[1317px]:h-60 max-[430px]:w-20 max-[430px]:h-20 w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-gray">
-                    <img src="{{ asset('assets/Image/pempek.png') }}" alt="Palembang" class="w-full h-full object-cover">
-                </div>
-                <p class="mt-2 text-lg font-semibold italic font-BrandonGrotesque max-[1317px]:text-[30px] max-[430px]:text-[15px]">Palembang</p>
-            </div>
-
-            <!-- Item Medan -->
-            <div class="text-center max-[430px]:w-1/3">
-                <div class="max-[1317px]:w-60 max-[1317px]:h-60 max-[430px]:w-20 max-[430px]:h-20 w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-gray">
-                    <img src="{{ asset('assets/Image/soto.png') }}" alt="Medan" class="w-full h-full object-cover">
-                </div>
-                <p class="mt-2 text-lg font-semibold italic font-BrandonGrotesque max-[1317px]:text-[30px] max-[430px]:text-[15px]">Medan</p>
-            </div>
-
-            <!-- Item Semarang -->
-            <div class="text-center max-[430px]:w-1/3">
-                <div class="max-[1317px]:w-60 max-[1317px]:h-60 max-[430px]:w-20 max-[430px]:h-20 w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-gray-300">
-                    <img src="{{ asset('assets/Image/lumpia.png') }}" alt="Semarang" class="w-full h-full object-cover">
-                </div>
-                <p class="mt-2 text-lg font-semibold italic font-BrandonGrotesque max-[1317px]:text-[30px] max-[430px]:text-[15px]">Semarang</p>
-            </div>
-
-            <!-- Item Surabaya -->
-            <div class="text-center max-[430px]:w-1/3">
-                <div class="max-[1317px]:w-60 max-[1317px]:h-60 max-[430px]:w-20 max-[430px]:h-20 w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-gray-300">
-                    <img src="{{ asset('assets/Image/pecel.png') }}" alt="Surabaya" class="w-full h-full object-cover">
-                </div>
-                <p class="mt-2 text-lg font-semibold italic font-BrandonGrotesque max-[1317px]:text-[30px] max-[430px]:text-[15px]">Surabaya</p>
-            </div>
+           
         </div>
 
           <div>

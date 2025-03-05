@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Http\\Controllers\\AdminPasswordController' => $baseDir . '/app/Http/Controllers/AdminPasswordController.php',
     'App\\Http\\Controllers\\Auth\\AdminLoginController' => $baseDir . '/app/Http/Controllers/Auth/AdminLoginController.php',
     'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => $baseDir . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmablePasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmablePasswordController.php',
@@ -22,10 +23,8 @@ return array(
     'App\\Http\\Controllers\\Auth\\VerifyEmailController' => $baseDir . '/app/Http/Controllers/Auth/VerifyEmailController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',
-<<<<<<< HEAD
-=======
     'App\\Http\\Controllers\\RestaurantController' => $baseDir . '/app/Http/Controllers/RestaurantController.php',
->>>>>>> 3d1f9287778887435fe27f8f6db7715f201bbf78
+    'App\\Http\\Controllers\\RestaurantPasswordController' => $baseDir . '/app/Http/Controllers/RestaurantPasswordController.php',
     'App\\Http\\Controllers\\SupportController' => $baseDir . '/app/Http/Controllers/SupportController.php',
     'App\\Http\\Middleware\\AdminMiddleware' => $baseDir . '/app/Http/Middleware/AdminMiddleware.php',
     'App\\Http\\Middleware\\RestaurantMiddleware' => $baseDir . '/app/Http/Middleware/RestaurantMiddleware.php',

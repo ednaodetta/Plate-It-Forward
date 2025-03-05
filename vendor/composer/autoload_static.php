@@ -516,6 +516,7 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
     );
 
     public static $classMap = array (
+        'App\\Http\\Controllers\\AdminPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminPasswordController.php',
         'App\\Http\\Controllers\\Auth\\AdminLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AdminLoginController.php',
         'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmablePasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmablePasswordController.php',
@@ -532,10 +533,8 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'App\\Http\\Controllers\\Auth\\VerifyEmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerifyEmailController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
-<<<<<<< HEAD
-=======
         'App\\Http\\Controllers\\RestaurantController' => __DIR__ . '/../..' . '/app/Http/Controllers/RestaurantController.php',
->>>>>>> 3d1f9287778887435fe27f8f6db7715f201bbf78
+        'App\\Http\\Controllers\\RestaurantPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/RestaurantPasswordController.php',
         'App\\Http\\Controllers\\SupportController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupportController.php',
         'App\\Http\\Middleware\\AdminMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminMiddleware.php',
         'App\\Http\\Middleware\\RestaurantMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/RestaurantMiddleware.php',
