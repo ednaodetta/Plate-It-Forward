@@ -10,7 +10,7 @@ Route::get('/api/restaurants', [RestaurantController::class, 'index']);
 // use App\Http\Controllers\AuthController;
 
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('w-elcome');
 // });
 
 // use App\Http\Controllers\Auth\RegisteredOrphanageController;
