@@ -25,4 +25,35 @@ class ProductController extends Controller
     $product = Products::find(1); // Ambil data dengan ID = 1
     return view('menupage', compact('product'));
 }
+
+public function store(Request $request)
+{
+    $request->validate([
+        'name' => 'required',
+        'price' => 'required|integer',
+        'description' => 'nullable|string',
+        'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    $restaurantId = Auth::guard('restaurant')->user()->id;
+
+    Products::create([
+        'restaurant_id' => $restaurantId,
+        'name' => $request->name,
+        'price' => $request->price,
+        'description' => $request->description,
+        'foto' => $request->foto ? $request->file('foto')->store('products') : 'noimage.png',
+    ]);
+
+    return redirect()->route('products')->with('success', 'Produk berhasil ditambahkan.');
+
+
+}
+
+
+
+public function create()
+{
+    return view('addproduct');
+}
 }

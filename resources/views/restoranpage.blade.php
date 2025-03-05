@@ -416,6 +416,7 @@
                 </a>
                 <a href="#" class="text-xl hover:text-gray-300">
                     <i class="fab fa-youtube"></i> <!-- Replace with actual icon -->
+                    
                 </a>
                 <a href="#" class="text-xl hover:text-gray-300">
                     <i class="fab fa-x"></i> <!-- Replace with actual icon -->

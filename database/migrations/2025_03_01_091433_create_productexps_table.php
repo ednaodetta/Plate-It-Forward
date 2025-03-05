@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade'); 
             $table->integer('quantity');
+            $table->integer('price_discount');
             $table->date('expired_at'); 
             $table->timestamps();
         });

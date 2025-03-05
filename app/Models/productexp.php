@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class productexp extends Model
 {
     protected $fillable = [
+        'price',
         'quantity',
         'expired_at',
     ];

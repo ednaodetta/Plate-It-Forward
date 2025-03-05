@@ -53,16 +53,22 @@
                 🗑️
             </button>            
         </div>
-
+        <a href="{{ route('products.create') }}" class="btn btn-primary">
+            add product
+        </a>
 
       
         <div class="bg-green-500 w-full flex flex-wrap p-8 gap-4">
             @foreach ($products as $prd)
             <div class="">
-                <img src="{{ url('storage/'. $prd->foto )}}" alt="">
-                <h1>{{ $prd->name }}</h1>
-                <h1>Rp. {{ number_format((int) $prd->price) }}</h1>
-                <h1>{{ $prd->description }}</h1>
+
+                <a href="{{  route('productexp.show', $prd->id)  }}">
+                    <img src="{{ url('storage/'. $prd->foto )}}" alt="">
+                    <h1>{{ $prd->name }}</h1>
+                    <h1>Rp. {{ number_format((int) $prd->price) }}</h1>
+                    <h1>{{ $prd->description }}</h1>
+                </a>
+            
             </div>
             @endforeach
         </div>

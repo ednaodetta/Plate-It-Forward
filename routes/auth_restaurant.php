@@ -5,6 +5,7 @@ use App\Http\Controllers\RestaurantPasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductsexpsController;
 
 Route::prefix('restaurant')->name('restaurant.')->group(function () {
     Route::get('register', [RegisteredRestaurantController::class, 'create'])->name('register');
@@ -34,3 +35,20 @@ Route::prefix('restaurant')->name('restaurant.')->group(function () {
 
 Route::get('/products', [ProductController::class, 'index'])->name('products')->middleware('auth:restaurant');
 // Route::get('product', [ProductController::class, 'index'])->name('product');
+
+
+// Route::get('/addproduct', [ProductController::class, 'create'])->name('products.create');
+
+
+Route::get('/addproduct', [ProductController::class, 'create'])->name('products.create');
+
+// Simpan data produk
+Route::post('/addproduct', [ProductController::class, 'store'])->name('products.store');
+
+
+
+Route::get('/productexp/{id}', [ProductsexpsController::class, 'show'])->name('productexp.show');
+
+
+Route::get('/addproductexp', [ProductsexpsController::class, 'create'])->name('addproductexp');
+Route::post('/addproductexp', [ProductsexpsController::class, 'store'])->name('productexp.store');
