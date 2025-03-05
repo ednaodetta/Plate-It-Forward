@@ -84,10 +84,17 @@ public function store(Request $request)
         ->limit(10)
         ->get();
 
+        $recommendedRestaurants = DB::table('restaurants')
+            ->join('products', 'restaurants.id', '=', 'products.restaurant_id')
+            ->join('productexps', 'products.id', '=', 'productexps.product_id')
+            ->select('restaurants.id', 'restaurants.name', DB::raw('SUM(productexps.quantity) as total_stock'))
+            ->groupBy('restaurants.id', 'restaurants.name')
+            ->orderByDesc('total_stock')
+            ->limit(6)
+            ->get();
+
         $city = Restaurant::all();
 
-        return view('restoranpage', compact('flashSaleProducts', 'city'));
+        return view('restoranpage', compact('flashSaleProducts', 'city', 'recommendedRestaurants'));
     }
-
-
 }

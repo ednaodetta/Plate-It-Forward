@@ -148,114 +148,29 @@
         </div>
 
         <!-- Container -->
-      <div class="flex flex-wrap gap-10 justify-center m-9">
-        <!-- Card -->
-        <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-          <a href="/menupage">
-          <img class="w-full h-48 object-cover" src="{{ asset('assets/Image/Mcd.jpg') }}" alt="Mie Ayam Kampung">
-          <div class="p-4">
-            <h3 class="text-lg font-semibold italic font-BrandonGrotesque">McDonald, Sentul City</h3>
-            <p class="text-sm text-gray-500 mb-2">Ayam,Burger</p>
-            <div class="flex items-center mb-3">
-              <span class="text-yellow-400">★</span>
-              <span class="text-gray-700 font-semibold ml-1">4.9</span>
-            </div>
-            <div class="flex items-center text-gray-600">
-              <span class="text-sm font-medium">$$</span>
-              <span class="ml-2 text-sm">(30K+)</span>
-            </div>
-          </div>
-          </a>
-        </div>
-
-        <!-- Duplicate Cards -->
-        <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-          <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Mie Ayam Kampung">
-          <div class="p-4">
-            <h3 class="text-lg font-semibold italic font-BrandonGrotesque">Mie Ayam Kampung, Bogor</h3>
-            <p class="text-sm text-gray-500 mb-2">Bakmie</p>
-            <div class="flex items-center mb-3">
-              <span class="text-yellow-400">★</span>
-              <span class="text-gray-700 font-semibold ml-1">4.5</span>
-            </div>
-            <div class="flex items-center text-gray-600">
-              <span class="text-sm font-medium">$$</span>
-              <span class="ml-2 text-sm">(40K+)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Duplicate Cards -->
-        <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-          <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Mie Ayam Kampung">
-          <div class="p-4">
-            <h3 class="text-lg font-semibold italic font-BrandonGrotesque">Mie Ayam Kampung, Bogor</h3>
-            <p class="text-sm text-gray-500 mb-2">Bakmie</p>
-            <div class="flex items-center mb-3">
-              <span class="text-yellow-400">★</span>
-              <span class="text-gray-700 font-semibold ml-1">4.5</span>
-            </div>
-            <div class="flex items-center text-gray-600">
-              <span class="text-sm font-medium">$$</span>
-              <span class="ml-2 text-sm">(40K+)</span>
-            </div>
-          </div>
-        </div>
+        <div class="flex flex-wrap gap-10 justify-center m-9">
+          @foreach ($recommendedRestaurants as $restaurant)
+              <!-- Card -->
+              <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
+                  <a href="{{ route('menupage', ['id' => $restaurant->id]) }}">
+                      <img class="w-full h-48 object-cover" src="{{ asset('assets/Image/Mcd.jpg') }}" alt="{{ $restaurant->name }}">
+                      <div class="p-4">
+                          <h3 class="text-lg font-semibold italic font-BrandonGrotesque">{{ $restaurant->name }}</h3>
+                          <p class="text-sm text-gray-500 mb-2">Kategori Makanan</p>
+                          <div class="flex items-center mb-3">
+                              <span class="text-yellow-400">★</span>
+                              <span class="text-gray-700 font-semibold ml-1">4.9</span>
+                          </div>
+                          <div class="flex items-center text-gray-600">
+                              <span class="text-sm font-medium">$$</span>
+                              <span class="ml-2 text-sm">(30K+)</span>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+          @endforeach
       </div>
-
-      <!-- Container -->
-      <div class="flex flex-wrap gap-10 justify-center m-9">
-        <!-- Card -->
-        <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-          <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Mie Ayam Kampung">
-          <div class="p-4">
-            <h3 class="text-lg font-semibold italic font-BrandonGrotesque">Mie Ayam Kampung, Bogor</h3>
-            <p class="text-sm text-gray-500 mb-2">Bakmie</p>
-            <div class="flex items-center mb-3">
-              <span class="text-yellow-400">★</span>
-              <span class="text-gray-700 font-semibold ml-1">4.5</span>
-            </div>
-            <div class="flex items-center text-gray-600">
-              <span class="text-sm font-medium">$$</span>
-              <span class="ml-2 text-sm">(40K+)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Duplicate Cards -->
-        <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-          <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Mie Ayam Kampung">
-          <div class="p-4">
-            <h3 class="text-lg font-semibold italic font-BrandonGrotesque">Mie Ayam Kampung, Bogor</h3>
-            <p class="text-sm text-gray-500 mb-2">Bakmie</p>
-            <div class="flex items-center mb-3">
-              <span class="text-yellow-400">★</span>
-              <span class="text-gray-700 font-semibold ml-1">4.5</span>
-            </div>
-            <div class="flex items-center text-gray-600">
-              <span class="text-sm font-medium">$$</span>
-              <span class="ml-2 text-sm">(40K+)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Duplicate Cards -->
-        <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-          <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Mie Ayam Kampung">
-          <div class="p-4">
-            <h3 class="text-lg font-semibold italic font-BrandonGrotesque">Mie Ayam Kampung, Bogor</h3>
-            <p class="text-sm text-gray-500 mb-2">Bakmie</p>
-            <div class="flex items-center mb-3">
-              <span class="text-yellow-400">★</span>
-              <span class="text-gray-700 font-semibold ml-1">4.5</span>
-            </div>
-            <div class="flex items-center text-gray-600">
-              <span class="text-sm font-medium">$$</span>
-              <span class="ml-2 text-sm">(40K+)</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
             <script>
                     // Hamburger menu toggle functionality
