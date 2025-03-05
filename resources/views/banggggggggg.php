@@ -132,22 +132,23 @@
 
             <div class="w-10/12 mx-auto flex justify-between items-center">
                 <!-- Left aligned Restaurant's Information -->
-                <h2 class="text-2xl font-bold text-DefaultGreen font-gotham">Restaurant's Information</h2>
+                <h2 class="text-2xl font-bold text-DefaultGreen font-gotham">Orphanage's Information</h2>
 
                 <!-- Right aligned buttons side by side -->
                 <div class="flex justify-end items-center space-x-4">
                     <button id="addOrphanageBtn"
                         class="bg-green-600 text-white py-2 px-6 rounded-md hover:bg-green-700 focus:outline-none">
-                        Add Restaurant
+                        Add Orphanage
                     </button>
                 </div>
             </div>
+
             <!-- Add Restaurant Modal -->
             <div id="addOrphanageModal"
                 class="modal hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
                 <div class="bg-white p-6 rounded-md w-96 shadow-lg">
-                    <h3 class="text-xl font-semibold text-green-800 mb-4">Add New Restaurant</h3>
-                    <form method="POST" action="{{ route('restaurant.register') }}">
+                    <h3 class="text-xl font-semibold text-green-800 mb-4">Add New Orphanage</h3>
+                    <form method="POST" action="{{ route('panti.store') }}">
                         @csrf
 
                         <div>
@@ -155,14 +156,6 @@
                             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
                                 :value="old('name')" required autofocus autocomplete="name" />
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                        </div>
-
-                        <!-- Email Address -->
-                        <div class="mt-4">
-                            <x-input-label for="email" :value="__('Email')" />
-                            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
-                                :value="old('email')" required autocomplete="username" />
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
 
                         <!-- Address -->
@@ -186,27 +179,14 @@
                             <x-input-label for="contact" :value="__('Contact')" />
                             <x-text-input id="contact" class="block mt-1 w-full" type="text" name="contact"
                                 :value="old('contact')" required autocomplete="contact" />
-                            <x-input-error :messages="$errors->get('address')" class="mt-2" />
+                            <x-input-error :messages="$errors->get('contact')" class="mt-2" />
                         </div>
 
-                        <!-- Password -->
-                        <div class="mt-4">
-                            <x-input-label for="password" :value="__('Password')" />
-
-                            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password"
-                                required autocomplete="new-password" />
-
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                        </div>
-
-                        <!-- Confirm Password -->
-                        <div class="mt-4">
-                            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                            <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
-
-                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                        <div>
+                            <x-input-label for="donation" :value="__('Donation')" />
+                            <x-text-input id="donation" class="block mt-1 w-full" type="text" name="donation"
+                                :value="old('donation')" required autocomplete="donation" />
+                            <x-input-error :messages="$errors->get('donation')" class="mt-2" />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
@@ -235,24 +215,25 @@
                             <th class="p-3"></th>
                             <th class="p-3">ID</th>
                             <th class="p-3">Name</th>
-                            <th class="p-3">Email</th>
                             <th class="p-3">Address</th>
                             <th class="p-3">City</th>
                             <th class="p-3">Contact</th>
+                            <th class="p-3">Donation</th>
                             <th class="p-1"></th>
                         </tr>
                     </thead>
 
                     <tbody id="userTable" class="font-brandon">
-                        @foreach ($restaurants as $restaurant)
+                        @foreach ($orphanages as $orphanage)
                             <tr class="border-b hover:bg-gray-50">
                                 <td class="p-3 relative action-cell"></td>
-                                <td class="p-3">{{ $restaurant->id }}</td>
-                                <td class="p-3">{{ $restaurant->name }}</td>
-                                <td class="p-3">{{ $restaurant->email }}</td>
-                                <td class="p-3">{{ $restaurant->address }}</td>
-                                <td class="p-3">{{ $restaurant->city }}</td>
-                                <td class="p-3">{{ $restaurant->contact }}</td>
+                                <td class="p-3">{{ $orphanage->id }}</td>
+                                <td class="p-3">{{ $orphanage->name }}</td>
+                                <td class="p-3">{{ $orphanage->address }}</td>
+                                <td class="p-3">{{ $orphanage->city }}</td>
+                                <td class="p-3">{{ $orphanage->contact }}</td>
+                                <td class="p-3">{{ $orphanage->donation }}</td>
+
                                 <!-- Action column with three-dot menu -->
                                 <td class="p-3 relative action-cell">
                                     <button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
@@ -260,19 +241,19 @@
                                         class="dropdown absolute left-0 top-0 w-40 mt-2 bg-white shadow-md rounded-md hidden z-10">
                                         <ul class="text-sm">
                                             <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                <a href="{{ route('restaurant.edit', $restaurant->id) }}">Update
-                                                    Restaurant Information</a>
+                                                <a href="{{ route('panti.edit', $orphanage->id) }}">Update
+                                                    Orphanage Information</a>
 
                                             </li>
 
                                             <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600">
-                                                <form action="{{ route('restaurant.delete', $restaurant->id) }}"
-                                                    method="POST" id="deleteForm-{{ $restaurant->id }}"
-                                                    onsubmit="return confirmDelete('{{ $restaurant->id }}')">
+                                                <form action="{{ route('panti.destroy', $orphanage->id) }}"
+                                                    method="POST" id="deleteForm-{{ $orphanage->id }}"
+                                                    onsubmit="return confirmDelete('{{ $orphanage->id }}')">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="w-full text-left">Delete
-                                                        Restaurant</button>
+                                                        Orphanage</button>
                                                 </form>
                                             </li>
 
@@ -290,8 +271,8 @@
     </div>
 
     <script>
-        function confirmDelete(restaurantId) {
-            if (confirm("Are you sure you want to delete this restaurant?")) {
+        function confirmDelete(orphanageId) {
+            if (confirm("Are you sure you want to delete this orphanage?")) {
                 // If the user confirms, submit the form
                 document.getElementById('deleteForm-' + restaurantId).submit();
             }

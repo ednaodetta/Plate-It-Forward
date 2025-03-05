@@ -12,7 +12,7 @@
     <p class="mb-2"><strong>Harga:</strong> Rp{{ number_format((int) $product->price) }}</p>
     <p class="mb-2"><strong>Deskripsi:</strong> {{ $product->description }}</p>
 
-    <a href="{{ route('addproductexp') }}">tambah product</a>
+    <a href="{{ route('productexp.create', ['product_id' => $product->id]) }}">tambah product</a>
     <h2 class="text-xl font-bold mt-4">List ProductExp</h2>
 
     <div class="overflow-x-auto mt-4">
@@ -21,6 +21,7 @@
                 <tr>
                     <th class="px-4 py-2 border">No</th>
                     <th class="px-4 py-2 border">Expired Date</th>
+                    <th class="px-4 py-2 border">Price</th>
                     <th class="px-4 py-2 border">Quantity</th>
                 </tr>
             </thead>
@@ -29,7 +30,9 @@
                     <tr class="text-center">
                         <td class="border px-4 py-2">{{ $index + 1 }}</td>
                         <td class="border px-4 py-2">{{ $exp->expired_at }}</td>
+                        <td class="border px-4 py-2">{{ $exp->price_discount}}</td>
                         <td class="border px-4 py-2">{{ $exp->quantity }}</td>
+                        
                     </tr>
                 @empty
                     <tr>
@@ -38,6 +41,9 @@
                 @endforelse
             </tbody>
         </table>
+        <div class="mt-4 text-right font-bold text-lg">
+            Total Quantity: <span class="text-blue-600">{{ $totalQuantity }}</span>
+        </div>
     </div>
 
     <a href="{{ route('products') }}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">Kembali</a>

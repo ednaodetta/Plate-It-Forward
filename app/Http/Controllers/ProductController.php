@@ -52,7 +52,7 @@ public function store(Request $request)
 
 
 
-public function create()
+public function createproduct()
 {
     return view('addproduct');
 }

@@ -10,48 +10,63 @@ use App\Models\Products;
 
 class ProductsexpsController extends Controller
 {
-  public function show($id)
-  {
+    public function show($id)
+    {
+        $product = Products::findOrFail($id);
+        $productExps = ProductExp::where('product_id', $id)->get();
     
-      // Ambil data produk berdasarkan ID
-      $product = Products::findOrFail($id);
-
-      // Ambil langsung data dari ProductExp yang sesuai tanpa pakai relasi
-      $productExps = ProductExp::where('product_id', $id)->get();
-
-      // Kirim data ke view
-      return view('productexp', compact('product', 'productExps'));
-  }
+        // Hitung total quantity
+        $totalQuantity = $productExps->sum('quantity');
+    
+        return view('productexp', compact('product', 'productExps', 'totalQuantity'));
+    }
+    
 
 
+  
 
 
 
 
 
 
-  public function create()
-  {
-      $products = Products::all(); // Ambil semua produk buat ditampilkan di dropdown
-      return view('addproductexp', compact('products'));
-  }
 
-  public function store(Request $request)
-  {
-      $request->validate([
-          'product_id' => 'required|exists:products,id',
-          'quantity' => 'required|integer|min:1',
-          'price_discount' => 'required|integer|min:0',
-          'expired_at' => 'required|date',
-      ]);
 
-      ProductExp::create([
-          'product_id' => $request->product_id,
-          'quantity' => $request->quantity,
-          'price_discount' => $request->price_discount,
-          'expired_at' => $request->expired_at,
-      ]);
 
-      return redirect()->route('productexp.index')->with('success', 'Data berhasil ditambahkan!');
-  }
+  public function create($product_id)
+{
+    $productsearch = Products::findOrFail($product_id);
+    
+    return view('addproductexp',compact('productsearch'));
+}
+
+
+public function store(Request $request)
+{
+    $request->validate([
+        'product_id' => 'required|exists:products,id',
+        'quantity' => 'required|integer|min:1',
+        'price_discount' => 'required|integer|min:0',
+        'expired_at' => 'required|date',
+    ]);
+
+    // Simpan data ke database
+    ProductExp::create([
+        'product_id' => $request->product_id,
+        'quantity' => $request->quantity,
+        'price_discount' => $request->price_discount,
+        'expired_at' => $request->expired_at,
+        'created_at' => now(), // Timestamp otomatis
+    ]);
+
+    // Redirect ke halaman productexp/{product_id}
+    return redirect()->route('productexp.show', $request->product_id)
+                     ->with('success', 'Data berhasil ditambahkan!');
+}
+
+
+
+
+
+ 
 }
