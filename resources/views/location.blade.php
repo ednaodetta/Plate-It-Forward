@@ -23,40 +23,7 @@
     </head>
     <body class="bg-DefaultWhite h-full">
             <!-- navbar -->
-          <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
-            <div class="container mx-auto flex items-center justify-between py-4 px-6">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <img src="{{ asset('assets/Image/Logo copy.png') }}" alt="Logo" class="h-14 w-14">
-                    <span class="ml-2 text-xl font-bold text-gray-800">PlateItForward</span>
-                </div>
-        
-                <!-- Hamburger Button -->
-                <button id="hamburger-btn" class="block lg:hidden text-gray-600 focus:outline-none">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
-                </button>
-        
-                <!-- Navigation Links -->
-                <nav id="menu"
-                    class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
-                    <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
-                        <li><a href="/" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Home</a></li>
-                        <li><a href="/restoranpage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurants</a>
-                        </li>
-                        <li><a href="/my-donations" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">My Donations</a>
-                        </li>
-                        <li><a href="/contact-us" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Contact Us</a></li>
-                        <li>
-                            <a href="/signin" class="block px-6 py-3 text-white bg-Teal hover:bg-opacity-80 text-left">Sign
-                                Up</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <x-navbar></x-navbar>
         
         <div class=" bg-bglocation relative  bg-no-repeat bg-cover bg-center h-56 sm:h-64 md:h-80 flex flex-col justify-center items-center text-center">
         </div>
@@ -69,25 +36,33 @@
                 <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 font-brandon w-[82%]">{{ $selectedCity }}</h2>
               </div>
             @if($filteredResto->isNotEmpty())
-            <div class="container mx-auto px-4 flex flex-wrap gap-8 justify-center pb-10">
-                @foreach ($filteredResto as $item)
-                    <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-                        <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Martabak">
-                        <div class="p-4">
-                        <h3 class="text-lg font-semibold italic font-BrandonGrotesque">{{ $item->name }}</h3>
-                        <p class="text-sm text-gray-500 mb-2">Varian Telur Bebek</p>
-                        <div class="flex items-center mb-3">
-                            <span class="text-yellow-400">&#9733;</span>
-                            <span class="text-gray-700 font-semibold ml-1">4.8</span>
+
+
+            @foreach ($filteredResto as $item)
+            <a href="{{ route('menupage', ['id'=> $item->id]) }}">
+                <div class="container mx-auto px-4 flex flex-wrap gap-8 justify-center pb-10">
+                 
+                        <div class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
+                            <img class="w-full h-48 object-cover" src="https://i.ytimg.com/vi/QiZt1ALYVEQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCvsiWPunf-Yh1MTqZcv8sGKooajw" alt="Martabak">
+                            <div class="p-4">
+                            <h3 class="text-lg font-semibold italic font-BrandonGrotesque">{{ $item->name }}</h3>
+                            <p class="text-sm text-gray-500 mb-2">Varian Telur Bebek</p>
+                            <div class="flex items-center mb-3">
+                                <span class="text-yellow-400">&#9733;</span>
+                                <span class="text-gray-700 font-semibold ml-1">4.8</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <span class="text-sm font-medium">$$$</span>
+                                <span class="ml-2 text-sm">(50K+)</span>
+                            </div>
+                            </div>
                         </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="text-sm font-medium">$$$</span>
-                            <span class="ml-2 text-sm">(50K+)</span>
-                        </div>
-                        </div>
-                    </div>
-                    @endforeach
-            </div>
+                       
+                </div>
+            </a>
+            @endforeach
+
+
             @else
               <p>Tidak ada restoran di kota ini.</p>
             @endif

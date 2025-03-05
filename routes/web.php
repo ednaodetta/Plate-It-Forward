@@ -10,7 +10,7 @@ Route::get('/api/restaurants', [RestaurantController::class, 'index']);
 // use App\Http\Controllers\AuthController;
 
 // Route::get('/', function () {
-//     return view('w-elcome');
+//     return view('welcome');
 // });
 
 // use App\Http\Controllers\Auth\RegisteredOrphanageController;
@@ -29,9 +29,9 @@ Route::get('/my-donations', function () {
     return view('mydonations');
 });
 
-Route::get('/menupage', function () {
-    return view('menupage');
-});
+// Route::get('/menupage', function () {
+//     return view('menupage');
+// });
 
 Route::get('/payment', function () {
     return view('payment');
@@ -181,3 +181,6 @@ use App\Models\Support;
 Route::get('/support', [SupportController::class, 'index'])->name('support.index');
 
 Route::post('/add-restaurant', [RestaurantController::class, 'store'])->name('restaurant.store');
+
+
+Route::get('/menupage', [RestaurantController::class, 'menu'])->name('menupage');

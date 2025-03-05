@@ -13,6 +13,7 @@ class Restaurant extends Authenticatable implements CanResetPassword
     use HasFactory, Notifiable, CanResetPasswordTrait;
 
     protected $fillable = [
+        
         'name',
         'email',
         'password',

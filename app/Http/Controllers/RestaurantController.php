@@ -86,4 +86,12 @@ class RestaurantController extends Controller
         return redirect()->route('restaurantinfo')->with('success', 'Restaurant deleted successfully!');
     }
 
+
+    public function menu(Request $request){
+        $id = $request->query('id'); // Ambil ID dari URL
+        $restsearch = Restaurant::findOrFail($id); // Cari restoran berdasarkan ID
+        // dd($restaurant);
+        return view('menupage', compact('restsearch'));
+    
+    }
 }

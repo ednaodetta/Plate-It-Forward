@@ -50,10 +50,9 @@ public function store(Request $request)
 
 }
 
+    public function create()
+    {
+        return view('addproduct');
+    }
 
-
-public function create()
-{
-    return view('addproduct');
-}
 }
