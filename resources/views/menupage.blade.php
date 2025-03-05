@@ -83,6 +83,8 @@
         
         <div class="w-full flex flex-col items-center gap-3 ">
             <h1 class="w-[85%] font-bold text-[25px]" >Today's menu</h1>
+
+            <h1>oke le</h1>
             <div class="cardlistnye bg-[#f9f3f0] w-[85%] flex gap-[40px] flex-wrap justify-between items-center" > 
                 <div class="card border-2 bg-DefaultWhite w-[350px] h-[420px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 ">
                     <img class="h-[80%] w-full" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format" alt="PaNas 1 Ayam McD Gulai Spicy" onclick="buttonmenudesc()" >
