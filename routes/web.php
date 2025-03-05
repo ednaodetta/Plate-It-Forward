@@ -3,26 +3,26 @@ use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrphanageController;
 
 Route::get('/api/restaurants', [RestaurantController::class, 'index']);
 
-// use App\Http\Controllers\AuthController;
-
-// Route::get('/', function () {
-//     return view('w-elcome');
-// });
-
-// use App\Http\Controllers\Auth\RegisteredOrphanageController;
-// Route::post('/panti', [RegisteredOrphanageController::class, 'store'])->name('orphanage.add');
 require __DIR__.'/auth_orphanage.php'; 
+
+Route::get('/panti', [OrphanageController::class, 'index'])->name('panti.index'); // Orphanage list
+
+Route::get('/updateorphanage/{id}', [OrphanageController::class, 'edit'])->name('panti.edit'); // Orphanage edit form
+
+Route::put('/updateorphanage/{id}', [OrphanageController::class, 'update'])->name('panti.update'); // Orphanage update
+
+Route::post('/panti', [OrphanageController::class, 'store'])->name('panti.store'); // Store orphanage
+
+Route::delete('/deleteorphanage/{id}', [OrphanageController::class, 'destroy'])->name('panti.destroy'); // Delete orphanage
+
 
 Route::get('/profilee', function () {
     return view('profile');
 });
-
-Route::get('/panti', function () {
-    return view('panti');
-})->name('panti');
 
 Route::get('/my-donations', function () {
     return view('mydonations');
@@ -57,15 +57,9 @@ Route::get('/location', function () {
     return view('location');
 });
 
-Route::get('/signin', function () {
-    return view('signin');
-})->name('signin');
-
-// Route::post('/signin', [AuthController::class, 'signin'])->name('signin.post');
-
-// Route::post('/signup', [AuthController::class, 'signup'])->name('signup');
-
-// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// Route::get('/signin', function () {
+//     return view('signin');
+// })->name('signin');
 
 Route::get('/contact-us', function () {
     return view('contactus');
@@ -79,18 +73,7 @@ Route::get('/userinfo', function () {
     return view('userinfopage');
 });
 
-
-// Route::get('/restaurantinfo', function () {
-//     return view('restaurantinfopage');
-// })->name('restaurantinfo');
-
-
 Route::get('/restaurantinfo', [RestaurantController::class, 'index'])->name('restaurantinfo');
-
-
-// Route::get('/updaterestaurantinfo', function () {
-//     return view('updaterestaurantpage');
-// });
 
 Route::get('/updaterestaurantinfo/{id}', [RestaurantController::class, 'edit'])->name('restaurant.edit');
 
