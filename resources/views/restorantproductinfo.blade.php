@@ -40,71 +40,45 @@
 </head>
 <body class="bg-[#F9F3F0] text-gray-900 flex flex-col min-h-screen">
 
-    <!-- Navbar -->
-    <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
-        <div class="container mx-auto flex items-center justify-between py-4 px-6">
-            <!-- Logo -->
-            <div class="flex items-center">
-                <img src="{{ asset('assets/Image/Logo copy.png') }}" alt="Logo" class="h-14 w-14">
-                <span class="ml-2 text-xl font-bold text-gray-800">PlateItForward</span>
-            </div>
+    <x-navbarResto>
+        
+    </x-navbarResto>
     
-            <!-- Hamburger Button -->
-            <button id="hamburger-btn" class="block lg:hidden text-gray-600 focus:outline-none">
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-    
-            <!-- Navigation Links -->
-            <nav id="menu"
-                class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
-                <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
-                    <li><a href="/dashboardAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a>
-                    </li>
-                    <li><a href="/OrderList" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Order</a>
-                    </li>
-                    <li><a href="/userinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">User</a>
-                    </li>
-                    <li><a href="/restaurantinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurant</a>
-                    </li>
-                    <li><a href="/panti" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Orphanage</a></li>
-                    <li><a href="/supportAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Support</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
     <!-- Main Content -->
     <div class="w-full pt-40 mx-auto py-8 flex-grow items-center">
         <div class="w-11/12 mx-auto flex justify-between items-center">
-            <h2 class="text-2xl font-bold text-green-800">User’s Information</h2>
+            <h2 class="text-2xl font-bold text-green-800">Product’s Information</h2>
             <button id="delete-btn" onclick="handleTrashButton()" class="text-red-600 hover:text-red-800 text-xl">
                 🗑️
             </button>            
         </div>
+        <a href="{{ route('products.create') }}" class="btn btn-primary">
+            add product
+        </a>
 
-        <div class="bg-white rounded-lg w-11/12 mx-auto shadow-md mt-4">
-            <!-- Desktop Table -->
-            <div class="hidden md:block">
-                <table class="w-full">
-                    <thead class="bg-gray-100">
-                        <tr class="text-left text-gray-600">
-                            <th class="p-3"></th>
-                            <th class="p-3">User ID</th>
-                            <th class="p-3">Name</th>
-                            <th class="p-3">Desc</th>
-                            <th class="p-3">Price</th>
-                        </tr>
-                    </thead>
-                    <tbody id="userTable"></tbody>
-                </table>
+      
+        <div class="bg-green-500 w-full flex flex-wrap p-8 gap-4">
+            @foreach ($products as $prd)
+            <div class="">
+
+                <a href="{{  route('productexp.show', $prd->id)  }}">
+                    <img src="{{ url('storage/'. $prd->foto )}}" alt="">
+                    <h1>{{ $prd->name }}</h1>
+                    <h1>Rp. {{ number_format((int) $prd->price) }}</h1>
+                    <h1>{{ $prd->description }}</h1>
+                </a>
+            
             </div>
+            @endforeach
+        </div>
+    
 
-            <!-- Mobile Cards -->
-            <div class="md:hidden space-y-4 p-4" id="userCards"></div>
-        </div>        
+
+      
+       
+        
+            
     </div>
 
     <!-- Footer -->
@@ -142,7 +116,7 @@
             </div>
         </footer>
 
-    <script>
+    {{-- <script>
         let users = [
             { id: 'P001', name: 'Ayam Bakar', desc: 'Mantap gurih nyoi', price: 'Rp 20.000' },
             { id: 'P002', name: 'Ayam Goreng', desc: 'Goreng nikmat', price: 'Rp 25.000' },
@@ -285,6 +259,6 @@
         hamburgerBtn.addEventListener('click', () => {
             menu.classList.toggle('hidden'); // Show or hide the menu
         });
-    </script>
+    </script> --}}
 </body>
 </html>

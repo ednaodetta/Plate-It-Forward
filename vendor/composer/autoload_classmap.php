@@ -23,6 +23,10 @@ return array(
     'App\\Http\\Controllers\\Auth\\VerifyEmailController' => $baseDir . '/app/Http/Controllers/Auth/VerifyEmailController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',
+<<<<<<< HEAD
+=======
+    'App\\Http\\Controllers\\RestaurantController' => $baseDir . '/app/Http/Controllers/RestaurantController.php',
+>>>>>>> 6e8f3f5667ec82f1c5a9926452c210afb58a39be
     'App\\Http\\Controllers\\RestaurantPasswordController' => $baseDir . '/app/Http/Controllers/RestaurantPasswordController.php',
     'App\\Http\\Controllers\\SupportController' => $baseDir . '/app/Http/Controllers/SupportController.php',
     'App\\Http\\Middleware\\AdminMiddleware' => $baseDir . '/app/Http/Middleware/AdminMiddleware.php',

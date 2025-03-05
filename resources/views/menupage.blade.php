@@ -40,6 +40,7 @@
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+<<<<<<< HEAD
     @else
         <style>
             /* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */
@@ -971,6 +972,11 @@
             </nav>
         </div>
     </header>
+=======
+    </head>
+    <body class="w-full flex">
+        <x-navbar></x-navbar>
+>>>>>>> 6e8f3f5667ec82f1c5a9926452c210afb58a39be
 
     <section class="menu w-full flex flex-col">
 
