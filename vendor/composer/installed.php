@@ -3,7 +3,11 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
+<<<<<<< HEAD
+        'reference' => '6e7adaa6b0c556c1ea97ec06623660acbeab8915',
+=======
         'reference' => 'f109af51d8f87079011948d20f759f6e38103958',
+>>>>>>> 6e8f3f5667ec82f1c5a9926452c210afb58a39be
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -388,7 +392,11 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
+<<<<<<< HEAD
+            'reference' => '6e7adaa6b0c556c1ea97ec06623660acbeab8915',
+=======
             'reference' => 'f109af51d8f87079011948d20f759f6e38103958',
+>>>>>>> 6e8f3f5667ec82f1c5a9926452c210afb58a39be
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -508,6 +516,15 @@
             'reference' => '08cfc6c4f3d811584fb09c37e2849e6a7f9b0742',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/uri-interfaces',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'midtrans/midtrans-php' => array(
+            'pretty_version' => '2.6.1',
+            'version' => '2.6.1.0',
+            'reference' => '737ddabeb0c4d40316c4db132f9ef5c8f7a1b3a6',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../midtrans/midtrans-php',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
