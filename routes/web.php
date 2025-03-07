@@ -52,7 +52,7 @@ Route::get('/OrderList', function () {
 Route::get('/OrderListRestaurant', function () {
     return view('OrderListRestaurant');
 });
-Route::get('/restoranpage', [LocationController::class, 'index']);
+// Route::get('/restoranpage', [LocationController::class, 'index']);
 
 // In routes/web.php
 Route::delete('/restaurant/{id}', [RestaurantController::class, 'destroy'])->name('restaurant.delete');
@@ -171,9 +171,3 @@ Route::get('/restoranpage', [ProductController::class, 'restoran'])->name('resto
 
 
 Route::get('/search-location', [LocationController::class, 'search']);
-
-// Route::get('/testing', function () {
-//     return view('testing');
-// });
-
-Route::get('/testing', [RestaurantDashboardController::class, 'index'])->name('testing');

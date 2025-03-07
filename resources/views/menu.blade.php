@@ -16,8 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-…." crossorigin="anonymous" referrerpolicy="no-referrer"  />
     <link href="/css/tailwind.css" rel="stylesheet">
-    @livewireStyles
-
     <style>
         /* Custom CSS for half-circle cart button */
         .half-circle {
@@ -62,12 +60,7 @@
             padding: 20px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
-
-        #cart-success-popup {
-            transition: opacity 0.3s ease-in-out;
-        }
     </style>
-
 
     <!-- Styles / Scripts -->
 
@@ -128,28 +121,34 @@
                 <div class="cardlistnye bg-[#f9f3f0] w-[85%] grid grid-cols-auto-fit min-[350px] gap-[20px]">
 
                     @foreach ($products as $product)
-                        <div class="card border-2 bg-DefaultWhite w-[350px] h-[420px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 cursor-pointer"
+                        <div class="card border-2 bg-DefaultWhite w-[400px] h-[500px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 cursor-pointer"
                             onclick="buttonmenudesc(
                             '{{ $product->name }}',
                             '{{ asset('storage/' . $product->foto) }}',
                             'Rp {{ number_format($product->price, 0, ',', '.') }}',
                             '{{ $product->description }}'
                         )">
-                            <img class="h-[80%] w-full object-cover rounded-[10px]"
+                            <img class="h-[70%] w-full object-cover rounded-[10px]"
                                 src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->name }}">
                             <h1 class="font-bold text-[20px]">{{ $product->name }}</h1>
                             <div class="flex justify-between">
                                 <h1>Rp {{ number_format($product->price, 0, ',', '.') }}</h1>
                                 @if (Auth::check())
                                     {{-- <button
-                                        class="add-to-cart w-[100px] rounded-md bg-DefaultGreen font-bold text-white cursor-pointer"
-                                        onclick="event.stopPropagation()" data-product-id="{{ $product->id }}">
+                                        class="w-[100px] rounded-md bg-DefaultGreen font-bold text-white cursor-pointer"
+                                        onclick="event.stopPropagation(); addToCart('{{ $product->id }}')">
                                         ADD
                                     </button> --}}
-                                    <button wire:click="addToCart({{ $product->id }})"
-                                        class="w-[100px] rounded-md bg-DefaultGreen font-bold text-white cursor-pointer p-2">
-                                        ADD
-                                    </button>
+                                    <div
+                                        class="quantity w-[10%] inline-flex flex-col h-[100px] border-none rounded-[100px] justify-center items-center bg-DefaultGreen">
+                                        <button class="h-[35px] bg-transparent text-white"
+                                            onclick="event.stopPropagation();">+</button>
+                                        <input
+                                            class="w-[100%] text-white text-center border-none pointer-events-none h-[30px] bg-transparent"
+                                            type="text" id="quantity" value="10"readonly>
+                                        <button class="h-[35px] bg-transparent text-white"
+                                            onclick="event.stopPropagation();">−</button>
+                                    </div>
                                 @else
                                     <a href="{{ route('login') }}">
                                         <button
@@ -159,6 +158,8 @@
                                         </button>
                                     </a>
                                 @endif
+
+
                             </div>
                         </div>
                     @endforeach
@@ -170,8 +171,7 @@
 
             <button
                 class="fixed right-0 top-[50vh] w-[50px] h-[80px] rounded-[100px_0_0_100px] bg-DefaultGreen text-white font-bold text-[20px] shadow-lg"
-                onclick="Livewire.emit('openCart')">
-                cart
+                onclick="buttonmenu()">cart
             </button>
         </div>
 
@@ -197,65 +197,152 @@
                 <p id="descDetail" class="px-4 text-sm text-gray-700 text-center"></p>
             </div>
 
-            <!-- Tombol ADD TO CART -->
-            @if (Auth::check())
-                <button class="add-to-cart bg-DefaultGreen text-white rounded-md py-2 px-5"
-                    data-product-id="{{ $product->id }}">
-                    ADD TO CART
-                </button>
-            @else
-                <a href="{{ route('login') }}">
-                    <button class="bg-DefaultGreen text-white rounded-md py-2 px-5">
-                        ADD TO CART
-                    </button>
-                </a>
-            @endif
+
             {{-- <button class="bg-DefaultGreen text-white rounded-md py-2 px-5 w-3/4">ADD TO CART</button> --}}
         </div>
 
         <!-- cart ini tandain flex ke hidden -->
-        {{-- @livewire('cart-component') --}}
-        <div class="cartye fixed right-0 top-0 w-[350px] h-full bg-white shadow-lg p-4 hidden">
-            <h2 class="text-xl font-bold">Your Cart</h2>
-            @if ($carts && count($carts->items) > 0)
-                <ul class="divide-y">
+        <div
+            class="cartye bg-DefaultWhite flex-col h-[100vh] fixed items-center right-0 justify-between w-[28%] hidden">
+            <div class="h-[10vh]"></div>
+
+            {{-- Header --}}
+            <div class="headercart sticky bg-DefaultWhite w-full flex flex-col h-[15vh] border-b-4 border-[#00615F]">
+                <div class="backtolist w-full flex border-b-2 border-[#AFAFAF] pl-5 h-[40%]">
+                    <button class="text-[35px] text-bold bg-transparent" onclick="backbuttonmenu()">X</button>
+                </div>
+                <div class="carttitle w-full flex flex-col justify-center items-center h-[60%] bg-DefaultWhite">
+                    <h1>CART</h1>
+                    <h2>{{ $restsearch->name }}</h2>
+                </div>
+            </div>
+
+            {{-- Isi Cart --}}
+            <div
+                class="cartmid w-full items-center flex h-[65vh] flex-col gap-[2vh] overflow-y-auto overflow-x-hidden scrollbar-none">
+                <div class="h-[1vh]"></div>
+
+                {{-- Jika Cart Tidak Kosong --}}
+                @if ($carts && $carts->items->count() > 0)
                     @foreach ($carts->items as $item)
-                        <li class="py-2 flex justify-between items-center">
-                            <span>{{ $item->product->name }}</span>
-                            <div class="flex items-center">
-                                <button class="bg-gray-300 px-2"
-                                    wire:click="updateQuantity({{ $item->id }}, 'decrease')">-</button>
-                                <span class="mx-2">{{ $item->quantity }}</span>
-                                <button class="bg-gray-300 px-2"
-                                    wire:click="updateQuantity({{ $item->id }}, 'increase')">+</button>
+                        <div
+                            class="cartmenulist flex rounded-[10px] w-[90%] gap-[10px] items-center h-[130px] justify-center p-2">
+                            {{-- Quantity Control --}}
+                            <div
+                                class="quantity w-[10%] inline-flex flex-col h-[100px] border-none rounded-[100px] justify-center items-center bg-DefaultGreen">
+                                <button class="h-[35px] bg-transparent text-white"
+                                    onclick="updateQuantity({{ $item->id }}, 1)">+</button>
+                                <input
+                                    class="w-[100%] text-white text-center border-none pointer-events-none h-[30px] bg-transparent"
+                                    type="text" id="quantity-{{ $item->id }}" value="{{ $item->quantity }}"
+                                    readonly>
+                                <button class="h-[35px] bg-transparent text-white"
+                                    onclick="updateQuantity({{ $item->id }}, -1)">−</button>
                             </div>
-                        </li>
+
+                            {{-- Product Image --}}
+                            <div
+                                class="picturemenu w-[100px] h-[100px] bg-black border-DefaultGreen border-[1px] rounded-[10px]">
+                                <img class="h-full w-full rounded-[10px]" src="{{ $item->product->image_url }}"
+                                    alt="{{ $item->product->name }}">
+                            </div>
+
+                            {{-- Product Description --}}
+                            <div class="descmenu flex flex-col justify-between h-full">
+                                <h1>{{ $item->product->name }}</h1>
+                                <h2>Rp{{ number_format($item->product->price, 0, ',', '.') }}</h2>
+                                <h1>Subtotal:
+                                    Rp{{ number_format($item->quantity * $item->product->price, 0, ',', '.') }}</h1>
+                            </div>
+                        </div>
                     @endforeach
-                </ul>
-                <p class="mt-4 font-bold">Total: Rp {{ number_format($carts->total, 0, ',', '.') }}</p>
-            @else
-                <p class="text-gray-500">Your cart is empty</p>
-            @endif
+                @else
+                    <p class="text-center">Cart is empty</p>
+                @endif
+            </div>
+
+            {{-- Total dan Payment --}}
+            <div
+                class="totalmenu bg-DefaultWhite w-full h-[15vh] flex flex-col items-center pt-[2vh] border-t-4 border-DefaultGreen">
+                <div class="totallist w-[90%] flex justify-between">
+                    <h1 class="font-bold">TOTAL</h1>
+                    <h1>Rp{{ number_format($carts ? $carts->items->sum(fn($item) => $item->quantity * $item->product->price) : 0, 0, ',', '.') }}
+                    </h1>
+                </div>
+                <a href="/payment"><button class="bg-DefaultGreen h-[3vh] w-[200px] text-white">PAYMENT</button></a>
+            </div>
         </div>
 
 
-
         <div class="h-[5vh] bg-DefaultWhite"></div>
-
 
         <x-footer></x-footer>
 
 
     </section>
-    <div id="cart-success-popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
-        <div class="bg-white p-4 rounded-lg shadow-lg text-center">
-            <p class="text-lg font-bold text-green-600">Produk berhasil ditambahkan!</p>
-        </div>
-    </div>
-    @livewireScripts
-
 
     <script>
+        async function addToCart(productId) {
+
+            try {
+                let response = await fetch(`/cart/add/${productId}`, {
+                    method: "POST",
+                    headers: {
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                let data = await response.json();
+
+                if (data.switchRestaurant) {
+                    if (confirm("Cart hanya bisa berisi produk dari satu restoran. Ingin mengganti restoran?")) {
+                        await fetch("/cart/switch", {
+                            method: "POST",
+                            headers: {
+                                "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                                "Content-Type": "application/json"
+                            }
+                        });
+                        return addToCart(productId); // Coba tambah lagi setelah reset
+                    }
+                }
+            } catch (error) {
+                console.error("Gagal menambahkan ke keranjang:", error);
+            } finally {}
+        }
+
+        async function updateQuantity(itemId, change) {
+            const input = document.getElementById(`quantity-${itemId}`);
+            let newValue = parseInt(input.value) + change;
+
+            if (newValue < 1) return;
+
+            input.value = newValue; // Update langsung di UI
+
+            try {
+                let response = await fetch(`/cart/update/${itemId}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute(
+                            "content")
+                    },
+                    body: JSON.stringify({
+                        quantity: newValue
+                    })
+                });
+
+                let data = await response.json();
+
+                if (data.success) {
+                    updateCartUI(); // Perbarui UI tanpa reload
+                }
+            } catch (error) {
+                console.error("Gagal memperbarui jumlah produk:", error);
+            }
+        }
+
         function buttonmenu() {
             const menucart = document.querySelector('.cartye');
 
@@ -297,7 +384,15 @@
 
             document.body.classList.remove('overflow-hidden');
         }
+
+        function updateCartUI() {
+            // Tambahkan logika untuk memperbarui UI keranjang tanpa reload, misalnya:
+            // - Perbarui jumlah item di ikon keranjang
+            // - Perbarui harga total
+            console.log("Keranjang diperbarui!");
+        }
     </script>
+
 </body>
 
 
