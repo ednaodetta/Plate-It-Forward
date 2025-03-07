@@ -151,8 +151,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
 
     Route::post('/checkout', [CheckoutController::class, 'checkout']);
-    Route::post('/midtrans/notification', [CheckoutController::class, 'handleNotification']);
 });
+Route::post('/midtrans/notification', [CheckoutController::class, 'handleNotification']);
 
 
 
