@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\RestaurantController;
@@ -6,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrphanageController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 Route::get('/api/restaurants', [RestaurantController::class, 'index']);
 
@@ -17,7 +19,7 @@ Route::get('/api/restaurants', [RestaurantController::class, 'index']);
 
 // use App\Http\Controllers\Auth\RegisteredOrphanageController;
 // Route::post('/panti', [RegisteredOrphanageController::class, 'store'])->name('orphanage.add');
-require __DIR__.'/auth_orphanage.php'; 
+require __DIR__ . '/auth_orphanage.php';
 
 Route::get('/panti', [OrphanageController::class, 'index'])->name('panti.index'); // Orphanage list
 
@@ -38,9 +40,6 @@ Route::get('/my-donations', function () {
     return view('mydonations');
 });
 
-// Route::get('/menupage', function () {
-//     return view('menupage');
-// });
 
 Route::get('/payment', function () {
     return view('payment');
@@ -135,6 +134,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
+    // Route::post('/cart/switch', [CartController::class, 'switchRestaurant']);
+    // Route::post('/cart/update/{id}', [CartController::class, 'updateQuantity']);
+
+    // Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+    // Route::post('/cart/switch', [CartController::class, 'switchRestaurant'])->name('cart.switch');
+    // Route::get('/cart/details', [CartController::class, 'cartDetails'])->name('cart.details');
+    // Route::post('/cart/update', [CartController::class, 'updateQuantity'])->name('cart.update');
+
+    Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::post('/cart/update/{itemId}', [CartController::class, 'updateCartItem'])->name('cart.update');
+    Route::delete('/cart/remove/{itemId}', [CartController::class, 'removeCartItem'])->name('cart.remove');
 });
 
 
@@ -176,5 +187,10 @@ Route::post('/add-restaurant', [RestaurantController::class, 'store'])->name('re
 
 
 Route::get('/menupage', [RestaurantController::class, 'menu'])->name('menupage');
+Route::get('/menu', [RestaurantController::class, 'menu'])->name('menu');
 
 Route::get('/restoranpage', [ProductController::class, 'restoran'])->name('restoranpage.restoran');
+
+use App\Http\Livewire\CartComponent;
+
+Route::get('/cobalivewire', [ProductController::class, 'index'])->name('products.index');
