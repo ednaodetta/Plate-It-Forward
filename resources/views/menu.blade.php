@@ -116,6 +116,7 @@
                 </div>
             </div>
 
+
             <div class="w-full flex flex-col items-center gap-3">
                 <h1 class="w-[85%] font-bold text-[25px]">Today's menu</h1>
                 <div class="cardlistnye bg-[#f9f3f0] w-[85%] grid grid-cols-auto-fit min-[350px] gap-[20px]">
@@ -130,6 +131,7 @@
                         )">
                             <img class="h-[70%] w-full object-cover rounded-[10px]"
                                 src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->name }}">
+
                             <h1 class="font-bold text-[20px]">{{ $product->name }}</h1>
                             <div class="flex justify-between">
                                 <h1>Rp {{ number_format($product->price, 0, ',', '.') }}</h1>
@@ -202,76 +204,7 @@
         </div>
 
         <!-- cart ini tandain flex ke hidden -->
-        <div
-            class="cartye bg-DefaultWhite flex-col h-[100vh] fixed items-center right-0 justify-between w-[28%] hidden">
-            <div class="h-[10vh]"></div>
 
-            {{-- Header --}}
-            <div class="headercart sticky bg-DefaultWhite w-full flex flex-col h-[15vh] border-b-4 border-[#00615F]">
-                <div class="backtolist w-full flex border-b-2 border-[#AFAFAF] pl-5 h-[40%]">
-                    <button class="text-[35px] text-bold bg-transparent" onclick="backbuttonmenu()">X</button>
-                </div>
-                <div class="carttitle w-full flex flex-col justify-center items-center h-[60%] bg-DefaultWhite">
-                    <h1>CART</h1>
-                    <h2>{{ $restsearch->name }}</h2>
-                </div>
-            </div>
-
-            {{-- Isi Cart --}}
-            <div
-                class="cartmid w-full items-center flex h-[65vh] flex-col gap-[2vh] overflow-y-auto overflow-x-hidden scrollbar-none">
-                <div class="h-[1vh]"></div>
-
-                {{-- Jika Cart Tidak Kosong --}}
-                @if ($carts && $carts->items->count() > 0)
-                    @foreach ($carts->items as $item)
-                        <div
-                            class="cartmenulist flex rounded-[10px] w-[90%] gap-[10px] items-center h-[130px] justify-center p-2">
-                            {{-- Quantity Control --}}
-                            <div
-                                class="quantity w-[10%] inline-flex flex-col h-[100px] border-none rounded-[100px] justify-center items-center bg-DefaultGreen">
-                                <button class="h-[35px] bg-transparent text-white"
-                                    onclick="updateQuantity({{ $item->id }}, 1)">+</button>
-                                <input
-                                    class="w-[100%] text-white text-center border-none pointer-events-none h-[30px] bg-transparent"
-                                    type="text" id="quantity-{{ $item->id }}" value="{{ $item->quantity }}"
-                                    readonly>
-                                <button class="h-[35px] bg-transparent text-white"
-                                    onclick="updateQuantity({{ $item->id }}, -1)">−</button>
-                            </div>
-
-                            {{-- Product Image --}}
-                            <div
-                                class="picturemenu w-[100px] h-[100px] bg-black border-DefaultGreen border-[1px] rounded-[10px]">
-                                <img class="h-full w-full rounded-[10px]" src="{{ $item->product->image_url }}"
-                                    alt="{{ $item->product->name }}">
-                            </div>
-
-                            {{-- Product Description --}}
-                            <div class="descmenu flex flex-col justify-between h-full">
-                                <h1>{{ $item->product->name }}</h1>
-                                <h2>Rp{{ number_format($item->product->price, 0, ',', '.') }}</h2>
-                                <h1>Subtotal:
-                                    Rp{{ number_format($item->quantity * $item->product->price, 0, ',', '.') }}</h1>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    <p class="text-center">Cart is empty</p>
-                @endif
-            </div>
-
-            {{-- Total dan Payment --}}
-            <div
-                class="totalmenu bg-DefaultWhite w-full h-[15vh] flex flex-col items-center pt-[2vh] border-t-4 border-DefaultGreen">
-                <div class="totallist w-[90%] flex justify-between">
-                    <h1 class="font-bold">TOTAL</h1>
-                    <h1>Rp{{ number_format($carts ? $carts->items->sum(fn($item) => $item->quantity * $item->product->price) : 0, 0, ',', '.') }}
-                    </h1>
-                </div>
-                <a href="/payment"><button class="bg-DefaultGreen h-[3vh] w-[200px] text-white">PAYMENT</button></a>
-            </div>
-        </div>
 
 
         <div class="h-[5vh] bg-DefaultWhite"></div>
@@ -282,85 +215,6 @@
     </section>
 
     <script>
-        async function addToCart(productId) {
-
-            try {
-                let response = await fetch(`/cart/add/${productId}`, {
-                    method: "POST",
-                    headers: {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
-                        "Content-Type": "application/json"
-                    }
-                });
-
-                let data = await response.json();
-
-                if (data.switchRestaurant) {
-                    if (confirm("Cart hanya bisa berisi produk dari satu restoran. Ingin mengganti restoran?")) {
-                        await fetch("/cart/switch", {
-                            method: "POST",
-                            headers: {
-                                "X-CSRF-TOKEN": "{{ csrf_token() }}",
-                                "Content-Type": "application/json"
-                            }
-                        });
-                        return addToCart(productId); // Coba tambah lagi setelah reset
-                    }
-                }
-            } catch (error) {
-                console.error("Gagal menambahkan ke keranjang:", error);
-            } finally {}
-        }
-
-        async function updateQuantity(itemId, change) {
-            const input = document.getElementById(`quantity-${itemId}`);
-            let newValue = parseInt(input.value) + change;
-
-            if (newValue < 1) return;
-
-            input.value = newValue; // Update langsung di UI
-
-            try {
-                let response = await fetch(`/cart/update/${itemId}`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute(
-                            "content")
-                    },
-                    body: JSON.stringify({
-                        quantity: newValue
-                    })
-                });
-
-                let data = await response.json();
-
-                if (data.success) {
-                    updateCartUI(); // Perbarui UI tanpa reload
-                }
-            } catch (error) {
-                console.error("Gagal memperbarui jumlah produk:", error);
-            }
-        }
-
-        function buttonmenu() {
-            const menucart = document.querySelector('.cartye');
-
-            menucart.classList.replace('w-0', 'w-[28%]');
-            menucart.classList.replace('hidden', 'flex');
-
-            document.body.classList.add('overflow-hidden');
-        }
-
-        function backbuttonmenu() {
-            const menucart = document.querySelector('.cartye');
-
-            menucart.classList.replace('w-[28%]', 'w-0');
-            menucart.classList.replace('flex', 'hidden');
-
-            document.body.classList.remove('overflow-hidden');
-        }
-
         function buttonmenudesc(name, image, price, description) {
             document.getElementById("descName").textContent = name;
             document.getElementById("descImage").src = image;
@@ -383,13 +237,6 @@
             overlay.classList.add('hidden');
 
             document.body.classList.remove('overflow-hidden');
-        }
-
-        function updateCartUI() {
-            // Tambahkan logika untuk memperbarui UI keranjang tanpa reload, misalnya:
-            // - Perbarui jumlah item di ikon keranjang
-            // - Perbarui harga total
-            console.log("Keranjang diperbarui!");
         }
     </script>
 
