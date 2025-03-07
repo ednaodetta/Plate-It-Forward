@@ -3,7 +3,11 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
+<<<<<<< HEAD
+        'reference' => 'aedcb6d73ea86685ca476ac67dce15296451b36d',
+=======
         'reference' => 'cd4909b351828b552d5ec4cce84df394f8b4b293',
+>>>>>>> f5449bc3da8b47e2c648f4e99f689fcaa35b09a3
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -388,7 +392,11 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
+<<<<<<< HEAD
+            'reference' => 'aedcb6d73ea86685ca476ac67dce15296451b36d',
+=======
             'reference' => 'cd4909b351828b552d5ec4cce84df394f8b4b293',
+>>>>>>> f5449bc3da8b47e2c648f4e99f689fcaa35b09a3
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -508,6 +516,15 @@
             'reference' => '08cfc6c4f3d811584fb09c37e2849e6a7f9b0742',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/uri-interfaces',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'livewire/livewire' => array(
+            'pretty_version' => 'v3.6.1',
+            'version' => '3.6.1.0',
+            'reference' => '0df0a762698176d714e42e2dfed92b6b9e24b8e4',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../livewire/livewire',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use App\Models\Products;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
+
 
 class RestaurantController extends Controller
 {
@@ -26,7 +30,7 @@ class RestaurantController extends Controller
     public function edit($id)
     {
         $restaurant = Restaurant::find($id);
-    
+
         if (!$restaurant) {
             return redirect()->route('restaurantinfo')->with('error', 'Restaurant not found');
         }
@@ -49,7 +53,7 @@ class RestaurantController extends Controller
     // }
     public function update(Request $request, $id)
     {
-    // Validate the input data
+        // Validate the input data
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:restaurants,email,' . $id,
@@ -58,10 +62,10 @@ class RestaurantController extends Controller
             'contact' => 'required|string|max:255',
         ]);
 
-    // Find the restaurant by ID
+        // Find the restaurant by ID
         $restaurant = Restaurant::findOrFail($id);
 
-    // Update the restaurant with the new values
+        // Update the restaurant with the new values
         $restaurant->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -70,7 +74,7 @@ class RestaurantController extends Controller
             'contact' => $request->contact,
         ]);
 
-    // Redirect back to the restaurant info page with a success message
+        // Redirect back to the restaurant info page with a success message
         return redirect()->route('restaurantinfo')->with('success', 'Restaurant updated successfully!');
     }
 
@@ -78,20 +82,46 @@ class RestaurantController extends Controller
 
     public function destroy($id)
     {
-    // Find the restaurant by ID
+        // Find the restaurant by ID
         $restaurant = Restaurant::findOrFail($id);
-    // Delete the restaurant
+        // Delete the restaurant
         $restaurant->delete();
-    // Redirect back to the restaurant list with a success message
+        // Redirect back to the restaurant list with a success message
         return redirect()->route('restaurantinfo')->with('success', 'Restaurant deleted successfully!');
     }
 
+    // public function menu(Request $request)
+    // {
+    //     $id = $request->query('id'); // Ambil ID dari URL
+    //     $restsearch = Restaurant::findOrFail($id); // Cari restoran berdasarkan ID
+    //     $products = Products::where('restaurant_id', $id)->get(); // Ambil semua produk restoran
 
-    public function menu(Request $request){
+    //     $carts = null;
+
+    //     if (Auth::check()) {
+
+    //         $user_id = Auth::id();
+    //         $carts = Cart::where('user_id', $user_id)->with('items.product')->first();
+    //     }
+    //     // dd($carts);
+
+    //     return view('menupage', compact('restsearch', 'products', 'carts'));
+    // }
+    public function menu(Request $request)
+    {
         $id = $request->query('id'); // Ambil ID dari URL
         $restsearch = Restaurant::findOrFail($id); // Cari restoran berdasarkan ID
-        // dd($restaurant);
-        return view('menupage', compact('restsearch'));
-    
+        $products = Products::where('restaurant_id', $id)->get(); // Ambil semua produk restoran
+
+        $carts = null;
+
+        if (Auth::check()) {
+
+            $user_id = Auth::id();
+            $carts = Cart::where('user_id', $user_id)->with('items.product')->first();
+        }
+        // dd($carts);
+
+        return view('menupage', compact('restsearch', 'products', 'carts'));
     }
 }
