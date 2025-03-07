@@ -18,23 +18,6 @@
     <link href="/css/tailwind.css" rel="stylesheet">
     <style>
         /* Custom CSS for half-circle cart button */
-        .half-circle {
-            width: 50px;
-            height: 100px;
-            background-color: #00615F;
-            border-radius: 50px 0 0 50px;
-            position: fixed;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .cartmenulist {
-            box-shadow: 0px 0px 5px 0px black;
-        }
 
         .grid-cols-auto-fit {
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -60,6 +43,21 @@
             padding: 20px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+            /* Firefox */
+            appearance: textfield;
+            /* Standar */
+            text-align: center;
+        }
+
+        /* Hilangkan tombol di WebKit (Chrome, Edge, Safari) */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
     </style>
 
     <!-- Styles / Scripts -->
@@ -76,42 +74,23 @@
 
 
     <section class="menu w-full flex flex-col">
-        <div class="cardlist bg-[#f9f3f0] w-full items-center justif-center flex flex-col gap-[50px] ">
+        <div class="cardlist bg-[#f9f3f0] w-full items-center justif-center flex flex-col mt-[50px] ">
             <div class="h-[5vh]"> </div>
-            <div class="resto w-full h-[250px] bg-[#f9f3f0] flex flex-col items-center">
-                <div class="resto_header w-full h-[180px] bg-[#f9f3f0] flex justify-center items-center gap-[1%]">
+            <div class="resto w-full  bg-[#f9f3f0] flex flex-col items-center">
+                <div class="resto_header w-full h-[180px] bg-[#f9f3f0] flex justify-center items-center gap-[1%] pl-5">
                     <div
                         class="resto_pic w-[135px] bg-[#f9f3f0] h-[125-x] justify-center rounded-[10px] shadow-[1px_1px_1px_#666]">
                         <img class="w-full h-full object-cover rounded-[10px]"
                             src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/8ceb09b1-2ff8-4e92-9e84-ae9eb8c70dd2_brand-image_1733091199022.jpg?auto=format"
                             alt="McDonald's, Sentul City">
                     </div>
-                    <div class="resto_desc flex flex-col justify-start w-[75%] gap-[3vh]">
+                    <div class="resto_desc flex flex-col justify-start w-[75%] gap-[3vh] pl-5">
                         <div
                             class="resto_name bg-[#f9f3f0] w-full h-[50px] text-[30px] bold-text items-center text-black">
                             {{ $restsearch->name }}</div>
                         <div
                             class="resto_category bg-[#f9f3f0] h-[50px] w-full left-[200px] text-[20px] text-[#888888] items-center">
-                            Sweets, Snacks, Fast Food</div>
-                    </div>
-                </div>
-
-                <div
-                    class="resto_rate bg-DefaultGreen h-[70px] flex w-[85%] rounded-[10px] items-center shadow-[1px_1px_1px_#666]">
-                    <div
-                        class="review flex flex-row justify-center items-center gap-5px h-full w-[100px] bg-transparent text-yellow-300 rounded-tl-[10px] rounded-bl-[10px] gap-1">
-                        <span class="fa fa-star checked"></span>
-                        <p class="text-white bold-text text-lg">4.7</p>
-                    </div>
-                    <div
-                        class="price flex flex-col justify-center items-center h-[85%] w-[100px] bg-transparent border-l border-r border-white ">
-                        <div class="label text-[20px] flex flex-row gap-[2px]">
-                            <p1 class="text-white text-bold">$</p1>
-                            <p1 class="text-white text-bold">$</p1>
-                            <p1 class="text-[#D9D9D9] text-bold">$</p1>
-                            <p2 class="text-[#D9D9D9] text-bold">$</p2>
-                        </div>
-                        <p class="text-white text-bold">40k - 100k</p>
+                            {{ $restsearch->city }}</div>
                     </div>
                 </div>
             </div>
@@ -119,10 +98,10 @@
 
             <div class="w-full flex flex-col items-center gap-3">
                 <h1 class="w-[85%] font-bold text-[25px]">Today's menu</h1>
-                <div class="cardlistnye bg-[#f9f3f0] w-[85%] grid grid-cols-auto-fit min-[350px] gap-[20px]">
-
+                <div
+                    class="cardlistnye bg-[#f9f3f0] w-[85%] grid gap-x-20 gap-y-20 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach ($products as $product)
-                        <div class="card border-2 bg-DefaultWhite w-[400px] h-[500px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 cursor-pointer"
+                        <div class="card border-2 bg-DefaultWhite w-[100%] h-[500px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 cursor-pointer"
                             onclick="buttonmenudesc(
                             '{{ $product->name }}',
                             '{{ asset('storage/' . $product->foto) }}',
@@ -131,10 +110,16 @@
                         )">
                             <img class="h-[70%] w-full object-cover rounded-[10px]"
                                 src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->name }}">
-
-                            <h1 class="font-bold text-[20px]">{{ $product->name }}</h1>
                             <div class="flex justify-between">
-                                <h1>Rp {{ number_format($product->price, 0, ',', '.') }}</h1>
+                                <div>
+                                    <h1 class="font-bold text-[20px]">{{ $product->name }}</h1>
+                                    <h2 class="text-[16px]">Rp
+                                        {{ number_format($product->price, 0, ',', '.') }}</h2>
+                                    <h3 class="text-[14px]">Stock :
+                                        {{ $product->product_exps_sum_quantity ?? 0 }}
+                                    </h3>
+                                </div>
+
                                 @if (Auth::check())
                                     {{-- <button
                                         class="w-[100px] rounded-md bg-DefaultGreen font-bold text-white cursor-pointer"
@@ -142,14 +127,22 @@
                                         ADD
                                     </button> --}}
                                     <div
-                                        class="quantity w-[10%] inline-flex flex-col h-[100px] border-none rounded-[100px] justify-center items-center bg-DefaultGreen">
-                                        <button class="h-[35px] bg-transparent text-white"
-                                            onclick="event.stopPropagation();">+</button>
+                                        class="quantity w-[15%] inline-flex flex-col h-[100px] border-none rounded-[100px] justify-center items-center bg-DefaultGreen">
+                                        <button id="plus-{{ $product->id }}"
+                                            class="h-[35px] w-[100%] bg-transparent text-white"
+                                            onclick="event.stopPropagation(); updateCart('{{ $product->id }}', 'increase', {{ $product->product_exps_sum_quantity ?? 0 }});">+</button>
+
                                         <input
-                                            class="w-[100%] text-white text-center border-none pointer-events-none h-[30px] bg-transparent"
-                                            type="text" id="quantity" value="10"readonly>
-                                        <button class="h-[35px] bg-transparent text-white"
-                                            onclick="event.stopPropagation();">−</button>
+                                            class="w-[100%] text-white text-center border-none h-[30px] bg-transparent"
+                                            type="number" id="quantity-{{ $product->id }}"
+                                            value="{{ $cartItems[$product->id] ?? 0 }}" min="0"
+                                            oninput="validateQuantity(this, {{ $product->product_exps_sum_quantity ?? 0 }})"
+                                            onblur="updateCartManual('{{ $product->id }}', {{ $product->product_exps_sum_quantity ?? 0 }})"
+                                            onclick="event.stopPropagation();">
+
+                                        <button id="minus-{{ $product->id }}"
+                                            class="h-[35px] w-[100%] bg-transparent text-white"
+                                            onclick="event.stopPropagation(); updateCart('{{ $product->id }}', 'decrease', {{ $product->product_exps_sum_quantity ?? 0 }});">−</button>
                                     </div>
                                 @else
                                     <a href="{{ route('login') }}">
@@ -169,12 +162,6 @@
 
                 </div>
             </div>
-
-
-            <button
-                class="fixed right-0 top-[50vh] w-[50px] h-[80px] rounded-[100px_0_0_100px] bg-DefaultGreen text-white font-bold text-[20px] shadow-lg"
-                onclick="buttonmenu()">cart
-            </button>
         </div>
 
         <div id="descOverlay" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40"></div>
@@ -202,19 +189,155 @@
 
             {{-- <button class="bg-DefaultGreen text-white rounded-md py-2 px-5 w-3/4">ADD TO CART</button> --}}
         </div>
-
-        <!-- cart ini tandain flex ke hidden -->
-
-
-
         <div class="h-[5vh] bg-DefaultWhite"></div>
 
         <x-footer></x-footer>
+        <div id="loadingOverlay"
+            class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div class="bg-white p-5 rounded-lg flex flex-col items-center">
+                <div class="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-DefaultGreen"></div>
+                <p class="mt-3 text-gray-700">Updating cart...</p>
+            </div>
+        </div>
 
 
     </section>
 
     <script>
+        async function updateCart(productId, action, stock) {
+            let quantityInput = document.getElementById(`quantity-${productId}`);
+            let minusButton = document.getElementById(`minus-${productId}`);
+            let plusButton = document.getElementById(`plus-${productId}`);
+
+            let currentQuantity = parseInt(quantityInput.value) || 0;
+            let newQuantity = action === 'increase' ? Math.min(currentQuantity + 1, stock) : Math.max(currentQuantity -
+                1, 0);
+
+            document.getElementById("loadingOverlay").classList.remove("hidden");
+
+            try {
+                let response = await fetch('/update-cart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({
+                        product_id: productId,
+                        quantity: newQuantity
+                    })
+                });
+
+                let data = await response.json();
+
+                if (data.error) {
+                    let confirmReplace = confirm(
+                        "Cart Anda berisi produk dari restoran lain. Ingin mengganti restoran?");
+                    if (confirmReplace) {
+                        document.getElementById("loadingOverlay").classList.remove("hidden");
+
+                        await fetch('/clear-cart', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            }
+                        });
+
+                        let updateResponse = await fetch('/update-cart', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                            body: JSON.stringify({
+                                product_id: productId,
+                                quantity: 1
+                            })
+                        });
+
+                        let updateData = await updateResponse.json();
+                        if (!updateData.error) {
+                            quantityInput.value = 1;
+                        }
+                    }
+                } else {
+                    quantityInput.value = newQuantity;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                document.getElementById("loadingOverlay").classList.add("hidden");
+            }
+
+            // Disable/Enable buttons
+            minusButton.disabled = newQuantity === 0;
+            plusButton.disabled = newQuantity === stock;
+        }
+
+        function validateQuantity(input, stock) {
+            let value = parseInt(input.value) || 0;
+            input.value = Math.min(Math.max(value, 0), stock);
+        }
+
+        async function updateCartManual(productId, stock) {
+            let quantityInput = document.getElementById(`quantity-${productId}`);
+            let minusButton = document.getElementById(`minus-${productId}`);
+            let plusButton = document.getElementById(`plus-${productId}`);
+
+            let newQuantity = parseInt(quantityInput.value) || 0;
+            newQuantity = Math.min(Math.max(newQuantity, 0), stock); // Batasi ke stok maksimal
+
+            document.getElementById("loadingOverlay").classList.remove("hidden");
+
+            try {
+                let response = await fetch('/update-cart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({
+                        product_id: productId,
+                        quantity: newQuantity
+                    })
+                });
+
+                let data = await response.json();
+
+                if (data.error) {
+                    alert("Terjadi kesalahan saat memperbarui keranjang.");
+                } else {
+                    quantityInput.value = newQuantity;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                document.getElementById("loadingOverlay").classList.add("hidden");
+            }
+
+            // Disable/Enable buttons
+            minusButton.disabled = newQuantity === 0;
+            plusButton.disabled = newQuantity === stock;
+        }
+
+
+
+
+
+        function clearCartAndAdd(productId, quantity) {
+            fetch('/clear-cart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                })
+                .then(() => {
+                    updateCart(productId, 'increase');
+                });
+        }
+
         function buttonmenudesc(name, image, price, description) {
             document.getElementById("descName").textContent = name;
             document.getElementById("descImage").src = image;
@@ -239,6 +362,8 @@
             document.body.classList.remove('overflow-hidden');
         }
     </script>
+
+
 
 </body>
 

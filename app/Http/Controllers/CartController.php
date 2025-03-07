@@ -6,10 +6,53 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\Products;
+use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    public function updateCart(Request $request)
+    {
+        $user_id = Auth::id();
+        $product_id = $request->product_id;
+        $quantity = $request->quantity;
+
+        $cart = Cart::firstOrCreate(['user_id' => $user_id]);
+
+        // Cek apakah produk dari restoran yang berbeda
+        $product = Products::find($product_id);
+        $cartItem = CartItem::where('cart_id', $cart->id)->first();
+
+        if ($cartItem && $cartItem->product->restaurant_id !== $product->restaurant_id) {
+            return response()->json(['error' => 'Restoran berbeda'], 400);
+        }
+
+        if ($quantity > 0) {
+            CartItem::updateOrCreate(
+                ['cart_id' => $cart->id, 'product_id' => $product_id],
+                ['quantity' => $quantity, 'price' => $product->price, 'subtotal' => $quantity * $product->price]
+            );
+        } else {
+            CartItem::where('cart_id', $cart->id)->where('product_id', $product_id)->delete();
+        }
+
+        return response()->json(['success' => true]);
+    }
+
+    public function clearCart()
+    {
+        $user_id = Auth::id();
+        $cart = Cart::where('user_id', $user_id)->first();
+
+        if ($cart) {
+            CartItem::where('cart_id', $cart->id)->delete();
+            $cart->delete();
+        }
+
+        return response()->json(['success' => true]);
+    }
+
+
     public function addToCart(Request $request, $productId)
     {
         $user = Auth::user();
@@ -57,6 +100,40 @@ class CartController extends Controller
 
         return response()->json(['success' => true]);
     }
+
+    public function showCart()
+    {
+        $userId = Auth::id();
+
+        // Ambil data cart berdasarkan user
+        $cart = Cart::where('user_id', $userId)->first();
+
+        // Ambil semua item dalam cart
+        $cartItems = CartItem::where('cart_id', $cart->id)
+            ->with('product') // Pastikan relasi ke Product ada
+            ->get();
+
+        $firstCartItem = $cartItems->first();
+        $restaurantId = $firstCartItem && $firstCartItem->product ? $firstCartItem->product->restaurant_id : null;
+        $restaurant = Restaurant::find($restaurantId);
+
+
+        // Hitung subtotal
+        $subtotal = $cartItems->sum('subtotal');
+
+        // Biaya tetap
+        $deliveryFee = 5000;
+        $serviceFee = $subtotal * 0.08;
+        $total = $subtotal + $deliveryFee + $serviceFee;
+
+        // Simpan total ke dalam tabel cart
+        $cart->update([
+            'total' => $total
+        ]);
+
+        return view('cart', compact('cartItems', 'restaurant', 'restaurantId', 'subtotal', 'deliveryFee', 'serviceFee', 'total'));
+    }
+
 
     public function switchRestaurant(Request $request)
     {

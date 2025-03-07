@@ -7,6 +7,8 @@ use App\Models\Restaurant;
 use App\Models\Products;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 
 class RestaurantController extends Controller
@@ -111,17 +113,27 @@ class RestaurantController extends Controller
     {
         $id = $request->query('id'); // Ambil ID dari URL
         $restsearch = Restaurant::findOrFail($id); // Cari restoran berdasarkan ID
-        $products = Products::where('restaurant_id', $id)->get(); // Ambil semua produk restoran
+
+        // Ambil semua produk restoran dengan stok dari product_exps
+        $products = Products::where('restaurant_id', $id)
+            ->withSum('productExps', 'quantity')
+            ->having('product_exps_sum_quantity', '>', 0) // Hanya ambil produk dengan stok > 0
+            ->get();
 
         $carts = null;
+        $cartItems = [];
 
         if (Auth::check()) {
-
             $user_id = Auth::id();
             $carts = Cart::where('user_id', $user_id)->with('items.product')->first();
-        }
-        // dd($carts);
 
-        return view('menu', compact('restsearch', 'products', 'carts'));
+            // Ambil quantity produk dalam cart
+            $cartItems = DB::table('cart_items')
+                ->join('carts', 'cart_items.cart_id', '=', 'carts.id')
+                ->where('carts.user_id', $user_id)
+                ->pluck('cart_items.quantity', 'cart_items.product_id');
+        }
+
+        return view('menu', compact('restsearch', 'products', 'carts', 'cartItems'));
     }
 }

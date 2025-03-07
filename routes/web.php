@@ -8,6 +8,7 @@ use App\Http\Controllers\OrphanageController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 Route::get('/api/restaurants', [RestaurantController::class, 'index']);
 
@@ -41,9 +42,6 @@ Route::get('/my-donations', function () {
 });
 
 
-Route::get('/payment', function () {
-    return view('payment');
-});
 
 Route::get('/OrderList', function () {
     return view('OrderList');
@@ -146,7 +144,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
     Route::post('/cart/update/{itemId}', [CartController::class, 'updateCartItem'])->name('cart.update');
     Route::delete('/cart/remove/{itemId}', [CartController::class, 'removeCartItem'])->name('cart.remove');
+
+    Route::post('/update-cart', [CartController::class, 'updateCart']);
+    Route::post('/clear-cart', [CartController::class, 'clearCart']);
+
+    Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
+
+    Route::post('/checkout', [CheckoutController::class, 'checkout']);
+    Route::post('/midtrans/notification', [CheckoutController::class, 'handleNotification']);
 });
+
 
 
 Route::get('/admin', function () {
@@ -189,6 +196,28 @@ Route::post('/add-restaurant', [RestaurantController::class, 'store'])->name('re
 Route::get('/menupage', [RestaurantController::class, 'menu'])->name('menupage');
 Route::get('/menu', [RestaurantController::class, 'menu'])->name('menu');
 
+
+
+
 Route::get('/restoranpage', [ProductController::class, 'restoran'])->name('restoranpage.restoran');
 
 Route::get('/search-location', [LocationController::class, 'search']);
+
+use Midtrans\Snap;
+use Midtrans\Transaction;
+
+// Route::post('/checkout', function (Request $request) {
+//     $order_id = 'ORDER-' . uniqid();
+//     $total = $request->total; // Total dari cart
+
+//     $params = [
+//         'transaction_details' => [
+//             'order_id' => $order_id,
+//             'gross_amount' => $total,
+//         ],
+//     ];
+
+//     $snapToken = Snap::getSnapToken($params);
+
+//     return response()->json(['snapToken' => $snapToken]);
+// });
