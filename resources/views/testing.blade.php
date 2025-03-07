@@ -14,32 +14,33 @@
     </nav>
 
     <!-- Container -->
-    <div class="p-6 max-w-4xl mx-auto">
+    <div class="p-6 max-w-6xl mx-auto">
         <h2 class="text-2xl font-bold text-gray-700 mb-4">Hello, {{ auth()->user()->name ?? 'Resto' }}!</h2>
 
-        <!-- Info Cards -->
-        <div class="bg-white p-4 shadow rounded-lg text-center my-5">
-            <h3 class="text-lg font-semibold text-gray-700">Total Donation</h3>
-            <p class="text-2xl font-bold text-green-600">Rp 2.000.000.000</p>
-        </div>
-
-        <div class="grid grid-cols-2 gap-4 text-center">
+        <!-- Statistik utama -->
+        <div class="grid grid-cols-3 gap-6">
             <!-- Total Donation -->
-            <div class="bg-white p-4 rounded-lg shadow">
-                <h2 class="text-gray-700 text-lg font-semibold">All Orders</h2>
-                <p class="text-2xl font-bold text-gray-900">15</p>
+            <div class="bg-white p-6 rounded-lg shadow text-center">
+                <h3 class="text-gray-700 text-lg font-semibold">Total Donation</h3>
+                <p class="text-2xl font-bold text-green-600">Rp {{ number_format($totalDonation, 0, ',', '.') }}</p>
             </div>
-        
+
+            <!-- All Orders -->
+            <div class="bg-white p-6 rounded-lg shadow text-center">
+                <h3 class="text-gray-700 text-lg font-semibold">All Orders</h3>
+                <p class="text-2xl font-bold text-gray-900">{{ $totalOrders }}</p>
+            </div>
+
             <!-- Total Portion Donate -->
-            <div class="bg-white p-4 rounded-lg shadow">
-                <h2 class="text-gray-700 text-lg font-semibold">All Portion Donate</h2>
-                <p class="text-2xl font-bold text-gray-900">20</p>
+            <div class="bg-white p-6 rounded-lg shadow text-center">
+                <h3 class="text-gray-700 text-lg font-semibold">All Portion Donate</h3>
+                <p class="text-2xl font-bold text-gray-900">{{ $totalPortions }}</p>
             </div>
         </div>
 
         <!-- Recent Orders Table -->
-        <h3 class="text-lg font-semibold text-gray-700 mb-2">List of Recent Orders</h3>
-        <div class="bg-white shadow-md rounded-lg p-4">
+        <h3 class="text-lg font-semibold text-gray-700 mt-6">List of Recent Orders</h3>
+        <div class="bg-white shadow-md rounded-lg p-4 mt-2">
             <table class="w-full text-left border-collapse">
                 <thead>
                     <tr class="bg-gray-200">
@@ -50,30 +51,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="p-2">ID004</td>
-                        <td class="p-2">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                        <td class="p-2 font-bold">IDR 25,000</td>
-                        <td class="p-2 text-orange-500">On Process</td>
-                    </tr>
-                    <tr>
-                        <td class="p-2">ID003</td>
-                        <td class="p-2">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                        <td class="p-2 font-bold">IDR 75,000</td>
-                        <td class="p-2 text-green-500">Completed</td>
-                    </tr>
-                    <tr>
-                        <td class="p-2">ID002</td>
-                        <td class="p-2">1 Mie ayam, 1 Bakso, 1 Teh es, 1 Pizza, 10 Nasi padang</td>
-                        <td class="p-2 font-bold">IDR 125,000</td>
-                        <td class="p-2 text-red-500">Canceled</td>
-                    </tr>
-                    <tr>
-                        <td class="p-2">ID001</td>
-                        <td class="p-2">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                        <td class="p-2 font-bold">IDR 65,000</td>
-                        <td class="p-2 text-red-500">Canceled</td>
-                    </tr>
+                    @foreach ($recentOrders as $order)
+                        <tr>
+                            <td class="p-2">{{ $order->id }}</td>
+                            <td class="p-2">{{ $order->transaction_detail }}</td>
+                            <td class="p-2 font-bold">Rp {{ number_format($order->total, 0, ',', '.') }}</td>
+                            <td class="p-2 text-{{ $order->status == 'Completed' ? 'green' : ($order->status == 'On Process' ? 'orange' : 'red') }}-500">
+                                {{ $order->status }}
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

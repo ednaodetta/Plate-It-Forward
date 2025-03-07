@@ -8,6 +8,7 @@ use App\Http\Controllers\OrphanageController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\RestaurantDashboardController;
 
 Route::get('/api/restaurants', [RestaurantController::class, 'index']);
 
@@ -171,12 +172,8 @@ Route::get('/restoranpage', [ProductController::class, 'restoran'])->name('resto
 
 Route::get('/search-location', [LocationController::class, 'search']);
 
-Route::get('/testing', function () {
-    return view('testing');
-});
-
-// Route::middleware(['restaurant'])->group(function () {
-//     Route::get('/testing', [RestaurantDashboardController::class, 'index'])->name('testing');
+// Route::get('/testing', function () {
+//     return view('testing');
 // });
 
-Route::get('/search-location', [LocationController::class, 'search']);
+Route::get('/testing', [RestaurantDashboardController::class, 'index'])->name('testing');

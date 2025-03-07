@@ -119,10 +119,7 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         ),
         'L' => 
         array (
-<<<<<<< HEAD
             'Livewire\\' => 9,
-=======
->>>>>>> f5449bc3da8b47e2c648f4e99f689fcaa35b09a3
             'League\\Uri\\' => 11,
             'League\\MimeTypeDetection\\' => 25,
             'League\\Flysystem\\Local\\' => 23,
@@ -385,13 +382,10 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         array (
             0 => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans',
         ),
-<<<<<<< HEAD
         'Livewire\\' => 
         array (
             0 => __DIR__ . '/..' . '/livewire/livewire/src',
         ),
-=======
->>>>>>> f5449bc3da8b47e2c648f4e99f689fcaa35b09a3
         'League\\Uri\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/uri',

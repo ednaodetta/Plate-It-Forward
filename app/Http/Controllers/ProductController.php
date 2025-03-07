@@ -104,8 +104,6 @@ class ProductController extends Controller
         $products = Products::all();
         return view('products.index', compact('products'));
     }
-<<<<<<< HEAD
-=======
 
 
     public function menuPage()
@@ -181,5 +179,4 @@ public function store(Request $request)
 
         return view('restoranpage', compact('flashSaleProducts', 'city', 'recommendedRestaurants'));
     }
->>>>>>> f5449bc3da8b47e2c648f4e99f689fcaa35b09a3
 }
