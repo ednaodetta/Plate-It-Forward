@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orphanage Information</title>
     <link href="/css/tailwind.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     <style>
         <style>.dropdown {
             display: none;
@@ -35,10 +35,9 @@
         }
 
         #menu {
-        background-color: #F9F3F0 !important;
-        opacity: 1 !important;
+            background-color: #F9F3F0 !important;
+            opacity: 1 !important;
         }
-    </style>
     </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -52,7 +51,7 @@
                 <img src="{{ asset('assets/Image/Logo copy.png') }}" alt="Logo" class="h-14 w-14">
                 <span class="ml-2 text-xl font-bold text-gray-800">PlateItForward</span>
             </div>
-    
+
             <!-- Hamburger Button -->
             <button id="hamburger-btn" class="block lg:hidden text-gray-600 focus:outline-none">
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -60,27 +59,30 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
             </button>
-    
+
             <!-- Navigation Links -->
             <nav id="menu"
                 class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
                 <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
-                    <li><a href="/dashboardAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a>
+                    <li><a href="/dashboardAdmin"
+                            class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a>
                     </li>
                     <li><a href="/OrderList" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Order</a>
                     </li>
                     <li><a href="/userinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">User</a>
                     </li>
-                    <li><a href="/restaurantinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurant</a>
+                    <li><a href="/restaurantinfo"
+                            class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurant</a>
                     </li>
                     <li><a href="/panti" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Orphanage</a></li>
-                    <li><a href="/supportAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Support</a></li>
+                    <li><a href="/supportAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Support</a>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
 
-{{-- <script>
+    {{-- <script>
     // Hamburger menu toggle functionality
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const menu = document.getElementById('menu');
@@ -94,13 +96,87 @@
     <!-- Main Content -->
     <div class="w-full pt-40 mx-auto py-8 flex-grow items-center">
         <div class="w-11/12 mx-auto flex justify-between items-center">
-            <h2 class="text-2xl font-bold text-green-800">Orphanage's Information</h2>
-            <button id="delete-btn" onclick="handleTrashButton()" class="text-red-600 hover:text-red-800 text-xl">
-                🗑️
-            </button>
+            {{-- <h2 class="text-2xl font-bold text-DefaultGreen font-gotham">Restaurant's Information</h2> --}}
+            <div class="w-11/12 mx-auto flex justify-between items-center">
+                <!-- Left aligned Restaurant's Information -->
+                <h2 class="text-2xl font-bold text-DefaultGreen font-gotham">Orphanage's Information</h2>
+
+                <!-- Right aligned buttons side by side -->
+                <div class="flex justify-end items-center space-x-4">
+                    <button id="addOrphanageBtn"
+                        class="bg-green-600 text-white py-2 px-6 rounded-md hover:bg-green-700 focus:outline-none">
+                        Add Orphanage
+                    </button>
+
+                    <button id="delete-btn" onclick="handleTrashButton()"
+                        class="text-red-600 hover:text-red-800 text-xl">
+                        🗑️
+                    </button>
+                </div>
+            </div>
+
+            <!-- Add Restaurant Modal -->
+            <div id="addOrphanageModal"
+                class="modal hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+                <div class="bg-white p-6 rounded-md w-96 shadow-lg">
+                    <h3 class="text-xl font-semibold text-green-800 mb-4">Add New Orphanage</h3>
+                    <form method="POST" action="{{ route('orphanage.add') }}">
+                        @csrf
+
+                        <div>
+                            <x-input-label for="name" :value="__('Name')" />
+                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                                :value="old('name')" required autofocus autocomplete="name" />
+                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                        </div>
+
+
+                        <!-- Address -->
+                        <div>
+                            <x-input-label for="address" :value="__('Address')" />
+                            <x-text-input id="address" class="block mt-1 w-full" type="text" name="address"
+                                :value="old('address')" required autocomplete="address" />
+                            <x-input-error :messages="$errors->get('address')" class="mt-2" />
+                        </div>
+
+                        <!-- City -->
+                        <div>
+                            <x-input-label for="city" :value="__('City')" />
+                            <x-text-input id="city" class="block mt-1 w-full" type="text" name="city"
+                                :value="old('city')" required autocomplete="city" />
+                            <x-input-error :messages="$errors->get('city')" class="mt-2" />
+                        </div>
+
+                        <!-- Contact -->
+                        <div>
+                            <x-input-label for="contact" :value="__('Contact')" />
+                            <x-text-input id="contact" class="block mt-1 w-full" type="text" name="contact"
+                                :value="old('contact')" required autocomplete="contact" />
+                            <x-input-error :messages="$errors->get('address')" class="mt-2" />
+                        </div>
+
+                        <!-- Donation -->
+                        <div>
+                            <x-input-label for="donation" :value="__('Donation')" />
+                            <x-text-input id="donation" class="block mt-1 w-full" type="number" name="donation"
+                                :value="old('donation')" required min="0" />
+                            <x-input-error :messages="$errors->get('donation')" class="mt-2" />
+                        </div>
+
+                        <div class="flex items-center justify-end mt-4">
+
+
+                            <x-primary-button class="ms-4">
+                                {{ __('Register') }}
+                            </x-primary-button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
         </div>
 
-        <div class="bg-white rounded-lg w-11/12 mx-auto shadow-md mt-4">
+        <div class="bg-white rounded-lg w-11/12 mx-auto shadow-md mt-5">
             <!-- Desktop Table -->
             <div class="hidden md:block">
                 <table class="w-full">
@@ -121,15 +197,15 @@
         </div>
     </div>
 
-    <!-- Add Orphanage Button -->
+    {{-- <!-- Add Orphanage Button -->
     <div class="flex justify-center mt-8">
         <button id="addOrphanageBtn"
             class="bg-green-600 text-white py-2 px-6 rounded-md hover:bg-green-700 focus:outline-none">
             Add Orphanage
         </button>
-    </div>
+    </div> --}}
 
-    <!-- Add Orphanage Modal -->
+    {{-- <!-- Add Orphanage Modal -->
     <div id="addOrphanageModal"
         class="modal hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
         <div class="bg-white p-6 rounded-md w-96 shadow-lg">
@@ -161,7 +237,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> --}}
 
     <script>
         // Buka modal
@@ -194,42 +270,6 @@
             populateTable();
         });
     </script>
-
-
-    <!-- Footer -->
-    <footer class="bg-DefaultGreen text-white text-center py-20">
-        <!-- Icons Section -->
-        <div class="flex justify-center space-x-6 mb-3">
-            <a href="#" class="text-xl hover:text-gray-300">
-                <i class="fab fa-facebook"></i> <!-- Replace with actual icon -->
-            </a>
-            <a href="#" class="text-xl hover:text-gray-300">
-                <i class="fab fa-youtube"></i> <!-- Replace with actual icon -->
-            </a>
-            <a href="#" class="text-xl hover:text-gray-300">
-                <i class="fab fa-x"></i> <!-- Replace with actual icon -->
-            </a>
-            <a href="#" class="text-xl hover:text-gray-300">
-                <i class="fab fa-instagram"></i> <!-- Replace with actual icon -->
-            </a>
-            <a href="#" class="text-xl hover:text-gray-300">
-                <i class="fab fa-whatsapp"></i> <!-- Replace with actual icon -->
-            </a>
-        </div>
-
-        <!-- Navigation Links -->
-        <div class="flex justify-center space-x-8 mb-3">
-            <a href="/" class="text-base hover:underline">Home</a>
-            <a href="/restaurants" class="text-base hover:underline">Restaurant</a>
-            <a href="/my-donations" class="text-base hover:underline">My Donations</a>
-            <a href="/contact-us" class="text-base hover:underline">Contact Us</a>
-        </div>
-
-        <!-- Copyright Text -->
-        <div class="text-sm">
-            © Plate it Forward 2025 | All Rights Reserved
-        </div>
-    </footer>
 
     <script>
         let users = [{
@@ -267,14 +307,14 @@
                         ${deleteMode 
                             ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                             : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                                                                                                           <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                                                                                               <ul class="text-sm">
-                                                                                                                                   <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                                                                                       <a href="/updateorphanageinfo?id=${user.id}">Update orphanage information</a>
-                                                                                                                                   </li>
-                                                                                                                                   <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete orphanage</li>
-                                                                                                                               </ul>
-                                                                                                                           </div>`
+                                                                                                                                                                                                                               <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                                                                                                                                                                                                   <ul class="text-sm">
+                                                                                                                                                                                                                                       <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                                                                                                                                                                           <a href="/updateorphanageinfo?id=${user.id}">Update orphanage information</a>
+                                                                                                                                                                                                                                       </li>
+                                                                                                                                                                                                                                       <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete orphanage</li>
+                                                                                                                                                                                                                                   </ul>
+                                                                                                                                                                                                                               </div>`
                         }
                     </td>
                     <td class="p-3">${user.id}</td>
@@ -297,14 +337,14 @@
                             ${deleteMode 
                                 ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                                 : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                                                                                                            <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                                                                                                <ul class="text-sm">
-                                                                                                                                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                                                                                       <a href="/updateorphanageinfo?id=${user.id}">Update orphanage information</a>
-                                                                                                                                   </li>
-                                                                                                                                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete orphanage</li>
-                                                                                                                                </ul>
-                                                                                                                            </div>`
+                                                                                                                                                                                                                                <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                                                                                                                                                                                                    <ul class="text-sm">
+                                                                                                                                                                                                                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                                                                                                                                                                           <a href="/updateorphanageinfo?id=${user.id}">Update orphanage information</a>
+                                                                                                                                                                                                                                       </li>
+                                                                                                                                                                                                                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete orphanage</li>
+                                                                                                                                                                                                                                    </ul>
+                                                                                                                                                                                                                                </div>`
                             }
                         </div>
                     </div>

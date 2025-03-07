@@ -29,7 +29,8 @@
 
 <body class>
     @include('components.navbar')
-    {{-- <main class="bg-DefaultWhite mt-20 md:px-32 pt-10 sm:px-20 min-h-screen px-6">
+    <!-- yang kalau usernya dah pernah order -->
+    <main class="bg-DefaultWhite mt-20 md:px-32 pt-10 sm:px-20 min-h-screen px-6">
         <!-- Title -->
         <div class="flex flex-col md:flex-row w-full mb-6">
             <h1 class="font-gotham text-2xl md:text-4xl font-bold text-DefaultGreen mb-4 md:mb-0">
@@ -236,14 +237,15 @@
 
         </div>
 
-    </main> --}}
+    </main> 
 
-    <main
+    <!-- kalau usernya ga pernah order samasekali -->
+    <!-- <main
         class = "bg-DefaultGreen text-DefaultWhite text-center md:px-32 pt-10 sm:px-20 min-h-screen px-6 flex flex-col items-center justify-center">
         <img src="{{ asset('assets/Image/mydonation.png') }}" class="sm:w-80 sm:h-80 w-64 h-64"alt="">
         <h2 class="sm:text-3xl text-xl font-gotham">Haven't tried Plate it Forward?</h2>
         <p class="sm:text-xl text-m font-brandon">Join us in spreading kindness—every plate matters!</p>
-    </main>
+    </main> -->
 
 
 

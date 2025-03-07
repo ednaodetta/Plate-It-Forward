@@ -26,7 +26,7 @@
             <center>
                 <button type="submit"
                     class="font-brandon underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none mt-5">
-                    {{ __('Log Out') }}
+                    {{ __('Back') }}
                 </button>
             </center>
         </form>
