@@ -191,6 +191,10 @@ Route::get('/menu', [RestaurantController::class, 'menu'])->name('menu');
 
 Route::get('/restoranpage', [ProductController::class, 'restoran'])->name('restoranpage.restoran');
 
+<<<<<<< HEAD
 use App\Http\Livewire\CartComponent;
 
 Route::get('/cobalivewire', [ProductController::class, 'index'])->name('products.index');
+=======
+Route::get('/search-location', [LocationController::class, 'search']);
+>>>>>>> f5449bc3da8b47e2c648f4e99f689fcaa35b09a3

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class LocationController extends Controller
 {
@@ -26,9 +28,19 @@ class LocationController extends Controller
         return view('location', compact('resto', 'filteredResto', 'selectedCity'));
     }
 
-    // Menampilkan restoran berdasarkan kota
-    // public function showByCity($city)
-    // {
-    //     return view('location', compact('city')); 
-    // }
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Ambil hanya kota unik yang mengandung query (tanpa duplikasi)
+        $locations = DB::table('restaurants')
+            ->where('city', 'LIKE', "%$query%")
+            ->distinct()
+            ->pluck('city'); 
+
+        \Log::info('Hasil Query:', $locations->toArray()); // Debugging ke log
+
+        return response()->json($locations);
+    }
+
 }
