@@ -179,4 +179,4 @@ Route::get('/menupage', [RestaurantController::class, 'menu'])->name('menupage')
 
 Route::get('/restoranpage', [ProductController::class, 'restoran'])->name('restoranpage.restoran');
 
-Route::get('/testing', [ProductController::class, 'recommended'])->name('testing.recommended');
+Route::get('/search-location', [LocationController::class, 'search']);

@@ -9,7 +9,6 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Password;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -18,7 +17,6 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-
     public function register()
     {
         $this->registerAuthenticator();
@@ -29,7 +27,6 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerEventRebindHandler();
     }
 
-
     /**
      * Register the authenticator services.
      *
@@ -37,9 +34,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected function registerAuthenticator()
     {
-        $this->app->singleton('auth', fn($app) => new AuthManager($app));
+        $this->app->singleton('auth', fn ($app) => new AuthManager($app));
 
-        $this->app->singleton('auth.driver', fn($app) => $app['auth']->guard());
+        $this->app->singleton('auth.driver', fn ($app) => $app['auth']->guard());
     }
 
     /**
@@ -49,7 +46,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected function registerUserResolver()
     {
-        $this->app->bind(AuthenticatableContract::class, fn($app) => call_user_func($app['auth']->userResolver()));
+        $this->app->bind(AuthenticatableContract::class, fn ($app) => call_user_func($app['auth']->userResolver()));
     }
 
     /**
@@ -60,7 +57,7 @@ class AuthServiceProvider extends ServiceProvider
     protected function registerAccessGate()
     {
         $this->app->singleton(GateContract::class, function ($app) {
-            return new Gate($app, fn() => call_user_func($app['auth']->userResolver()));
+            return new Gate($app, fn () => call_user_func($app['auth']->userResolver()));
         });
     }
 
@@ -102,10 +99,8 @@ class AuthServiceProvider extends ServiceProvider
     protected function registerEventRebindHandler()
     {
         $this->app->rebinding('events', function ($app, $dispatcher) {
-            if (
-                ! $app->resolved('auth') ||
-                $app['auth']->hasResolvedGuards() === false
-            ) {
+            if (! $app->resolved('auth') ||
+                $app['auth']->hasResolvedGuards() === false) {
                 return;
             }
 
