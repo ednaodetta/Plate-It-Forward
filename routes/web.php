@@ -6,17 +6,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrphanageController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RestaurantDashboardController;
 
 Route::get('/api/restaurants', [RestaurantController::class, 'index']);
 
-// use App\Http\Controllers\AuthController;
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// use App\Http\Controllers\Auth\RegisteredOrphanageController;
-// Route::post('/panti', [RegisteredOrphanageController::class, 'store'])->name('orphanage.add');
 require __DIR__.'/auth_orphanage.php'; 
 
 Route::get('/panti', [OrphanageController::class, 'index'])->name('panti.index'); // Orphanage list
@@ -38,10 +31,6 @@ Route::get('/my-donations', function () {
     return view('mydonations');
 });
 
-// Route::get('/menupage', function () {
-//     return view('menupage');
-// });
-
 Route::get('/payment', function () {
     return view('payment');
 });
@@ -49,10 +38,6 @@ Route::get('/payment', function () {
 Route::get('/OrderList', function () {
     return view('OrderList');
 });
-
-// Route::get('/restoranpage', function () {
-//     return view('restoranpage');
-// });
 
 Route::get('/OrderListRestaurant', function () {
     return view('OrderListRestaurant');
@@ -65,24 +50,6 @@ Route::delete('/restaurant/{id}', [RestaurantController::class, 'destroy'])->nam
 Route::put('/restaurant/{id}/update', [RestaurantController::class, 'update'])->name('restaurant.update');
 
 Route::get('/location', [LocationController::class, 'list'])->name('resto.list');
-
-
-
-// Route::get('/resto/{city}', function ($city) {
-//     $resto = Resto::where('city', $city)->get();
-//     return view('resto-list', compact('resto', 'city'));
-// })->name('resto.byCity');
-
-
-// Route::get('/location/{city}', [RestaurantController::class, 'showRestaurantsByCity']);
-
-// Route::get('/location', function () {
-//     return view('location');
-// });
-
-// Route::get('/signin', function () {
-//     return view('signin');
-// })->name('signin');
 
 Route::get('/contact-us', function () {
     return view('contactus');
@@ -180,3 +147,11 @@ Route::get('/menupage', [RestaurantController::class, 'menu'])->name('menupage')
 Route::get('/restoranpage', [ProductController::class, 'restoran'])->name('restoranpage.restoran');
 
 Route::get('/search-location', [LocationController::class, 'search']);
+
+Route::get('/testing', function () {
+    return view('testing');
+});
+
+// Route::middleware(['restaurant'])->group(function () {
+//     Route::get('/testing', [RestaurantDashboardController::class, 'index'])->name('testing');
+// });
