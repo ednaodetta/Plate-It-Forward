@@ -122,6 +122,6 @@ class RestaurantController extends Controller
         }
         // dd($carts);
 
-        return view('menupage', compact('restsearch', 'products', 'carts'));
+        return view('menu', compact('restsearch', 'products', 'carts'));
     }
 }
