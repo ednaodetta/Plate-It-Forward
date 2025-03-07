@@ -56,7 +56,7 @@ Route::get('/OrderList', function () {
 Route::get('/OrderListRestaurant', function () {
     return view('OrderListRestaurant');
 });
-Route::get('/restoranpage', [LocationController::class, 'index']);
+// Route::get('/restoranpage', [LocationController::class, 'index']);
 
 // In routes/web.php
 Route::delete('/restaurant/{id}', [RestaurantController::class, 'destroy'])->name('restaurant.delete');

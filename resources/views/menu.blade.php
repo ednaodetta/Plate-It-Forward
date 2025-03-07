@@ -121,24 +121,34 @@
                 <div class="cardlistnye bg-[#f9f3f0] w-[85%] grid grid-cols-auto-fit min-[350px] gap-[20px]">
 
                     @foreach ($products as $product)
-                        <div class="card border-2 bg-DefaultWhite w-[350px] h-[420px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 cursor-pointer"
+                        <div class="card border-2 bg-DefaultWhite w-[400px] h-[500px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 cursor-pointer"
                             onclick="buttonmenudesc(
                             '{{ $product->name }}',
                             '{{ asset('storage/' . $product->foto) }}',
                             'Rp {{ number_format($product->price, 0, ',', '.') }}',
                             '{{ $product->description }}'
                         )">
-                            <img class="h-[80%] w-full object-cover rounded-[10px]"
+                            <img class="h-[70%] w-full object-cover rounded-[10px]"
                                 src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->name }}">
                             <h1 class="font-bold text-[20px]">{{ $product->name }}</h1>
                             <div class="flex justify-between">
                                 <h1>Rp {{ number_format($product->price, 0, ',', '.') }}</h1>
                                 @if (Auth::check())
-                                    <button
+                                    {{-- <button
                                         class="w-[100px] rounded-md bg-DefaultGreen font-bold text-white cursor-pointer"
                                         onclick="event.stopPropagation(); addToCart('{{ $product->id }}')">
                                         ADD
-                                    </button>
+                                    </button> --}}
+                                    <div
+                                        class="quantity w-[10%] inline-flex flex-col h-[100px] border-none rounded-[100px] justify-center items-center bg-DefaultGreen">
+                                        <button class="h-[35px] bg-transparent text-white"
+                                            onclick="event.stopPropagation();">+</button>
+                                        <input
+                                            class="w-[100%] text-white text-center border-none pointer-events-none h-[30px] bg-transparent"
+                                            type="text" id="quantity" value="10"readonly>
+                                        <button class="h-[35px] bg-transparent text-white"
+                                            onclick="event.stopPropagation();">−</button>
+                                    </div>
                                 @else
                                     <a href="{{ route('login') }}">
                                         <button
@@ -187,19 +197,7 @@
                 <p id="descDetail" class="px-4 text-sm text-gray-700 text-center"></p>
             </div>
 
-            <!-- Tombol ADD TO CART -->
-            @if (Auth::check())
-                <button class="bg-DefaultGreen text-white rounded-md py-2 px-5"
-                    onclick="addToCart('{{ $product->id }}')">
-                    ADD TO CART
-                </button>
-            @else
-                <a href="{{ route('login') }}">
-                    <button class="bg-DefaultGreen text-white rounded-md py-2 px-5">
-                        ADD TO CART
-                    </button>
-                </a>
-            @endif
+
             {{-- <button class="bg-DefaultGreen text-white rounded-md py-2 px-5 w-3/4">ADD TO CART</button> --}}
         </div>
 
