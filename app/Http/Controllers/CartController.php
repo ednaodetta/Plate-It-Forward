@@ -108,6 +108,10 @@ class CartController extends Controller
         // Ambil data cart berdasarkan user
         $cart = Cart::where('user_id', $userId)->first();
 
+        if (!$cart) {
+            return view('cart', compact('cart'));
+        }
+
         // Ambil semua item dalam cart
         $cartItems = CartItem::where('cart_id', $cart->id)
             ->with('product') // Pastikan relasi ke Product ada
@@ -131,7 +135,7 @@ class CartController extends Controller
             'total' => $total
         ]);
 
-        return view('cart', compact('cartItems', 'restaurant', 'restaurantId', 'subtotal', 'deliveryFee', 'serviceFee', 'total'));
+        return view('cart', compact('cart', 'cartItems', 'restaurant', 'restaurantId', 'subtotal', 'deliveryFee', 'serviceFee', 'total'));
     }
 
 

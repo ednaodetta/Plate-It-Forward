@@ -154,8 +154,6 @@ Route::middleware('auth')->group(function () {
 });
 Route::post('/midtrans/notification', [CheckoutController::class, 'handleNotification']);
 
-
-
 Route::get('/admin', function () {
     return view('welcomeadmin');
 })->name('admin');

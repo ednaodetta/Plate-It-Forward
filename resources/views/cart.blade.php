@@ -50,8 +50,8 @@
 <body class="w-full font-brandon bg-DefaultWhite">
 
     <x-navbarAfterLogin></x-navbarAfterLogin>
-    @if ($cartItems->isEmpty())
-        <div class="text-center text-gray-500 font-medium mt-6">
+    @if (!$cart)
+        <div class="text-center text-gray-500 font-medium mt-32 h-[100vh]">
             Cart is empty
         </div>
     @else
@@ -327,7 +327,8 @@
 
     <script>
         function payWithMidtrans() {
-            console.log("masuk button");
+            console.log("Masuk button");
+
             fetch('/checkout', {
                     method: 'POST',
                     headers: {
@@ -337,16 +338,37 @@
                 })
                 .then(response => response.json())
                 .then(data => {
+                    console.log("Data dari server:", data);
                     snap.pay(data.snapToken, {
                         onSuccess: function(result) {
-                            alert("Pembayaran berhasil!");
-                        },
-                        onError: function(result) {
-                            alert("Pembayaran gagal!");
+                            console.log("sebelum notif");
+                            // Panggil API notifikasi Midtrans ke server
+                            fetch('/midtrans/notification', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                    },
+                                    body: JSON.stringify(result)
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log("Notifikasi Midtrans diproses:", data);
+                                    alert("Pembayaran berhasil!");
+                                })
+                                .catch(error => {
+                                    console.error("Gagal memproses notifikasi:", error);
+                                    alert("Terjadi kesalahan dalam memproses pembayaran.");
+                                });
                         }
                     });
+                })
+                .catch(error => {
+                    console.error("Gagal mengambil Snap Token:", error);
+                    alert("Terjadi kesalahan dalam memulai pembayaran.");
                 });
         }
+
         // Toggle dropdown menu visibility
         const dropdownBtn = document.getElementById('dropdown-btn');
         const dropdownMenu = document.getElementById('dropdown-menu');
