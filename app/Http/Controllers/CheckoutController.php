@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Products;
 use App\Models\Orphanage;
+use App\Models\ProductExp;
 use Midtrans\Config;
 use Midtrans\Snap;
 use Illuminate\Support\Facades\DB;
@@ -101,7 +102,31 @@ class CheckoutController extends Controller
                         'price' => $cartItem->price,
                         'subtotal' => $cartItem->subtotal,
                     ]);
+
+                    $remainingQuantity = $cartItem->quantity; // Jumlah yang harus dikurangi dari stok
+
+                    // Ambil productexps berdasarkan product_id dengan expired_at terdekat terlebih dahulu
+                    $productExps = ProductExp::where('product_id', $cartItem->product_id)
+                        ->orderBy('expired_at', 'asc')
+                        ->get();
+
+                    foreach ($productExps as $productExp) {
+                        if ($remainingQuantity <= 0) {
+                            break; // Jika semua sudah dikurangi, keluar dari loop
+                        }
+
+                        if ($productExp->quantity >= $remainingQuantity) {
+                            // Jika stok cukup, kurangi quantity
+                            $productExp->update(['quantity' => $productExp->quantity - $remainingQuantity]);
+                            $remainingQuantity = 0;
+                        } else {
+                            // Jika stok kurang dari jumlah yang dibutuhkan, habiskan stok ini dan hapus
+                            $remainingQuantity -= $productExp->quantity;
+                            $productExp->delete();
+                        }
+                    }
                 }
+
 
                 CartItem::where('cart_id', $cart->id)->delete();
                 $cart->delete();

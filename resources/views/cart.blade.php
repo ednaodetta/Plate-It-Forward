@@ -55,7 +55,7 @@
             Cart is empty
         </div>
     @else
-        <div class="w-[90%] mx-auto p-6 h-[100%]">
+        <div class="w-[90%] mx-auto p-6 h-[100%] pb-10">
             <!-- Header -->
             <div class="flex justify-between items-center mt-[100px]">
                 <a href="/restoranpage"><button class="text-[var(--primary)] text-xl font-bold">&larr;</button></a>
@@ -150,12 +150,7 @@
                                     {{ number_format($subtotal, 0, ',', '.') }}</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-gray-500">Delivery</span>
-                                <span class="text-[var(--text-dark)] font-bold">Rp
-                                    {{ number_format($deliveryFee, 0, ',', '.') }}</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-500">Service Fee (8% Subtotal)</span>
+                                <span class="text-gray-500">Service Fee (5% Subtotal)</span>
                                 <span class="text-[var(--text-dark)] font-bold">Rp
                                     {{ number_format($serviceFee, 0, ',', '.') }}</span>
                             </div>
@@ -168,7 +163,7 @@
 
                     </div>
 
-                    <div class="bg-[var(--boxbg)] custom-box">
+                    {{-- <div class="bg-[var(--boxbg)] custom-box">
                         <h3 class="text-[var(--text-dark)] font-bold text-lg">Payment Method</h3>
 
                         <!-- Hidden default select for form submission -->
@@ -277,7 +272,7 @@
                             <input type="text" id="expiry-date" class="w-full mt-2 p-2 border rounded-md"
                                 placeholder="MM/YY">
                         </div>
-                    </div>
+                    </div> --}}
 
 
                     <!-- Donate Button -->
@@ -288,6 +283,12 @@
             </div>
         </div>
     @endif
+    <div id="loadingOverlay" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div class="bg-white p-5 rounded-lg flex flex-col items-center">
+            <div class="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-DefaultGreen"></div>
+            <p class="mt-3 text-gray-700">Loading...</p>
+        </div>
+    </div>
 
     <footer class="bg-DefaultGreen text-white text-center py-20">
         <!-- Icons Section -->
@@ -328,7 +329,7 @@
     <script>
         function payWithMidtrans() {
             console.log("Masuk button");
-
+            document.getElementById("loadingOverlay").classList.remove("hidden");
             fetch('/checkout', {
                     method: 'POST',
                     headers: {
@@ -343,6 +344,7 @@
                         onSuccess: function(result) {
                             console.log("sebelum notif");
                             // Panggil API notifikasi Midtrans ke server
+
                             fetch('/midtrans/notification', {
                                     method: 'POST',
                                     headers: {
@@ -354,10 +356,15 @@
                                 .then(response => response.json())
                                 .then(data => {
                                     console.log("Notifikasi Midtrans diproses:", data);
-                                    alert("Pembayaran berhasil!");
+                                    // Sembunyikan loading overlay sebelum mengarahkan
+                                    document.getElementById("loadingOverlay").classList.add("hidden");
+
+                                    // Redirect ke /my-donations setelah berhasil
+                                    window.location.href = "/my-donations";
                                 })
                                 .catch(error => {
                                     console.error("Gagal memproses notifikasi:", error);
+                                    document.getElementById("loadingOverlay").classList.add("hidden");
                                     alert("Terjadi kesalahan dalam memproses pembayaran.");
                                 });
                         }
@@ -365,6 +372,7 @@
                 })
                 .catch(error => {
                     console.error("Gagal mengambil Snap Token:", error);
+                    document.getElementById("loadingOverlay").classList.add("hidden");
                     alert("Terjadi kesalahan dalam memulai pembayaran.");
                 });
         }
