@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RestaurantDashboardController extends Controller
 {
-    public function index()
+    public function index($viewType = 'dashboardResto')
     {
         $restaurant = Auth::guard('restaurant')->user();
 
@@ -44,13 +44,29 @@ class RestaurantDashboardController extends Controller
         ->take(5)
         ->get();
 
-        return view('dashboardResto', [
+        // untuk nampilin order list
+        $allorder = DB::table('orders')
+        ->select('orders.id', 'orders.total', 'orders.status', 'orders.created_at')
+        ->addSelect(DB::raw("
+            GROUP_CONCAT(CONCAT(order_items.quantity, ' ', products.name) SEPARATOR ', ') AS transaction_detail
+        "))
+        ->join('order_items', 'orders.id', '=', 'order_items.order_id')
+        ->join('products', 'order_items.product_id', '=', 'products.id')
+        ->where('products.restaurant_id', $restaurant->id)
+        ->groupBy('orders.id', 'orders.total', 'orders.status', 'orders.created_at')
+        ->orderBy('orders.created_at', 'desc')
+        ->get();
+
+        $view = ($viewType == 'orderlist') ? 'OrderListRestaurant' : 'dashboardResto';
+
+        return view($view, [
             'restaurant' => $restaurant,
             'products' => $products,
             'totalDonation' => $totalDonation,
             'totalOrders' => $totalOrders,
             'totalPortions' => $totalPortions,
-            'recentOrders' => $recentOrders
-        ]);
+            'recentOrders' => $recentOrders,
+            'allorder' => $allorder
+    ]);
     }
 }
