@@ -2,8 +2,11 @@
 
     <body class="bg-DefaultWhite">
 
-        <x-navbar></x-navbar>
-
+        @if (Auth::check())
+            <x-navbarAfterLogin></x-navbarAfterLogin>
+        @else
+            <x-navbar></x-navbar>
+        @endif
         <div class="relative">
             <img src="{{ asset('assets/Image/panti1.png') }}" alt="Background"
                 class="grayscale inset-0 w-full h-[89vh] object-cover">
