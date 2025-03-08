@@ -183,7 +183,6 @@ Route::get('/search-location', [LocationController::class, 'search']);
 Route::get('/dashboard/resto', [RestaurantDashboardController::class, 'index'])->name('dashboardResto');
 
 Route::get('/dashboard/orderlist', [RestaurantDashboardController::class, 'index'])->name('OrderListRestaurant')->defaults('viewType', 'orderlist');
-
 use Midtrans\Snap;
 use Midtrans\Transaction;
 

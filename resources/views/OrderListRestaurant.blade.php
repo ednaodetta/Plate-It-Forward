@@ -74,7 +74,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($allorder as $order)
+                    @foreach ($allOrders as $order)
                         <tr>
                             <td class="p-2">{{ $order->id }}</td>
                             <td class="p-2">{{ $order->transaction_detail }}</td>
