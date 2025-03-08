@@ -34,6 +34,11 @@ class RestaurantController extends Controller
         return view('updaterestaurantpage', compact('restaurant'));
     }
 
+    public function showRestaurantsByCity($city)
+    {
+        $restaurants = Restaurant::where('city', $city)->get();
+        return view('restaurants.location', compact('restaurants', 'city'));
+    }
 
 
     // public function update(Request $request, $id)
@@ -81,4 +86,12 @@ class RestaurantController extends Controller
         return redirect()->route('restaurantinfo')->with('success', 'Restaurant deleted successfully!');
     }
 
+
+    public function menu(Request $request){
+        $id = $request->query('id'); // Ambil ID dari URL
+        $restsearch = Restaurant::findOrFail($id); // Cari restoran berdasarkan ID
+        // dd($restaurant);
+        return view('menupage', compact('restsearch'));
+    
+    }
 }

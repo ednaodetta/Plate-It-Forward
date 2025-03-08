@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Information</title>
     <link href="/css/tailwind.css" rel="stylesheet">
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('css/styles.css') }}"> --}}
+
     <style>
         <style>.dropdown {
             position: absolute;
@@ -130,10 +129,7 @@
     <div class="w-full pt-40 mx-auto py-8 flex-grow items-center">
 
         <div class="w-11/12 mx-auto flex justify-between items-center">
-            {{-- <h2 class="text-2xl font-bold text-DefaultGreen font-gotham">Support</h2> --}}
-            {{-- <button id="delete-btn" onclick="handleTrashButton()" class="text-red-600 hover:text-red-800 text-xl">
-                🗑️
-            </button> --}}
+
             <div class="w-10/12 mx-auto flex justify-between items-center">
                 <!-- Left aligned Restaurant's Information -->
                 <h2 class="text-2xl font-bold text-DefaultGreen font-gotham">Restaurant's Information</h2>
@@ -407,25 +403,6 @@
             populateTable();
         }
 
-        // function toggleDropdown(button) {
-        //     let dropdown = button.nextElementSibling;
-        //     document.querySelectorAll(".dropdown").forEach(el => el.classList.add("hidden"));
-        //     dropdown.classList.toggle("hidden");
-        // }
-
-        // function toggleDropdown(button) {
-        //     event.stopPropagation(); // Add this line
-        //     let dropdown = button.nextElementSibling;
-
-        //     // Hide all other dropdowns
-        //     document.querySelectorAll(".dropdown").forEach(el => {
-        //         if (el !== dropdown) el.classList.add("hidden");
-        //     });
-
-        //     // Toggle current dropdown visibility
-        //     dropdown.classList.toggle("hidden");
-        // }
-
         function confirmDeleteUser(userId) {
             if (confirm("Are you sure you want to delete this user?")) {
                 users = users.filter(user => user.id !== userId);
@@ -482,13 +459,6 @@
             populateTable();
         }
 
-        // function toggleDropdown(button) {
-        //     let dropdown = button.nextElementSibling;
-        //     document.querySelectorAll(".dropdown").forEach(el => el.classList.add("hidden"));
-        //     dropdown.classList.toggle("hidden");
-        // }
-
-
         function confirmDeleteUser(userId) {
             if (confirm("Are you sure you want to delete this user?")) {
                 users = users.filter(user => user.id !== userId);
@@ -502,7 +472,6 @@
                 document.querySelectorAll(".dropdown").forEach(el => el.classList.add("hidden"));
             }
         });
-        // ENDDDDDDDDDD
 
         populateTable();
 

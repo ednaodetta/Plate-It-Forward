@@ -3,6 +3,9 @@ use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrphanageController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/api/restaurants', [RestaurantController::class, 'index']);
 
@@ -16,21 +19,28 @@ Route::get('/api/restaurants', [RestaurantController::class, 'index']);
 // Route::post('/panti', [RegisteredOrphanageController::class, 'store'])->name('orphanage.add');
 require __DIR__.'/auth_orphanage.php'; 
 
+Route::get('/panti', [OrphanageController::class, 'index'])->name('panti.index'); // Orphanage list
+
+Route::get('/updateorphanage/{id}', [OrphanageController::class, 'edit'])->name('panti.edit'); // Orphanage edit form
+
+Route::put('/updateorphanage/{id}', [OrphanageController::class, 'update'])->name('panti.update'); // Orphanage update
+
+Route::post('/panti', [OrphanageController::class, 'store'])->name('panti.store'); // Store orphanage
+
+Route::delete('/deleteorphanage/{id}', [OrphanageController::class, 'destroy'])->name('panti.destroy'); // Delete orphanage
+
+
 Route::get('/profilee', function () {
     return view('profile');
 });
-
-Route::get('/panti', function () {
-    return view('panti');
-})->name('panti');
 
 Route::get('/my-donations', function () {
     return view('mydonations');
 });
 
-Route::get('/menupage', function () {
-    return view('menupage');
-});
+// Route::get('/menupage', function () {
+//     return view('menupage');
+// });
 
 Route::get('/payment', function () {
     return view('payment');
@@ -40,32 +50,39 @@ Route::get('/OrderList', function () {
     return view('OrderList');
 });
 
-Route::get('/restoranpage', function () {
-    return view('restoranpage');
-});
+// Route::get('/restoranpage', function () {
+//     return view('restoranpage');
+// });
 
 Route::get('/OrderListRestaurant', function () {
     return view('OrderListRestaurant');
 });
+Route::get('/restoranpage', [LocationController::class, 'index']);
 
 // In routes/web.php
 Route::delete('/restaurant/{id}', [RestaurantController::class, 'destroy'])->name('restaurant.delete');
 
 Route::put('/restaurant/{id}/update', [RestaurantController::class, 'update'])->name('restaurant.update');
 
-Route::get('/location', function () {
-    return view('location');
-});
+Route::get('/location', [LocationController::class, 'list'])->name('resto.list');
 
-Route::get('/signin', function () {
-    return view('signin');
-})->name('signin');
 
-// Route::post('/signin', [AuthController::class, 'signin'])->name('signin.post');
 
-// Route::post('/signup', [AuthController::class, 'signup'])->name('signup');
+// Route::get('/resto/{city}', function ($city) {
+//     $resto = Resto::where('city', $city)->get();
+//     return view('resto-list', compact('resto', 'city'));
+// })->name('resto.byCity');
 
-// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Route::get('/location/{city}', [RestaurantController::class, 'showRestaurantsByCity']);
+
+// Route::get('/location', function () {
+//     return view('location');
+// });
+
+// Route::get('/signin', function () {
+//     return view('signin');
+// })->name('signin');
 
 Route::get('/contact-us', function () {
     return view('contactus');
@@ -79,18 +96,7 @@ Route::get('/userinfo', function () {
     return view('userinfopage');
 });
 
-
-// Route::get('/restaurantinfo', function () {
-//     return view('restaurantinfopage');
-// })->name('restaurantinfo');
-
-
 Route::get('/restaurantinfo', [RestaurantController::class, 'index'])->name('restaurantinfo');
-
-
-// Route::get('/updaterestaurantinfo', function () {
-//     return view('updaterestaurantpage');
-// });
 
 Route::get('/updaterestaurantinfo/{id}', [RestaurantController::class, 'edit'])->name('restaurant.edit');
 
@@ -168,3 +174,9 @@ Route::get('/support', [SupportController::class, 'index'])->name('support.index
 
 Route::post('/add-restaurant', [RestaurantController::class, 'store'])->name('restaurant.store');
 
+
+Route::get('/menupage', [RestaurantController::class, 'menu'])->name('menupage');
+
+Route::get('/restoranpage', [ProductController::class, 'restoran'])->name('restoranpage.restoran');
+
+Route::get('/search-location', [LocationController::class, 'search']);

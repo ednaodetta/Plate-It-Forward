@@ -29,7 +29,10 @@
 
 <body class>
     @include('components.navbar')
+<<<<<<< HEAD
     <!-- yang kalau usernya dah pernah order -->
+=======
+>>>>>>> f5449bc3da8b47e2c648f4e99f689fcaa35b09a3
     <main class="bg-DefaultWhite mt-20 md:px-32 pt-10 sm:px-20 min-h-screen px-6">
         <!-- Title -->
         <div class="flex flex-col md:flex-row w-full mb-6">
@@ -237,16 +240,26 @@
 
         </div>
 
+<<<<<<< HEAD
     </main> 
 
     <!-- kalau usernya ga pernah order samasekali -->
     <!-- <main
+=======
+    </main>
+
+    {{-- <main
+>>>>>>> f5449bc3da8b47e2c648f4e99f689fcaa35b09a3
         class = "bg-DefaultGreen text-DefaultWhite text-center md:px-32 pt-10 sm:px-20 min-h-screen px-6 flex flex-col items-center justify-center">
         <img src="{{ asset('assets/Image/mydonation.png') }}" class="sm:w-80 sm:h-80 w-64 h-64"alt="">
         <h2 class="sm:text-3xl text-xl font-gotham">Haven't tried Plate it Forward?</h2>
         <p class="sm:text-xl text-m font-brandon">Join us in spreading kindness—every plate matters!</p>
+<<<<<<< HEAD
     </main> -->
 
+=======
+    </main> --}}
+>>>>>>> f5449bc3da8b47e2c648f4e99f689fcaa35b09a3
 
 
     @include('components.footer')

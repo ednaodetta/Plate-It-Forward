@@ -88,15 +88,18 @@
      <div class="cardlist bg-[#f9f3f0] w-full items-center justif-center flex flex-col gap-[50px] ">
         <div class="h-[5vh]"> </div>
          <div class="resto w-full h-[250px] bg-[#f9f3f0] flex flex-col items-center">
-             <div class="resto_header w-full h-[180px] bg-[#f9f3f0] flex justify-center items-center gap-[1%]">
-                 <div class="resto_pic w-[135px] bg-[#f9f3f0] h-[125-x] justify-center rounded-[10px] shadow-[1px_1px_1px_#666]">
-                     <img class="w-full h-full object-cover rounded-[10px]" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/8ceb09b1-2ff8-4e92-9e84-ae9eb8c70dd2_brand-image_1733091199022.jpg?auto=format" alt="McDonald's, Sentul City">
-                 </div>
-                 <div class="resto_desc flex flex-col justify-start w-[75%] gap-[3vh]">
-                     <div class="resto_name bg-[#f9f3f0] w-full h-[50px] text-[30px] bold-text items-center text-black">McDonald's, Sentul City</div>
-                     <div class="resto_category bg-[#f9f3f0] h-[50px] w-full left-[200px] text-[20px] text-[#888888] items-center">Sweets, Snacks, Fast Food</div>
-                 </div>
-             </div> 
+            {{-- @foreach ($restsearch as $item) --}}
+            <div class="resto_header w-full h-[180px] bg-[#f9f3f0] flex justify-center items-center gap-[1%]">
+                <div class="resto_pic w-[135px] bg-[#f9f3f0] h-[125-x] justify-center rounded-[10px] shadow-[1px_1px_1px_#666]">
+                    <img class="w-full h-full object-cover rounded-[10px]" src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/8ceb09b1-2ff8-4e92-9e84-ae9eb8c70dd2_brand-image_1733091199022.jpg?auto=format" alt="McDonald's, Sentul City">
+                </div>
+                <div class="resto_desc flex flex-col justify-start w-[75%] gap-[3vh]">
+                    <div class="resto_name bg-[#f9f3f0] w-full h-[50px] text-[30px] bold-text items-center text-black">{{ $restsearch->name }}</div>
+                    <div class="resto_category bg-[#f9f3f0] h-[50px] w-full left-[200px] text-[20px] text-[#888888] items-center">Sweets, Snacks, Fast Food</div>
+                </div>
+            </div> 
+            {{-- @endforeach --}}
+            
              <div class="resto_rate bg-DefaultGreen h-[70px] flex w-[85%] rounded-[10px] items-center shadow-[1px_1px_1px_#666]" >
                  <div class="review flex flex-row justify-center items-center gap-5px h-full w-[100px] bg-transparent text-yellow-300 rounded-tl-[10px] rounded-bl-[10px] gap-1" >
                      <span class="fa fa-star checked"></span>
