@@ -136,8 +136,6 @@ Route::middleware('auth')->group(function () {
 });
 Route::post('/midtrans/notification', [CheckoutController::class, 'handleNotification']);
 
-
-
 Route::get('/admin', function () {
     return view('welcomeadmin');
 })->name('admin');
@@ -174,18 +172,16 @@ Route::get('/support', [SupportController::class, 'index'])->name('support.index
 
 Route::post('/add-restaurant', [RestaurantController::class, 'store'])->name('restaurant.store');
 
-
 Route::get('/menupage', [RestaurantController::class, 'menu'])->name('menupage');
+
 Route::get('/menu', [RestaurantController::class, 'menu'])->name('menu');
-
-
-
 
 Route::get('/restoranpage', [ProductController::class, 'restoran'])->name('restoranpage.restoran');
 
 Route::get('/search-location', [LocationController::class, 'search']);
 
-Route::get('/testing', [RestaurantDashboardController::class, 'index'])->name('testing');
+Route::get('/dashboardResto', [RestaurantDashboardController::class, 'index'])->name('dashboardResto');
+
 use Midtrans\Snap;
 use Midtrans\Transaction;
 

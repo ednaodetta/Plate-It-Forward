@@ -119,10 +119,6 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         ),
         'L' => 
         array (
-<<<<<<< HEAD
-
-=======
->>>>>>> 333e04dc9258c37e78e1f4b6e96a800fa2bc9a9b
             'Livewire\\' => 9,
             'League\\Uri\\' => 11,
             'League\\MimeTypeDetection\\' => 25,
