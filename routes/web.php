@@ -10,6 +10,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\RestaurantDashboardController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\DonationController;
 
 Route::get('/api/restaurants', [RestaurantController::class, 'index']);
 
@@ -38,9 +40,9 @@ Route::get('/profilee', function () {
     return view('profile');
 });
 
-Route::get('/my-donations', function () {
-    return view('mydonations');
-});
+// Route::get('/my-donations', function () {
+//     return view('mydonations');
+// });
 
 Route::get('/payment', function () {
     return view('payment');
@@ -133,6 +135,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
 
     Route::post('/checkout', [CheckoutController::class, 'checkout']);
+
+    Route::get('/my-donations', [DonationController::class, 'getDonations'])->name('mydonations');
 });
 Route::post('/midtrans/notification', [CheckoutController::class, 'handleNotification']);
 
@@ -183,6 +187,12 @@ Route::get('/search-location', [LocationController::class, 'search']);
 Route::get('/dashboard/resto', [RestaurantDashboardController::class, 'index'])->name('dashboardResto');
 
 Route::get('/dashboard/orderlist', [RestaurantDashboardController::class, 'index'])->name('OrderListRestaurant')->defaults('viewType', 'orderlist');
+
+// Route untuk dashboard admin (dengan middleware auth biar hanya user login yang bisa akses)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('DashboardAdmin');
+});
+
 use Midtrans\Snap;
 use Midtrans\Transaction;
 

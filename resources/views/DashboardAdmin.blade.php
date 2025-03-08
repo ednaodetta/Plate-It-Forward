@@ -25,92 +25,59 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="bg-DefaultWhite">
-        <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
-            <div class="container mx-auto flex items-center justify-between py-4 px-6">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <img src="{{ asset('assets/Image/Logo copy.png') }}" alt="Logo" class="h-14 w-14">
-                    <span class="ml-2 text-xl font-bold text-gray-800">PlateItForward</span>
-                </div>
-                
-                <!-- Hamburger Button -->
-                <button id="hamburger-btn" class="block lg:hidden text-gray-600 focus:outline-none">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
-                </button>
-                
-                <!-- Navigation Links -->
-                <nav id="menu" class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
-                    <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
-                        <li><a href="/dashboardAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a></li>
-                        <li><a href="/OrderList" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Order</a></li>
-                        <li><a href="/userinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">User</a></li>
-                        <li><a href="/restaurantinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurant</a></li>
-                        <li><a href="/panti" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Orphanage</a></li>
-                        <li><a href="/supportAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Support</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-
+        <x-navbarAdmin></x-navbarAdmin>
         <div class="container mx-auto mt-24 px-6">
             <div class="max-w-6xl mx-auto bg-Defaultwhite p-6 rounded-lg">
                 <div class="flex justify-between items-center mb-6">
-                    <h1 class="text-2xl font-bold font-brandon">Hello, Ronald!</h1>
-                    <div class="bg-white px-6 py-3 rounded-lg text-lg font-semibold shadow border border-gray-300 font-brandon">
-                        Total Donation: <span class="text-2xl font-bold font-brandon">Rp 2.000.000.000</span>
+                    <h1 class="text-2xl font-bold font-brandon">Hello, {{ Auth::user()->name }}!</h1>
+                        <div class="bg-white p-6 rounded-lg shadow text-center w-[30%]">
+                        <h3 class="text-xl font-semibold font-brandon">Total Donation</h3>
+                        <p class="text-2xl font-bold text-green-600">Rp {{ number_format($totalDonation, 0, ',', '.') }}</p>
                     </div>
                     <div id="clock" class="text-xl font-bold"></div>
                 </div>
 
                 <div class="flex flex-row gap-6 mb-6">
                     <div class="bg-white p-4 rounded-lg shadow border border-gray-300 h-full flex-1 flex flex-col">
-                        <h2 class="font-semibold text-lg mb-2 font-brandon">Top Donors</h2>
-                        <ul class="space-y-1 font-brandon">
-                            <li>🏆 Asha Ni Bos</li>
-                            <li>2. Bro Ronal</li>
-                            <li>3. Edan</li>
-                            <li>4. Lyly</li>
-                            <li>5. Noris</li>
+                        <h2 class="font-semibold text-lg mb-2 font-brandon">🏆 Top Donors</h2>
+                        <ul class='space-y-1 font-brandonLight'>
+                            @foreach($topDonors as $index => $donor)
+                                <li>{{ $index + 1 }}. {{ $donor->name }} (Rp {{ number_format($donor->total_donation, 0, ',', '.') }})</li>
+                            @endforeach
                         </ul>
                     </div>
 
                     <div class="bg-white p-4 rounded-lg shadow border border-gray-300 h-full flex-1 flex flex-col">
-                        <h2 class="font-semibold text-lg mb-2 font-brandon">Top Restaurant</h2>
-                        <ul class="space-y-1 font-brandon">
-                            <li>🏆  McDonald's, Sentul City</li>
-                            <li>2. KFC, Salemba</li>
-                            <li>3. Salad Point, Tebet</li>
-                            <li>4. J'CO, Grand Indonesia</li>
-                            <li>5. Gamchi, Senayan City</li>
+                        <h2 class="font-semibold text-lg mb-2 font-brandon">🏆 Top Restaurant</h2>
+                        <ul class='space-y-1 font-brandonLight'>
+                            @foreach($topRestaurants as $index => $restaurant)
+                                <li>{{ $index + 1 }}. {{ $restaurant->name }} ({{ $restaurant->total_quantity }} orders)</li>
+                            @endforeach
                         </ul>
                     </div>
 
                     <div class="bg-white p-4 rounded-lg shadow border border-gray-300 h-full flex-1 flex flex-col">
-                        <h2 class="font-semibold text-lg mb-2 font-brandon"> Most Donated Orphanages</h2>
-                        <ul class="space-y-1 font-brandon">
-                            <li>🏆 Panti Asuhan Bukit Karmel</li>
-                            <li>2. Panti Asuhan 5 Roti dan 2 Ikan</li>
-                            <li>3. Panti Asuhan Pelangi Kasih</li>
-                            <li>4. Panti Asuhan Permata Hati</li>
-                            <li>5. Panti Asuhan Kedung Halang</li>
+                        <h2 class="font-semibold text-lg mb-2 font-brandon">🏆 Most Donated Orphanages</h2>
+                        <ul class='space-y-1 font-brandonLight'>
+                            @foreach($topOrphanages as $index => $orphanage)
+                                <li>{{ $index + 1 }}. {{ $orphanage->name }} (Rp {{ number_format($orphanage->total_donation, 0, ',', '.') }})</li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
 
                 <div class="flex flex-row gap-6">
                     <div class="bg-white p-4 rounded-lg shadow border border-gray-300 flex flex-col items-center h-full flex-1">
-                        <span class="text-lg font-semibold font-brandon">All User</span>
-                        <span class="text-2xl font-bold font-brandon">10</span>
+                        <span class="text-xl font-semibold font-brandon">All User</span>
+                        <span class="text-2xl font-bold font-brandon">{{ $totalUsers }}</span>
                     </div>
                     <div class="bg-white p-4 rounded-lg shadow border border-gray-300 flex flex-col items-center h-full flex-1">
-                        <span class="text-lg font-semibold font-brandon">All Restaurant</span>
-                        <span class="text-2xl font-bold font-brandon">5</span>
+                        <span class="text-xl font-semibold font-brandon">All Restaurant</span>
+                        <span class="text-2xl font-bold font-brandon">{{ $totalRestaurants }}</span>
                     </div>
                     <div class="bg-white p-4 rounded-lg shadow border border-gray-300 flex flex-col items-center h-full flex-1">
-                        <span class="text-lg font-semibold font-brandon">All Orphanages</span>
-                        <span class="text-2xl font-bold font-brandon">15</span>
+                        <span class="text-xl font-semibold font-brandon">All Orphanages</span>
+                        <span class="text-2xl font-bold font-brandon">{{ $totalOrphanages }}</span>
                     </div>
                 </div>
             </div>

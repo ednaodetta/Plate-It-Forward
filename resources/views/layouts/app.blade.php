@@ -1,6 +1,3 @@
-@livewireStyles
-@livewireScripts
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -15,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- Scripts -->
+    <!-- Styles & Scripts -->
     @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -24,7 +21,7 @@
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 
-        {{-- <div>
+      {{-- <div>
             @if (Auth::guard('admin')->check())
                 <p>Guard yang aktif: admin</p>
             @elseif(Auth::guard('restaurant')->check())
@@ -35,7 +32,7 @@
                 <p>Tidak ada yang login</p>
             @endif
         </div> --}}
-
+      
         <!-- Page Heading -->
         @isset($header)
             <header class="bg-white shadow">
@@ -47,9 +44,10 @@
 
         <!-- Page Content -->
         <main>
-            {{ $slot }}
+            @yield('content')
         </main>
     </div>
+
     {!! session('console') !!}
     @livewireScripts
 </body>

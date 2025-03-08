@@ -28,11 +28,8 @@
 </head>
 
 <body class>
-    @include('components.navbar')
-<<<<<<< HEAD
-    <!-- yang kalau usernya dah pernah order -->
-=======
->>>>>>> f5449bc3da8b47e2c648f4e99f689fcaa35b09a3
+    <x-navbar></x-navbar>
+    @if($donationCount > 0)
     <main class="bg-DefaultWhite mt-20 md:px-32 pt-10 sm:px-20 min-h-screen px-6">
         <!-- Title -->
         <div class="flex flex-col md:flex-row w-full mb-6">
@@ -42,7 +39,7 @@
             <div class="md:ml-auto flex items-center">
                 <img src="{{ asset('assets/Image/air-balloon.png') }}" alt="" class="w-6 h-6 md:w-8 md:h-8">
                 <h2 class="font-gotham text-lg md:text-2xl font-bold text-DefaultGreen ml-2">
-                    4x Donated
+                {{$donationCount}}x Donated
                 </h2>
             </div>
         </div>
@@ -61,96 +58,36 @@
                     </tr>
                 </thead>
                 <tbody class="font-brandon">
+                    @foreach($donations as $donation)
                     <!-- Row 1 -->
-                    <tr>
-                        <td class="py-5 px-4 border-t border-b border-l border-[#D9D9D9] rounded-l-3xl w-[11%]">
-                            Sunday,<br>01 Sept 2024
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[19%]">
-                            Restaurant Contoh 1
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] w-[30%]">
-                            1 Mie ayam, 1 Bakso, 1 Teh es
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[18%]">
-                            Panti Asuhan Contoh 1
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[12%]">
-                            IDR 5,000,000
-                        </td>
-                        <td
-                            class="py-5 px-4 border-t border-b border-r border-[#D9D9D9] rounded-r-3xl text-DefaultGreen font-semibold w-[10%]">
-                            Completed
-                        </td>
-                    </tr>
-                    <!-- Row 2 -->
-                    <tr>
-                        <td class="py-5 px-4 border-t border-b border-l border-[#D9D9D9] rounded-l-3xl w-[11%]">
-                            Sunday,<br>01 Oct 2024
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[19%]">
-                            Restaurant Contoh 2
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] w-[30%]">
-                            1 Mie ayam, 1 Bakso, 1 Teh es, 1 Pizza, 10 Nasi padang
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[18%]">
-                            Panti Asuhan Contoh 1
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[12%]">
-                            IDR 5,000,000
-                        </td>
-                        <td
-                            class="py-5 px-4 border-t border-b border-r border-[#D9D9D9] rounded-r-3xl text-red-500 font-bold w-[10%]">
-                            Canceled
-                        </td>
-                    </tr>
-
-                    <!-- Row 3 -->
-                    <tr>
-                        <td class="py-5 px-4 border-t border-b border-l border-[#D9D9D9] rounded-l-3xl w-[11%]">
-                            Sunday,<br>01 Nov 2024
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[19%]">
-                            Restaurant Contoh 3
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] w-[30%]">
-                            1 Mie ayam, 1 Bakso, 1 Teh es
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[18%]">
-                            Panti Asuhan Contoh 1
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[12%]">
-                            IDR 5,000,000
-                        </td>
-                        <td
-                            class="py-5 px-4 border-t border-b border-r border-[#D9D9D9] rounded-r-3xl text-DefaultGreen font-bold w-[10%]">
-                            Completed
-                        </td>
-                    </tr>
-
-                    <!-- Row 4 -->
-                    <tr>
-                        <td class="py-5 px-4 border-t border-b border-l border-[#D9D9D9] rounded-l-3xl w-[11%]">
-                            Sunday,<br>01 Dec 2024
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[19%]">
-                            Restaurant Contoh 4
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] w-[30%]">
-                            1 Mie ayam, 1 Bakso, 1 Teh es
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[18%]">
-                            Panti Asuhan Contoh 1
-                        </td>
-                        <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[12%]">
-                            IDR 5,000,000
-                        </td>
-                        <td
-                            class="py-5 px-4 border-t border-b border-r border-[#D9D9D9] rounded-r-3xl text-yellow-500 font-bold w-[10%]">
-                            On Process
-                        </td>
-                    </tr>
+                        <tr>
+                            <td class="py-5 px-4 border-t border-b border-l border-[#D9D9D9] rounded-l-3xl w-[11%]">
+                            {{ $donation->formatted_date }}
+                            </td>
+                            <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[19%]">
+                            {{ $donation->restaurant_name }}
+                            </td>
+                            <td class="py-5 px-4 border-t border-b border-[#D9D9D9] w-[30%]">
+                            {{ $donation->transaction_detail }}
+                            </td>
+                            <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[18%]">
+                            {{ $donation->orphanage_name }}
+                            </td>
+                            <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold w-[12%]">
+                            {{ $donation->formatted_price }}
+                            </td>
+                            <td
+                                class="py-5 px-4 border-t border-b border-r border-[#D9D9D9] rounded-r-3xl text-DefaultGreen font-semibold w-[10%]">
+                                    @if($donation->status == 'Completed')
+                                        <span style="color:green;">Completed</span>
+                                    @elseif($donation->status == 'Canceled')
+                                        <span style="color:red;">Canceled</span>
+                                    @else
+                                        <span style="color:orange;">On Process</span>
+                                    @endif
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -159,110 +96,45 @@
         <div class="md:hidden">
             <!-- Row 1 Mobile -->
             <div class="border border-[#D9D9D9] rounded-lg p-4 mb-4 shadow font-brandon">
+            @foreach($donations as $donation)
                 <!-- Atas -->
                 <div class="mb-2">
-                    <p class="font-bold text-lg font-gotham">Restaurant Contoh 1</p>
-                    <p class="text-gray-600">Sunday, 01 Sept 2024</p>
-                    <p class="text-sm">1 Mie ayam, 1 Bakso, 1 Teh es</p>
+                    <p class="font-bold text-lg font-gotham">{{ $donation->restaurant_name }}</p>
+                    <p class="text-gray-600">{{ $donation->formatted_date }}</p>
+                    <p class="text-sm">{{ $donation->transaction_detail }}</p>
                 </div>
                 <!-- Garis Pemisah -->
                 <div class="border-t border-[#D9D9D9] my-2"></div>
                 <!-- Bawah -->
                 <div class="flex justify-between items-center">
                     <div>
-                        <p class="text-sm font-bold">Panti Asuhan Contoh 1</p>
-                        <p class="font-bold">IDR 5,000,000</p>
+                        <p class="text-sm font-bold">{{ $donation->orphanage_name }}</p>
+                        <p class="font-bold">{{ $donation->formatted_price }}</p>
                     </div>
-                    <p class="text-DefaultGreen font-bold font-gotham">Completed</p>
+                    <p class="text-DefaultGreen font-bold font-gotham">
+                        @if($donation->status == 'Completed')
+                            <span style="color:green;">Completed</span>
+                        @elseif($donation->status == 'Canceled')
+                            <span style="color:red;">Canceled</span>
+                        @else
+                            <span style="color:orange;">On Process</span>
+                        @endif
+                    </p>
                 </div>
+            @endforeach
             </div>
-
-            <!-- Row 2 -->
-            <div class="font-brandon border border-[#D9D9D9] rounded-lg p-4 mb-4 shadow">
-                <!-- Atas -->
-                <div class="mb-2">
-                    <p class="font-bold text-lg font-gotham">Restaurant Contoh 2</p>
-                    <p class="text-gray-600">Sunday, 01 Oct 2024</p>
-                    <p class="text-sm">1 Mie ayam, 1 Bakso, 1 Teh es, 1 Pizza, 10 Nasi padang</p>
-                </div>
-                <!-- Garis Pemisah -->
-                <div class="border-t border-[#D9D9D9] my-2"></div>
-                <!-- Bawah -->
-                <div class="flex justify-between items-center">
-                    <div>
-                        <p class="text-sm font-bold">Panti Asuhan Contoh 1</p>
-                        <p class="font-bold">IDR 5,000,000</p>
-                    </div>
-                    <p class="text-red-500 font-bold font-gotham">Canceled</p>
-                </div>
-            </div>
-
-            <!-- Row 3 -->
-            <div class="font-brandon border border-[#D9D9D9] rounded-lg p-4 mb-4 shadow">
-                <!-- Atas -->
-                <div class="mb-2">
-                    <p class="font-bold text-lg font-gotham">Restaurant Contoh 3</p>
-                    <p class="text-gray-600">Sunday, 01 Nov 2024</p>
-                    <p class="text-sm">1 Mie ayam, 1 Bakso, 1 Teh es</p>
-                </div>
-                <!-- Garis Pemisah -->
-                <div class="border-t border-[#D9D9D9] my-2"></div>
-                <!-- Bawah -->
-                <div class="flex justify-between items-center">
-                    <div>
-                        <p class="text-sm font-bold">Panti Asuhan Contoh 1</p>
-                        <p class="font-bold">IDR 5,000,000</p>
-                    </div>
-                    <p class="text-DefaultGreen font-bold font-gotham">Completed</p>
-                </div>
-            </div>
-
-            <!-- Row 4 -->
-            <div class="font-brandon border border-[#D9D9D9] rounded-lg p-4 mb-4 shadow">
-                <!-- Atas -->
-                <div class="mb-2">
-                    <p class="font-bold text-lg font-gotham">Restaurant Contoh 4</p>
-                    <p class="text-gray-600">Sunday, 01 Dec 2024</p>
-                    <p class="text-sm">1 Mie ayam, 1 Bakso, 1 Teh es</p>
-                </div>
-                <!-- Garis Pemisah -->
-                <div class="border-t border-[#D9D9D9] my-2"></div>
-                <!-- Bawah -->
-                <div class="flex justify-between items-center">
-                    <div>
-                        <p class="text-sm font-bold">Panti Asuhan Contoh 1</p>
-                        <p class="font-bold">IDR 5,000,000</p>
-                    </div>
-                    <p class="text-yellow-500 font-bold font-gotham">On Process</p>
-                </div>
-            </div>
-
-
         </div>
 
-<<<<<<< HEAD
-    </main> 
-
-    <!-- kalau usernya ga pernah order samasekali -->
-    <!-- <main
-=======
     </main>
-
+    @else
     {{-- <main
->>>>>>> f5449bc3da8b47e2c648f4e99f689fcaa35b09a3
         class = "bg-DefaultGreen text-DefaultWhite text-center md:px-32 pt-10 sm:px-20 min-h-screen px-6 flex flex-col items-center justify-center">
         <img src="{{ asset('assets/Image/mydonation.png') }}" class="sm:w-80 sm:h-80 w-64 h-64"alt="">
         <h2 class="sm:text-3xl text-xl font-gotham">Haven't tried Plate it Forward?</h2>
         <p class="sm:text-xl text-m font-brandon">Join us in spreading kindness—every plate matters!</p>
-<<<<<<< HEAD
-    </main> -->
-
-=======
     </main> --}}
->>>>>>> f5449bc3da8b47e2c648f4e99f689fcaa35b09a3
-
-
-    @include('components.footer')
+    @endif
+    <x-footer></x-footer>
 
 
 
