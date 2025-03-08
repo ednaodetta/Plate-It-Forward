@@ -15,7 +15,7 @@
 
     <!-- Container -->
     <div class="p-6 max-w-6xl mx-auto">
-        <h2 class="text-2xl font-bold text-gray-700 mb-4">Hello, {{ auth()->user()->name ?? 'Resto' }}!</h2>
+        <h2 class="text-2xl font-bold text-gray-700 mb-4">Hello, {{ $restaurant->name }}!</h2>
 
         <!-- Statistik utama -->
         <div class="grid grid-cols-3 gap-6">
@@ -51,16 +51,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($recentOrders as $order)
+                    {{-- @foreach ($recentOrders as $order) --}}
                         <tr>
-                            <td class="p-2">{{ $order->id }}</td>
+                            <td class="p-2">{{ $restaurant->id }}</td>
                             <td class="p-2">{{ $order->transaction_detail }}</td>
                             <td class="p-2 font-bold">Rp {{ number_format($order->total, 0, ',', '.') }}</td>
                             <td class="p-2 text-{{ $order->status == 'Completed' ? 'green' : ($order->status == 'On Process' ? 'orange' : 'red') }}-500">
                                 {{ $order->status }}
                             </td>
                         </tr>
-                    @endforeach
+                    {{-- @endforeach --}}
                 </tbody>
             </table>
         </div>

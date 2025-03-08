@@ -169,5 +169,6 @@ Route::get('/menu', [RestaurantController::class, 'menu'])->name('menu');
 
 Route::get('/restoranpage', [ProductController::class, 'restoran'])->name('restoranpage.restoran');
 
-
 Route::get('/search-location', [LocationController::class, 'search']);
+
+Route::get('/testing', [RestaurantDashboardController::class, 'index'])->name('testing');
