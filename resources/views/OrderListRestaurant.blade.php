@@ -63,51 +63,30 @@
              </div>
 
             <!-- Tabel -->
-            <div class="overflow-x-auto">
-            <table class="w-full shadow-md rounded overflow-hidden">
-                <!-- Header Tabel -->
-                <thead class="bg-gray-100">
-                <tr class="bg-whitecream text-gray-700">
-                    <th class="px-4 py-2 text-left font-semibold font-brandon">OrderID</th>
-                    <th class="px-4 py-2 text-left font-semibold font-brandon">Transaction Detail</th>
-                    <th class="px-4 py-2 text-left font-semibold font-brandon">Total Price</th>
-                    <th class="px-4 py-2 text-left font-semibold font-brandon">Status</th>
-                </tr>
+        <div class="bg-white shadow-md rounded-lg p-4 mt-2">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="p-2">Order ID</th>
+                        <th class="p-2">Transaction Detail</th>
+                        <th class="p-2">Total Price</th>
+                        <th class="p-2">Status</th>
+                    </tr>
                 </thead>
-
-                <!-- Isi Tabel -->
-                <tbody class="bg-white rounded-md">
-                <!-- Order 1 -->
-                <tr class="rounded-md border-b">
-                    <td class="px-4 py-3 font-brandon">ID001</td>
-                    <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                    <td class="px-4 py-3 font-bold font-brandon">IDR 65,000,00</td>
-                    <td class="px-4 py-3 text-green-500 font-medium font-brandon">Completed</td>
-                </tr>
-                <!-- Order 2 -->
-                <tr class="rounded-lg border-b">
-                    <td class="px-4 py-3 font-brandon">ID002</td>
-                    <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es, 1 Pizza, 10 Nasi padang</td>
-                    <td class="px-4 py-3 font-bold font-brandon">IDR 125,000,00</td>
-                    <td class="px-4 py-3 text-red-500 font-medium font-brandon">Canceled</td>
-                </tr>
-                <!-- Order 3 -->
-                <tr class="rounded-lg border-b">
-                    <td class="px-4 py-3 font-brandon">ID003</td>
-                    <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                    <td class="px-4 py-3 font-bold font-brandon">IDR 75,000,00</td>
-                    <td class="px-4 py-3 text-green-500 font-medium font-brandon">Completed</td>
-                </tr>
-                <!-- Order 4 -->
-                <tr class="rounded-lg border-b">
-                    <td class="px-4 py-3 font-brandon">ID004</td>
-                    <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                    <td class="px-4 py-3 font-bold font-brandon">IDR 25,000,00</td>
-                    <td class="px-4 py-3 text-orange-500 font-medium font-brandon">On Process</td>
-                </tr>
+                <tbody>
+                    @foreach ($recentOrders as $order)
+                        <tr>
+                            <td class="p-2">{{ $order->id }}</td>
+                            <td class="p-2">{{ $order->transaction_detail }}</td>
+                            <td class="p-2 font-bold">Rp {{ number_format($order->total, 0, ',', '.') }}</td>
+                            <td class="p-2 text-{{ $order->status == 'Completed' ? 'green' : ($order->status == 'On Process' ? 'orange' : 'red') }}-500">
+                                {{ $order->status }}
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
-            </div>
+        </div>
         </div>
     </body>
 </html>
