@@ -8,6 +8,7 @@ use App\Http\Controllers\OrphanageController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\RestaurantDashboardController;
 use App\Http\Controllers\CheckoutController;
 
 Route::get('/api/restaurants', [RestaurantController::class, 'index']);
@@ -41,15 +42,14 @@ Route::get('/my-donations', function () {
     return view('mydonations');
 });
 
+Route::get('/payment', function () {
+    return view('payment');
+});
 
 
 Route::get('/OrderList', function () {
     return view('OrderList');
 });
-
-// Route::get('/restoranpage', function () {
-//     return view('restoranpage');
-// });
 
 Route::get('/OrderListRestaurant', function () {
     return view('OrderListRestaurant');
@@ -62,24 +62,6 @@ Route::delete('/restaurant/{id}', [RestaurantController::class, 'destroy'])->nam
 Route::put('/restaurant/{id}/update', [RestaurantController::class, 'update'])->name('restaurant.update');
 
 Route::get('/location', [LocationController::class, 'list'])->name('resto.list');
-
-
-
-// Route::get('/resto/{city}', function ($city) {
-//     $resto = Resto::where('city', $city)->get();
-//     return view('resto-list', compact('resto', 'city'));
-// })->name('resto.byCity');
-
-
-// Route::get('/location/{city}', [RestaurantController::class, 'showRestaurantsByCity']);
-
-// Route::get('/location', function () {
-//     return view('location');
-// });
-
-// Route::get('/signin', function () {
-//     return view('signin');
-// })->name('signin');
 
 Route::get('/contact-us', function () {
     return view('contactus');
@@ -190,16 +172,18 @@ Route::get('/support', [SupportController::class, 'index'])->name('support.index
 
 Route::post('/add-restaurant', [RestaurantController::class, 'store'])->name('restaurant.store');
 
-
 Route::get('/menupage', [RestaurantController::class, 'menu'])->name('menupage');
+
 Route::get('/menu', [RestaurantController::class, 'menu'])->name('menu');
-
-
-
 
 Route::get('/restoranpage', [ProductController::class, 'restoran'])->name('restoranpage.restoran');
 
 Route::get('/search-location', [LocationController::class, 'search']);
+
+Route::get('/dashboard/resto', [RestaurantDashboardController::class, 'index'])->name('dashboardResto');
+
+Route::get('/dashboard/orderlist', [RestaurantDashboardController::class, 'index'])->name('OrderListRestaurant')->defaults('viewType', 'orderlist');
+
 
 use Midtrans\Snap;
 use Midtrans\Transaction;
