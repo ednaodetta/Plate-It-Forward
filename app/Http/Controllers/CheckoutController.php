@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Products;
 use App\Models\Orphanage;
+use App\Models\ProductExp;
 use Midtrans\Config;
 use Midtrans\Snap;
 use Illuminate\Support\Facades\DB;
@@ -30,19 +31,21 @@ class CheckoutController extends Controller
             }
 
             $cart = Cart::where('user_id', $user->id)->first();
+
             if (!$cart) {
                 return response()->json(['message' => 'Cart is empty'], 400);
             }
 
-            $order_id = 'ORDER-' . uniqid();
+            $order_id = (string)$cart->id;
             $total = $cart->total; // Pastikan ini sesuai dengan tabel
 
             $params = [
                 'transaction_details' => [
-                    'order_id' => $order_id,
+                    'order_id' => rand(),
                     'gross_amount' => $total,
                 ],
             ];
+
 
             $snapToken = \Midtrans\Snap::getSnapToken($params);
 
@@ -61,52 +64,37 @@ class CheckoutController extends Controller
 
         $notification = $request->all(); // Ambil semua data notifikasi
         $transaction = $notification['transaction_status'] ?? null;
-        $orderId = $notification['order_id'] ?? null;
+        $user = Auth::user();
+        $cart = Cart::where('user_id', $user->id)->first();
 
-        if (!$orderId) {
-            return response()->json(['message' => 'Order ID not found in notification'], 400);
-        }
 
         DB::beginTransaction();
         try {
-            $order = Order::where('order_id', $orderId)->first();
 
-            if (!$order) {
-                return response()->json(['message' => 'Order not found'], 404);
+            if (!$cart) {
+                return response()->json(['message' => 'Cart not found'], 404);
             }
 
             if ($transaction == 'settlement' || $transaction == 'capture') {
-                $cart = Cart::where('user_id', $order->user_id)->first();
+                $restaurantId = CartItem::where('cart_id', $cart->id)
+                    ->first()
+                    ->product
+                    ->restaurant_id;
 
-                if (!$cart) {
-                    return response()->json(['message' => 'Cart not found'], 404);
-                }
-
-                // Ambil restaurant_id berdasarkan produk di dalam cart
-                $cartItem = CartItem::where('cart_id', $cart->id)->first();
-                if (!$cartItem) {
-                    return response()->json(['message' => 'No cart items found'], 404);
-                }
-
-                $restaurantId = $cartItem->product->restaurant_id ?? null;
-                if (!$restaurantId) {
-                    return response()->json(['message' => 'Restaurant not found'], 404);
-                }
-
-                // Ambil panti asuhan di kota yang sama dengan restoran
                 $orphanage = Orphanage::where('city', function ($query) use ($restaurantId) {
                     $query->select('city')->from('restaurants')->where('id', $restaurantId);
                 })->orderBy('donation', 'asc')->first();
 
-                // Update status order menjadi "paid"
-                $order->update([
+                $order = Order::create([
+                    'user_id' => $cart->user_id,
                     'restaurant_id' => $restaurantId,
                     'orphanage_id' => $orphanage ? $orphanage->id : null,
+                    'total' => $cart->total,
                     'status' => 'paid',
                 ]);
+                $cartItems = CartItem::where('cart_id', $cart->id)->get();
 
-                // Pindahkan item dari Cart ke OrderItem
-                foreach ($cart->cartItems as $cartItem) {
+                foreach ($cartItems as $cartItem) {
                     OrderItem::create([
                         'order_id' => $order->id,
                         'product_id' => $cartItem->product_id,
@@ -114,28 +102,46 @@ class CheckoutController extends Controller
                         'price' => $cartItem->price,
                         'subtotal' => $cartItem->subtotal,
                     ]);
+
+                    $remainingQuantity = $cartItem->quantity; // Jumlah yang harus dikurangi dari stok
+
+                    // Ambil productexps berdasarkan product_id dengan expired_at terdekat terlebih dahulu
+                    $productExps = ProductExp::where('product_id', $cartItem->product_id)
+                        ->orderBy('expired_at', 'asc')
+                        ->get();
+
+                    foreach ($productExps as $productExp) {
+                        if ($remainingQuantity <= 0) {
+                            break; // Jika semua sudah dikurangi, keluar dari loop
+                        }
+
+                        if ($productExp->quantity >= $remainingQuantity) {
+                            // Jika stok cukup, kurangi quantity
+                            $productExp->update(['quantity' => $productExp->quantity - $remainingQuantity]);
+                            $remainingQuantity = 0;
+                        } else {
+                            // Jika stok kurang dari jumlah yang dibutuhkan, habiskan stok ini dan hapus
+                            $remainingQuantity -= $productExp->quantity;
+                            $productExp->delete();
+                        }
+                    }
                 }
 
-                // Hapus cart setelah selesai
-                $cart->cartItems()->delete();
+
+                CartItem::where('cart_id', $cart->id)->delete();
                 $cart->delete();
 
                 DB::commit();
-                return response()->json(['message' => 'Order updated successfully'], 200);
+                return response()->json(['message' => 'Order created successfully'], 200);
             } elseif ($transaction == 'expire' || $transaction == 'cancel') {
-                $order->update(['status' => 'failed']);
-                DB::commit();
+                DB::rollBack();
                 return response()->json(['message' => 'Payment failed or expired'], 400);
             }
-
-            DB::rollBack();
-            return response()->json(['message' => 'Unhandled transaction status'], 400);
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['message' => 'Error processing order', 'error' => $e->getMessage()], 500);
         }
     }
-
     // public function handleNotification(Request $request)
     // {
     //     dd('handleNotification masuk!', $request->all());

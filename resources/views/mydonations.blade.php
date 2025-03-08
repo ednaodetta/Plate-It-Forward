@@ -136,8 +136,6 @@
     @endif
     <x-footer></x-footer>
 
-
-
 </body>
 
 </html>

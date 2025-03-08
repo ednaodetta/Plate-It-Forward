@@ -108,6 +108,10 @@ class CartController extends Controller
         // Ambil data cart berdasarkan user
         $cart = Cart::where('user_id', $userId)->first();
 
+        if (!$cart) {
+            return view('cart', compact('cart'));
+        }
+
         // Ambil semua item dalam cart
         $cartItems = CartItem::where('cart_id', $cart->id)
             ->with('product') // Pastikan relasi ke Product ada
@@ -122,18 +126,16 @@ class CartController extends Controller
         $subtotal = $cartItems->sum('subtotal');
 
         // Biaya tetap
-        $deliveryFee = 5000;
-        $serviceFee = $subtotal * 0.08;
-        $total = $subtotal + $deliveryFee + $serviceFee;
+        $serviceFee = $subtotal * 0.05;
+        $total = $subtotal + $serviceFee;
 
         // Simpan total ke dalam tabel cart
         $cart->update([
             'total' => $total
         ]);
 
-        return view('cart', compact('cartItems', 'restaurant', 'restaurantId', 'subtotal', 'deliveryFee', 'serviceFee', 'total'));
+        return view('cart', compact('cart', 'cartItems', 'restaurant', 'restaurantId', 'subtotal',  'serviceFee', 'total'));
     }
-
 
     public function switchRestaurant(Request $request)
     {
