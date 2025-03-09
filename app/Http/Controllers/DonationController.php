@@ -17,7 +17,9 @@ class DonationController extends Controller
             return redirect()->route('home')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
         }
 
-        $donationCount = DB::table('orders')->count();
+        $donationCount = DB::table('orders')
+        ->join('users', 'orders.user_id', '=', 'users.id')
+        ->count();
 
         // Ambil data orders dengan join ke restaurants & orphanages
         $donations = DB::table('orders')
