@@ -73,7 +73,7 @@
             <nav id="menu"
                 class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
                 <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
-                    <li><a href="/dashboardAdmin"
+                    <li><a href="/admin/dashboard"
                             class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a>
                     </li>
                     <li><a href="/OrderList" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Order</a>
@@ -219,7 +219,7 @@
     </div>
     <script>
         // Buka modal
-        document.getElementById('addOrphanageBtn').addEventListener('click', function() {
+        document.getElementById('addOrphanageBtn').addEventListener('click', function () {
             document.getElementById('addOrphanageModal').classList.remove('hidden');
         });
 
@@ -230,7 +230,7 @@
 
         // Menangani pengiriman form
         // Handle form submission
-        document.getElementById('addOrphanageForm').addEventListener('submit', function(e) {
+        document.getElementById('addOrphanageForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
             // Get form data
@@ -260,29 +260,29 @@
     </script>
     <script>
         let users = [{
-                id: 'R0001',
-                name: 'RESTO 1',
-                email: 'RESTO1@gmail.com',
-                address: 'jl. 1',
-                city: 'a',
-                contact: '01910192'
-            },
-            {
-                id: 'R0002',
-                name: 'RESTO2',
-                email: 'RESTO2@gmail.com',
-                address: 'jl. 2',
-                city: 'b',
-                contact: '01910192'
-            },
-            {
-                id: 'R0003',
-                name: 'RESTO3',
-                email: 'RESTO3@gmail.com',
-                address: 'jl. 3',
-                city: 'c',
-                contact: '01910192'
-            }
+            id: 'R0001',
+            name: 'RESTO 1',
+            email: 'RESTO1@gmail.com',
+            address: 'jl. 1',
+            city: 'a',
+            contact: '01910192'
+        },
+        {
+            id: 'R0002',
+            name: 'RESTO2',
+            email: 'RESTO2@gmail.com',
+            address: 'jl. 2',
+            city: 'b',
+            contact: '01910192'
+        },
+        {
+            id: 'R0003',
+            name: 'RESTO3',
+            email: 'RESTO3@gmail.com',
+            address: 'jl. 3',
+            city: 'c',
+            contact: '01910192'
+        }
         ];
 
         let deleteMode = false;
@@ -299,10 +299,10 @@
         //         row.className = 'border-b hover:bg-gray-50';
 
         //         row.innerHTML = `
-    //             <td class="p-3 relative action-cell">
-    //                 ${deleteMode 
-    //                     ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
-    //                     : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
+        //             <td class="p-3 relative action-cell">
+        //                 ${deleteMode 
+        //                     ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
+        //                     : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
         //                                                                                                                                                                                                                                                                    <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
         //                                                                                                                                                                                                                                                                        <ul class="text-sm">
         //                                                                                                                                                                                                                                                                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
@@ -311,34 +311,34 @@
         //                                                                                                                                                                                                                                                                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete restaurant</li>
         //                                                                                                                                                                                                                                                                        </ul>
         //                                                                                                                                                                                                                                                                    </div>`
-    //                 }
-    //             </td>
-    //              <td class="p-3">${user.id}</td>
-    //             <td class="p-3">${user.name}</td>
-    //             <td class="p-3">${user.email}</td>
-    //             <td class="p-3">${user.address}</td>
-    //             <td class="p-3">${user.city}</td>
-    //             <td class="p-3">${user.contact}</td>
-    //         `;
+        //                 }
+        //             </td>
+        //              <td class="p-3">${user.id}</td>
+        //             <td class="p-3">${user.name}</td>
+        //             <td class="p-3">${user.email}</td>
+        //             <td class="p-3">${user.address}</td>
+        //             <td class="p-3">${user.city}</td>
+        //             <td class="p-3">${user.contact}</td>
+        //         `;
         //         tableBody.appendChild(row);
 
         //         // Mobile Card
         //         const card = document.createElement('div');
         //         card.className = "bg-white p-4 rounded-lg shadow-md";
         //         card.innerHTML = `
-    //             <div class="flex justify-between items-center p-3 rounded-lg bg-white">
-    //                 <div>
-    //                     <h3 class="text-lg font-bold text-green-800">${user.name}</h3>
-    //                     <p class="text-gray-600"><strong>ID:</strong> ${user.id}</p>
-    //                     <p class="text-gray-600"><strong>Email:</strong> ${user.email}</p>
-    //                     <p class="text-gray-600"><strong>Address:</strong> ${user.address}</p>
-    //                     <p class="text-gray-600"><strong>City:</strong> ${user.city}</p>
-    //                     <p class="text-gray-600"><strong>Contact:</strong> ${user.contact}</p>
-    //                 </div>
-    //                 <div class="relative">
-    //                     ${deleteMode 
-    //                         ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
-    //                         : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
+        //             <div class="flex justify-between items-center p-3 rounded-lg bg-white">
+        //                 <div>
+        //                     <h3 class="text-lg font-bold text-green-800">${user.name}</h3>
+        //                     <p class="text-gray-600"><strong>ID:</strong> ${user.id}</p>
+        //                     <p class="text-gray-600"><strong>Email:</strong> ${user.email}</p>
+        //                     <p class="text-gray-600"><strong>Address:</strong> ${user.address}</p>
+        //                     <p class="text-gray-600"><strong>City:</strong> ${user.city}</p>
+        //                     <p class="text-gray-600"><strong>Contact:</strong> ${user.contact}</p>
+        //                 </div>
+        //                 <div class="relative">
+        //                     ${deleteMode 
+        //                         ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
+        //                         : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
         //                                                                                                                                                                                                                                                                     <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
         //                                                                                                                                                                                                                                                                         <ul class="text-sm">
         //                                                                                                                                                                                                                                                                             <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
@@ -347,10 +347,10 @@
         //                                                                                                                                                                                                                                                                             <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete restaurant</li>
         //                                                                                                                                                                                                                                                                         </ul>
         //                                                                                                                                                                                                                                                                     </div>`
-    //                     }
-    //                 </div>
-    //             </div>
-    //         `;
+        //                     }
+        //                 </div>
+        //             </div>
+        //         `;
 
         //         cardContainer.appendChild(card);
         //     });
@@ -450,7 +450,7 @@
             }
         }
 
-        document.addEventListener("click", function(e) {
+        document.addEventListener("click", function (e) {
             if (!e.target.closest(".dots-menu") && !e.target.closest(".dropdown")) {
                 document.querySelectorAll(".dropdown").forEach(el => el.classList.add("hidden"));
             }
@@ -465,7 +465,7 @@
         hamburgerBtn.addEventListener('click', () => {
             menu.classList.toggle('hidden'); // Show or hide the menu
         });
-        
+
         document.addEventListener("DOMContentLoaded", populateTable);
     </script>
 </body>

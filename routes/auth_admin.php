@@ -3,9 +3,10 @@
 use App\Http\Controllers\AdminPasswordController;
 use App\Http\Controllers\Auth\RegisteredAdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\AdminDashboardController;
+
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('register', [RegisteredAdminController::class, 'create'])->name('register');
@@ -25,12 +26,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Route::get('dashboard', function () {
         //     return view('admin.dashboard');
         // })->name('dashboard');
-        Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('DashboardAdmin');
-        Route::get('/products',[ProductController::class, 'index']);
+        Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+        Route::get('/products', [ProductController::class, 'index']);
         Route::match(['get', 'post'], 'orderlist', [AdminDashboardController::class, 'list'])->name('OrderList');
-
-
     });
-
-    
 });
