@@ -5,39 +5,42 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">Home</a>
-        <a class="nav-link" href="{{ route('dashboard') }}">Dashboard User</a>
+        <a class="nav-link" href="{{ route('DashboardAdmin') }}">Dashboard User</a>
     </div>
     <div class='text-2xl'>{{$donationCount}}</div>
 </nav>
 
 <div class="container">
-<table>
+<table class="w-full border-separate border-spacing-y-4">
     <thead>
-        <tr>
-            <th>Date</th>
-            <th>Restaurant</th>
-            <th>Transaction Detail</th>
-            <th>Donate to</th>
-            <th>Total Price</th>
-            <th>Status</th>
+        <tr class="text-gray-600 text-left text-2xl font-gotham">
+            <th class="py-2 px-4 font-bold">OrderID</th>
+            <th class="py-2 px-4 font-bold">Transaction Detail</th>
+            <th class="py-2 px-4 font-bold">Total Price</th>
+            <th class="py-2 px-4 font-bold">Status</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach($donations as $donation)
+    <tbody class="font-brandon">
+        @foreach($orders as $order)
             <tr>
-                <td>{{ $donation->formatted_date }}</td>
-                <td><strong>{{ $donation->restaurant_name }}</strong></td>
-                <td>{{ $donation->transaction_detail }}</td>
-                <td><strong>{{ $donation->orphanage_name }}</strong></td>
-                <td>{{ $donation->formatted_price }}</td>
-                <td>
-                    @if($donation->status == 'Completed')
-                        <span style="color:green;">Completed</span>
-                    @elseif($donation->status == 'Canceled')
-                        <span style="color:red;">Canceled</span>
-                    @else
-                        <span style="color:orange;">On Process</span>
-                    @endif
+                <td class="py-5 px-4 border-t border-b border-l border-[#D9D9D9] rounded-l-3xl">
+                    {{ $order->id }}
+                </td>
+                <td class="py-5 px-4 border-t border-b border-[#D9D9D9]">
+                    {{ $order->transaction_detail }}
+                </td>
+                <td class="py-5 px-4 border-t border-b border-[#D9D9D9] font-bold">
+                    IDR {{ number_format($order->total_price, 2, ',', '.') }}
+                </td>
+                <td class="py-5 px-4 border-t border-b border-r border-[#D9D9D9] rounded-r-3xl">
+                    <span class="
+                        @if($order->status == 'Completed') text-green-500
+                        @elseif($order->status == 'Canceled') text-red-500
+                        @else text-orange-500
+                        @endif
+                        font-bold">
+                        {{ $order->status }}
+                    </span>
                 </td>
             </tr>
         @endforeach

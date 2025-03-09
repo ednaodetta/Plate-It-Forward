@@ -67,74 +67,30 @@
             </div>
 
             <!-- Tabel -->
-            <div class="overflow-x-auto rounded-lg">
-                <table class="w-full bg-white shadow-md rounded overflow-hidden">
-                    <!-- Header Tabel -->
-                    <thead class="bg-gray-200">
-                        <tr class="bg-whitecream text-gray-700 border-b">
-                            <th class="px-4 py-2 text-left font-semibold font-brandon">OrderID</th>
-                            <th class="px-4 py-2 text-left font-semibold font-brandon">Transaction Detail</th>
-                            <th class="px-4 py-2 text-left font-semibold font-brandon">Total Price</th>
-                            <th class="px-4 py-2 text-left font-semibold font-brandon">Status</th>
-                        </tr>
-                    </thead>
-                    <!-- Isi Tabel -->
-                    <tbody class="font-brandon">
-                        <!-- Order 1 -->
-                        <tr class="border-b">
-                            <td class="px-4 py-3 font-brandon">ID001</td>
-                            <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                            <td class="px-4 py-3 font-bold font-brandon">IDR 65,000.00</td>
-                            <td class="px-4 py-3 font-brandon">
-                                <select class="p-2 border rounded status-select" onchange="updateColor(this)">
-                                    <option value="Completed"class = "text-green-500">Completed</option>
-                                    <option value="On Process"class="text-orange-500">On Process</option>
-                                    <option value="Canceled"class="text-red-500">Canceled</option>
-                                </select>
+            <div class="bg-white shadow-md rounded-lg p-4 mt-2">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="p-2">Order ID</th>
+                        <th class="p-2">Transaction Detail</th>
+                        <th class="p-2">Total Price</th>
+                        <th class="p-2">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($allOrders as $order)
+                        <tr>
+                            <td class="p-2">{{ $order->id }}</td>
+                            <td class="p-2">{{ $order->transaction_detail }}</td>
+                            <td class="p-2 font-bold">Rp {{ number_format($order->total, 0, ',', '.') }}</td>
+                            <td class="p-2 text-{{ $order->status == 'Completed' ? 'green' : ($order->status == 'On Process' ? 'orange' : 'red') }}-500">
+                                {{ $order->status }}
                             </td>
                         </tr>
-                        <!-- Order 2 -->
-                        <tr class="border-b">
-                            <td class="px-4 py-3 font-brandon">ID002</td>
-                            <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es, 1 Pizza, 10 Nasi padang</td>
-                            <td class="px-4 py-3 font-bold font-brandon">IDR 125,000.00</td>
-                            <td class="px-4 py-3">
-                                <select class="p-2 border rounded status-select" onchange="updateColor(this)">
-                                    <option value="Completed" class = "text-green-500">Completed</option>
-                                    <option value="On Process" class="text-orange-500">On Process</option>
-                                    <option value="Canceled" class="text-red-500">Canceled</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <!-- Order 3 -->
-                        <tr class="border-b">
-                            <td class="px-4 py-3 font-brandon">ID003</td>
-                            <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                            <td class="px-4 py-3 font-bold font-brandon">IDR 75,000.00</td>
-                            <td class="px-4 py-3">
-                                <select class="p-2 border rounded status-select" onchange="updateColor(this)">
-                                    <option value="Completed" class = "text-green-500">Completed</option>
-                                    <option value="On Process"class="text-orange-500">On Process</option>
-                                    <option value="Canceled"class="text-red-500" selected >Canceled</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <!-- Order 4 -->
-                        <tr class="border-b">
-                            <td class="px-4 py-3 font-brandon">ID004</td>
-                            <td class="px-4 py-3 font-brandon">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                            <td class="px-4 py-3 font-bold font-brandon">IDR 25,000.00</td>
-                            <td class="px-4 py-3">
-                                <select class="p-2 border rounded status-select" onchange="updateColor(this)">
-                                    <option value="Completed"class = "text-green-500">Completed</option>
-                                    <option value="On Process"class="text-orange-500" selected >On Process</option>
-                                    <option value="Canceled"class="text-red-500">Canceled</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         </div>
         
         <!-- script untuk mengubah warna status -->

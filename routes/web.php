@@ -191,7 +191,10 @@ Route::get('/dashboard/orderlist', [RestaurantDashboardController::class, 'index
 // Route untuk dashboard admin (dengan middleware auth biar hanya user login yang bisa akses)
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('DashboardAdmin');
+    // Route::get('/admin/orderlist', [AdminDashboardController::class, 'list'])->name('tesdashboardadmin');
 });
+
+// Route::get('/admin/orderlist', [AdminDashboardController::class, 'list'])->name('tesdashboardadmin');
 
 use Midtrans\Snap;
 use Midtrans\Transaction;

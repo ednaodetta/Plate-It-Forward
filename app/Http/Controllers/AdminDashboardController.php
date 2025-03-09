@@ -10,12 +10,12 @@ class AdminDashboardController extends Controller
 {
     public function index()
     {
-        //make sure kalo data yang masuk cuma data restoran itu
-        // $admin = Auth::guard('admin')->user();
+        // make sure kalo data yang masuk cuma data restoran itu
+        $admin = Auth::guard('admin')->user();
 
-        // if (!$admin) {
-        //     return redirect()->route('home')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
-        // }
+        if (!$admin) {
+            return redirect()->route('home')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
+        }
 
         // Top Donors: Total donasi berdasarkan user
         $topDonors = DB::table('orders')
@@ -75,5 +75,26 @@ class AdminDashboardController extends Controller
             'totalOrphanages',
             'totalDonation'
         ));
+    }
+
+    public function list(){
+        $admin = Auth::guard('admin')->user();
+
+        if (!$admin) {
+            return redirect()->route('home')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
+        }
+
+        $allOrders = DB::table('orders')
+            ->select('orders.id', 'orders.total', 'orders.status', 'orders.created_at')
+            ->addSelect(DB::raw("
+                GROUP_CONCAT(CONCAT(order_items.quantity, ' ', products.name) SEPARATOR ', ') AS transaction_detail
+            "))
+            ->join('order_items', 'orders.id', '=', 'order_items.order_id')
+            ->join('products', 'order_items.product_id', '=', 'products.id')
+            ->groupBy('orders.id', 'orders.total', 'orders.status', 'orders.created_at')
+            ->orderBy('orders.created_at', 'asc')
+            ->get();
+
+        return view('tesdashboardadmin', compact('allOrders'));
     }
 }
