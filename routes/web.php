@@ -157,9 +157,9 @@ Route::get('/signin', function () {
     return view('signin');
 })->name('signin');
 
-// Route::get('/dashboardAdmin', function () {
-//     return view('dashboardAdmin');
-// })->name('dashboardAdmin');
+Route::get('/dashboardAdmin', function () {
+    return view('dashboardAdmin');
+})->name('dashboardAdmin');
 
 Route::get('/dashboardResto', function () {
     return view('dashboardResto');
@@ -189,7 +189,9 @@ Route::get('/dashboard/resto', [RestaurantDashboardController::class, 'index'])-
 Route::get('/dashboard/orderlist', [RestaurantDashboardController::class, 'index'])->name('OrderListRestaurant')->defaults('viewType', 'orderlist');
 
 // Route untuk dashboard admin (dengan middleware auth biar hanya user login yang bisa akses)
-
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('DashboardAdmin');
+// });
 
 use Midtrans\Snap;
 use Midtrans\Transaction;
