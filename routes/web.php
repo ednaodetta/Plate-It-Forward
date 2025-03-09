@@ -157,9 +157,9 @@ Route::get('/signin', function () {
     return view('signin');
 })->name('signin');
 
-Route::get('/dashboardAdmin', function () {
-    return view('dashboardAdmin');
-})->name('dashboardAdmin');
+// Route::get('/dashboardAdmin', function () {
+//     return view('dashboardAdmin');
+// })->name('dashboardAdmin');
 
 // Route::get('/dashboardResto', function () {
 //     return view('dashboardResto');
