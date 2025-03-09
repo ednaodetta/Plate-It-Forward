@@ -26,10 +26,10 @@
     </head>
     <body class="bg-DefaultWhite">
         <x-navbarAdmin></x-navbarAdmin>
-        <div class="container mx-auto mt-24 px-6">
+        <div class="container mx-auto mt-24 px-6 ">
             <div class="max-w-6xl mx-auto bg-Defaultwhite p-6 rounded-lg">
                 <div class="flex justify-between items-center mb-6">
-                    <h1 class="text-2xl font-bold font-brandon">Hello, {{ Auth::user()->name }}!</h1>
+                    <h1 class="text-2xl font-bold font-brandon">Hello, {{ Auth::guard('admin')->user()->name}}!</h1>
                         <div class="bg-white p-6 rounded-lg shadow text-center w-[30%]">
                         <h3 class="text-xl font-semibold font-brandon">Total Donation</h3>
                         <p class="text-2xl font-bold text-green-600">Rp {{ number_format($totalDonation, 0, ',', '.') }}</p>
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="flex flex-row gap-6 mb-6">
-                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 h-full flex-1 flex flex-col">
+                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 min-h-[200px] flex-1 flex flex-col">
                         <h2 class="font-semibold text-lg mb-2 font-brandon">🏆 Top Donors</h2>
                         <ul class='space-y-1 font-brandonLight'>
                             @foreach($topDonors as $index => $donor)
@@ -47,7 +47,7 @@
                         </ul>
                     </div>
 
-                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 h-full flex-1 flex flex-col">
+                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 min-h-[200px] flex-1 flex flex-col">
                         <h2 class="font-semibold text-lg mb-2 font-brandon">🏆 Top Restaurant</h2>
                         <ul class='space-y-1 font-brandonLight'>
                             @foreach($topRestaurants as $index => $restaurant)
@@ -56,7 +56,7 @@
                         </ul>
                     </div>
 
-                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 h-full flex-1 flex flex-col">
+                    <div class="bg-white p-4 rounded-lg shadow border border-gray-300 min-h-[200px] flex-1 flex flex-col">
                         <h2 class="font-semibold text-lg mb-2 font-brandon">🏆 Most Donated Orphanages</h2>
                         <ul class='space-y-1 font-brandonLight'>
                             @foreach($topOrphanages as $index => $orphanage)

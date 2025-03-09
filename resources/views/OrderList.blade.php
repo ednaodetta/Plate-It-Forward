@@ -23,6 +23,7 @@
             </style>
         @endif
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body class="bg-DefaultWhite">
         <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
@@ -83,9 +84,19 @@
                             <td class="p-2">{{ $order->id }}</td>
                             <td class="p-2">{{ $order->transaction_detail }}</td>
                             <td class="p-2 font-bold">Rp {{ number_format($order->total, 0, ',', '.') }}</td>
-                            <td class="p-2 text-{{ $order->status == 'Completed' ? 'green' : ($order->status == 'On Process' ? 'orange' : 'red') }}-500">
-                                {{ $order->status }}
-                            </td>
+                            <td class="">
+                            <form method="POST" class='flex justify-between ' action="{{ route('admin.OrderList') }}">
+                                @csrf
+                                <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                <select name="status" class="border px-3 py-2 text-sm text-gray-700" onchange="updateColor(this)">
+                                    <option value="Paid" {{ $order->status == 'Paid' ? 'selected' : '' }} class="text-red-500">Paid</option>
+                                    <option value="Completed" {{ $order->status == 'Completed' ? 'selected' : '' }} class="text-green-500">Completed</option>
+                                    <option value="On Process" {{ $order->status == 'On Process' ? 'selected' : '' }} class="text-orange-500">On Process</option>
+                                </select>
+                                <button type="submit" class="btn border rounded-l btn-primary bg-green-200">Update Status</button>
+                            </form>
+                            
+                        </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -95,27 +106,69 @@
         
         <!-- script untuk mengubah warna status -->
         <script>
-            function updateColor(selectElement) {
-                const colorMap = {
-                    "Completed": "text-green-500",
-                    "On Process": "text-orange-500",
-                    "Canceled": "text-red-500"
-                };
+            document.addEventListener('DOMContentLoaded', function () {
+                const selectElements = document.querySelectorAll('.update-status');
 
-                selectElement.classList.remove("text-green-500", "text-orange-500", "text-red-500");
-                selectElement.classList.add(colorMap[selectElement.value]);
+                selectElements.forEach(select => {
+                    select.addEventListener('change', function () {
+                        const orderId = select.getAttribute('data-order-id');
+                        const status = select.value;
+
+                        // Kirim permintaan POST untuk memperbarui status
+                        fetch('{{ route("admin.OrderList") }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Pastikan CSRF token dikirim
+                        },
+                        body: JSON.stringify({
+                            order_id: orderId,
+                            status: status,
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('Status berhasil diperbarui');
+                        } else {
+                            alert('Terjadi kesalahan: ' + data.error);
+                        }
+                    })
+                    .catch(error => {
+                        alert('Terjadi kesalahan, coba lagi.');
+                    });
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            // Fungsi untuk memperbarui warna teks elemen select berdasarkan pilihan
+            function updateColor(selectElement) {
+                const selectedOption = selectElement.options[selectElement.selectedIndex]; // Mendapatkan option yang dipilih
+                const status = selectedOption.value;
+
+                // Menghapus semua kelas warna yang ada pada elemen select
+                selectElement.classList.remove('text-red-500', 'text-green-500', 'text-orange-500');
+
+                // Menambahkan kelas warna sesuai dengan status yang dipilih
+                if (status === 'Paid') {
+                    selectElement.classList.add('text-red-500');
+                } else if (status === 'Completed') {
+                    selectElement.classList.add('text-green-500');
+                } else if (status === 'On Process') {
+                    selectElement.classList.add('text-orange-500');
+                }
             }
 
-            document.querySelectorAll(".status-select").forEach(select => {
-                updateColor(select);
-            });
-
-            const hamburgerBtn = document.getElementById('hamburger-btn');
-            const menu = document.getElementById('menu');
-
-            hamburgerBtn.addEventListener('click', () => {
-                menu.classList.toggle('hidden'); // Show or hide the menu
-            });
+            // Memastikan warna diterapkan sesuai dengan status yang sudah terpilih saat halaman dimuat
+            window.onload = function() {
+                const selectElements = document.querySelectorAll('select[name="status"]'); // Pilih semua select
+                selectElements.forEach(selectElement => {
+                    updateColor(selectElement); // Terapkan warna ke setiap elemen
+                    selectElement.addEventListener('change', () => updateColor(selectElement)); // Tambahkan event listener agar warna berubah ketika status diganti
+                });
+            };
         </script>
     </body>
 </html>
