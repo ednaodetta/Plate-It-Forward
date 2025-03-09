@@ -161,9 +161,9 @@ Route::get('/dashboardAdmin', function () {
     return view('dashboardAdmin');
 })->name('dashboardAdmin');
 
-Route::get('/dashboardResto', function () {
-    return view('dashboardResto');
-})->name('dashboardResto');
+// Route::get('/dashboardResto', function () {
+//     return view('dashboardResto');
+// })->name('dashboardResto');
 
 use App\Http\Controllers\SupportController;
 
