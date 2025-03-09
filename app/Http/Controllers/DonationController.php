@@ -33,6 +33,7 @@ class DonationController extends Controller
                 'orders.status',
                 'orders.id',
             )
+            ->where('user_id', $user->id)      
             ->orderBy('orders.created_at', 'desc')
             ->get();
 
