@@ -51,7 +51,7 @@ Route::post('/addproduct', [ProductController::class, 'store'])->name('products.
 Route::get('/productexp/{id}', [ProductsexpsController::class, 'show'])->name('productexp.show');
 
 
-
+Route::get('/dashboard/orderlist', [RestaurantDashboardController::class, 'index'])->name('OrderListRestaurant')->defaults('viewType', 'orderlist');
 
 Route::get('/addproductexp/{product_id}', [ProductsexpsController::class, 'create'])->name('productexp.create');
 Route::post('/productexp/store', [ProductsexpsController::class, 'store'])->name('productexp.store');
