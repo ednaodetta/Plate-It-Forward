@@ -28,7 +28,7 @@
 </head>
 
 <body class>
-    <x-navbar></x-navbar>
+    <x-navbarAfterLogin></x-navbarAfterLogin>
     @if($donationCount > 0)
     <main class="bg-DefaultWhite mt-20 md:px-32 pt-10 sm:px-20 min-h-screen px-6">
         <!-- Title -->
