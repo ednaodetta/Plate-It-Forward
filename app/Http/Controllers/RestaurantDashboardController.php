@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RestaurantDashboardController extends Controller
 {
-    public function index($viewType = 'dashboardResto')
+    public function index($viewType = 'restaurant.dashboard')
     {
         //make sure kalo data yang masuk cuma data restoran itu
         $restaurant = Auth::guard('restaurant')->user();
@@ -57,7 +57,7 @@ class RestaurantDashboardController extends Controller
             ->orderBy('orders.created_at', 'asc')
             ->get();
 
-        $view = ($viewType === 'orderlist') ? 'OrderListRestaurant' : 'dashboardResto';
+        $view = ($viewType === 'orderlist') ? 'OrderListRestaurant' : 'restaurant.dashboard';
 
         return view($view, [
             'restaurant' => $restaurant,
