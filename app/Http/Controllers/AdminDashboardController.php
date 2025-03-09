@@ -65,8 +65,8 @@ class AdminDashboardController extends Controller
         // Total donasi
         $totalDonation = DB::table('orders')->sum('total');
 
-        return view('DashboardAdmin', compact(
-            
+        return view('admin.dashboard', compact(
+
             'topDonors',
             'topRestaurants',
             'topOrphanages',
