@@ -189,9 +189,12 @@ Route::get('/dashboard/resto', [RestaurantDashboardController::class, 'index'])-
 Route::get('/dashboard/orderlist', [RestaurantDashboardController::class, 'index'])->name('OrderListRestaurant')->defaults('viewType', 'orderlist');
 
 // Route untuk dashboard admin (dengan middleware auth biar hanya user login yang bisa akses)
-Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('DashboardAdmin');
-});
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('DashboardAdmin');
+//     // Route::get('/admin/orderlist', [AdminDashboardController::class, 'list'])->name('tesdashboardadmin');
+// });
+
+// Route::get('/admin/orderlist', [AdminDashboardController::class, 'list'])->name('tesdashboardadmin');
 
 use Midtrans\Snap;
 use Midtrans\Transaction;
