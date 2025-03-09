@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\AdminDashboardController;
+
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('register', [RegisteredAdminController::class, 'create'])->name('register');
