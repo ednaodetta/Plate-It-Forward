@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -12,9 +12,8 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Styles / Scripts -->
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-DefaultWhite">
