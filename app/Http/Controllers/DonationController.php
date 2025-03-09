@@ -18,7 +18,7 @@ class DonationController extends Controller
         }
 
         $donationCount = DB::table('orders')
-        ->join('users', 'orders.user_id', '=', 'users.id')
+        ->where('user_id', $user->id)
         ->count();
 
         // Ambil data orders dengan join ke restaurants & orphanages
