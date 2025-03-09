@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisteredRestaurantController;
 use App\Http\Controllers\RestaurantPasswordController;
+use App\Http\Controllers\RestaurantDashboardController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -23,10 +24,10 @@ Route::prefix('restaurant')->name('restaurant.')->group(function () {
     Route::post('reset-password', [RestaurantPasswordController::class, 'resetPassword'])->name('reset-submit');
 
     Route::middleware(['restaurant'])->group(function () {
-        Route::get('dashboard', function () {
-            return view('restaurant.dashboard');
-        })->name('dashboard');
-
+        // Route::get('dashboard', function () {
+        //     return view('restaurant.dashboard');
+        // })->name('dashboard');
+        Route::get('dashboard', [RestaurantDashboardController::class, 'index'])->name('dashboard');
         // Route::get('/products',[ProductController::class, 'index'])->name('products');
     });
 

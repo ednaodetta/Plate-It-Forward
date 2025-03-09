@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RestaurantDashboardController extends Controller
 {
-    public function index($viewType = 'dashboardResto')
+    public function index($viewType = 'restaurant.dashboard')
     {
         //make sure kalo data yang masuk cuma data restoran itu
         $restaurant = Auth::guard('restaurant')->user();
@@ -23,13 +23,22 @@ class RestaurantDashboardController extends Controller
         $products = DB::table('products')->where('restaurant_id', $restaurant->id)->get();
 
         // Menghitung Total Donation dari atribut 'total' di tabel carts
-        $totalDonation = Order::sum('total');
+        $totalDonation = DB::table('order_items')
+        ->join('orders', 'order_items.order_id', '=', 'orders.id')
+        ->where('orders.restaurant_id', $restaurant->id)
+        ->SUM('orders.total');
 
         // Menghitung Total Orders dari jumlah data di tabel carts
-        $totalOrders = Order::count();
+        $totalOrders = DB::table('order_items')
+        ->join('orders', 'order_items.order_id', '=', 'orders.id')
+        ->where('orders.restaurant_id', $restaurant->id)
+        ->count();
 
         // Menghitung Total Portion Donate dari atribut 'quantity' di tabel cart_items
-        $totalPortions = OrderItem::sum('quantity');
+        $totalPortions = DB::table('order_items')
+        ->join('orders', 'order_items.order_id', '=', 'orders.id')
+        ->where('orders.restaurant_id', $restaurant->id)
+        ->SUM('order_items.quantity');
 
         // Mengambil 5 pesanan terbaru dengan detail makanan
         $recentOrders = DB::table('orders')
@@ -57,7 +66,7 @@ class RestaurantDashboardController extends Controller
             ->orderBy('orders.created_at', 'asc')
             ->get();
 
-        $view = ($viewType === 'orderlist') ? 'OrderListRestaurant' : 'dashboardResto';
+        $view = ($viewType === 'orderlist') ? 'OrderListRestaurant' : 'restaurant.dashboard';
 
         return view($view, [
             'restaurant' => $restaurant,
