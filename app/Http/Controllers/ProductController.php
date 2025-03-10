@@ -41,18 +41,24 @@ public function store(Request $request)
 
     $restaurantId = Auth::guard('restaurant')->user()->id;
 
+    // Simpan gambar ke folder storage/app/public/products
+    if ($request->hasFile('foto')) {
+        $fotoPath = $request->file('foto')->store('products', 'public');
+    } else {
+        $fotoPath = 'products/noimage.png'; // Pastikan noimage.png ada di storage/app/public/products/
+    }
+
     Products::create([
         'restaurant_id' => $restaurantId,
         'name' => $request->name,
         'price' => $request->price,
         'description' => $request->description,
-        'foto' => $request->foto ? $request->file('foto')->store('products') : 'noimage.png',
+        'foto' => $fotoPath,
     ]);
 
     return redirect()->route('products')->with('success', 'Produk berhasil ditambahkan.');
-
-
 }
+
 
     public function createproduct()
     {
@@ -97,4 +103,52 @@ public function store(Request $request)
 
         return view('restoranpage', compact('flashSaleProducts', 'city', 'recommendedRestaurants'));
     }
+
+
+    public function delete(Request $request)
+{
+    $productIds = $request->input('products');
+
+    if ($productIds) {
+        Products::whereIn('id', $productIds)->delete();
+        return redirect()->back()->with('success', 'Produk yang dipilih berhasil dihapus.');
+    }
+
+    return redirect()->back()->with('error', 'Tidak ada produk yang dipilih.');
+}
+
+public function edit($id)
+{
+    $product = Products::findOrFail($id);
+    return view('updaterestorantproduct', compact('product'));
+}
+
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'price' => 'required|numeric',
+        'description' => 'nullable|string',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    $product = Products::findOrFail($id);
+    
+    // Update data
+    $product->name = $request->name;
+    $product->price = $request->price;
+    $product->description = $request->description;
+
+    // Update foto jika ada
+    if ($request->hasFile('foto')) {
+        $fotoPath = $request->file('foto')->store('products', 'public');
+        $product->foto = $fotoPath;
+    }
+
+    $product->save();
+
+    return redirect()->route('products')->with('success', 'Produk berhasil diperbarui!');
+}
+
+
 }
