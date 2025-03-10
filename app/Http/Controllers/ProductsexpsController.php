@@ -20,12 +20,6 @@ class ProductsexpsController extends Controller
     
         return view('productexp', compact('product', 'productExps', 'totalQuantity'));
     }
-    
-
-
-  
-
-
 
 
 
@@ -62,6 +56,48 @@ public function store(Request $request)
     // Redirect ke halaman productexp/{product_id}
     return redirect()->route('productexp.show', $request->product_id)
                      ->with('success', 'Data berhasil ditambahkan!');
+}
+
+public function destroy(Request $request)
+{
+    if ($request->has('delete_ids')) {
+        ProductExp::whereIn('id', $request->delete_ids)->delete();
+
+        return redirect()->back()->with('success', 'Produk expired berhasil dihapus.');
+    }
+
+    return redirect()->back()->with('error', 'Tidak ada produk yang dipilih.');
+}
+
+
+
+public function edit($id)
+{
+    $exp = ProductExp::findOrFail($id);
+    return view('updaterestorantproductexp', compact('exp'));
+}
+
+public function update(Request $request, $id)
+{
+    $exp = ProductExp::findOrFail($id);
+    $exp->update($request->all());
+    return redirect()->route('productexp.show', $exp->product_id)->with('success', 'Data berhasil diperbarui!');
+
+}
+
+
+
+public function deleteMultiple(Request $request)
+{
+    $deleteIds = $request->input('delete_ids');
+
+    if (!$deleteIds || count($deleteIds) === 0) {
+        return redirect()->back()->with('error', 'Tidak ada data yang dipilih untuk dihapus.');
+    }
+
+    ProductExp::whereIn('id', $deleteIds)->delete();
+
+    return redirect()->back()->with('success', 'Data yang dipilih berhasil dihapus.');
 }
 
 

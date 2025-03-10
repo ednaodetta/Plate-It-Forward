@@ -1,32 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah ProductExp</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="p-6">
-<h1>{{ $productsearch->name }}</h1>
+<x-html>
 
-<form action="{{ route('productexp.store') }}" method="POST">
+<body class="bg-DefaultWhite text-gray-900 flex flex-col min-h-screen items-center ">
+<x-navbarResto></x-navbarResto>
+<div class="h-[10vh]"></div>
+
+
+<div class="h-[90%] pt-5 ">
+    <h1 class="text-3xl font-bold text-DefaultGreen">{{ $productsearch->name }}</h1>
+
+</div>
+
+
+
+
+<div class="w-[90%] mx-auto mt-24 p-7  rounded-lg relative flex items-center">
+<a href="{{ route('productexp.show', $productsearch->id) }}" class="absolute -top-10 left-0 text-DefaultGreeen font-semibold hover:underline text-DefaultGreen">← Back</a>
+
+<form action="{{ route('productexp.store') }}" method="POST" class="w-full  ">
     @csrf
     <input type="hidden" name="product_id" value="{{ $productsearch->id }}">
 
-    <label class="block">Quantity:</label>
-    <input type="number" name="quantity" class="border p-2 w-full mb-2" required>
+    <div class="mb-4">
+        <label class="block text-gray-700 font-medium">Quantity:</label>
+        <input 
+            type="number" 
+            name="quantity" 
+            class="w-full border border-gray-300 p-3 rounded-md" 
+            required
+        >
+    </div>
 
-    <label class="block">Price Discount:</label>
-    <input type="number" name="price_discount" class="border p-2 w-full mb-2" required>
+    <div class="mb-4">
+        <label class="block text-gray-700 font-medium">Price Discount:</label>
+        <input 
+            type="number" 
+            name="price_discount" 
+            class="w-full border border-gray-300 p-3 rounded-md" 
+            required
+        >
+    </div>
 
-    <label class="block">Expired At:</label>
-    <input type="date" name="expired_at" class="border p-2 w-full mb-2" required>
+    <div class="mb-4">
+        <label class="block text-gray-700 font-medium">Expired At:</label>
+        <input 
+            type="date" 
+            name="expired_at" 
+            class="w-full border border-gray-300 p-3 rounded-md" 
+            required
+        >
+    </div>
 
-    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">
+    <button 
+        type="submit" 
+        class="bg-DefaultGreen text-white px-6 py-3 rounded-md hover:bg-green-600 font-semibold"
+    >
         Simpan
     </button>
 </form>
+</div>
 
-    
+
 </body>
-</html>
+
+</x-html>
+
+

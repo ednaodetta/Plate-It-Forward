@@ -1,34 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Produk</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-bold mb-4">Tambah Produk</h2>
-        <form action="" method="POST" enctype="multipart/form-data">
+<x-html>
+<body class="bg-DefaultWhite text-gray-900 flex flex-col min-h-screen">
+
+    <x-navbarResto></x-navbarResto>
+    <div class="h-[10vh] "></div>
+
+    <div class="w-[90%] mx-auto mt-24 p-7  rounded-lg relative flex items-center">
+        <a href="products" class="absolute -top-10 left-0 text-DefaultGreeen font-semibold hover:underline text-DefaultGreen">← Back</a>
+
+        <form action="" method="POST" enctype="multipart/form-data" class="w-full">
             @csrf
             <div class="mb-4">
                 <label for="name" class="block text-gray-700 font-medium">Nama Produk</label>
-                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+                <input type="text" id="name" name="name" required class="w-full border border-gray-300 p-3 rounded-md">
             </div>
             <div class="mb-4">
                 <label for="price" class="block text-gray-700 font-medium">Harga</label>
-                <input type="number" id="price" name="price" required class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+                <input type="number" id="price" name="price" required class="w-full border border-gray-300 p-3 rounded-md">
             </div>
             <div class="mb-4">
                 <label for="description" class="block text-gray-700 font-medium">Deskripsi</label>
-                <textarea id="description" name="description" class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300"></textarea>
+                <textarea id="description" name="description" class="w-full border border-gray-300 p-3 rounded-md"></textarea>
             </div>
             <div class="mb-4">
                 <label for="foto" class="block text-gray-700 font-medium">Foto Produk</label>
-                <input type="file" id="foto" name="foto" class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+                <input type="file" id="foto" name="foto" class="w-full border border-gray-300 p-3 rounded-md bg-white focus:ring focus:ring-green-300">
             </div>
-            <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Tambah Produk</button>
+            <button type="submit" class="bg-DefaultGreen text-white px-6 py-3 rounded-md hover:bg-teal font-semibold">Tambah Produk</button>
         </form>
     </div>
-</body>
-</html>
+
+
+   
+</body> 
+</x-html>
