@@ -46,7 +46,34 @@ form.sign-up-form {
 form.sign-in-form {
   z-index: 2;
 } */
+
 form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0rem 5vw;
+  transition: opacity 0.5s ease-in-out, filter 2s ease-in-out, transform 0.5s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  opacity: 1;
+}
+
+form.sign-up-form {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+form.sign-in-form {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,22 +83,26 @@ form {
   overflow: hidden;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
+  position: absolute;
+  
+  width: 100%;
   opacity: 1;
 }
 
 form.sign-up-form {
   opacity: 0;
-  z-index: 1;
   transform: scale(0.9);
+  pointer-events: none;
+  top: -30vh;
 }
 
 form.sign-in-form {
-  z-index: 2;
   opacity: 1;
   transform: scale(1);
-}
-
-
+  pointer-events: auto;
+  top: -25vh;
+  padding-bottom:5%;
+} */
 
 .input-field {
   background-color: #f0f0f0;
@@ -203,6 +234,7 @@ form.sign-in-form {
   opacity: 1;
   filter: blur(0px);
   transform: scale(1);
+  pointer-events: auto;
 }
 
 .cont.sign-up-mode form.sign-in-form,
@@ -210,8 +242,8 @@ form.sign-in-form {
   opacity: 0;
   filter: blur(30px);
   transform: scale(0.9);
+  pointer-events: none;
 }
-
 
 .cont.sign-up-mode .right-panel .image,
 .cont.sign-up-mode .right-panel .content {

@@ -26,6 +26,7 @@
                         Donations</a></li>
                 <li><a href="/contact-us" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">Contact
                         Us</a></li>
+                <li><a href="/cart" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">Cart</a></li>
                 <li><a href="/profile" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">Profile</a>
                 </li>
             </ul>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -913,114 +913,64 @@
 </head>
 
 <body class="bg-DefaultWhite">
-    {{-- <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
-            <div class="container mx-auto flex items-center justify-between py-4 px-6">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <img src="{{ asset('assets/Image/Logo copy.png') }}" alt="Logo" class="h-14 w-14">
-                    <span class="ml-2 text-xl font-bold text-gray-800">PlateItForward</span>
-                </div>
-                
-                <!-- Hamburger Button -->
-                <button id="hamburger-btn" class="block lg:hidden text-gray-600 focus:outline-none">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
-                </button>
-                
-                <!-- Navigation Links -->
-                <nav id="menu" class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
-                    <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
-                        <li><a href="/dashboardAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a></li>
-                        <li><a href="/OrderList" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Order</a></li>
-                        <li><a href="/userinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">User</a></li>
-                        <li><a href="/restaurantinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurant</a></li>
-                        <li><a href="/panti" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Orphanage</a></li>
-                        <li><a href="/supportAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Support</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header> --}}
     <x-navbarResto></x-navbarResto>
 
     <div class="container mx-auto mt-24 px-6">
         <div class="w-full mx-auto bg-DefaultWhite p-6 rounded-lg">
             <div class="flex justify-between items-center mb-6">
-                <h1 class="text-2xl font-bold font-brandonLight">Hello, McD Sentul City!</h1>
-                <div
-                    class="bg-white px-6 py-3 rounded-lg text-lg font-semibold shadow border border-gray-300 font-brandon">
-                    Total Donation: <span class="text-2xl font-bold font-brandon">Rp 2.000.000.000</span>
+                <h1 class="text-2xl font-bold font-brandon">Hello, {{ $restaurant->name }}</h1>
+                <div class="bg-white p-6 rounded-lg shadow text-center w-[30%]">
+                    <h3 class="text-xl font-semibold font-brandon">Total Donation</h3>
+                    <p class="text-2xl font-bold text-green-600">Rp {{ number_format($totalDonation, 0, ',', '.') }}</p>
                 </div>
                 <div id="clock" class="text-xl font-bold"></div>
             </div>
 
 
-            <div class="flex flex-row gap-6">
+            <div class="flex flex-row gap-6 justify-center">
                 <div
                     class="bg-white p-4 rounded-lg shadow border border-gray-300 flex flex-col items-center h-full flex-1">
-                    <span class="text-lg font-semibold font-brandon">All Order</span>
-                    <span class="text-2xl font-bold font-brandon">15</span>
+                    <span class="text-xl font-semibold font-brandon">All Order</span>
+                    <span class="text-2xl font-bold font-brandon">{{ $totalOrders }}</span>
                 </div>
                 <div
                     class="bg-white p-4 rounded-lg shadow border border-gray-300 flex flex-col items-center h-full flex-1">
-                    <span class="text-lg font-semibold font-brandon">All Portion Donate</span>
-                    <span class="text-2xl font-bold font-brandon">15</span>
+                    <span class="text-xl font-semibold font-brandon">All Portion Donate</span>
+                    <span class="text-2xl font-bold font-brandon">{{ $totalPortions }}</span>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Container Utama -->
-    <div class="container mx-auto px-4 my-10">
+    <div class="container mx-auto px-4 my-10 w-[80%]">
         <!-- Judul -->
         <div class="flex flex-col">
-            <h1 class="text-3xl font-bold text-teal-700 mb-6 font-brandon">List Of Recent Order List</h1>
+            <h1 class="text-3xl font-bold text-teal-700 mb-6 font-">List Of Recent Order List</h1>
         </div>
 
         <!-- Tabel -->
-        <div class="overflow-x-auto">
-            <table id="OrderTable" class="w-full shadow-md rounded overflow-hidden">
-                <!-- Header Tabel -->
-                <thead class="bg-gray-100">
-                    <tr class="bg-whitecream text-gray-700">
-                        <th class="px-4 py-2 text-left font-semibold font-brandon">OrderID</th>
-                        <th class="px-4 py-2 text-left font-semibold font-brandon">Transaction Detail</th>
-                        <th class="px-4 py-2 text-left font-semibold font-brandon">Total Price</th>
-                        <th class="px-4 py-2 text-left font-semibold font-brandon">Status</th>
+        <div class="bg-white shadow-md rounded-lg p-4 mt-2">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="p-2">Order ID</th>
+                        <th class="p-2">Transaction Detail</th>
+                        <th class="p-2">Total Price</th>
+                        <th class="p-2">Status</th>
                     </tr>
                 </thead>
-
-                <!-- Isi Tabel -->
-                <tbody class="bg-white rounded-md">
-                    <!-- Order 1 -->
-                    <tr class="rounded-md border-b" data-id="1">
-                        <td class="px-4 py-3 font-brandonLight">ID001</td>
-                        <td class="px-4 py-3 font-brandonLight">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                        <td class="px-4 py-3 font-bold font-brandonLight">IDR 65,000,00</td>
-                        <td class="px-4 py-3 text-red-500 font-medium font-brandonLight">Canceled</td>
-                    </tr>
-                    <!-- Order 2 -->
-                    <tr class="rounded-lg border-b" data-id="2">
-                        <td class="px-4 py-3 font-brandonLight">ID002</td>
-                        <td class="px-4 py-3 font-brandonLight">1 Mie ayam, 1 Bakso, 1 Teh es, 1 Pizza, 10 Nasi padang
-                        </td>
-                        <td class="px-4 py-3 font-bold font-brandonLight">IDR 125,000,00</td>
-                        <td class="px-4 py-3 text-red-500 font-medium font-brandonLight">Canceled</td>
-                    </tr>
-                    <!-- Order 3 -->
-                    <tr class="rounded-lg border-b" data-id="3">
-                        <td class="px-4 py-3 font-brandonLight">ID003</td>
-                        <td class="px-4 py-3 font-brandonLight">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                        <td class="px-4 py-3 font-bold font-brandonLight">IDR 75,000,00</td>
-                        <td class="px-4 py-3 text-green-500 font-medium font-brandonLight">Completed</td>
-                    </tr>
-                    <!-- Order 4 -->
-                    <tr class="rounded-lg border-b" data-id="4">
-                        <td class="px-4 py-3 font-brandonLight">ID004</td>
-                        <td class="px-4 py-3 font-brandonLight">1 Mie ayam, 1 Bakso, 1 Teh es</td>
-                        <td class="px-4 py-3 font-bold font-brandonLight">IDR 25,000,00</td>
-                        <td class="px-4 py-3 text-orange-500 font-medium font-brandonLight">On Process</td>
-                    </tr>
+                <tbody>
+                    @foreach ($recentOrders as $order)
+                        <tr>
+                            <td class="p-2">{{ $order->id }}</td>
+                            <td class="p-2">{{ $order->transaction_detail }}</td>
+                            <td class="p-2 font-bold">Rp {{ number_format($order->total, 0, ',', '.') }}</td>
+                            <td class="p-2 text-{{ $order->status == 'Completed' ? 'green' : ($order->status == 'On Process' ? 'orange' : 'red') }}-500">
+                                {{ $order->status }}
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -1057,4 +1007,4 @@
     </script>
 </body>
 
-</html>
+</html> --}}

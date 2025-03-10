@@ -13,5 +13,4 @@ class productexp extends Model
         'expired_at',
         'created_at',
     ];
-
 }

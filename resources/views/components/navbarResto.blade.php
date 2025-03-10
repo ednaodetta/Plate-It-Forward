@@ -24,6 +24,24 @@
                 </li>
                 <li><a href="productinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Menu</a>
                 </li>
+                <li>
+                    <form method="POST" action="{{ route('restaurant.logout') }}" class="inline">
+                        @csrf
+                        <a href="#" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100" onclick="event.preventDefault(); this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </a>
+                    </form>
+                </li>
+                
+                {{-- <li>
+                    <form method="POST" action="{{'restaurant.logout'}}">
+                        @csrf
+
+                        <x-responsive-nav-link :href="route('restaurant.logout')" onclick="event.preventDefault() this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-responsive-nav-link>
+                    </form>
+                </li> --}}
 
             </ul>
         </nav>

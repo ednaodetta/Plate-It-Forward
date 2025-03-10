@@ -13,4 +13,8 @@ class Products extends Model
         'description',
         'foto',
     ];
+    public function productExps()
+    {
+        return $this->hasMany(ProductExp::class, 'product_id');
+    }
 }
