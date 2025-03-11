@@ -34,8 +34,6 @@ Route::prefix('restaurant')->name('restaurant.')->group(function () {
 
 });
 
-Route::get('/products', [ProductController::class, 'index'])->name('products')->middleware('auth:restaurant');
-
 
 Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
