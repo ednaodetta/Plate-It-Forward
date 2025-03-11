@@ -120,6 +120,10 @@ class RestaurantController extends Controller
             ->having('product_exps_sum_quantity', '>', 0) // Hanya ambil produk dengan stok > 0
             ->get();
 
+        $fotoproducts = Products::where('restaurant_id', $id)
+        ->first();
+        
+
         $carts = null;
         $cartItems = [];
 
@@ -134,6 +138,6 @@ class RestaurantController extends Controller
                 ->pluck('cart_items.quantity', 'cart_items.product_id');
         }
 
-        return view('menu', compact('restsearch', 'products', 'carts', 'cartItems'));
+        return view('menu', compact('restsearch', 'products', 'carts', 'cartItems','fotoproducts'));
     }
 }

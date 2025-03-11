@@ -89,6 +89,7 @@ class CartController extends Controller
                 'cart_id' => $cart->id,
                 'product_id' => $product->id,
                 'quantity' => 1,
+                'foto'=>$product->foto,
                 'price' => $product->price,
                 'subtotal' => $product->price
             ]);
