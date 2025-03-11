@@ -33,9 +33,7 @@ Route::prefix('restaurant')->name('restaurant.')->group(function () {
 
 
 });
-
 Route::get('/products', [ProductController::class, 'index'])->name('products')->middleware('auth:restaurant');
-
 
 Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
@@ -57,7 +55,7 @@ Route::delete('/productexp/delete-multiple', [ProductsexpsController::class, 'de
 
 
 
-Route::get('/dashboard/orderlist', [RestaurantDashboardController::class, 'index'])->name('OrderListRestaurant')->defaults('viewType', 'orderlist');
+Route::get('/restaurant/orderlist', [RestaurantDashboardController::class, 'index'])->name('OrderListRestaurant')->defaults('viewType', 'orderlist');
 
 Route::get('/addproductexp/{product_id}', [ProductsexpsController::class, 'create'])->name('productexp.create');
 Route::post('/productexp/store', [ProductsexpsController::class, 'store'])->name('productexp.store');

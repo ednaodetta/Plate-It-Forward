@@ -75,6 +75,7 @@ class ProductController extends Controller
             ->join('products', 'pe1.product_id', '=', 'products.id')
             ->select(
                 'products.name',
+                'products.foto',
                 'pe1.price_discount',
                 'pe1.quantity',
                 'pe1.expired_at'
@@ -95,8 +96,8 @@ class ProductController extends Controller
         $recommendedRestaurants = DB::table('restaurants')
             ->join('products', 'restaurants.id', '=', 'products.restaurant_id')
             ->join('productexps', 'products.id', '=', 'productexps.product_id')
-            ->select('restaurants.id', 'restaurants.name', DB::raw('SUM(productexps.quantity) as total_stock'))
-            ->groupBy('restaurants.id', 'restaurants.name')
+            ->select('restaurants.id', 'restaurants.name', DB::raw('MAX(products.foto) as foto'), DB::raw('SUM(productexps.quantity) as total_stock'))
+            ->groupBy('restaurants.id', 'restaurants.name', )
             ->orderByDesc('total_stock')
             ->limit(6)
             ->get();
