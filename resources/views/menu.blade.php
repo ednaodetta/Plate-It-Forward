@@ -101,7 +101,7 @@
                 <div
                     class="cardlistnye bg-[#f9f3f0] w-[85%] grid gap-x-20 gap-y-20 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach ($products as $product)
-                        <div class="card border-2 bg-DefaultWhite w-[100%] h-[500px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 cursor-pointer"
+                        <div class="card border-2 bg-DefaultWhite w-[100%] h-[440px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 cursor-pointer"
                             onclick="buttonmenudesc(
                             '{{ $product->name }}',
                             '{{ asset('storage/' . $product->foto) }}',
@@ -110,7 +110,7 @@
                         )">
                             <img class="h-[70%] w-full object-cover rounded-[10px]"
                                 src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->name }}">
-                            <div class="flex justify-between">
+                            <div class="flex justify-between pt-4">
                                 <div>
                                     <h1 class="font-bold text-[20px]">{{ $product->name }}</h1>
                                     <h2 class="text-[16px]">Rp

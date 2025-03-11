@@ -17,6 +17,6 @@
         </div>
 
         <h2 class="text-2xl font-bold mt-6">Shopping Cart</h2>
-        <livewire:cart-component />
+        {{-- <livewire:cart-component /> --}}
     </div>
 @endsection

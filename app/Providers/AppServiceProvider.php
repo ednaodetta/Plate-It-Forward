@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Livewire\Livewire;
 use App\Http\Livewire\CartComponent;
 
 \Midtrans\Config::$serverKey = config('midtrans.server_key');
@@ -26,8 +25,5 @@ class AppServiceProvider extends ServiceProvider
      */
 
 
-    public function boot()
-    {
-        Livewire::component('cart-component', CartComponent::class);
-    }
+    public function boot() {}
 }
