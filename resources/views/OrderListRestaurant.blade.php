@@ -1253,7 +1253,7 @@
     <!-- Container Utama -->
     <div class="container mx-auto px-4 my-10">
         <!-- Judul -->
-        <div class="flex flex-col">
+        <div class="flex flex-col mt-32">
             <h1 class="text-3xl font-bold text-teal-700 mb-6 font-brandon">Order List</h1>
         </div>
 

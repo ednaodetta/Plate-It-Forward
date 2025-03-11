@@ -55,7 +55,7 @@ Route::middleware(['restaurant'])->group(function () {
 
 
 
-    Route::get('/restaurant/orderlist', [RestaurantDashboardController::class, 'index'])->name('OrderListRestaurant')->defaults('viewType', 'orderlist');
+    Route::get('/restaurant/orders', [RestaurantDashboardController::class, 'index'])->name('OrderListRestaurant')->defaults('viewType', 'orderlist');
 
     Route::get('/addproductexp/{product_id}', [ProductsexpsController::class, 'create'])->name('productexp.create');
     Route::post('/productexp/store', [ProductsexpsController::class, 'store'])->name('productexp.store');
