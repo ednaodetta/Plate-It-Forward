@@ -1212,7 +1212,7 @@
 </head>
 
 <body class="bg-DefaultWhite">
-    <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
+    {{-- <header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
         <div class="container mx-auto flex items-center justify-between py-4 px-6">
             <!-- Logo -->
             <div class="flex items-center">
@@ -1248,7 +1248,8 @@
                 </ul>
             </nav>
         </div>
-    </header>
+    </header> --}}
+    <x-navbarResto></x-navbarResto>
     <!-- Container Utama -->
     <div class="container mx-auto px-4 my-10">
         <!-- Judul -->
