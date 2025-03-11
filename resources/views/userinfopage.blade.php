@@ -6,6 +6,313 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Information</title>
     <link href="/css/tailwind.css" rel="stylesheet">
+
+    <style>
+        <style>.dropdown {
+            position: absolute;
+            left: 0;
+            /* Align to the left of the parent */
+            top: 100%;
+            /* Position it directly below the button */
+            background-color: white;
+            border: 1px solid #ddd;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 500;
+            width: 150px;
+            display: none;
+        }
+
+        #addOrphanageModal {
+            z-index: 1000;
+        }
+
+
+        .dropdown.active {
+            display: block;
+        }
+
+        .dropdown.hidden {
+            display: none;
+        }
+
+        .dropdown:not(.hidden) {
+            display: block;
+        }
+
+        .hidden-checkbox {
+            display: none;
+        }
+
+        /* Style for the checkbox */
+        .delete-checkbox {
+            width: 18px;
+            /* Set the width */
+            height: 18px;
+            /* Set the height */
+        }
+
+        #menu {
+            background-color: #F9F3F0 !important;
+            opacity: 1 !important;
+        }
+
+        /* Style for the checkbox */
+        .delete-checkbox {
+            width: 18px;
+            /* Set the width */
+            height: 18px;
+            /* Set the height */
+        }
+
+        table {
+            overflow: visible;
+            width: 100%;
+            /* Adjust the percentage to suit your needs */
+            margin: 0 auto;
+            /* Center the table */
+        }
+    </style>
+    </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body class="bg-DefaultWhite">
+    <x-navbarAdmin></x-navbarAdmin>
+
+    <!-- Main Content -->
+    <div class="w-full pt-40 mx-auto py-8 flex-grow items-center">
+
+        <div class="w-11/12 mx-auto flex justify-between items-center">
+
+            <div class="w-10/12 mx-auto flex justify-between items-center">
+                <!-- Left aligned Restaurant's Information -->
+                <h2 class="text-2xl font-bold text-DefaultGreen font-gotham">User's Information</h2>
+
+            </div>
+        </div>
+
+        <div class="overflow-x-auto bg-white rounded-lg w-4/5 mx-auto shadow-md mt-4">
+            <!-- Desktop Table -->
+            <div class="md:block">
+                <table class="relative">
+                    <thead class="bg-gray-100">
+                        <tr class="text-left text-gray-600 font-gotham">
+                            <th class="p-3"></th>
+                            <th class="p-3">ID</th>
+                            <th class="p-3">Name</th>
+                            <th class="p-3">Email</th>
+                            <th class="p-1"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="userTable" class="font-brandon">
+                        @foreach ($users as $user)
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="p-3 relative action-cell"></td>
+                                <td class="p-3">{{ $user->id }}</td>
+                                <td class="p-3">{{ $user->name }}</td>
+                                <td class="p-3">{{ $user->email }}</td>
+                                <!-- Action column with three-dot menu -->
+                                {{-- <td class="p-3 relative action-cell">
+                                    <button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
+                                    <div
+                                        class="dropdown absolute left-0 top-0 w-40 mt-2 bg-white shadow-md rounded-md hidden z-100">
+                                        <ul class="text-sm">
+                                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                <a href="{{ route('user.edit', $user->id) }}">Update
+                                                    User Information</a>
+
+                                            </li>
+
+                                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600">
+                                                <form action="{{ route('user.delete', $user->id) }}" method="POST"
+                                                    id="deleteForm-{{ $user->id }}"
+                                                    onsubmit="return confirmDelete('{{ $user->id }}')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="w-full text-left">Delete
+                                                        User</button>
+                                                </form>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </td> --}}
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        function confirmDelete(restaurantId) {
+            if (confirm("Are you sure you want to delete this user?")) {
+                // If the user confirms, submit the form
+                document.getElementById('deleteForm-' + restaurantId).submit();
+            }
+            return false; // Prevent default form submission until confirmed
+        }
+
+        let users = @json($users);
+
+        function toggleDropdown(button) {
+            // const dropdown = button.nextElementSibling; 
+            event.stopPropagation(); // Prevents the click event from propagating to parent elements
+
+            let dropdown = button.nextElementSibling; // Get the dropdown menu next to the button
+
+            // Toggle visibility of the clicked dropdown
+            dropdown.classList.toggle("hidden");
+
+            // Hide all other dropdowns
+            document.querySelectorAll(".dropdown").forEach(drop => {
+                if (drop !== dropdown) {
+                    drop.classList.add("hidden"); // Close other dropdowns
+                }
+            });
+
+        }
+    </script>
+
+    <script>
+        let deleteMode = false;
+
+        function handleTrashButton() {
+            if (!deleteMode) {
+                toggleDeleteMode();
+            } else {
+                deleteSelectedUsers();
+            }
+        }
+
+        function toggleDeleteMode() {
+            deleteMode = true;
+            populateTable();
+            document.getElementById("delete-btn").classList.add("text-red-800");
+        }
+
+        function deleteSelectedUsers() {
+            let checkboxes = document.querySelectorAll(".delete-checkbox:checked");
+
+            if (checkboxes.length === 0) {
+                alert("No users selected for deletion.");
+                exitDeleteMode();
+                return;
+            }
+
+            if (confirm("Are you sure you want to delete selected users?")) {
+                let idsToDelete = Array.from(checkboxes).map(checkbox => checkbox.dataset.id);
+
+                users = users.filter(user => !idsToDelete.includes(user.id));
+
+                alert("Selected users have been deleted successfully!");
+            }
+
+            exitDeleteMode();
+        }
+
+        function exitDeleteMode() {
+            deleteMode = false;
+            document.getElementById("delete-btn").classList.remove("text-red-800");
+            populateTable();
+        }
+
+        function confirmDeleteUser(userId) {
+            if (confirm("Are you sure you want to delete this user?")) {
+                users = users.filter(user => user.id !== userId);
+                populateTable();
+                alert("User deleted successfully!");
+            }
+        }
+
+        document.addEventListener("click", function(e) {
+            if (!e.target.closest(".action-cell")) {
+                document.querySelectorAll(".dropdown").forEach(el => el.classList.add("hidden"));
+            }
+        });
+
+
+        // STARTTTTTTTTT
+        function handleTrashButton() {
+            if (!deleteMode) {
+                toggleDeleteMode();
+            } else {
+                deleteSelectedUsers();
+            }
+        }
+
+        function toggleDeleteMode() {
+            deleteMode = true;
+            populateTable();
+            document.getElementById("delete-btn").classList.add("text-red-800");
+        }
+
+        function deleteSelectedUsers() {
+            let checkboxes = document.querySelectorAll(".delete-checkbox:checked");
+
+            if (checkboxes.length === 0) {
+                alert("No users selected for deletion.");
+                exitDeleteMode();
+                return;
+            }
+
+            if (confirm("Are you sure you want to delete selected users?")) {
+                let idsToDelete = Array.from(checkboxes).map(checkbox => checkbox.dataset.id);
+
+                users = users.filter(user => !idsToDelete.includes(user.id));
+
+                alert("Selected users have been deleted successfully!");
+            }
+
+            exitDeleteMode();
+        }
+
+        function exitDeleteMode() {
+            deleteMode = false;
+            document.getElementById("delete-btn").classList.remove("text-red-800");
+            populateTable();
+        }
+
+        function confirmDeleteUser(userId) {
+            if (confirm("Are you sure you want to delete this user?")) {
+                users = users.filter(user => user.id !== userId);
+                populateTable();
+                alert("User deleted successfully!");
+            }
+        }
+
+        document.addEventListener("click", function(e) {
+            if (!e.target.closest(".dots-menu") && !e.target.closest(".dropdown")) {
+                document.querySelectorAll(".dropdown").forEach(el => el.classList.add("hidden"));
+            }
+        });
+
+        populateTable();
+
+        // Hamburger menu toggle functionality
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const menu = document.getElementById('menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden'); // Show or hide the menu
+        });
+    </script>
+</body>
+
+</html>
+
+{{-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <link href="/css/tailwind.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         <style>.dropdown {
@@ -114,14 +421,14 @@
                         ${deleteMode 
                             ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                             : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                               <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                   <ul class="text-sm">
-                                                       <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                           <a href="/updateuserinfo?id=${user.id}">Update user information</a>
-                                                       </li>
-                                                       <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
-                                                   </ul>
-                                               </div>`
+                                                       <div class="dropdown absolute left-4 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                           <ul class="text-sm">
+                                                               <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                   <a href="/updateuserinfo?id=${user.id}">Update user information</a>
+                                                               </li>
+                                                               <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
+                                                           </ul>
+                                                       </div>`
                         }
                     </td>
                     <td class="p-3">${user.id}</td>
@@ -144,14 +451,14 @@
                             ${deleteMode 
                                 ? `<input type='checkbox' class='delete-checkbox' data-id='${user.id}'>` 
                                 : `<button class="dots-menu" onclick="toggleDropdown(this)">&#x22EE;</button>
-                                                <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
-                                                    <ul class="text-sm">
-                                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                           <a href="/updateuserinfo?id=${user.id}">Update user information</a>
-                                                       </li>
-                                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
-                                                    </ul>
-                                                </div>`
+                                                        <div class="dropdown absolute right-0 w-40 mt-2 bg-white shadow-md rounded-md hidden">
+                                                            <ul class="text-sm">
+                                                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                   <a href="/updateuserinfo?id=${user.id}">Update user information</a>
+                                                               </li>
+                                                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-600" onclick="confirmDeleteUser('${user.id}')">Delete user</li>
+                                                            </ul>
+                                                        </div>`
                             }
                         </div>
                     </div>
@@ -233,4 +540,4 @@
     </script>
 </body>
 
-</html>
+</html> --}}

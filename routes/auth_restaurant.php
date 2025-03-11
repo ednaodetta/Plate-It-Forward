@@ -30,33 +30,36 @@ Route::prefix('restaurant')->name('restaurant.')->group(function () {
         Route::get('dashboard', [RestaurantDashboardController::class, 'index'])->name('dashboard');
         // Route::get('/products',[ProductController::class, 'index'])->name('products');
     });
-
-
 });
-Route::get('/products', [ProductController::class, 'index'])->name('products')->middleware('auth:restaurant');
 
-Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
-Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
+Route::middleware(['restaurant'])->group(function () {
+    Route::get('/products', [ProductController::class, 'index'])->name('products')->middleware('auth:restaurant');
 
-Route::delete('/products/delete', [ProductController::class, 'delete'])->name('products.delete');
-Route::get('/addproduct', [ProductController::class, 'createproduct'])->name('products.create');
-Route::post('/addproduct', [ProductController::class, 'store'])->name('products.store');
+    Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
 
-
-
-Route::get('/productexp/{id}', [ProductsexpsController::class, 'show'])->name('productexp.show');
-
-
-Route::delete('/productexp/delete', [ProductsexpsController::class, 'destroy'])->name('productexp.delete');
-Route::get('/productexp/{id}/edit', [ProductsexpsController::class, 'edit'])->name('productexp.edit');
-Route::put('/productexp/{id}', [ProductsexpsController::class, 'update'])->name('productexp.update');
-Route::delete('/productexp/delete-multiple', [ProductsexpsController::class, 'deleteMultiple'])->name('productexp.deleteMultiple');
+    Route::delete('/products/delete', [ProductController::class, 'delete'])->name('products.delete');
+    Route::get('/addproduct', [ProductController::class, 'createproduct'])->name('products.create');
+    Route::post('/addproduct', [ProductController::class, 'store'])->name('products.store');
 
 
 
+    Route::get('/productexp/{id}', [ProductsexpsController::class, 'show'])->name('productexp.show');
 
-Route::get('/restaurant/orderlist', [RestaurantDashboardController::class, 'index'])->name('OrderListRestaurant')->defaults('viewType', 'orderlist');
 
-Route::get('/addproductexp/{product_id}', [ProductsexpsController::class, 'create'])->name('productexp.create');
-Route::post('/productexp/store', [ProductsexpsController::class, 'store'])->name('productexp.store');
+    Route::delete('/productexp/delete', [ProductsexpsController::class, 'destroy'])->name('productexp.delete');
+    Route::get('/productexp/{id}/edit', [ProductsexpsController::class, 'edit'])->name('productexp.edit');
+    Route::put('/productexp/{id}', [ProductsexpsController::class, 'update'])->name('productexp.update');
+    Route::delete('/productexp/delete-multiple', [ProductsexpsController::class, 'deleteMultiple'])->name('productexp.deleteMultiple');
 
+
+
+
+    Route::get('/restaurant/orderlist', [RestaurantDashboardController::class, 'index'])->name('OrderListRestaurant')->defaults('viewType', 'orderlist');
+
+    Route::get('/addproductexp/{product_id}', [ProductsexpsController::class, 'create'])->name('productexp.create');
+    Route::post('/productexp/store', [ProductsexpsController::class, 'store'])->name('productexp.store');
+
+
+    Route::get('/dashboard/resto', [RestaurantDashboardController::class, 'index'])->name('dashboardResto');
+});

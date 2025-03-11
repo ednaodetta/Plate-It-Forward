@@ -78,11 +78,16 @@
             <div class="h-[5vh]"> </div>
             <div class="resto w-full  bg-[#f9f3f0] flex flex-col items-center">
                 <div class="resto_header w-full h-[180px] bg-[#f9f3f0] flex justify-center items-center gap-[1%] pl-5">
-                    <div
+                    {{-- <div
                         class="resto_pic w-[135px] bg-[#f9f3f0] h-[125-x] justify-center rounded-[10px] shadow-[1px_1px_1px_#666]">
                         <img class="w-full h-full object-cover rounded-[10px]"
                             src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/8ceb09b1-2ff8-4e92-9e84-ae9eb8c70dd2_brand-image_1733091199022.jpg?auto=format"
                             alt="McDonald's, Sentul City">
+                    </div> --}}
+                    <div
+                        class="resto_pic w-[135px] bg-[#f9f3f0] h-[125-x] justify-center rounded-[10px] shadow-[1px_1px_1px_#666]">
+                        <img class="w-[180px] h-[135px] object-cover rounded-[10px]"
+                            src="{{ asset('storage/' . $fotoproducts->foto) }}" alt="McDonald's, Sentul City">
                     </div>
                     <div class="resto_desc flex flex-col justify-start w-[75%] gap-[3vh] pl-5">
                         <div

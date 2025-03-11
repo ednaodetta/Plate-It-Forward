@@ -29,6 +29,15 @@
                 <li><a href="/cart" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">Cart</a></li>
                 <li><a href="/profile" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">Profile</a>
                 </li>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}" class="inline">
+                        @csrf
+                        <a href="#" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100"
+                            onclick="event.preventDefault(); this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </a>
+                    </form>
+                </li>
             </ul>
         </nav>
     </div>

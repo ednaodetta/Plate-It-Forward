@@ -15,8 +15,12 @@
 </head>
 
 <body class="bg-DefaultWhite overflow-x-hidden">
+    @if (Auth::check())
+        <x-navbarAfterLogin></x-navbarAfterLogin>
+    @else
+        <x-navbar></x-navbar>
+    @endif
 
-    <x-navbar></x-navbar>
     <div
         class="relative bg-bgbang bg-no-repeat bg-cover bg-center h-[80vh] flex flex-col justify-center items-center text-center pt-[19rem]">
 
@@ -109,9 +113,8 @@
                     <div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
                         {{ number_format(($item->price_discount / 100) * 100, 0) }}% OFF
                     </div>
-                    <img class="w-full h-48 object-cover" src="{{ asset('storage/' . $item->foto) }}"
-                        alt="" />
-                        
+                    <img class="w-full h-48 object-cover" src="{{ asset('storage/' . $item->foto) }}" alt="" />
+
                     <div class="p-4">
                         <h3 class="text-lg font-semibold italic">{{ $item->name }}</h3>
                         <p class="text-sm text-gray-500 mb-2">Kategori</p>

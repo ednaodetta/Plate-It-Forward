@@ -18,21 +18,23 @@
         <nav id="menu"
             class="hidden absolute top-16 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
             <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
-                <li><a href="/restaurant/dashboard" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a>
+                <li><a href="/restaurant/dashboard"
+                        class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a>
                 </li>
-                <li><a href="/restaurant/orderlist" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Orders</a>
+                <li><a href="/restaurant/orders" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Orders</a>
                 </li>
-                <li><a href="/products" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Menu</a>
+                <li><a href="/restaurant/menu" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Menu</a>
                 </li>
                 <li>
                     <form method="POST" action="{{ route('restaurant.logout') }}" class="inline">
                         @csrf
-                        <a href="#" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100" onclick="event.preventDefault(); this.closest('form').submit();">
+                        <a href="#" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100"
+                            onclick="event.preventDefault(); this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </a>
                     </form>
                 </li>
-                
+
                 {{-- <li>
                     <form method="POST" action="{{'restaurant.logout'}}">
                         @csrf
