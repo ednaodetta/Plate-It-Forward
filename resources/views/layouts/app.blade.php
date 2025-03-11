@@ -13,7 +13,6 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Styles & Scripts -->
-    @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -21,7 +20,7 @@
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 
-      {{-- <div>
+        {{-- <div>
             @if (Auth::guard('admin')->check())
                 <p>Guard yang aktif: admin</p>
             @elseif(Auth::guard('restaurant')->check())
@@ -32,7 +31,7 @@
                 <p>Tidak ada yang login</p>
             @endif
         </div> --}}
-      
+
         <!-- Page Heading -->
         @isset($header)
             <header class="bg-white shadow">
@@ -49,7 +48,6 @@
     </div>
 
     {!! session('console') !!}
-    @livewireScripts
 </body>
 
 </html>
