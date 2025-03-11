@@ -144,7 +144,7 @@
             <!-- Card -->
             <div
                 class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-                <a href="{{ route('menupage', ['id' => $restaurant->id]) }}">
+                <a href="{{ route('menu', ['id' => $restaurant->id]) }}">
                     <img class="w-full h-48 object-cover" src="{{ asset('storage/' . $restaurant->foto) }}"
                         alt="">
                     <div class="p-4">
