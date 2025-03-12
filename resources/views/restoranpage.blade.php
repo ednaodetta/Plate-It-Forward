@@ -114,9 +114,7 @@
                 <div
                     class="flex-shrink-0 w-80 bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:scale-105 hover:bg-gray-100 relative">
                     <!-- Logo Discount -->
-                    <div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-                        {{ number_format(($item->price_discount / 100) * 100, 0) }}% OFF
-                    </div>
+                 
                     <img class="w-full h-48 object-cover" src="{{ asset('storage/' . $item->foto) }}" alt="" />
 
                     <div class="p-4">
