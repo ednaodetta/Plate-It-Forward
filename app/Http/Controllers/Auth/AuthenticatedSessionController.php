@@ -61,7 +61,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         return $guard === 'web'
-            ? redirect()->route('dashboard')
+            ? redirect()->route('home')
             : redirect()->route("{$guard}.dashboard");
     }
 

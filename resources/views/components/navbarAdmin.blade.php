@@ -20,14 +20,23 @@
             <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
                 <li><a href="/admin/dashboard" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Dashboard</a>
                 </li>
-                <li><a href="/OrderList" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Order</a>
+                <li><a href="/admin/orderlist" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Order</a>
                 </li>
                 <li><a href="/userinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">User</a>
                 </li>
                 <li><a href="/restaurantinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurant</a>
                 </li>
                 <li><a href="/panti" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Orphanage</a></li>
-                <li><a href="/supportAdmin" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Support</a></li>
+                <li><a href="/support" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Support</a></li>
+                <li>
+                    <form method="POST" action="{{ route('admin.logout') }}" class="inline">
+                        @csrf
+                        <a href="#" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100"
+                            onclick="event.preventDefault(); this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </a>
+                    </form>
+                </li>
             </ul>
         </nav>
     </div>

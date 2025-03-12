@@ -22,7 +22,6 @@
     <div class="flex justify-center space-x-8 mb-3">
         <a href="/" class="text-base hover:underline">Home</a>
         <a href="/restoranpage" class="text-base hover:underline">Restaurant</a>
-        <a href="/my-donations" class="text-base hover:underline">My Donations</a>
         <a href="/contact-us" class="text-base hover:underline">Contact Us</a>
     </div>
 
