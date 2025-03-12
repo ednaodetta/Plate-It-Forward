@@ -940,7 +940,7 @@
                             <div
                                 class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
                                 <img class="w-full h-48 object-cover"
-                                    src="{{ asset('storage/' . ($fotoProducts[$item->id] ?? 'images/default.png')) }}"
+                                    src="{{ asset('storage/' . ($fotoProducts[$item->id] ?? 'products/pif.jpg')) }}"
                                     alt="{{ $item->name }}">
                                 <div class="p-4">
                                     <h3 class="text-lg font-semibold italic font-BrandonGrotesque">
