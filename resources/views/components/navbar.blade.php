@@ -1,4 +1,4 @@
-<header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50 font-brandon">
+<header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50 font-brandon font-bold">
     <div class="container mx-auto flex items-center justify-between py-4 px-6 ">
         <!-- Logo -->
         <div class="flex items-center">

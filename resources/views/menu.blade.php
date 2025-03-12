@@ -94,10 +94,10 @@
                     </div>
                     <div class="resto_desc flex flex-col justify-start w-[75%] gap-[3vh] pl-5">
                         <div
-                            class="resto_name bg-[#f9f3f0] w-full h-[50px] text-[30px] bold-text items-center text-black">
+                            class="resto_name bg-[#f9f3f0] w-full h-[50px] text-[30px] bold-text items-center text-black font-gotham">
                             {{ $restsearch->name }}</div>
                         <div
-                            class="resto_category bg-[#f9f3f0] h-[50px] w-full left-[200px] text-[20px] text-[#888888] items-center">
+                            class="resto_category bg-[#f9f3f0] h-[50px] w-full left-[200px] text-[20px] text-[#888888] items-center font-bold">
                             {{ $restsearch->city }}</div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                             <div class="flex justify-between pt-4">
                                 <div>
                                     <h1 class="font-bold text-[20px]">{{ $product->name }}</h1>
-                                    <h2 class="text-[16px]">Rp
+                                    <h2 class="font-bold text-[16px]">Rp
                                         {{ number_format($product->price, 0, ',', '.') }}</h2>
                                     <h3 class="text-[14px]">Stock :
                                         {{ $product->product_exps_sum_quantity ?? 0 }}
@@ -135,7 +135,7 @@
                                         ADD
                                     </button> --}}
                                     <div
-                                        class="quantity w-[15%] inline-flex flex-col h-[100px] border-none rounded-[100px] justify-center items-center bg-DefaultGreen">
+                                        class="quantity w-[15%] inline-flex flex-col h-[100px] border-none rounded-[100px] justify-center items-center bg-DefaultGreen font-bold">
                                         <button id="plus-{{ $product->id }}"
                                             class="h-[35px] w-[100%] bg-transparent text-DefaultWhite hover:text-xl"
                                             onclick="event.stopPropagation(); updateCart('{{ $product->id }}', 'increase', {{ $product->product_exps_sum_quantity ?? 0 }});">+</button>
