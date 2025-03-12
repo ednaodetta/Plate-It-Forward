@@ -108,7 +108,7 @@
     <!-- Container -->
     <div class="relative overflow-hidden pt-5">
         <!-- Wrapper -->
-        <div class="flex overflow-x-auto no-scrollbar gap-5 px-5">
+        <div class="flex overflow-x-auto gap-5 px-5" style="scrollbar-width: none; -ms-overflow-style: none;">
             @foreach ($flashSaleProducts as $item)
                 <!-- Card -->
                 <div
