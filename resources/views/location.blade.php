@@ -936,28 +936,20 @@
                 <div class="container mx-auto px-4 pb-10">
                     <div class="flex flex-wrap gap-8 justify-center">
                         @foreach ($filteredResto as $item)
-                        <a href="{{ route('menu', ['id' => $item->id]) }}">
-                            <div
-                                class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-                                <img class="w-full h-48 object-cover"
-                                    src="{{ asset('storage/' . ($fotoProducts[$item->id] ?? 'products/pif.jpg')) }}"
-                                    alt="{{ $item->name }}">
-                                <div class="p-4">
-                                    <h3 class="text-lg font-semibold italic font-BrandonGrotesque">
-                                        {{ $item->name }}</h3>
-                                    <p class="text-sm text-gray-500 mb-2">Varian Telur Bebek</p>
-                                    <div class="flex items-center mb-3">
-                                        <span class="text-yellow-400">&#9733;</span>
-                                        <span class="text-gray-700 font-semibold ml-1">4.8</span>
-                                    </div>
-                                    <div class="flex items-center text-gray-600">
-                                        <span class="text-sm font-medium">$$$</span>
-                                        <span class="ml-2 text-sm">(50K+)</span>
+                            <a href="{{ route('menu', ['id' => $item->id]) }}">
+                                <div
+                                    class="w-full sm:w-80 md:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
+                                    <img class="w-full h-64 object-cover"
+                                        src="{{ asset('storage/' . ($fotoProducts[$item->id] ?? 'products/pif.jpg')) }}"
+                                        alt="{{ $item->name }}">
+                                    <div class="p-4">
+                                        <h3 class="text-lg font-semibold italic font-BrandonGrotesque">
+                                            {{ $item->name }}</h3>
+
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    @endforeach                    
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             @else

@@ -50,7 +50,7 @@
 <body class="w-full bg-DefaultWhite font-brandon">
 
     <x-navbarAfterLogin></x-navbarAfterLogin>
-    @if (!$cart)
+    @if ($cart->total == 0)
         <div class="text-center text-gray-500 font-medium mt-32 h-[100vh]">
             Cart is empty
         </div>
@@ -244,7 +244,8 @@
 
                     <!-- Donate Button -->
                     <div class="text-center">
-                        <button onclick="payWithMidtrans()" class="donate-button w-full font-gotham">Donate
+                        <button onclick="payWithMidtrans()"
+                            class="donate-button w-full font-gotham hover:bg-DefaultWhite hover:outline hover:outline-DefaultGreen hover:text-DefaultGreen">Donate
                             Now!</button>
                     </div>
                 </div>

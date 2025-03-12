@@ -38,7 +38,7 @@
             position: fixed;
             z-index: 50;
             /* Pastikan pop-up tetap di atas */
-            background-color: white;
+            background-color: #F9F3F0;
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -86,8 +86,11 @@
                     </div> --}}
                     <div
                         class="resto_pic w-[135px] bg-[#f9f3f0] h-[125-x] justify-center rounded-[10px] shadow-[1px_1px_1px_#666]">
+                        {{-- <img class="w-[180px] h-[135px] object-cover rounded-[10px]"
+                            src="{{ asset('storage/' . $fotoproducts->foto) }}" alt="McDonald's, Sentul City"> --}}
                         <img class="w-[180px] h-[135px] object-cover rounded-[10px]"
-                            src="{{ asset('storage/' . $fotoproducts->foto) }}" alt="McDonald's, Sentul City">
+                            src="{{ asset('storage/' . ($fotoproducts->foto ?? 'products/pif.jpg')) }}" alt="">
+
                     </div>
                     <div class="resto_desc flex flex-col justify-start w-[75%] gap-[3vh] pl-5">
                         <div
@@ -104,7 +107,7 @@
             <div class="w-full flex flex-col items-center gap-3">
                 <h1 class="w-[85%] font-bold text-[25px]">Today's menu</h1>
                 <div
-                    class="cardlistnye bg-[#f9f3f0] w-[85%] grid gap-x-20 gap-y-20 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                    class="cardlistnye bg-[#f9f3f0] w-[85%] grid gap-x-20 gap-y-20 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 min-h-[33vh]">
                     @foreach ($products as $product)
                         <div class="card border-2 bg-DefaultWhite w-[100%] h-[440px] rounded-[10px] shadow-[1px_1px_1px_#666] p-5 cursor-pointer"
                             onclick="buttonmenudesc(
@@ -134,11 +137,11 @@
                                     <div
                                         class="quantity w-[15%] inline-flex flex-col h-[100px] border-none rounded-[100px] justify-center items-center bg-DefaultGreen">
                                         <button id="plus-{{ $product->id }}"
-                                            class="h-[35px] w-[100%] bg-transparent text-white"
+                                            class="h-[35px] w-[100%] bg-transparent text-DefaultWhite hover:text-xl"
                                             onclick="event.stopPropagation(); updateCart('{{ $product->id }}', 'increase', {{ $product->product_exps_sum_quantity ?? 0 }});">+</button>
 
                                         <input
-                                            class="w-[100%] text-white text-center border-none h-[30px] bg-transparent"
+                                            class="w-[100%] text-DefaultWhite text-center border-none h-[30px] bg-transparent"
                                             type="number" id="quantity-{{ $product->id }}"
                                             value="{{ $cartItems[$product->id] ?? 0 }}" min="0"
                                             oninput="validateQuantity(this, {{ $product->product_exps_sum_quantity ?? 0 }})"
@@ -146,13 +149,13 @@
                                             onclick="event.stopPropagation();">
 
                                         <button id="minus-{{ $product->id }}"
-                                            class="h-[35px] w-[100%] bg-transparent text-white"
+                                            class="h-[35px] w-[100%] bg-transparent text-DefaultWhite hover:text-xl"
                                             onclick="event.stopPropagation(); updateCart('{{ $product->id }}', 'decrease', {{ $product->product_exps_sum_quantity ?? 0 }});">−</button>
                                     </div>
                                 @else
                                     <a href="{{ route('login') }}">
                                         <button
-                                            class="w-[100px] rounded-md bg-DefaultGreen font-bold text-white cursor-pointer p-2"
+                                            class="w-[100px] rounded-md bg-DefaultGreen font-bold text-DefaultWhite cursor-pointer p-2 hover:bg-DefaultWhite hover:outline hover:outline-DefaultGreen hover:text-DefaultGreen"
                                             onclick="event.stopPropagation();">
                                             ADD
                                         </button>
@@ -199,7 +202,7 @@
         <x-footer></x-footer>
         <div id="loadingOverlay"
             class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div class="bg-white p-5 rounded-lg flex flex-col items-center">
+            <div class="bg-DefaultWhite p-5 rounded-lg flex flex-col items-center">
                 <div class="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-DefaultGreen"></div>
                 <p class="mt-3 text-gray-700">Updating cart...</p>
             </div>

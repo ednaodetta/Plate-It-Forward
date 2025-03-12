@@ -115,11 +115,13 @@ class RestaurantController extends Controller
         $restsearch = Restaurant::findOrFail($id); // Cari restoran berdasarkan ID
 
         // Ambil semua produk restoran dengan stok dari product_exps
+        $products = null;
         $products = Products::where('restaurant_id', $id)
             ->withSum('productExps', 'quantity')
             ->having('product_exps_sum_quantity', '>', 0) // Hanya ambil produk dengan stok > 0
             ->get();
 
+        $fotoproducts = null;
         $fotoproducts = Products::where('restaurant_id', $id)->first();
 
 

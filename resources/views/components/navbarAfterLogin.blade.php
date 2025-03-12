@@ -27,11 +27,11 @@
 
                 <!-- Mode Mobile (Profile jadi link biasa) -->
                 <li class="lg:hidden">
-                    <a href="/my-donations" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">My
-                        Donations</a>
+                    <a href="/profile" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">Profile</a>
                 </li>
                 <li class="lg:hidden">
-                    <a href="/profile" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">Profile</a>
+                    <a href="/my-donations" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">My
+                        Donations</a>
                 </li>
                 <li class="lg:hidden">
                     <form method="POST" action="{{ route('logout') }}" class="inline">

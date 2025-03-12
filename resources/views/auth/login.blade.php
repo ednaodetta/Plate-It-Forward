@@ -8,6 +8,7 @@
     {{-- <x-auth-session-status class="mb-4" :status="session('status')" /> --}}
 
     <div class="cont mt-200">
+        <x-navbar></x-navbar>
         <div class="forms-container">
             <div class="signin-signup">
                 <form action="{{ route('login') }}" class="sign-in-form" method="POST">
@@ -86,7 +87,7 @@
 
         <div class="panels-container">
             <div class="panel left-panel">
-                <div class="content pl-4 pr-2 mt-8 md:pr-8 md:mt-0">
+                <div class="content pl-4 pr-2 mt-20 md:pr-8 md:mt-0">
                     <h3 class="text-3xl mt-0 md:mt-10 font-gotham">Serve Smiles, One Meal at a Time—Join Us!</h3>
                     <p class="font-brandon text-lg">Sign up today and be part of something bigger.</p>
                     <div class="font-gotham w-6/12 bg-[#F9F3F0] text-[#00615F] py-2 rounded-full font-bold text-lg transition-all duration-300 ease-in-out text-center mt-4 hover:bg-[#00615F] hover:text-[#F9F3F0] cursor-pointer hover:outline hover:outline-[#F9F3F0]"
