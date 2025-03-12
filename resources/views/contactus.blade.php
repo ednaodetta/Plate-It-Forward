@@ -84,8 +84,7 @@
     </main>
 
     <!-- Footer -->
-    @include('components.footer')
-
+    <x-footer></x-footer>
 </body>
 
 </html>
