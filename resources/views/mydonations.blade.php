@@ -80,8 +80,8 @@
                                 class="py-5 px-4 border-t border-b border-r border-[#D9D9D9] rounded-r-3xl text-DefaultGreen font-semibold w-[10%]">
                                     @if($donation->status == 'Completed')
                                         <span style="color:green;">Completed</span>
-                                    @elseif($donation->status == 'Canceled')
-                                        <span style="color:red;">Canceled</span>
+                                    @elseif($donation->status == 'Paid')
+                                        <span style="color:red;">Paid</span>
                                     @else
                                         <span style="color:orange;">On Process</span>
                                     @endif
