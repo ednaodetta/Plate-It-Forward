@@ -82,7 +82,11 @@
                 <div
                     class="max-[1317px]:w-60 max-[1317px]:h-60 max-[430px]:w-20 max-[430px]:h-20 w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-gray">
                     <a href="{{ route('resto.list', ['city' => $item->city]) }}"><img
-                            src="{{ asset('assets/Image/keram_telor.png') }}" alt="Jakarta"
+                            src="{{ file_exists(public_path('storage/products/' . $item->city . '.jpg')) 
+        ? asset('storage/products/' . $item->city . '.jpg') 
+        : (file_exists(public_path('storage/products/' . $item->city . '.jpe')) 
+            ? asset('storage/products/' . $item->city . '.jpe') 
+            : asset('assets/Image/default.jpg')) }}" alt="None"
                             class="w-full h-full object-cover"></a>
                 </div>
                 <p
