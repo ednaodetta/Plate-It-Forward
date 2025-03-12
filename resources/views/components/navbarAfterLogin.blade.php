@@ -1,4 +1,4 @@
-<header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50">
+<header class="bg-DefaultWhite shadow-xl fixed top-0 left-0 w-full z-50 font-brandon">
     <div class="container mx-auto flex items-center justify-between py-4 px-6">
         <!-- Logo -->
         <div class="flex items-center">
@@ -16,7 +16,7 @@
 
         <!-- Navigation Menu -->
         <nav id="menu"
-            class="hidden absolute top-10 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:top-auto lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
+            class="hidden absolute top-16 lg:top-0 right-6 bg-DefaultWhite w-48 shadow-lg border border-gray-300 p-2 lg:flex lg:relative lg:right-auto lg:w-auto lg:shadow-none lg:border-none lg:p-0">
             <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-600">
                 <li><a href="/" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">Home</a></li>
                 <li><a href="/restoranpage"
@@ -26,6 +26,10 @@
                 <li><a href="/cart" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">Cart</a></li>
 
                 <!-- Mode Mobile (Profile jadi link biasa) -->
+                <li class="lg:hidden">
+                    <a href="/my-donations" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">My
+                        Donations</a>
+                </li>
                 <li class="lg:hidden">
                     <a href="/profile" class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100">Profile</a>
                 </li>
@@ -46,12 +50,13 @@
                     <!-- Dropdown Menu -->
                     <div
                         class="absolute hidden group-hover:block bg-DefaultWhite shadow-lg border border-gray-300 rounded-lg w-48 mt-1 right-0">
-                        <a href="/profile"
-                            class="block px-4 py-2 text-gray-700 hover:text-DefaultGreen hover:bg-gray-100">Edit
-                            Profile</a>
                         <a href="/my-donations"
                             class="block px-4 py-2 text-gray-700 hover:text-DefaultGreen hover:bg-gray-100">My
                             Donations</a>
+                        <a href="/profile"
+                            class="block px-4 py-2 text-gray-700 hover:text-DefaultGreen hover:bg-gray-100">Edit
+                            Profile</a>
+
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit"
