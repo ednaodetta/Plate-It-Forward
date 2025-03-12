@@ -47,7 +47,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="w-full font-brandon bg-DefaultWhite">
+<body class="w-full bg-DefaultWhite font-brandon">
 
     <x-navbarAfterLogin></x-navbarAfterLogin>
     @if (!$cart)
@@ -64,16 +64,17 @@
             </div>
 
             <!-- Store Name -->
-            <h1 class="text-[var(--primary)] font-bold text-xl text-center">CART</h1>
-            <h2 class="text-center text-gray-500 text-lg mb-6">{{ $restaurant ? $restaurant->name : '' }}</h2>
+            <h1 class="text-[var(--primary)] font-bold text-xl text-center font-gotham">CART</h1>
+            <h2 class="text-center text-gray-500 text-lg mb-6 font-gotham">{{ $restaurant ? $restaurant->name : '' }}
+            </h2>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- Orders Section -->
                 <div class="bg-[var(--boxbg)] col-span-2 custom-box">
                     <div class="flex justify-between items-center">
-                        <h3 class="text-[var(--text-dark)] font-bold text-lg">Orders</h3>
+                        <h3 class="text-[var(--text-dark)] font-bold text-lg font-gotham">Orders</h3>
                         <a href="{{ $restaurant ? '/menu?id=' . $restaurant->id : '/restoranpage' }}"
-                            class="text-[var(--primary)] text-sm font-medium">Edit
+                            class="text-[var(--primary)] text-sm font-medium font-gotham">Edit
                             Cart</a><!-- menuju ke menu.blade.php dengan id resto-->
                     </div>
                     <div class="mt-4 space-y-4">
@@ -142,7 +143,7 @@
                 <div class="space-y-6">
                     <!-- Summary Section -->
                     <div class="bg-[var(--boxbg)] custom-box">
-                        <h3 class="text-[var(--text-dark)] font-bold text-lg">Summary</h3>
+                        <h3 class="text-[var(--text-dark)] font-bold text-lg font-gotham">Summary</h3>
 
                         <div class="mt-4 space-y-4">
                             <div class="flex justify-between">
@@ -157,7 +158,7 @@
                             </div>
                         </div>
                         <hr class="border-t-[var(--border-color)] my-4">
-                        <div class="flex justify-between text-lg font-bold">
+                        <div class="flex justify-between text-lg font-bold font-gotham">
                             <span>Total</span>
                             <span class="text-[var(--primary)]">Rp {{ number_format($total, 0, ',', '.') }}</span>
                         </div>
@@ -278,7 +279,8 @@
 
                     <!-- Donate Button -->
                     <div class="text-center">
-                        <button onclick="payWithMidtrans()" class="donate-button w-full">Donate Now!</button>
+                        <button onclick="payWithMidtrans()" class="donate-button w-full font-gotham">Donate
+                            Now!</button>
                     </div>
                 </div>
             </div>
