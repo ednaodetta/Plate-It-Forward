@@ -81,7 +81,7 @@
                     {{-- <div
                         class="resto_pic w-[135px] bg-[#f9f3f0] h-[125-x] justify-center rounded-[10px] shadow-[1px_1px_1px_#666]">
                         <img class="w-full h-full object-cover rounded-[10px]"
-                            src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/8ceb09b1-2ff8-4e92-9e84-ae9eb8c70dd2_brand-image_1733091199022.jpg?auto=format"
+                            src="{{ asset('storage/' . $fotoproducts->foto) }}"
                             alt="McDonald's, Sentul City">
                     </div> --}}
                     <div

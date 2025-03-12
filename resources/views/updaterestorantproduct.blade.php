@@ -105,38 +105,7 @@
         </div>
     </header>
 
-    <main class="w-[90%] mx-auto mt-24 p-7 bg-whitecream rounded-lg relative">
-        <a href="/productinfo" class="absolute -top-10 left-0 text-[#00615F] font-semibold hover:underline">← Back</a>
-        <h1 class="text-3xl font-bold text-[#00615F]">User’s Information</h1>
-
-        <form class="mt-4">
-            <div class="mb-4">
-                <label class="block text-lg font-semibold text-gray-700">Product ID</label>
-                <input id="user-id" type="text" class="w-full border border-gray-300 p-3 rounded-md bg-gray-100"
-                    readonly>
-            </div>
-
-            <div class="mb-4">
-                <label class="block text-lg font-semibold text-gray-700">Name</label>
-                <input id="user-name" type="text" class="w-full border border-gray-300 p-3 rounded-md">
-            </div>
-
-            <div class="mb-6">
-                <label class="block text-lg font-semibold text-gray-700">Description</label>
-                <input id="user-desc" type="email" class="w-full border border-gray-300 p-3 rounded-md">
-            </div>
-
-
-            <div class="mb-6">
-                <label class="block text-lg font-semibold text-gray-700">Price</label>
-                <input id="user-price" type="email" class="w-full border border-gray-300 p-3 rounded-md">
-            </div>
-            <div class="flex justify-end">
-                <button class="bg-[#00615F] text-white px-6 py-3 rounded-md hover:bg-teal font-semibold"><a
-                        href="/productinfo">SAVE</a></button>
-            </div>
-        </form>
-    </main>
+   
 
     <footer class="bg-[#00615F] text-white text-center py-20">
         <!-- Icons Section -->

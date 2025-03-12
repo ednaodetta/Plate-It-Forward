@@ -120,8 +120,7 @@ class RestaurantController extends Controller
             ->having('product_exps_sum_quantity', '>', 0) // Hanya ambil produk dengan stok > 0
             ->get();
 
-        $fotoproducts = Products::where('restaurant_id', $id)
-            ->first();
+        $fotoproducts = Products::where('restaurant_id', $id)->first();
 
 
         $carts = null;
