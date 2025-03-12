@@ -55,7 +55,7 @@
             Cart is empty
         </div>
     @else
-        <div class="w-[90%] mx-auto p-6 h-[100%] pb-10">
+        <div class="w-[90%] mx-auto p-6 h-[100%] pb-20">
             <!-- Header -->
             <div class="flex justify-between items-center mt-[100px]">
                 <a href="/restoranpage"><button class="text-[var(--primary)] text-xl font-bold">&larr;</button></a>
@@ -74,70 +74,35 @@
                     <div class="flex justify-between items-center">
                         <h3 class="text-[var(--text-dark)] font-bold text-lg font-gotham">Orders</h3>
                         <a href="{{ $restaurant ? '/menu?id=' . $restaurant->id : '/restoranpage' }}"
-                            class="text-[var(--primary)] text-sm font-medium font-gotham">Edit
-                            Cart</a><!-- menuju ke menu.blade.php dengan id resto-->
+                            class="text-[var(--primary)] text-sm font-medium font-gotham">
+                            Edit Cart
+                        </a>
                     </div>
-                    <div class="mt-4 space-y-4">
-                        <!-- Item 1 -->
-                        {{-- <div class="flex justify-between items-center">
-                        <div class="flex items-center">
-                            <img src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format"
-                                alt="Product" class="w-20 h-20 rounded-md">
-                            <div class="ml-4">
-                                <h4 class="text-[var(--text-dark)] font-bold">PaNas 1 Ayam McD Gulai Spicy</h4>
-                                <!--nama menu-->
-                                <p class="text-gray-500 text-sm">Quantity : 1</p><!--nama menu-->
-                                <p class="text-gray-500 text-sm">Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-                                    Rp 42.500</p>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="text-[var(--text-dark)] font-bold">Rp 42.500</p>
 
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center">
-                            <img src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/21c4f66a-e600-44f5-bae2-3488e17d979d_TPO-111226_1.jpg?auto=format"
-                                alt="Product" class="w-20 h-20 rounded-md">
-                            <div class="ml-4">
-                                <h4 class="text-[var(--text-dark)] font-bold">PaNas 1 Ayam McD Gulai Spicy</h4>
-                                <!--nama menu-->
-                                <p class="text-gray-500 text-sm">Quantity : 1</p><!--nama menu-->
-                                <p class="text-gray-500 text-sm">Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-                                    Rp 42.500</p>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="text-[var(--text-dark)] font-bold">Rp 42.500</p>
-
-                        </div>
-                    </div> --}}
+                    <!-- Tambahkan class overflow-y-auto dan max-height -->
+                    <div class="mt-4 space-y-4 overflow-y-auto max-h-[300px]">
                         @foreach ($cartItems as $item)
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center">
-                                    <img src="{{ asset('storage/' . $item->product->foto) }}"alt="Product"
+                                    <img src="{{ asset('storage/' . $item->product->foto) }}" alt="Product"
                                         class="w-20 h-20 rounded-md">
-
                                     <div class="ml-4">
                                         <h4 class="text-[var(--text-dark)] font-bold">{{ $item->product->name }}</h4>
-                                        <p class="text-gray-500 text-sm">Quantity : {{ $item->quantity }}</p>
-                                        <p class="text-gray-500 text-sm">Price
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-                                            Rp {{ number_format($item->product->price, 0, ',', '.') }}</p>
+                                        <p class="text-gray-500 text-sm">Quantity: {{ $item->quantity }}</p>
+                                        <p class="text-gray-500 text-sm">Price: Rp
+                                            {{ number_format($item->product->price, 0, ',', '.') }}</p>
                                     </div>
                                 </div>
-                                <div>
-                                    <p class="text-[var(--text-dark)] font-bold">Rp
-                                        {{ number_format($item->subtotal, 0, ',', '.') }}</p>
+                                <div clas="pr-4">
+                                    <p class="text-[var(--text-dark)] font-bold">
+                                        Rp {{ number_format($item->subtotal, 0, ',', '.') }}
+                                    </p>
                                 </div>
                             </div>
                         @endforeach
-
-
-
                     </div>
                 </div>
+
 
                 <!-- Right Section (Summary, Payment Method, Button) -->
                 <div class="space-y-6">
@@ -293,39 +258,7 @@
         </div>
     </div>
 
-    <footer class="bg-DefaultGreen text-white text-center py-20">
-        <!-- Icons Section -->
-        <div class="flex justify-center space-x-6 mb-3">
-            <a href="#" class="text-xl hover:text-gray-300">
-                <i class="fab fa-facebook"></i> <!-- Replace with actual icon -->
-            </a>
-            <a href="#" class="text-xl hover:text-gray-300">
-                <i class="fab fa-youtube"></i> <!-- Replace with actual icon -->
-            </a>
-            <a href="#" class="text-xl hover:text-gray-300">
-                <i class="fab fa-x"></i> <!-- Replace with actual icon -->
-            </a>
-            <a href="#" class="text-xl hover:text-gray-300">
-                <i class="fab fa-instagram"></i> <!-- Replace with actual icon -->
-            </a>
-            <a href="#" class="text-xl hover:text-gray-300">
-                <i class="fab fa-whatsapp"></i> <!-- Replace with actual icon -->
-            </a>
-        </div>
-
-        <!-- Navigation Links -->
-        <div class="flex justify-center space-x-8 mb-3">
-            <a href="/" class="text-base hover:underline">Home</a>
-            <a href="/restoranpage" class="text-base hover:underline">Restaurant</a>
-            <a href="/my-donations" class="text-base hover:underline">My Donations</a>
-            <a href="/contact-us" class="text-base hover:underline">Contact Us</a>
-        </div>
-
-        <!-- Copyright Text -->
-        <div class="text-sm">
-            © Plate it Forward 2025 | All Rights Reserved
-        </div>
-    </footer>
+    <x-footer></x-footer>
     <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}">
     </script>
 
