@@ -71,7 +71,7 @@
     </div>
 
     <div>
-        <h3 class="flex justify-center pt-28 text-4xl font-brandon">Choose From Places</h3>
+        <h3 class="flex justify-center pt-28 text-4xl font-gotham">Choose From Places</h3>
     </div>
 
     <div
@@ -82,22 +82,22 @@
                 <div
                     class="max-[1317px]:w-60 max-[1317px]:h-60 max-[430px]:w-20 max-[430px]:h-20 w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-gray">
                     <a href="{{ route('resto.list', ['city' => $item->city]) }}"><img
-                            src="{{ file_exists(public_path('storage/products/' . $item->city . '.jpg')) 
-        ? asset('storage/products/' . $item->city . '.jpg') 
-        : (file_exists(public_path('storage/products/' . $item->city . '.jpe')) 
-            ? asset('storage/products/' . $item->city . '.jpe') 
-            : asset('assets/Image/default.jpg')) }}" alt="None"
-                            class="w-full h-full object-cover"></a>
+                            src="{{ file_exists(public_path('storage/products/' . $item->city . '.jpg'))
+                                ? asset('storage/products/' . $item->city . '.jpg')
+                                : (file_exists(public_path('storage/products/' . $item->city . '.jpe'))
+                                    ? asset('storage/products/' . $item->city . '.jpe')
+                                    : asset('assets/Image/default.jpg')) }}"
+                            alt="None" class="w-full h-full object-cover"></a>
                 </div>
                 <p
-                    class="mt-2 text-lg font-semibold italic font-BrandonGrotesque max-[1317px]:text-[30px] max-[430px]:text-[15px]">
+                    class="mt-2 text-lg font-semibold italic font-brandon max-[1317px]:text-[30px] max-[430px]:text-[15px]">
                     {{ $item->city }}</p>
             </div>
         @endforeach
     </div>
 
     <div>
-        <h3 class="flex justify-center pt-10 text-4xl font-brandon">Flash Sale</h3>
+        <h3 class="flex justify-center pt-10 text-4xl font-gotham font-bold">FLASH SALE</h3>
     </div>
 
     <div>
@@ -114,17 +114,12 @@
                 <div
                     class="flex-shrink-0 w-80 bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:scale-105 hover:bg-gray-100 relative">
                     <!-- Logo Discount -->
-                 
+
                     <img class="w-full h-48 object-cover" src="{{ asset('storage/' . $item->foto) }}" alt="" />
 
                     <div class="p-4">
-                        <h3 class="text-lg font-semibold italic">{{ $item->name }}</h3>
-                        <p class="text-sm text-gray-500 mb-2">Kategori</p>
-                        <div class="flex items-center mb-3">
-                            <span class="text-yellow-400">★</span>
-                            <span class="text-gray-700 font-semibold ml-1">4.5</span>
-                        </div>
-                        <div class="flex items-center text-gray-600">
+                        <h3 class="text-lg font-semibold italic font-gotham">{{ $item->name }}</h3>
+                        <div class="flex items-center text-gray-600 font-brandon">
                             <span class="text-sm font-medium">Rp
                                 {{ number_format($item->price_discount, 0, ',', '.') }}</span>
                             <span class="ml-2 text-sm">({{ $item->quantity }} Stok)</span>
@@ -136,7 +131,8 @@
     </div>
 
     <div>
-        <h3 class="flex justify-center pt-10 text-4xl font-brandon max-[500px]:text-xl max-[529px]:text-xl">RECOMMENDED
+        <h3 class="flex justify-center pt-10 text-4xl max-[500px]:text-xl max-[529px]:text-xl font-gotham font-bold">
+            RECOMMENDED
             RESTAURANT</h3>
     </div>
 
@@ -150,13 +146,9 @@
                     <img class="w-full h-48 object-cover" src="{{ asset('storage/' . $restaurant->foto) }}"
                         alt="">
                     <div class="p-4">
-                        <h3 class="text-lg font-semibold italic font-BrandonGrotesque">{{ $restaurant->name }}</h3>
-                        <p class="text-sm text-gray-500 mb-2">Kategori Makanan</p>
-                        <div class="flex items-center mb-3">
-                            <span class="text-yellow-400">★</span>
-                            <span class="text-gray-700 font-semibold ml-1">4.9</span>
-                        </div>
-                        <div class="flex items-center text-gray-600">
+                        <h3 class="text-lg font-semibold italic font-gotham">{{ $restaurant->name }}</h3>
+
+                        <div class="flex items-center text-gray-600 font-brandon">
                             <span class="text-sm font-medium">$$</span>
                             <span class="ml-2 text-sm">(30K+)</span>
                         </div>

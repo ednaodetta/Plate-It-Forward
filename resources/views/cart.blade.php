@@ -64,7 +64,7 @@
             </div>
 
             <!-- Store Name -->
-            <h1 class="text-[var(--primary)] font-bold text-xl text-center font-gotham">CART</h1>
+            <h1 class="text-[var(--primary)] font-bold text-[32px] text-center font-gotham">CART</h1>
             <h2 class="text-center text-gray-500 text-lg mb-6 font-gotham">{{ $restaurant ? $restaurant->name : '' }}
             </h2>
 
@@ -72,7 +72,7 @@
                 <!-- Orders Section -->
                 <div class="bg-[var(--boxbg)] col-span-2 custom-box">
                     <div class="flex justify-between items-center">
-                        <h3 class="text-[var(--text-dark)] font-bold text-lg font-gotham">Orders</h3>
+                        <h3 class="text-[var(--text-dark)] font-bold text-[20px] font-gotham">Orders</h3>
                         <a href="{{ $restaurant ? '/menu?id=' . $restaurant->id : '/restoranpage' }}"
                             class="text-[var(--primary)] text-sm font-medium font-gotham">
                             Edit Cart
@@ -87,9 +87,10 @@
                                     <img src="{{ asset('storage/' . $item->product->foto) }}" alt="Product"
                                         class="w-20 h-20 rounded-md">
                                     <div class="ml-4">
-                                        <h4 class="text-[var(--text-dark)] font-bold">{{ $item->product->name }}</h4>
-                                        <p class="text-gray-500 text-sm">Quantity: {{ $item->quantity }}</p>
-                                        <p class="text-gray-500 text-sm">Price: Rp
+                                        <h4 class="text-[var(--text-dark)] font-bold text-[18px]">
+                                            {{ $item->product->name }}</h4>
+                                        <p class=" text-sm">Quantity: {{ $item->quantity }}</p>
+                                        <p class="text-sm">Price: Rp
                                             {{ number_format($item->product->price, 0, ',', '.') }}</p>
                                     </div>
                                 </div>
@@ -112,12 +113,12 @@
 
                         <div class="mt-4 space-y-4">
                             <div class="flex justify-between">
-                                <span class="text-gray-500">Subtotal</span>
+                                <span class="">Subtotal</span>
                                 <span class="text-[var(--text-dark)] font-bold">Rp
                                     {{ number_format($subtotal, 0, ',', '.') }}</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-gray-500">Service Fee (5% Subtotal)</span>
+                                <span class="">Service Fee (5% Subtotal)</span>
                                 <span class="text-[var(--text-dark)] font-bold">Rp
                                     {{ number_format($serviceFee, 0, ',', '.') }}</span>
                             </div>

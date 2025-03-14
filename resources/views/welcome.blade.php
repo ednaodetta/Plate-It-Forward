@@ -51,7 +51,7 @@
                     <div class="flex flex-col justify-between">
                         <div>
                             <p class="text-Teal uppercase font-semibold tracking-wide">Our Purpose</p>
-                            <h2 class="text-3xl lg:text-5xl font-bold mt-2">
+                            <h2 class="text-3xl lg:text-5xl font-bold mt-2 font-gotham">
                                 Compassion starts with each of us.
                             </h2>
                             <p class="text-gray-600 text-lg mt-4 leading-relaxed">
