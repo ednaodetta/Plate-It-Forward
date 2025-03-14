@@ -928,7 +928,7 @@
             <div class="flex flex-row gap-6 mb-6">
                 <div class="bg-white p-4 rounded-lg shadow border border-gray-300 min-h-[200px] flex-1 flex flex-col">
                     <h2 class="font-semibold text-lg mb-2 font-brandon">🏆 Top Donors</h2>
-                    <ul class='space-y-1 font-brandonLight'>
+                    <ul class='space-y-1'>
                         @foreach ($topDonors as $index => $donor)
                             <li>{{ $index + 1 }}. {{ $donor->name }} (Rp
                                 {{ number_format($donor->total_donation, 0, ',', '.') }})</li>
@@ -938,7 +938,7 @@
 
                 <div class="bg-white p-4 rounded-lg shadow border border-gray-300 min-h-[200px] flex-1 flex flex-col">
                     <h2 class="font-semibold text-lg mb-2 font-brandon">🏆 Top Restaurant</h2>
-                    <ul class='space-y-1 font-brandonLight'>
+                    <ul class='space-y-1'>
                         @foreach ($topRestaurants as $index => $restaurant)
                             <li>{{ $index + 1 }}. {{ $restaurant->name }} ({{ $restaurant->total_quantity }} orders)
                             </li>
@@ -948,7 +948,7 @@
 
                 <div class="bg-white p-4 rounded-lg shadow border border-gray-300 min-h-[200px] flex-1 flex flex-col">
                     <h2 class="font-semibold text-lg mb-2 font-brandon">🏆 Most Donated Orphanages</h2>
-                    <ul class='space-y-1 font-brandonLight'>
+                    <ul class='space-y-1'>
                         @foreach ($topOrphanages as $index => $orphanage)
                             <li>{{ $index + 1 }}. {{ $orphanage->name }} (Rp
                                 {{ number_format($orphanage->total_donation, 0, ',', '.') }})</li>
