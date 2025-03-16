@@ -23,7 +23,8 @@
                 </li>
                 <li><a href="/restaurant/orders" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Orders</a>
                 </li>
-                <li><a href="/products" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Menu</a>
+                <li><a href="/restaurant/products"
+                        class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Products</a>
                 </li>
                 <li>
                     <form method="POST" action="{{ route('restaurant.logout') }}" class="inline">

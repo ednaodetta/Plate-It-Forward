@@ -27,9 +27,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('reset-password', [AdminPasswordController::class, 'resetPassword'])->name('reset-submit');
 
     Route::middleware(['admin'])->group(function () {
-        // Route::get('dashboard', function () {
-        //     return view('admin.dashboard');
-        // })->name('dashboard');
         Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
         Route::get('/products', [ProductController::class, 'index']);
         Route::match(['get', 'post'], 'orderlist', [AdminDashboardController::class, 'list'])->name('OrderList');

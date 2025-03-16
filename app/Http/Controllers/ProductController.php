@@ -60,11 +60,9 @@ class ProductController extends Controller
         return redirect()->route('products')->with('success', 'Produk berhasil ditambahkan.');
     }
 
-
-
     public function createproduct()
     {
-        return view('addproduct');
+        return view('restaurant.addproduct');
     }
 
     public function restoran()
@@ -153,50 +151,3 @@ class ProductController extends Controller
         return redirect()->route('products')->with('success', 'Produk berhasil diperbarui!');
     }
 }
-
-// namespace App\Http\Controllers;
-
-// use Illuminate\Http\Request;
-// use App\Models\Products;
-
-// class ProductController extends Controller
-// {
-//     public function index()
-//     {
-//         $products = Products::all();
-//         return view('products.index', compact('products'));
-//     }
-
-
-//     public function menuPage()
-//     {
-//         $product = Products::find(1); // Ambil data dengan ID = 1
-//         return view('menupage', compact('product'));
-//     }
-
-//     public function store(Request $request)
-//     {
-//         $request->validate([
-//             'name' => 'required',
-//             'price' => 'required|integer',
-//             'description' => 'nullable|string',
-//             'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-//         ]);
-
-//         $restaurantId = Auth::guard('restaurant')->user()->id;
-
-//         Products::create([
-//             'restaurant_id' => $restaurantId,
-//             'name' => $request->name,
-//             'price' => $request->price,
-//             'description' => $request->description,
-//             'foto' => $request->foto ? $request->file('foto')->store('products') : 'noimage.png',
-//         ]);
-
-//         return redirect()->route('products')->with('success', 'Produk berhasil ditambahkan.');
-//     }
-
-//     public function createproduct()
-//     {
-//         return view('addproduct');
-//     }
