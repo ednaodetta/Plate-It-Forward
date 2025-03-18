@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all(); // Ambil semua data dari tabel supports
-        return view('userinfopage', compact('users'));
+        return view('admin.userinfopage', compact('users'));
     }
 
     public function show($id)
@@ -29,7 +29,7 @@ class UserController extends Controller
             return redirect()->route('userinfo')->with('error', 'User not found');
         }
 
-        return view('updateuserpage', compact('user'));
+        return view('admin.updateuserpage', compact('user'));
     }
 
 

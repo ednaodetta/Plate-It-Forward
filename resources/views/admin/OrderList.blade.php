@@ -32,7 +32,11 @@
                     <tr class="bg-gray-200">
                         <th class="p-2">Order ID</th>
                         <th class="p-2">Transaction Detail</th>
-                        <th class="p-2">Total Price</th>
+                        <th class="p-2">City</th>
+                        <th class="p-2">Restaurant</th>
+                        <th class="p-2">Restaurant Address</th>
+                        <th class="p-2">Orphanage</th>
+                        <th class="p-2">Orphanage Address</th>
                         <th class="p-2">Status</th>
                     </tr>
                 </thead>
@@ -41,7 +45,12 @@
                         <tr>
                             <td class="p-2">{{ $order->id }}</td>
                             <td class="p-2">{{ $order->transaction_detail }}</td>
-                            <td class="p-2 font-bold">Rp {{ number_format($order->total, 0, ',', '.') }}</td>
+                            <td class="p-2 text-center">{{ $order->city }}</td>
+                            <td class="p-2">{{ $order->restaurant_name }}</td>
+                            <td class="p-2">{{ $order->restaurant_address }}</td>
+                            <td class="p-2">{{ $order->orphanage_name }}</td>
+                            <td class="p-2">{{ $order->orphanage_address }}</td>
+                            {{-- <td class="p-2 font-bold">Rp {{ number_format($order->total, 0, ',', '.') }}</td> --}}
                             <td>
                                 <form method="POST" class="flex justify-between"
                                     action="{{ route('admin.OrderList') }}" onsubmit="showLoading()">

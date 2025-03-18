@@ -26,28 +26,27 @@ class RegisteredOrphanageController extends Controller
      * Handle an incoming registration request.
      */
     public function store(Request $request): RedirectResponse
-{
-    $request->validate([
-        'name' => ['required', 'string', 'max:255'],
-        'address' => ['required', 'string', 'max:255'],
-        'city' => ['required', 'string', 'max:255'],
-        'contact' => ['required', 'string', 'max:255'],
-        'donation' => ['required', 'numeric', 'min:0'],
-    ]);
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
+            'contact' => ['required', 'string', 'max:255'],
+            'donation' => ['required', 'numeric', 'min:0'],
+        ]);
 
-    $orphanage = Orphanage::create([
-        'name' => $request->name,
-        'address' => $request->address,
-        'city' => $request->city,
-        'contact' => $request->contact,
-        'donation' => (double) $request->donation,
-    ]);
+        $orphanage = Orphanage::create([
+            'name' => $request->name,
+            'address' => $request->address,
+            'city' => $request->city,
+            'contact' => $request->contact,
+            'donation' => (float) $request->donation,
+        ]);
 
-    event(new Registered($orphanage));
+        event(new Registered($orphanage));
 
-    // Auth::guard('orphanage')->login($orphanage);
+        // Auth::guard('orphanage')->login($orphanage);
 
-    return redirect(route('panti', absolute: false));
-}
-
+        return redirect(route('panti.index', absolute: false));
+    }
 }

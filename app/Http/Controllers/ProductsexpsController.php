@@ -18,7 +18,7 @@ class ProductsexpsController extends Controller
         // Hitung total quantity
         $totalQuantity = $productExps->sum('quantity');
 
-        return view('productexp', compact('product', 'productExps', 'totalQuantity'));
+        return view('restaurant.productexp', compact('product', 'productExps', 'totalQuantity'));
     }
 
 
@@ -74,7 +74,7 @@ class ProductsexpsController extends Controller
     public function edit($id)
     {
         $exp = ProductExp::findOrFail($id);
-        return view('updaterestorantproductexp', compact('exp'));
+        return view('admin.updaterestorantproductexp', compact('exp'));
     }
 
     public function update(Request $request, $id)

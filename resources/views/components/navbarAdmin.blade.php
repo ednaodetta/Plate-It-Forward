@@ -22,12 +22,14 @@
                 </li>
                 <li><a href="/admin/orderlist" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Order</a>
                 </li>
-                <li><a href="/userinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">User</a>
+                <li><a href="/admin/userinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">User</a>
                 </li>
-                <li><a href="/restaurantinfo" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurant</a>
+                <li><a href="/admin/restaurantinfo"
+                        class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Restaurant</a>
                 </li>
-                <li><a href="/panti" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Orphanage</a></li>
-                <li><a href="/support" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Support</a></li>
+                <li><a href="/admin/orphanage" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Orphanage</a>
+                </li>
+                <li><a href="/admin/support" class="block px-6 py-3 hover:text-Teal hover:bg-gray-100">Support</a></li>
                 <li>
                     <form method="POST" action="{{ route('admin.logout') }}" class="inline">
                         @csrf

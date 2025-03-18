@@ -64,7 +64,7 @@ Route::post('/contactus', [SupportController::class, 'store'])->name('contactus'
 
 Route::get('/menu', [RestaurantController::class, 'menu'])->name('menu');
 
-Route::get('/restoranpage', [ProductController::class, 'restoran'])->name('restoranpage.restoran');
+Route::get('/restaurants', [ProductController::class, 'restaurant'])->name('restaurants');
 
 Route::get('/search-location', [LocationController::class, 'search']);
 

@@ -119,6 +119,7 @@ class AdminDashboardController extends Controller
 
     //     return view('orderlist', compact('allOrders'));
     // }
+
     public function list(Request $request)
     {
         $admin = Auth::guard('admin')->user();
@@ -154,17 +155,49 @@ class AdminDashboardController extends Controller
         }
 
         // Ambil semua data pesanan jika tidak ada permintaan untuk memperbarui status
+        // $allOrders = DB::table('orders')
+        //     ->select('orders.id', 'orders.total', 'orders.status', 'orders.created_at')
+        //     ->addSelect(DB::raw("
+        //     GROUP_CONCAT(CONCAT(order_items.quantity, ' ', products.name) SEPARATOR ', ') AS transaction_detail
+        // "))
+        //     ->join('order_items', 'orders.id', '=', 'order_items.order_id')
+        //     ->join('products', 'order_items.product_id', '=', 'products.id')
+        //     ->groupBy('orders.id', 'orders.total', 'orders.status', 'orders.created_at')
+        //     ->orderBy('orders.created_at', 'asc')
+        //     ->get();
         $allOrders = DB::table('orders')
-            ->select('orders.id', 'orders.total', 'orders.status', 'orders.created_at')
-            ->addSelect(DB::raw("
+            ->select(
+                'orders.id',
+                'orders.total',
+                'orders.status',
+                'orders.created_at',
+                'restaurants.city as city',
+                'restaurants.name as restaurant_name',
+                'restaurants.address as restaurant_address',
+                'orphanages.name as orphanage_name',
+                'orphanages.address as orphanage_address',
+                DB::raw("
             GROUP_CONCAT(CONCAT(order_items.quantity, ' ', products.name) SEPARATOR ', ') AS transaction_detail
-        "))
+        ")
+            )
             ->join('order_items', 'orders.id', '=', 'order_items.order_id')
             ->join('products', 'order_items.product_id', '=', 'products.id')
-            ->groupBy('orders.id', 'orders.total', 'orders.status', 'orders.created_at')
+            ->leftJoin('restaurants', 'orders.restaurant_id', '=', 'restaurants.id') // Join ke tabel restaurants
+            ->leftJoin('orphanages', 'orders.orphanage_id', '=', 'orphanages.id') // Join ke tabel orphanages
+            ->groupBy(
+                'orders.id',
+                'orders.total',
+                'orders.status',
+                'orders.created_at',
+                'restaurants.name',
+                'restaurants.address',
+                'orphanages.name',
+                'orphanages.address'
+            )
             ->orderBy('orders.created_at', 'asc')
             ->get();
 
-        return view('orderlist', compact('allOrders'));
+
+        return view('admin.orderlist', compact('allOrders'));
     }
 }

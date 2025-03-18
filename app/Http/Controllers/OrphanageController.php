@@ -11,7 +11,7 @@ class OrphanageController extends Controller
     public function index()
     {
         $orphanages = Orphanage::all();
-        return view('panti', compact('orphanages'));
+        return view('admin.orphanage', compact('orphanages'));
     }
 
     public function create()
@@ -37,7 +37,7 @@ class OrphanageController extends Controller
     public function edit($id)
     {
         $orphanage = Orphanage::findOrFail($id);
-        return view('updateOrphanage', compact('orphanage'));
+        return view('admin.updateOrphanage', compact('orphanage'));
     }
 
     public function update(Request $request, $id)
@@ -60,7 +60,7 @@ class OrphanageController extends Controller
     {
         $orphanage = Orphanage::findOrFail($id);
         $orphanage->delete();
-        
+
         return redirect()->route('panti.index')->with('success', 'Orphanage deleted successfully.');
     }
 }

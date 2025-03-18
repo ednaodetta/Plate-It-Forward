@@ -20,7 +20,7 @@
             <ul class="flex flex-col lg:flex-row lg:space-x-10 text-gray-900 ">
                 <li><a href="/"
                         class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100 hover:font-bold">Home</a></li>
-                <li><a href="/restoranpage"
+                <li><a href="/restaurants"
                         class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100 hover:font-bold">Restaurants</a>
                 </li>
                 <li><a href="/contact-us"

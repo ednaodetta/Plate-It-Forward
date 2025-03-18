@@ -16,4 +16,14 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class, 'restaurant_id');
+    }
+
+    public function orphanage()
+    {
+        return $this->belongsTo(Orphanage::class, 'orphanage_id');
+    }
 }

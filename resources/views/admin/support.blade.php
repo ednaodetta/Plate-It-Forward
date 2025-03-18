@@ -91,7 +91,7 @@
                 row.classList.remove('line-through', 'text-gray-500');
             }
 
-            fetch(`/update-handled/${id}`, {
+            fetch(`/admin/update-handled/${id}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

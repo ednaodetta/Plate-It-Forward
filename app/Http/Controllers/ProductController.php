@@ -21,9 +21,8 @@ class ProductController extends Controller
         // Ambil hanya produk yang dimiliki restoran ini
         $products = Products::where('restaurant_id', $restaurantId)->get();
 
-        return view('restorantproductinfo', compact('products'));
+        return view('restaurant.restaurantproductinfo', compact('products'));
     }
-
 
     public function menuPage()
     {
@@ -65,7 +64,7 @@ class ProductController extends Controller
         return view('restaurant.addproduct');
     }
 
-    public function restoran()
+    public function restaurant()
     {
         $now = Carbon::today();
 
@@ -102,7 +101,7 @@ class ProductController extends Controller
 
         $city = Restaurant::all();
 
-        return view('restoranpage', compact('flashSaleProducts', 'city', 'recommendedRestaurants'));
+        return view('restaurants', compact('flashSaleProducts', 'city', 'recommendedRestaurants'));
     }
 
 
@@ -121,7 +120,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Products::findOrFail($id);
-        return view('updaterestorantproduct', compact('product'));
+        return view('admin.updaterestorantproduct', compact('product'));
     }
 
     public function update(Request $request, $id)

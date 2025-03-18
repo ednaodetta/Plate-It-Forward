@@ -20,7 +20,7 @@ class RestaurantController extends Controller
     public function index()
     {
         $restaurants = Restaurant::all(); // Ambil semua data dari tabel supports
-        return view('restaurantinfopage', compact('restaurants'));
+        return view('admin.restaurantinfopage', compact('restaurants'));
     }
 
     public function show($id)
@@ -37,7 +37,7 @@ class RestaurantController extends Controller
             return redirect()->route('restaurantinfo')->with('error', 'Restaurant not found');
         }
 
-        return view('updaterestaurantpage', compact('restaurant'));
+        return view('admin.updaterestaurantpage', compact('restaurant'));
     }
 
     public function showRestaurantsByCity($city)

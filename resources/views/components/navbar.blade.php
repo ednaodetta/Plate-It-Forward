@@ -21,7 +21,7 @@
                 <li><a href="/"
                         class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100 font-brandon hover:font-bold">Home</a>
                 </li>
-                <li><a href="/restoranpage"
+                <li><a href="/restaurants"
                         class="block px-6 py-3 hover:text-DefaultGreen hover:bg-gray-100 font-brandon hover:font-bold">Restaurants</a>
                 </li>
                 <li><a href="/contact-us"

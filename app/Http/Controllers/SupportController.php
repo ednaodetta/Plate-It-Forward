@@ -36,6 +36,6 @@ class SupportController extends Controller
     public function index()
     {
         $supports = Support::all(); // Ambil semua data dari tabel supports
-        return view('support', compact('supports'));
+        return view('admin.support', compact('supports'));
     }
 }
